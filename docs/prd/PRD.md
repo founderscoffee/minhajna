@@ -9,6 +9,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | § | Section | Status |
 |---|---|---|
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026 |
+| 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -473,3 +474,141 @@ The code and the reference data live in separate repositories, because they have
 - **Funding the team's time** until services and institutions pay. The business section covers this.
 - **Members of the teacher council.** Chosen after the field check.
 - **Other countries.** Whether another country follows Algeria, and which, is decided after the 2027/28 school year (§1.14).
+
+---
+
+## 2. Goal, users and scope
+
+This section sets out:
+- what Tabachir is for;
+- who uses it;
+- how the daily workflow runs;
+- what version 1 covers.
+
+It complies with Section 1. Later sections design each part: the teacher app, the lesson engine and plan packs, data and formats, privacy and security, institution mode, the state layer, the business and the roadmap.
+
+### 2.1 The problem
+
+- **Teachers copy the same lesson by hand, every day, into several documents.** The ministry's plans reach teachers as PDF files. From them, teachers write out (brief §1, §4):
+  - their distributions;
+  - their daily journal;
+  - the texts-book entry for each class;
+  - their lesson notes.
+- **These documents are required, and someone checks them.**
+  - Primary teachers keep the daily journal (الكراس اليومي) and the roll-call book (Decision 831 of 1991). The director countersigns them, and the inspector checks them at visits.
+  - In CEM and lycée, each class has a texts book (دفتر النصوص, Decision 155 of 1991). The teacher signs it every session, and the director endorses it.
+  - Since 2025/26, CEM teachers also keep a continuous-assessment book (circular 270).
+- **The pieces exist, but the chain does not.** No product carries a lesson from the official plan to the day's session, and on to every document the teacher must keep, at every level (brief §1).
+- **The state's platforms cover marks, absences and parents, not lessons.** Lesson records are still on paper. A digital texts book is on the ministry's July 2025 roadmap (brief §9).
+- **Scale.** About 630,000 teachers (February 2026) and 12 million pupils (September 2026) (brief §2).
+
+### 2.2 The goal and the end state
+
+- **The goal** (principle 6). The Algerian state adopts Tabachir as the official digital record of teaching.
+- **The end state: Tabachir replaces the paper procedures completely.** It is not a supplement to them.
+  - The ministry publishes its plans through Tabachir.
+  - The system gives every class its lesson for every session.
+  - Teachers confirm what was taught instead of writing it.
+  - The journal, the texts book, the distributions, the lesson notes and the roll-call book become digital records.
+  - Official marks go into the state's system through the export.
+- **Paper goes when the law says so.** Official texts require the paper books. They disappear once a ministerial text gives the digital record official status (§1.15, step 4). Until then, Tabachir removes the copying and prints what the paper rules still require.
+- **The path** (§1.15). It has three parts:
+  - teachers first, because the state adopts what teachers already use;
+  - a design that meets the needs of an official record from the first release;
+  - the state's doors worked in parallel.
+
+### 2.3 The core workflow
+
+1. **The plan goes in.** The ministry uploads its plan as a PDF, or fills in a form.
+   - Both produce the same plan pack, which is reviewed before it is published and then available to every teacher.
+   - Until the ministry joins, the project's curators and teacher-reviewers run the same process (§1.7).
+2. **Lessons get dates.** For each class, the system assigns each lesson to a session, using three inputs: the plan, the class timetable, and the calendar (holidays, exams, closures).
+   - Primary plans are numbered by week, so the dates follow directly.
+   - CEM and lycée plans give hours per sequence, so each class's dates depend on its timetable.
+3. **The teacher sees the day's lessons** on the Today screen.
+   - A weekly digest comes by default. A daily preview comes only if the teacher turns it on.
+   - There are no notifications at night or at weekends.
+4. **The teacher confirms, and never writes.**
+   - After the session, one tap confirms "done as planned".
+   - Any other outcome takes one more tap: continued next time, merged, skipped, re-taught, or not held.
+   - A whole day or week can be confirmed at once, with its exceptions.
+   - Free text is always allowed.
+5. **Everything else follows.**
+   - The system writes the journal and texts-book entries, the distributions and the lesson-note drafts.
+   - It re-paces the following lessons from what was actually taught.
+
+**Five rules**
+1. **A proposed lesson is never a taught lesson.** Only the teacher's confirmation records it. A record that filled itself in could show a lesson on a day the teacher was absent or the school was closed.
+2. **Changing the proposal costs no more than confirming it.**
+3. **Progress belongs to the class,** the subject and the school year, not to the teacher.
+4. **History is only ever added to.** A new plan, timetable or assignment never rewrites a recorded session.
+5. **A missing entry is never an absence** (§1.15, charter point 3).
+
+### 2.4 Who uses Tabachir
+
+| Participant | What they do and get | When |
+|---|---|---|
+| **Teacher** (primary, CEM, lycée) | The app, with:<br>• the day's lessons and one-tap confirmation<br>• roll call and continuous assessment<br>• the documents and the term export<br>• a weekly digest<br>• progress statements and handovers | Pilot, then launch |
+| **Subject coordinator and teaching council** | A merge of the progress statements that teachers choose to share, for the council's pacing plan | Pilot |
+| **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **School mode:** an operational dashboard showing workload, sessions awaiting confirmation and classes behind the plan. It stays inside the school, and the teacher sees the same view | Reader mode in the pilot; the package at launch; school mode after the gates (§1.15) |
+| **Inspector** | Progress statements before a visit. In school mode, access granted by the authority, limited in time and visible to the teacher | Pilot; school mode |
+| **Directorate** | In its own deployment, as controller: figures on what the system owes teachers, such as cover provided, vacant posts, sessions lost to closures and how pace varies | From 2027/28 (§1.15, step 3) |
+| **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• Sees insight reports first (§1.6)<br>• Adopts Tabachir nationally (step 4) | When the ministry joins |
+| **Students and parents** | Nothing yet: the ministry's parent space serves them today. Their data is designed into Tabachir from the start, but features for them run only in institution mode, on the institution's systems (§1.15) | After the gates |
+| **The project's curators and teacher-reviewers** | Turn plan PDFs into plan packs, with help from AI and a two-person review, until the ministry does it itself | From now |
+
+### 2.5 Version 1
+
+Version 1 is tested in a pilot from January to March 2027 and launched in September 2027.
+
+| Area | Version 1 |
+|---|---|
+| Levels | Primary, CEM and lycée.<br>• The pilot covers a few grades and subjects per level, wherever a reviewed plan pack exists.<br>• The launch covers all three levels, with the packs that are ready by then |
+| Features | The lesson log and the register, joined by the session |
+| Documents | • Texts-book entries (دفتر النصوص)<br>• The primary journal (الكراس اليومي) and the CEM and lycée personal journal<br>• Distributions<br>• Lesson notes (المذكرة), as templates filled in from the plan<br>• The roll-call book (دفتر المناداة), with its monthly summary |
+| Roll call | It replaces the paper book, as the teacher's own record.<br>• It can be taken in class or after the lesson, with a paper fallback (circular 460 Art. 48).<br>• The school's official absence system is not replaced |
+| Assessment | • Continuous-assessment components chosen by the teacher, within the circular<br>• Averages by the official formula<br>• Appreciations suggested from the official list and confirmed by the teacher for each pupil (circular 244) |
+| Term export | • The school's Excel workbook, filling only its unlocked cells<br>• A view ready for the ostad grid<br>• Printed sheets<br>• The class-council pack |
+| Devices | An Android app, and an installable web app for PCs. Both work offline |
+| Languages | Arabic, French and English interfaces. Documents come out in the subject's language |
+| AI | For curators only, never with pupil data. None in the teacher app |
+| School layer | • Reader mode in the pilot<br>• The timetable package at launch<br>• School mode after the gates, first as a pilot in 2027/28 |
+| Not in version 1 | • Features for students and parents<br>• Directorate and ministry deployments<br>• The insights observatory (2027/28)<br>• An iPhone app<br>• AI in the teacher app |
+
+### 2.6 What Tabachir never does
+
+- **Ask anyone to assign lessons to sessions by hand,** or record a lesson as taught without the teacher's confirmation.
+- **Track teachers.** No attendance, absence reasons, clock times, "started" events, location or biometrics, and no personal phone required.
+- **Judge teachers.** No scores, rankings or colour codes for teachers, and no inference of their effort or performance. Whether sessions are confirmed stays inside the school (§1.11).
+- **Hold readable pupil data on the project's servers** (principle 2).
+- **Run features for students or parents outside institution mode.**
+- **Duplicate what the state's systems already hold,** such as teacher assignments and hours, official absences and official results. It imports from them or exports to them.
+- **Connect to or automate state platforms without an agreement.** Data moves as files.
+- **Let its figures be used for exam thresholds or personnel decisions** (§1.6).
+
+### 2.7 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| End state | Full replacement of the paper procedures, once a ministerial text allows it |
+| Core workflow | The plan goes in (ministry upload or form) → each class gets dated lessons → the teacher confirms with one tap → the documents follow |
+| Levels | Primary, CEM and lycée |
+| Version 1 | The lesson log and the register, with the documents listed in §2.5 |
+| Roll call | Replaces the paper roll-call book, as the teacher's own record |
+| Assessment | The official formula; components chosen by the teacher; appreciations suggested, then confirmed |
+| Notifications | A weekly digest by default; a daily preview only if the teacher turns it on |
+| The director's view | An operational dashboard in school mode, inside the school |
+| Students and parents | Designed for now, built later, and only in institution mode |
+| Devices and languages | Android and web; Arabic, French and English |
+| AI | For curators only |
+| Dates | Pilot January–March 2027; launch September 2027 |
+| Section 2 | Settled on 27 Sep 2026 |
+
+**Open**
+- **The pilot slice.** Which grades, subjects and schools. It is chosen after the field check, by December 2026.
+- **Plan packs for lycée.** Few lycée plans are online. The field check finds out which exist.
+- **The lesson-note template for each level,** and whether inspectors accept it. The field check tests this.
+- **Whether directors will countersign printed pages** (§1.15, step 1). The pilot tests this.
+- **Which body would issue the text for national adoption** (step 4), and when. The state track finds out.
