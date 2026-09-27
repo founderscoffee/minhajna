@@ -16,6 +16,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026 |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026 |
 | 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026 |
+| 9 | [Business](#9-business) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -1998,3 +1999,142 @@ National adoption is step 4 of the ladder (§1.15), 2028 at the earliest. It tak
 - **Whether and when the ministry ships its own digital texts book.**
 - **A willing directorate,** given the 6 September 2026 rule.
 - **The AGPL in a state deployment,** alongside Ord. 21-09 and the security levels of Decree 25-320. Counsel answers.
+
+---
+
+## 9. Business
+
+This section turns the money rules (§1.10) into a model:
+- who pays for what, and at what price;
+- what it costs, and how the team is funded until income arrives;
+- the legal entity;
+- how teachers find Tabachir.
+
+Prices and costs are estimates. The pilot tests them.
+
+### 9.1 The model
+
+| Who | Pays for | Never pays for |
+|---|---|---|
+| **Teachers** | Nothing they must pay. Optional: sync and backup after the pilot, and a supporter pass | Any feature, the term export, any print layout, or getting their own data out |
+| **Private schools** | Deployment, training and support | The software |
+| **Directorates and the ministry** | Deployment, hosting, support and training, through public procurement (Loi 23-12) | The software, which the AGPL gives them freely |
+| **Grants and sponsors** | The team's time, plan-pack curation, the field check and the security review | Any say over a principle |
+
+### 9.2 What the market says
+
+- **Free is the norm** (brief §12).
+  - Every Algerian register or journal app found is free, often with ads.
+  - Teachers pay for paper registers (about 350 DA each), printing and design tools. But no Algerian teacher in the research named a price they would pay for an app.
+- **Prices elsewhere.**
+  - The one paid Algerian register tool found charges 800–1,600 DA per term or per year, paid by postal transfer or BaridiMob.
+  - Teacher apps abroad charge about €14–30 a year, or about $20 once. Their users' most common complaints are the yearly fee and having to pay before the app does anything.
+- **What teachers ask for** (research 05): a free core, any price shown before they enter data, a one-time payment rather than a subscription, and a subscription tied to the account, not to one device.
+- **The adoption ceiling.** No Algerian register or journal tool has passed about 10,000 real installs. Content apps get about ten times the installs of tool apps (brief §4.6, §12).
+- **Seasons.** Demand for export and appreciation tools peaks at the term-end windows in December and March.
+- **Scale.** About 630,000 teachers (§2.1).
+
+### 9.3 Sync, the one paid service for teachers
+
+- **Free during the pilot** (§1.10), once its gates are met (§6.2).
+- **Priced from the pilot's data.** The pilot tests three prices: 500, 1,000 and 1,500 DA a year.
+- **How it is sold:**
+  - one payment per school year, never monthly;
+  - per teacher account, covering all the teacher's devices;
+  - the price shown before sync is set up, and never a paywall in front of a feature.
+- **If a payment lapses,** sync stops, and nothing else changes. The data stays on the teacher's devices, and exporting stays free (§1.12).
+- **Payment** goes through channels approved in Algeria: Chargily, CIB, Edahabia and BaridiMob (§1.10). Selling needs the legal entity and the commerce rules in §6.2.
+- **Google Play.** Google Play cannot bill Algerians, and its rules restrict pointing users to other payment methods from inside an app. So the Google Play build shows no prices or payment links. Teachers subscribe on the project's `.com.dz` website, and the app only signs in.
+
+### 9.4 Services for institutions
+
+- **Private schools:** deployment, training and support, priced per school per year. Counsel first settles who the controller is for teachers that private schools employ (§7.13).
+- **Directorates and the ministry:** hosting where they don't host themselves, deployment, support and training. These go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the Decree 26-07 security clauses (§1.10). Counsel checks which procurement route fits a free, open-source product.
+- **Prices are public.** The price list for services is published, like every agreement (§1.8).
+
+### 9.5 Other income
+
+- **The supporter pass:** voluntary, with a visible thank-you. It unlocks nothing (§1.10).
+- **Grants and sponsors,** accepted only if they respect every principle, and disclosed in the transparency report. Foreign funding comes only after a legal check (§1.10). Candidates include INRE's incubator after a Tarbya-Up entry (§8.6), university partnerships, and open-source and education funds.
+- **Never:** ads, selling or sharing data, paid features, or charging teachers for their own data (§1.10).
+
+### 9.6 Costs
+
+| Cost | Estimate | Source |
+|---|---|---|
+| Sync servers in Algeria | About 5,000–15,000 DA a month, on one or two servers with redundancy | Research 06 |
+| Website, downloads and the reference-data mirror | About 1,000–10,000 DA a month, on shared hosting in Algeria | Research 06 |
+| Domains, the trademark filing, the ANPDP formalities, setting up the entity and accounting | One-off and yearly fees | To be quoted |
+| **People's time:** development, plan-pack curation, support and security | By far the largest cost | The funding plan (§9.7) |
+
+- **Hosting is cheap. People are not.** At 1,000 DA a year, fewer than 200 paying teachers would cover the servers. What sync revenue must eventually pay for is people's time.
+- **Counsel** has no budget yet, so the project looks for free help, such as university law clinics and incubators (§1.17).
+
+### 9.7 Funding until income arrives
+
+- **Until launch,** the work runs on the founder's and volunteers' time, plus any grants. Sync earns nothing during the pilot.
+- **Spending priorities,** when money comes in:
+  1. **Plan-pack curation.** It is the slowest part of the work, and it recurs every September (§4.4). Subject maintainers are credited, and paid once money allows.
+  2. **The independent security review** before sync opens (§6.5).
+  3. **Hosting** (§9.6).
+  4. **Support** for teachers, in Arabic (§1.11).
+- **The pilot must answer five money questions:**
+  - Would teachers pay for sync, and at which of the three prices?
+  - What share of teachers turn sync on?
+  - How much support do 100 teachers need?
+  - How long does one plan pack take to key and check?
+  - Which content brings installs?
+
+### 9.8 The legal entity
+
+Not decided yet (§1.17). Whatever form it takes, it must be able to:
+- sell sync online: a commercial-register entry and a `.com.dz` site hosted in Algeria (Loi 18-05);
+- sign processor contracts, institutional agreements and public contracts (§1.15, §7.11);
+- hold the copyright, the name and the repositories, and hand them to a successor (§1.12);
+- receive grants;
+- appoint or share a data-protection officer (§6.2).
+
+| Option | For | Against |
+|---|---|---|
+| Auto-entrepreneur status (Loi 22-23) | The simplest and cheapest | It is unclear whether it may sell online, since Loi 18-05 requires a register entry. It is weak for signing institutional contracts |
+| A company, owned by the founder at first | Can sell, sign contracts and hold the name | Setup and accounting costs. Its statutes must bind it to the principles |
+| An association | Fits a shared, open project, and can receive grants | Selling services and signing processor contracts may be harder. Association law may limit foreign funding |
+
+**Recommendation:** a company, with the principles written into its statutes, set up before any paid service or school pilot. The founder decides, after counsel or an incubator has advised. If the ANPDP declaration for the pilot cannot be filed by the founder personally (§6.10), the entity is needed before January 2027.
+
+### 9.9 How teachers find Tabachir
+
+Teachers find Tabachir where they already are (§1.1), never through inspectors or schools.
+- **The teacher group on Facebook:** the public beta, a monthly progress post and support (§1.11).
+- **YouTube tutorials in Arabic:** one short video per task, such as setting up in 10 minutes, the term export or printing the journal. Each is timed to its season.
+- **A content website,** because content brings far more installs than tools do. It offers:
+  - free templates and blank documents with their headers filled in;
+  - plain guides to the official rules: formulas, circulars and the calendar;
+  - a public view of the plan packs;
+  - the official downloads (§1.9) and the sync subscription.
+- **Word of mouth in the staffroom.** Handover packages and shared statements carry Tabachir from one colleague to the next.
+- **The season.** Launch in September, and promote the term export before the windows in mid-December, March and May.
+- **Every store review gets a reply** (§1.11).
+
+### 9.10 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Teachers | Every feature is free. Sync is the only paid teacher service |
+| Sync | Free in the pilot. Then one payment per school year, per account. The pilot tests 500, 1,000 and 1,500 DA a year |
+| Lapsed payment | Sync stops. Nothing is locked, and exporting stays free |
+| Google Play | No prices or payment links in the Google Play build. Teachers subscribe on the website |
+| Institutions | Paid deployment, training and support, with a public price list. The state buys through public procurement |
+| Other income | A supporter pass, grants and sponsors, under §1.10 |
+| Spending | Curation first, then the security review, hosting and support |
+| Distribution | The Facebook group, YouTube tutorials and a content website. Never through inspectors or schools |
+| Section 9 | Settled on 27 Sep 2026 |
+
+**Open**
+- **The legal entity.** A company is recommended (§9.8). The founder decides.
+- **The sync price,** from the pilot's data.
+- **Whether auto-entrepreneur status may sell online,** and whether a withdrawal right applies to digital subscriptions. Counsel answers.
+- **Funding the team's time** until services pay (§1.17).
+- **Which grants to apply for,** and the legal check on foreign funding.
