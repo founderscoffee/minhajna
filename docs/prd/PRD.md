@@ -17,6 +17,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026 |
 | 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026 |
 | 9 | [Business](#9-business) | Settled on 27 Sep 2026 |
+| 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -2138,3 +2139,136 @@ Teachers find Tabachir where they already are (§1.1), never through inspectors 
 - **Whether auto-entrepreneur status may sell online,** and whether a withdrawal right applies to digital subscriptions. Counsel answers.
 - **Funding the team's time** until services pay (§1.17).
 - **Which grants to apply for,** and the legal check on foreign funding.
+
+---
+
+## 10. Roadmap, metrics and risks
+
+This section brings the plan together:
+- the roadmap and its gates;
+- the field check;
+- how success is measured, without spying on teachers;
+- when to stop and change course;
+- the risks, and the response to each.
+
+It gathers the field-check, pilot and launch scopes from Sections 3 to 9.
+
+### 10.1 The roadmap
+
+Two tracks run side by side: the product for teachers and schools, and the state track (§8.6). Each period ends with a gate.
+
+| When | Build | Content | Schools and the state | Legal and money | Gate |
+|---|---|---|---|---|---|
+| **Now to December 2026:** the field check | • A prototype: setup, Today and roll call<br>• The five technical checks (§5.13) | • About five plan packs keyed in full (§4.11)<br>• The 2026/27 calendar, as the ministry publishes it | • The field check (§10.2)<br>• A contact at the IGP<br>• The Tarbya-Up terms read, and the plan-pack format drafted | • Counsel's priority questions, with free help<br>• The legal entity decided (§9.8)<br>• The project's ANPDP declaration for the pilot (§6.2)<br>• The name protected (§1.17) | The field check's stop condition (§10.4) |
+| **January–March 2027:** the pilot | The pilot app (§3.11), reader mode and the coordinator's merge (§7.2–7.3) | Fixes from the field. Ramadan 1448 and any exam move as a live test (§4.11) | • A director and an inspector in the pilot<br>• The first printouts countersigned (§1.15, step 1) | • The security design published<br>• Sync only if its gates are met (§6.2) | The pilot's success criteria (§10.3) |
+| **April–August 2027** | The launch scope: every level's flows, the timetable package, handover, and sync with its price | The first full September release prepared (§4.4) | The pilot's results published | • The legal entity in place<br>• Selling set up for sync (§9.3)<br>• The independent security review (§6.5) | Ready for launch |
+| **September 2027:** launch | • Google Play, the website and F-Droid<br>• Code contributions open to all (§1.13, stage 3) | The September release for 2027/28 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• A Tarbya-Up entry | • The first transparency report (§1.11)<br>• The teacher council (§1.8) | — |
+| **2027/28** | More schools. The observatory, with its method published a month before collection (§8.4) | The yearly cycle | • A school-mode pilot in a CEM (step 2)<br>• Talks with a directorate | The school-mode gates (§7.11) | The school-mode gates |
+| **2028 onwards** | A second country only if one is decided (§1.14) | — | • A directorate deployment (step 3)<br>• A ministerial text for national adoption (step 4) | — | Steps 3 and 4 |
+
+### 10.2 The field check
+
+**Who**
+- **5 to 10 teachers,** across the three levels. They include a contract teacher, a primary specialist and a teacher who works in two schools.
+- **2 or 3 directors, censeurs or education counsellors.**
+- **1 or 2 inspectors or subject coordinators,** and a contact at the IGP if possible.
+- **Teachers' representatives,** on what they would require before school mode.
+
+**What it must settle**
+- **The paper routine, timed:** the minutes a week that the journal, the texts book and the distributions take today. This is the baseline for the time budget.
+- **The pilot slice:** grades, subjects and schools (§2.7).
+- **Printouts:** whether directors will countersign a printed page (§1.15, step 1).
+- **The plan model:** the time anchors and the stage picker, and whether "weeks behind the plan" means something to teachers (§4.11).
+- **Trust:** whether teachers read Tabachir as surveillance, and what would push them to over-report or under-report.
+- **Files:** the class list, the grade workbook's type and columns, blank workbook templates and anonymised FET files (§3.12, §5.14, §7.4).
+- **Documents:** the lesson-note template, what Tamazight teachers keep, and the roll-call counting rules (§3.12).
+- **The April 2026 progress collection:** what it asked, and how schools answered it.
+
+**Counsel's questions, in priority order**
+1. Who the controller is in each type of school, and whether a teacher showing their own record to their director is an internal communication.
+2. Whether a free school or directorate pilot needs Council of Ministers approval under the 6 September 2026 rule.
+3. Whether teachers may send lesson-level insights without written authorisation.
+4. Whether the founder can file the ANPDP declaration and serve as data-protection officer, and whether a processor that stores only data it can't read is still a processor.
+5. Whether the charter's "no personnel use" clause can be written into the contract and enforced.
+6. The copyright status of the IGP's plans.
+7. The FET importer, under FET's licence.
+
+### 10.3 How success is measured
+
+**The pilot's success criteria**
+
+| Measure | Target |
+|---|---|
+| Seconds per ordinary session | Median about 5; 90th percentile at most 15 |
+| Paperwork time per week | Below the paper baseline for at least 3 in 4 pilot teachers |
+| Sessions confirmed in one tap | At least 60% |
+| Teachers still using it at the end of the pilot | At least 70% |
+| The term-2 export | Completed by every pilot teacher who wanted it, with no file rejected |
+| Printouts | At least one director countersigns printed pages (step 1) |
+| Privacy incidents | Zero |
+| Data-quality audit | Its two comparisons published (§8.4) |
+
+**After launch.** Reported in the monthly progress posts and the transparency report (§1.11):
+- **Use:** downloads, active sync accounts, term exports, statements shared, and teachers still active after a term (from surveys).
+- **Time:** seconds per session and minutes per week, from surveys and volunteer panels.
+- **Trust:** privacy incidents, and security fixes shipped on time.
+- **Content:** packs published, by status. Plan errors fixed, and how fast. Calendar fixes made within 24 hours.
+- **Money:** sync subscribers, and income against costs (§9).
+- **The goal:** each step of the ladder reached (§1.15). Also: directors who countersign, inspectors who accept statements, a working contact at the IGP or INRE, the formats proposed, the first written authorisation for a school pilot, and the independent security review passed.
+
+**Measured without spying on teachers**
+- **The app sends no usage data** (principle 3, §1.5).
+- **In the pilot,** a pilot build times sessions on the device. The teacher sees the figures and decides whether to share them.
+- **After launch,** figures come only from what the project sees anyway (downloads, reference-data updates and sync accounts), plus opt-in surveys and the opt-in insights.
+
+### 10.4 When to stop and change course
+
+- **After the field check.** If teachers read Tabachir as surveillance, the design changes before the pilot.
+- **After the pilot.** If ordinary sessions take far longer than 5 seconds, or teachers keep paper and Tabachir side by side with no time saved, the flow is reworked before launch. Parallel paper and digital records were the worst case abroad (research 11).
+- **In institution mode.** If a deployment breaks the charter, the project stops supporting it and reports the breach in the transparency report, where the law allows (§1.11).
+- **If the state ships its own texts book,** Tabachir follows §8.2 rather than competing.
+
+### 10.5 Risks
+
+| Risk | Likelihood | Impact | Response |
+|---|---|---|---|
+| Plan packs cost more to keep up than the team can give, every September | High | High | Curation gets money first (§9.7). Status flags, free entry without a pack (§4.2), and the IGP taking over the pipeline (§8.3) |
+| Teachers see Tabachir as surveillance, or it is used against them | Medium | High | The charter, record layers, no clock times, "awaiting confirmation" only on screen, neutrality (§1.11, §5.4, §7.6). The stop conditions (§10.4) |
+| Few installs: no Algerian teacher tool has passed about 10,000 | High | High | The content website and tutorials, free features, offline use, the term export as the pull, and word of mouth through handovers (§9.9) |
+| The state ships a digital texts book or an inspector space within 12–24 months | Medium | Medium | Complement it: export into it, and keep the teacher's capture and pacing (§8.2) |
+| Legal questions stay unanswered, with no budget for counsel | High | High | Protect data as if the strictest reading applied (§6.1). Free legal help. School mode waits for the answers (§7.11) |
+| No legal entity in time for the pilot's declaration, paid sync or a school pilot | Medium | High | Decide the entity now (§9.8). The pilot can run without sync (§6.2) |
+| Too much scope for a small team: three levels, all the documents, three languages, two platforms | High | High | The pilot slice before the launch scope (§3.11, §4.11). The technical checks early (§5.13) |
+| Technical blocks: F-Droid builds, Arabic PDFs, filling `.xls` workbooks, browser storage | Medium | High | The five checks before the pilot (§5.13) |
+| Reference data changes without warning, and the workbook changes at an export deadline | High | Medium | Versioned data, fixes within 24 hours, and only fixes before each export window (§1.9, §4.4) |
+| Directors and inspectors differ on printouts | Medium | Medium | Template profiles, blank versions and the countersignature test (§3.8, §1.15) |
+| Phones restricted in class (circular 460) | Medium | Low | Roll call after the lesson, and a paper fallback (§3.4) |
+| A lost phone exposes pupil data | Medium | High | Encryption, the app lock, backups and the recovery sheet (§6.4, §6.5) |
+| A breach of the sync server | Low | High | End-to-end encryption, so there is nothing readable to steal. The breach runbook (§6.7) |
+| The Google Play account is lost or the app removed | Low | High | The website and F-Droid as official sources (§1.9). Accounts held by the organisation (§1.8) |
+| Too much depends on the founder | High | High | Everything public, the continuity pledge (§1.12), and more maintainers (§1.8) |
+| Money runs out before income arrives | Medium | High | Grants, low hosting costs and clear priorities (§9.7) |
+| The 6 September 2026 rule slows school and directorate pilots | High | Medium | Teacher mode and reader mode need no approval (§7.2). Patience on the state track |
+| Self-reported figures mislead | Medium | Medium | Figures describe the plan, never exam scope. The data-quality audit, and a sampling protocol for national figures (§8.4, §8.5) |
+
+The risk register is reviewed each term, in public (principle 8).
+
+### 10.6 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Roadmap | The periods and gates in §10.1 |
+| Field check | The groups and questions in §10.2, with counsel's questions in that order |
+| Pilot success | The targets in §10.3 |
+| Measurement | The app sends no usage data. Pilot timings are shared only if the teacher agrees. After launch, only what the project sees anyway, plus opt-in surveys and insights |
+| Stop conditions | As in §10.4, including ending support for a deployment that breaks the charter |
+| Risks | The register in §10.5, reviewed each term in public |
+| Section 10 | Settled on 27 Sep 2026 |
+
+**Open**
+- **The pilot's size and schools,** chosen after the field check. About 30 teachers in 3 to 5 schools, across the three levels, is a starting point.
+- **A contact at the IGP.**
+- **The legal entity** (§9.8).
+- **Funding the team's time** until services pay (§1.17).
