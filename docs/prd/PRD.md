@@ -10,6 +10,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 |---|---|---|
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026 |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
+| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -612,3 +613,303 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 - **The lesson-note template for each level,** and whether inspectors accept it. The field check tests this.
 - **Whether directors will countersign printed pages** (§1.15, step 1). The pilot tests this.
 - **Which body would issue the text for national adoption** (step 4), and when. The state track finds out.
+
+---
+
+## 3. The teacher app
+
+This section specifies what the teacher does and gets. Three later sections cover the parts it relies on:
+- Section 4, the lesson engine that proposes each session's lesson;
+- Section 5, the data, file formats and sync;
+- Section 6, privacy, security and the non-functional requirements.
+
+### 3.1 Design rules
+
+Every screen follows these rules.
+
+1. **One entry, every output.** A session is recorded once. That record feeds the journal, the texts-book entry, the roll call, continuous assessment and every printout.
+2. **Faster than paper.**
+   - An ordinary session takes about 5 seconds to confirm.
+   - Marking the roll for 40 or more pupils is at least as fast as paper.
+   - Both are measured in the pilot, against the paper routine timed in the field check.
+3. **Proposed, never assumed.** The app proposes; only the teacher's confirmation records (§2.3).
+4. **Correct anything, lose nothing.**
+   - Any entry can be corrected at any time, and the history keeps both versions.
+   - There are no deadlines, time windows or locks.
+5. **Print what is checked.**
+   - Every document prints the way directors and inspectors expect.
+   - Every document can also print blank, with its headers filled in.
+6. **Offline, with no account.** The app opens and does all the daily work without a network or an account (§1.5).
+7. **The phone alone is enough.** Everything works on a budget Android phone, including the PDFs to print and the term export. A PC is optional, because far fewer teachers have laptops than phones (brief §11).
+8. **Neutral words.** The app states facts, such as "3 sessions awaiting confirmation" or "2 weeks behind the plan". It never judges, as in "you are late" or "you can do better".
+9. **Arabic first.**
+   - The interface is in Arabic, French and English.
+   - Layouts run right to left and left to right.
+   - Documents come out in the subject's language.
+
+### 3.2 Getting started
+
+The goal is a usable app in about 10 minutes, without importing anything.
+
+**The teacher**
+- The teacher picks their levels, schools and subjects.
+- A teacher card holds the details the documents print. The personal fields are optional and never leave the device.
+
+**Classes and pupils**
+- **Import** the pupil list from the official Excel file, keyed on the official registration number. Only the columns the app needs are kept.
+- **Or type** the list.
+- **No fixed limit on class size.** The paper roll-call book stops at 52 rows, and a class of 57 has been reported (brief §5.2).
+- **Multigrade classes.** A primary class can hold up to three levels, each on its own plan (brief §4.3).
+- **Pupil movements.**
+  - Transfers in and out during the year are recorded with their date and reason.
+  - A pupil who has left stays listed, with the reason, until the teacher records the director's confirmation.
+
+**The week**
+- **Where the week comes from.** The teacher accepts the school's timetable package, sent as a file or a QR code, or draws the week by hand.
+- **Several schools.** A teacher who works in more than one school gets one merged week, with warnings about clashes.
+- **The timetable handles:**
+  - A/B weeks;
+  - half-groups;
+  - double shifts, Saturday classes and a fifth morning slot;
+  - the same class twice in a day;
+  - bivalent CEM subjects, such as Arabic with Islamic education;
+  - specialists who teach up to about 20 groups;
+  - time that belongs to the teacher rather than a class: the pedagogical half-day, hours in another school, duties and reductions.
+- **Ramadan hours** come from the calendar, not from the timetable (Section 4).
+
+**The plan and the calendar**
+- **A plan pack for each class.** The teacher pins one plan pack to each class, and the class stays on that release. Without a pack, the log still works with free entry.
+- **The calendar.**
+  - The national calendar comes with the app.
+  - Closures for a wilaya or a school can be added by the teacher, or received.
+
+**The next school year** reuses last year's teacher card, template profiles and lesson notes. Last year's records stay available.
+
+### 3.3 Today and the session
+
+**The Today screen** lists the day's sessions in order. For each one it shows:
+- the class, the subject and the group;
+- the proposed lesson: its plan item and stage;
+- what carried over from last time.
+
+Special days are marked on it: holidays, seminars, councils, exam weeks, and cover for another teacher's class.
+
+**Confirming a session**
+
+| Outcome | Taps | What it records |
+|---|---|---|
+| Done as planned | 1 | The proposed plan item and stage |
+| Last stage reached | 2 | The stages covered; the rest continues next time (تابع) |
+| Merged | 2 | Two plan items taught together |
+| Skipped | 2 | An item left out |
+| Re-taught | 2 | An item taught again |
+| Not held | 2 | That the session did not take place |
+
+- **Reasons are optional and private.** A skipped item or a session not held can carry a reason that stays on the device: closure, exam, holiday, event, teacher absent, class absent, few pupils present, or other. No reason names collective action; the teacher uses "other" (§1.11).
+- **A whole day or a whole week** can be confirmed at once, marking only the exceptions.
+- **Session types** follow Algerian practice: درس، إدماج، أعمال موجهة، معالجة، استقبال, and فراغ for a free slot, plus tests and exams.
+- **Every session can also record:**
+  - homework, with its due date;
+  - any test given;
+  - free text, and content that wasn't in the plan.
+- **Two layers of note:**
+  - a factual line that can go into the texts-book entry and into shared statements;
+  - a private note that never leaves the device.
+
+  The app warns against writing pupils' health or discipline details in either.
+- **No clock times.** A session is identified by its date and timetable slot. Printed times come from the timetable, never from when the teacher tapped.
+
+### 3.4 Roll call: the digital roll-call book
+
+Roll call replaces the paper roll-call book (دفتر المناداة) as the teacher's own record. It never notifies parents, and it does not replace the school's official absence system (§2.5).
+
+**Taking it**
+- **Unit.** Per half-day in primary; per session in CEM and lycée. The same class can be taken twice in a day.
+- **Specialists** keep one register per class and count only their own sessions.
+- **Everyone is present by default.** The teacher marks only the exceptions:
+  - absent, with a reason if one is given;
+  - late, which can happen several times a day, carries the date and doesn't count as an absence.
+- **When.** In class or after the lesson, because circular 460 Art. 48 limits phones in class.
+- **Paper fallback.** A printable blank sheet, entered later. It also serves a substitute or a day without the phone.
+- **Corrections.** Past days can be corrected, and an audit trail keeps every change, because roll calls carry legal weight.
+
+**Counting**, following the roll-call templates (brief §13.4)
+- **The half-day is the unit.** An absence in the morning or in the afternoon counts 1; a whole day counts 2.
+- **Totals are automatic, for each pupil and each month:**
+  - possible attendance (ح-ك);
+  - absences (غ);
+  - actual attendance (ح-ف);
+  - the rate.
+- **A yearly summary** runs from September to June.
+- **Counting rules are settings,** with defaults: holidays, seminars, half-days, the start date, and days the class was not held. Teachers disagree on these rules, and no official text settles them.
+
+**Printing**
+- **The monthly two-page spread**, on A4 portrait:
+  - one column per day, with weekends and national days shaded;
+  - the paper book's symbols: `-` absent in the morning, `ǀ` absent in the afternoon, `+` absent all day;
+  - the matching Hijri month;
+  - signature boxes for the teacher, and for the director and the inspector with dates.
+- **Lateness**, which has no symbol on paper, prints in its own column with its dates.
+- **Each pupil's absence dates**, not only the counts.
+- **The yearly summary page.**
+- **The front pages** print what the app holds. The two confidential pupil-record pages print blank, to be filled in by hand: the app does not collect parents' details or home addresses.
+- **For CEM and lycée,** an absence sheet for each session, for the supervisors' route.
+
+### 3.5 Continuous assessment, marks and averages
+
+- **Components per class and subject.**
+  - An official preset for each level, built from the year's circulars as data.
+  - The teacher chooses the components and their weights within the circular, and can add columns.
+  - Primary continuous assessment is kept month by month and rolled up per term.
+  - In terms where descriptive observations replace marks, such as 1AP term 1, the teacher records observations instead.
+- **Captured during the session:** participation, homework, notebook and behaviour. Roll call can feed the attendance and discipline component if the teacher turns that on (circular 270 allows it).
+- **Tests (فروض) and exams.** Entry is checked for:
+  - marks above the maximum;
+  - empty cells;
+  - pupils who are not on the class list.
+- **Averages** follow the official formula for each level, kept as versioned data (brief §5.4). T is continuous assessment, F the tests and E the exam.
+  - Primary, out of 10: (T + E)/2 for languages and maths; E alone for the other examined subjects.
+  - CEM: ((T + F)/2 + 2E)/3.
+  - Lycée: (T + F + 2E)/4, or (T + F + P + 2E)/5 with practical work, or with an oral in place of P.
+- **Rounding.** Full precision is stored and 2 decimals are shown. Thresholds are compared on the unrounded value.
+- **Printouts:**
+  - the grade book;
+  - a per-pupil justification of the continuous-assessment mark. This doubles as the continuous-assessment book that circular 270 requires, and as the teacher's answer to a parent's appeal.
+
+### 3.6 Appreciations
+
+- **Suggested, then chosen.** The app suggests a phrase from the versioned official list, by mark band and, if the teacher wants, by behaviour and attendance. The teacher confirms or changes it for each pupil.
+- **No "fill all".** Circular 244 requires a manual choice.
+- **Guards:**
+  - banned phrases are blocked;
+  - a phrase that only restates the mark is flagged;
+  - the export refuses to run while any box is empty.
+
+### 3.7 The term export
+
+The school chooses the route: the ostad grid, or the Excel workbook the administration extracts from amatti (brief §5.6).
+
+- **The school's Excel workbook.**
+  - The app fills only the unlocked cells, keeping the workbook's protection, structure and file type.
+  - The workbook's variants are handled as data.
+  - Every result is tested in Microsoft Excel and in WPS for Android.
+- **A view ready to copy into the ostad grid.**
+- **Printed mark sheets,** and PDF, DOCX and CSV files.
+- **A check before signing.** The app compares the register with the exported file, in the same form as the official control printout.
+- **The correction window** after term is supported, with the teacher's report that each correction needs.
+- **The class-council pack.** Class statistics:
+  - average, highest and lowest mark, and standard deviation;
+  - the success rate: 10/20, or 5/10 in primary;
+  - the distribution by band, and counts by sex;
+  - pupils' ranks, and a comparison with last term;
+  - pupils who may need remediation, and pupils in line for a distinction, with thresholds the teacher sets, since none are official;
+  - the attendance summary.
+- **Never:**
+  - ask for ostad or amatti passwords;
+  - automate the state's platforms;
+  - produce a report card (§2.6).
+
+### 3.8 The documents
+
+Each document can be printed, saved as PDF or DOCX, and printed blank with its headers filled in.
+
+**Template profiles** can set the fields, their order and their labels for an inspector or a district, because no official layout exists (brief §13). Signature and visa boxes are always kept.
+
+| Document | What it contains |
+|---|---|
+| **Primary journal** (الكراس اليومي) | • **Front pages:** cover, teacher card, holidays and national days, seminars and training, the pupil list, and the weekly timetable with an "approved on" box<br>• **Daily page:** A4 landscape, with morning and afternoon bands. Columns: duration, subject, activity, content, competence indicator, plus the domain and the lesson-note number<br>• **A visa box for the director** (Decision 831 Art. 9), which the paper templates leave out<br>• **Specialists** in French, English and Tamazight get their own journal, in their language |
+| **CEM and lycée personal journal** | • **Front pages:** teacher card; seminars, training and meetings; holidays and national days<br>• **Daily page:** A4 portrait: date, from–to, class, how the session went, remarks. Plus domain, sequence and resource |
+| **Texts-book entries** (دفتر النصوص) | For each session:<br>• date and duration<br>• lesson title and stages<br>• any test<br>• homework and its due date<br><br>The teacher copies each entry in, or pastes a printed strip if the school accepts that. The app shows each entry's corrections, for the director's monthly check. The teacher signs by hand until the record becomes official (§1.15) |
+| **Distributions** | Annual and monthly distributions from the plan pack, fitted to the class timetable, and the termly distribution the texts book needs (Decision 155 Art. 6) |
+| **Lesson notes** (المذكرة) | • A numbered template, filled in from the plan item: objectives, stages, resources, competence indicator<br>• The teacher completes it<br>• Last year's notes can be reused |
+| **Roll-call book and absence sheet** | See §3.4 |
+| **Grade book and continuous-assessment justification** | See §3.5 |
+| **Weekly timetable** | With signature boxes for the teacher, the director and the inspector |
+
+**One journal or several.** A teacher with several classes, streams or levels chooses one journal per class or one combined journal (brief §4.3).
+
+**Print rules** (brief §11)
+- **Paper and ink.** Safe in black and white, with binding margins. One PDF that a print shop can use.
+- **Settings.** Subject order, one- or two-sided printing, and which pages to print. Teachers pay for their own printing, about 5 DA a page, so layouts waste no paper.
+- **Fonts.** Fonts are embedded (Amiri, Noto Naskh Arabic). DOCX files name the Microsoft fonts that official documents use.
+- **Dates.** Gregorian dd/mm/yyyy with Western digits, the Algerian month names (جانفي … أوت), and the school year as "2026-2027". The Hijri date is optional.
+- **Mixed directions.** Arabic headers over a French or English body must render correctly.
+- **Tamazight.** Latin script at least.
+
+### 3.9 The weekly digest and notifications
+
+**The weekly digest** goes to the teacher only, for each class. It shows:
+- the class's position in the plan, and weeks ahead or behind;
+- sessions lost to the calendar, shown separately, so that a closure never reads as slow teaching;
+- spare sessions before the next exam window;
+- catch-up options (Section 4);
+- make-up sessions owed;
+- sessions still awaiting confirmation.
+
+**Other notifications**
+- **A daily preview**, only if the teacher turns it on.
+- **Quiet hours.** No notification between 20:00 and 07:00, or from Thursday 20:00 to Sunday 07:00. Teachers who work on Saturdays can adjust this.
+
+### 3.10 Sharing, handover and devices
+
+- **The progress statement.**
+  - One per class, as a print, a PDF or a short-lived QR code.
+  - Its fields follow the state's April 2026 request:
+    - the last domain or sequence completed;
+    - the last learning resource;
+    - weeks of delay;
+    - sessions not held, shown only as calendar causes or "other" unless the teacher chooses to show more;
+    - the plan pack and its release.
+  - It carries no pupil data.
+  - The teacher decides when to share it, and a sharing history shows what went to whom.
+- **The handover package**, for a substitute or an incoming teacher. It is organised by topic:
+  - the plan position;
+  - the journal history;
+  - the next item.
+
+  The pupil list and marks travel only by direct transfer, and only if the teacher chooses. The incoming teacher's app re-paces from the last entry.
+- **Phone and PC.** Two ways to move data between devices:
+  - the optional end-to-end encrypted sync, free during the pilot (§1.10);
+  - a direct transfer between devices.
+
+  Section 5 designs both.
+- **Export.** A full export of everything, free, at any time (principle 7).
+
+### 3.11 Pilot and launch
+
+| | Pilot (January–March 2027) | Launch (September 2027) |
+|---|---|---|
+| Levels | A few grades and subjects per level, chosen after the field check | All three levels, with the plan packs ready by then |
+| In the app | Setup, Today and confirmation, roll call, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement | All of this, plus the school's timetable package, handover, and sync with its price set |
+| Languages | Arabic at least; French and English as their translations are ready | Arabic, French and English |
+| Measured | • Seconds per session: median and 90th percentile<br>• Minutes per week, against paper<br>• The share of sessions confirmed in one tap<br>• Term exports completed<br>• Pages that directors countersign | Published before launch |
+
+### 3.12 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Design rules | The nine rules in §3.1 |
+| Session outcomes | "Done as planned" in one tap; any other outcome in two. A whole day or week at once, with its exceptions |
+| Reasons | Optional and private. None names collective action |
+| Roll call | Half-days in primary, sessions in CEM and lycée. Everyone present by default. The paper book's counts, symbols, spreads and signature boxes |
+| Pupil details | Only what the documents need. The confidential pupil-record pages print blank |
+| Assessment | Official presets as data, the teacher's components, full precision |
+| Appreciations | Suggested, then chosen for each pupil. No "fill all" |
+| Term export | The workbook's unlocked cells, an ostad-ready view, printed sheets and a check before signing. Never passwords |
+| Documents | Those in §2.5, plus the grade book and the weekly timetable. Each has template profiles and a blank version |
+| Notifications | The weekly digest; a daily preview if the teacher turns it on; quiet hours |
+| Pilot | The slice in §3.11, measured against paper |
+| Section 3 | Settled on 27 Sep 2026 |
+
+**Open.** The field check, the pilot or the year's texts will settle these:
+- **Primary continuous assessment.** Whether it is by activity (circular 1711) or by learning domain (the 2024–2026 grade books) in 2026/27.
+- **The 2026/27 assessment circular.** How many tests (فروض), and when.
+- **The 2026/27 grade workbook.** Its file type and columns.
+- **Circular 244's list of appreciations.** It has not been found.
+- **Roll-call counting rules.** Directors confirm them.
+- **Printed pages.** Whether a printed texts-book strip, or a week-per-page journal, is accepted.
+- **The lesson-note template** for each level.
+- **Tamazight teachers.** What they keep, and in which script.
+- **A seating-plan view for roll call.** Whether it is wanted in version 1.
