@@ -11,6 +11,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026 |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
+| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -609,7 +610,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 
 **Open**
 - **The pilot slice.** Which grades, subjects and schools. It is chosen after the field check, by December 2026.
-- **Plan packs for lycée.** Few lycée plans are online. The field check finds out which exist.
+- **Plan packs for lycée.** An archive of 89 lycée plan files from September 2022, covering 23 subjects, was found (research 09). The field check finds out which of them are in force (§4.12).
 - **The lesson-note template for each level,** and whether inspectors accept it. The field check tests this.
 - **Whether directors will countersign printed pages** (§1.15, step 1). The pilot tests this.
 - **Which body would issue the text for national adoption** (step 4), and when. The state track finds out.
@@ -913,3 +914,303 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 - **The lesson-note template** for each level.
 - **Tamazight teachers.** What they keep, and in which script.
 - **A seating-plan view for roll call.** Whether it is wanted in version 1.
+
+---
+
+## 4. The lesson engine and plan packs
+
+This section specifies how Tabachir knows the lesson for each session:
+- the plan packs, which hold the official plans as data;
+- the pipeline that makes them, and who runs it each year;
+- the calendar;
+- the engine, which turns a plan, a timetable and a calendar into each class's lessons.
+
+It carries out steps 1 and 2 of the core workflow (§2.3) and feeds the teacher app (Section 3). Section 5 specifies the file formats.
+
+### 4.1 What exists today
+
+- **The ministry issues no lesson list.** It issues a chain of documents (research 09):
+  - the curriculum and its accompanying document (2016), from the national curriculum commission;
+  - annual plans (المخططات السنوية والتدرجات), from the IGP with each level's directorate. They call themselves "complementary working tools": teachers apply them, and inspectors may adapt them. The newest editions found date from September 2022;
+  - textbooks and teachers' guides, which hold most lesson titles;
+  - primary session plans, a 2020 trial edition that was never updated.
+- **Teachers do the rest by hand:** dated distributions, lesson notes and texts-book entries (§2.1).
+- **Nothing machine-readable exists.** There is no lesson list with identifiers, no dated distribution and no rule for lost sessions.
+  - The plans circulate as PDFs on teachers' sites, with corrupted text layers and some scanned pages.
+  - Communiqués are published as images.
+  - No file carries a licence.
+- **2026/27 has no new edition.** None had been published by 26 September 2026. The 3AP and 4AP plans no longer match those grades' timetables (Decision 16).
+- **So Tabachir holds the plans as data itself,** as plan packs, until the IGP publishes them through Tabachir (§2.3, step 1).
+
+### 4.2 Plan packs
+
+A plan pack holds one official plan as data. There is one pack for each level, grade, subject, stream and edition.
+
+**What a pack holds**
+- **Items, in the plan's order.** Each item has one kind from a closed list:
+  - diagnostic;
+  - sequence or unit;
+  - lesson or resource;
+  - launch situation, integration, and solving the launch situation;
+  - assessment and remediation;
+  - project;
+  - term assessment;
+  - TD.
+
+  The plan's own wording goes in the item's title.
+- **A time anchor, which each pack declares,** because it varies by subject, not only by level:
+  - **weeks:** primary Arabic, maths and history. A week can carry the plan's weekly model of session types, as primary Arabic does;
+  - **budgets,** in hours or sessions per item: CEM plans, primary Islamic education and science, lycée French and physics;
+  - **hybrid:** budgets, with week targets as checkpoints, as in lycée maths and Arabic.
+- **Buffers,** which the plans build in and call a precaution:
+  - the diagnostic week;
+  - the primary half-week of integration, assessment and remediation after each sequence;
+  - lycée remediation weeks.
+- **Essential and optional items, and proposed merges.** A merge is only ever a proposal to the teacher.
+- **Stage templates, as the official material prints them.** For example: تهيئة → بناء → تطبيق → تقويم, from the primary session plans. An item without a template uses "started / done".
+- **Textbook references,** by page.
+- **Provenance:** the issuer as printed, the edition, the source pages and where the file was found. Personal names are removed.
+- **A licence mode:** link only, structure only, or full text once counsel clears it (§1.3).
+- **Tests and exams are not items.** The calendar places them (§4.5), and they reduce the sessions available.
+
+**Every pack shows its status**
+
+| Status | Meaning |
+|---|---|
+| Official | Published by the issuing authority itself, through Tabachir |
+| In force | Keyed by the project, and an official text confirms that this edition applies this year |
+| Latest found | The newest edition found, keyed and checked |
+| Stale | A later decision changed the subject's hours or content. For example, the 2022 3AP pack still has rows for subjects removed in 2025/26 |
+| Community | A teacher's or a district's plan, reviewed |
+
+**Identity and releases**
+- **Pack IDs** follow `dz.<level>.<grade>.<subject>[.<stream>].<edition>`, for example `dz.cem.3am.math.igen-2022`.
+- **One release per school year,** for example `2026.1`, with quick fixes as `2026.2`, `2026.3`.
+- **Item IDs never change meaning.** A renamed, split or merged item gets a migration entry, so every class's progress survives an update.
+- **A class stays on the release it pinned** (§3.2). When a new release ships, the teacher sees what changed and chooses when to move. Recorded sessions never change.
+
+**Variants are layers, not copies**
+- The layers, from the bottom up:
+  - the national pack;
+  - a district variant: an inspector's distribution, credited and used with their consent;
+  - a school variant, for parallel classes;
+  - the teacher's own changes.
+- Each layer holds only operations: reorder, merge, split, re-budget, skip and add. A fix to the national pack still reaches every class.
+- A variant is never labelled official.
+
+**Where each pack comes from is always shown.** Until the IGP publishes a pack itself, the app says so, for example: "Based on the September 2022 national edition, keyed by Tabachir's curators. Check with your inspector." (principle 6).
+
+**Without a pack,** the teacher can type their own list of items, and it works like a pack. They can offer it to the data repository, where it is reviewed as a community pack (§1.7).
+
+### 4.3 The pack pipeline
+
+**Two ways in, one pack out** (§2.3, step 1)
+- **Upload the PDF.** Software extracts a draft: rows, weeks and item titles. People then retype and check every number and every Arabic word against the page images, because the text layers of these files are corrupted. In one plan, "2022" reads "2222".
+- **Fill in the form.** The author enters the plan directly: items, anchors, budgets and stages. The form is also the editor that curators use for every pack.
+
+**The states of a pack release:** draft → under review → published → superseded or withdrawn.
+
+**Who runs it**
+- **Now:** the project's data curators and subject maintainers. Subject maintainers are practising teachers of that subject and level, with at least two for each widely used pack.
+- **Inspectors** may review a pack. They are credited only with their consent, and their review is never presented as official approval.
+- **When the IGP joins,** it runs the same pipeline, through accounts on the project's editor or on its own hosting. Its packs carry the status "official".
+- **The teacher council** advises on which packs come first (§1.8).
+
+**Checks before a release is published**
+- **Automated:**
+  - every item cites a source page, and every pack has an issuer, edition, status and licence mode;
+  - a week pack has no missing weeks, and each week covers its weekly model;
+  - a budget pack fits the timetable grid's hours across the teaching weeks, and the plan's own horizon. A plan that cannot fit is a finding to report to the IGP: one 2022 plan admits that most teachers don't finish the 2AS science maths programme;
+  - no extraction artefacts remain, and every number was typed twice;
+  - every ID change has a migration entry.
+- **Human:** two people, a curator and a subject maintainer, check the pack against the page images and compare it with last year's release.
+
+**AI** helps extract drafts, for curators only (§2.5). It never sees pupil data, and the model, the prompts and where it runs are public (§1.5). Personal names are removed from files before any processing.
+
+**Uploaded files are untrusted.** They are opened in isolation, their metadata is removed, and any active content in them is never run (Section 6).
+
+**Sources are kept as references,** not copies, until counsel clears their text (§1.3).
+
+**Errors from the field.** "Report a plan error", in the app, sends the item's ID with the teacher's note. The teacher sees the report before it is sent and chooses whether to be credited (§1.5, §1.7).
+
+### 4.4 The yearly cycle
+
+| When | Work |
+|---|---|
+| Late July | Decisions on timetables and curricula appear. Next year's branch opens, and the packs they affect are flagged |
+| August | New or changed packs are keyed, textbook references are updated, and drafts go to subject maintainers |
+| From teachers' return to pupils' start (13–21 September in 2026) | **The September release**, with status flags and a calendar holding the start dates |
+| The first four weeks | Quick fixes for reversals and freezes. In 2026, Decision 19 was frozen on 17 September |
+| When the ministry publishes them | The calendar release: holidays and exam windows |
+| All year | Calendar fixes within 24 hours of a communiqué or closure |
+| June | Error reports and plan feedback are reviewed, and next year's work is planned |
+
+**Nothing arrives as a feed.** Changes come as decisions, the yearly framework circular, correspondences relayed by the press, communiqués posted as images, and closure notices in posts, the press and local radio. A curator keys each change by hand, with its source attached.
+
+### 4.5 The calendar
+
+**Four layers,** from broadest to narrowest:
+1. **National:** holidays, public and religious days, exam windows, Ramadan hours.
+2. **Zone or wilaya:** zone calendars and weather closures.
+3. **School:** events, local closures and make-up days.
+4. **Teacher:** training days, seminars and duties, and sessions not held, which stay private (§3.3).
+
+**Every entry carries its source and its confidence:** announced, expected (lunar dates, give or take a day) or projected. When the moon sighting is announced, one tap confirms a lunar holiday.
+
+**What an entry can do to the sessions** (research 12):
+- cancel them: a holiday or a closure;
+- replace them: an exam week;
+- add them: support, remediation, or revision during the holidays;
+- change their times: Ramadan;
+- set or reset the A/B week;
+- switch to rotating groups, as in the October 2020 emergency.
+
+**Session lengths.** A session-length profile holds the Ramadan rules for each level.
+- In 2026, CEM and lycée sessions kept their places and shrank from 60 to 45 minutes. Primary periods were shortened.
+- A shortened session still counts as one session.
+- The texts-book entry prints the real duration.
+
+**Late news is normal.** In 2025/26 alone (research 09):
+- classes were suspended for two days in dozens of wilayas;
+- a whole wilaya, and single schools, closed for the weather;
+- Ramadan hours were announced two or three days ahead;
+- term-3 exams were moved seven weeks ahead.
+
+So the calendar takes updates the same day, received with the reference data (§4.8) or added by the teacher.
+
+### 4.6 How sessions are generated
+
+- **Slots point to bell times.** A timetable entry names a slot, not a clock time. Bell times come from templates for each level, shift and kind of day, so Ramadan changes the times without touching the timetable.
+- **Week patterns.** An entry runs every week, in A weeks or in B weeks. The calendar stores each teaching week's parity. By default it alternates and skips holidays, and it can be reset each term.
+- **Versions.** A new timetable applies from its effective date, and a one-off change touches only its own date.
+- **Primary activity slots.** A primary slot can carry its activity type, such as "reading, session 3", which week packs use.
+- **Teacher blocks,** such as the pedagogical half-day, hours in another school, duties and reductions, take time out of the week without belonging to any class.
+- **Generation.** Each class's dated sessions come from the timetable version in force, the calendar and the bell times.
+- **The past never moves.** Regenerating touches only future sessions that have not been recorded. A new timetable never rewrites a recorded session (§2.3, rule 4).
+
+### 4.7 The engine
+
+**The chain**
+
+```text
+plan pack → course (class × subject × school year) → timetable version → dated session
+          → proposed lesson → the teacher's record → progress, documents and exports
+```
+
+**The states of a session**
+1. Scheduled.
+2. Proposed.
+3. Recorded: done, changed or not held.
+4. Covered, or carried over from the stage reached.
+5. An official snapshot, only where an authority has adopted Tabachir as the official record (§1.15).
+
+**The proposal**
+- **It is always the class's next unfinished item,** starting at the first stage not yet covered.
+  - Week packs match the slot's activity type within the weekly model. A plan week's maths lessons spread over that week's maths slots, in order.
+  - Budget and hybrid packs take the next item in order.
+- **TD, remediation and support slots have their own queues.** They never advance the main plan. They are real slots: circular 465 put the TD guide into use and ordered remediation in 3AP and 5AP.
+- **Tests and exams come from the calendar** and the teacher's test schedule, never from the pack.
+- **Where the plan says the class should be** is worked out separately, only as a reference:
+  - for week packs, from the teaching week;
+  - for budget packs, from the budgets that fit into the sessions scheduled so far.
+
+**Progress**
+- **Stages, not percentages.** "Last stage reached" keeps the item at the head of the queue. Its remaining stages move to the next ordinary session of the same class and subject, not to a TD, remediation or exam session. The journal and the texts-book entry read "تابع: <title>", with the stages still to cover.
+- **No template:** "started / done", plus the sessions spent.
+- **Fractions** such as "2 of 4 stages" can be shown, but never typed.
+- **Half-groups.** An item taught in fortnightly TD counts as done for the class only when every half-group has had it.
+- **Never locked to the plan.** Free text and unplanned content are always allowed. Abroad, registers that locked the log to the plan made teachers republish the plan just to merge two topics (research 11).
+
+**Counting time**
+- **In sessions, not hours.** Hour budgets are converted with the class's session length: 1 hour in CEM and lycée, 30 to 90 minutes in primary. Counting in minutes is an option.
+- **Delay,** in sessions, and in plan weeks for week packs. Sessions lost to the calendar are counted separately, so a closure never reads as slow teaching.
+- **Buffers first.** While the buffers left before the next exam window can absorb a delay, the digest shows it as buffer used, not as a delay.
+- **Spare time:** the sessions left before the next exam window, minus what the plan still needs by then.
+- **The September check.** From the first day, each class shows: "The plan needs N sessions before the term-1 exams. Your timetable and the calendar give M." Plans assume fewer weeks than the calendar holds: 31–32 in primary and 27 in lycée French, against about 34–36 in 2026/27. The gap goes to exams, tests, diagnostic work and disruptions, so it is not spare time.
+
+**The catch-up ladder.** When a class falls behind, the options come in this order:
+1. **Compress** the item in progress. The teacher does this; the app does nothing.
+2. **Use the pack's buffers.**
+3. **Merge items, or leave out optional ones,** from the pack's proposals. The teacher confirms each one.
+4. **Add sessions,** which the teacher schedules.
+5. **Re-pace the rest of the term.** The app builds a new distribution for the teacher to review and print. In primary, the director approves it (Decision 839 Art. 12).
+
+**Never:**
+- drop an item silently;
+- push an item past an exam window silently;
+- apply a merge on its own.
+
+**Fixed points.** Tests, exams and TD sessions keep their dates, and lessons flow around them, skipping holidays. Moving lessons backward never deletes one, and every move can be undone from the history.
+
+**Special cases**
+- **Parallel classes.** Each class keeps its own queue. "Align with class X" copies a position. The app warns before a common test or exam window if parallel classes have drifted apart.
+- **Multigrade classes.** One queue for each level (§3.2).
+- **Lycée reorientation.** 2AS classes reshaped on 8 October get a "merge class history" step.
+- **A new teacher mid-year.** The class's queue carries over in the handover package (§3.10).
+
+**On the device.** The engine runs on the teacher's device, with no network and no server (§1.5). Its results belong to the teacher.
+
+### 4.8 Getting packs and calendars to the app
+
+- **The app ships with** the current packs and calendar.
+- **Updates** come from the data repository, or its mirror in Algeria. Downloads need no account and send no identifier, and `NETWORK.md` lists them (§1.5).
+- **Offline too.** An update can travel as a file or a QR code, for example from a colleague or the school.
+- **Signed data.** Every release of reference data is signed, and the app checks the signature. A pack passed from phone to phone cannot be changed without the app noticing.
+
+### 4.9 What goes upward
+
+- **The teacher's own sharing.** Progress statements carry the pack ID and release, so statements from different classes and schools can be compared (§3.10).
+- **Plan feedback, in the opt-in insights (§1.6).** Which items teachers most often merge, skip, split or re-teach. That describes the plan, never a teacher, and it can show where a programme is too dense to finish. Section 8 designs the insights.
+
+### 4.10 The rest of the reference data
+
+The same repository, review and yearly cycle hold the other data the app needs (brief §8). Each item is versioned, with its source and the dates it applies to (§1.14).
+
+| Data | Source | Status on 27 September 2026 |
+|---|---|---|
+| Timetable grids | Ministerial decisions | Primary: Decision 16. CEM: the 2025/26 grid, restored when Decision 19 was frozen. Lycée: the 2006/07 grids |
+| Bell times | Schools, and the Ramadan communiqués | Templates by level and shift |
+| The school calendar | Ministry communiqués | Only the start dates are published |
+| Formulas and coefficients | The yearly assessment circular | The 2026/27 circular is not out. Two sources disagree on the CEM coefficients |
+| Number and timing of tests | The same circular | Unknown |
+| Appreciations and banned phrases | Circular 244 | The list has not been found |
+| Grade workbook variants | The administration's file | File type and columns not confirmed |
+| Print layouts | Teachers' templates and inspectors' profiles | No official layout |
+
+**A text that changes a rule mid-year** applies from the date it sets. Marks already recorded never change. Averages follow the rule in force for their term, and the history shows any change.
+
+### 4.11 Field check, pilot and launch
+
+| | Field check (now to December 2026) | Pilot (January–March 2027) | Launch (September 2027) |
+|---|---|---|---|
+| Packs | About five packs keyed in full, once the pilot slice is chosen, for example:<br>• primary 5AP Arabic and maths (weeks)<br>• CEM 1AM maths and 3AM French (budgets)<br>• one lycée pack, such as 1AS maths (hybrid)<br><br>3AP and 4AP wait while their plans are stale | The same packs, with fixes from the field | The first full September release, for 2027/28, at all three levels, as far as packs exist. Lycée packs allow for the streams announced from 1AS in 2027/28 |
+| Calendar | The 2026/27 calendar, as the ministry publishes it | Ramadan 1448 (about 7 February to 8 March 2027) and a probable move of the term-2 exam week: a live test of the layers and session lengths | Fixes within 24 hours, all year |
+| Tested or measured | The anchors and the stage picker, with teachers. The September check, shown to an inspector | • Sessions confirmed as proposed, per pack<br>• Plan errors reported, and the time to fix them<br>• Time from a communiqué to the calendar fix | Published before launch |
+
+### 4.12 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Plan packs | One per level, grade, subject, stream and edition. Each declares its time anchor, uses the closed item kinds and the stages as printed, and shows its status and source |
+| Official status | Only for packs the issuing authority publishes itself. A variant is never labelled official |
+| Variants | Layers of operations over the national pack, never copies |
+| Pipeline | A PDF or a form becomes one pack, which two people check before it is published. Curators run it now; the IGP can run it when it joins |
+| AI | Extraction help for curators only. The model and prompts are public; no pupil data |
+| Calendar | Four layers. Each entry has a source and a confidence level. Fixes within 24 hours |
+| Engine | Runs on the device. It proposes the next unfinished item, counts in sessions, uses buffers before it reports a delay, and follows the catch-up ladder. It never drops an item, or moves one past an exam, without the teacher |
+| Updates | A class stays on its release until the teacher moves it. Recorded sessions never change |
+| Pilot packs | About five packs, keyed in full by December 2026, once the pilot slice is chosen |
+| Section 4 | Settled on 27 Sep 2026 |
+
+**Open**
+- **The copyright status of the IGP's plans** (§1.17). Until counsel answers, packs hold structure and links only.
+- **The 2026/27 plans.** Whether new editions reach teachers through their accounts, and which plans cover 3AP, 4AP (including French from scratch) and English in 1AM and 2AM.
+- **Which lycée plans are in force.** An archive of 89 lycée plan files from September 2022, covering 23 subjects, was found (research 09). The 2027/28 streams may change them.
+- **Stage templates** for the many CEM and lycée items that have none.
+- **How schools set A/B weeks.**
+- **Whether parallel classes sit common exams** in CEM and lycée.
+- **Ramadan in primary:** which sessions shrink or drop.
+- **Subject maintainers:** at least two for each pilot pack, recruited from the field-check group.
+- **Whether the IGP will run the pipeline** or adopt the format. The state track (Section 8) finds out.
