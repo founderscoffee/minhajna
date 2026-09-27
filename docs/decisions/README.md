@@ -11,3 +11,7 @@ Every decision about a principle, a licence, a data flow, the insights layer, mo
 | [0005](0005-code-host.md) | The code lives in a GitHub organisation | 2026-09-26 | Accepted |
 | [0006](0006-money-services-not-features.md) | Charge for services, never for features | 2026-09-26 | Accepted |
 | [0007](0007-name-tabachir.md) | The product is called Tabachir (طباشير) | 2026-09-26 | Accepted |
+| [0008](0008-algeria-first-flexible-for-other-countries.md) | Algeria first, flexible for other countries | 2026-09-27 | Accepted |
+| [0009](0009-goal-state-adoption-official-record.md) | The goal: state adoption as the official record | 2026-09-27 | Accepted |
+| [0010](0010-institution-mode-and-charter.md) | Institution mode and the data-use charter | 2026-09-27 | Accepted |
+| [0011](0011-insight-figures-review-and-limits.md) | Insight figures: the IGP's review and the limits on use | 2026-09-27 | Accepted |
