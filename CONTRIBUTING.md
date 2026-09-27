@@ -1,18 +1,10 @@
 # Contributing to Tabachir
 
-## بالعربية، باختصار
-
-- نقبل في هذه المرحلة: الملاحظات والاقتراحات، وتصحيحات التدرجات، والنماذج، والترجمات، عبر [Issues](https://github.com/founderscoffee/tabachir/issues).
-- اذكر مصدر كل تصحيح أو نموذج (نص رسمي، أو توزيع المفتش، أو عملك الخاص)، والمستوى والمادة والسنة الدراسية.
-- ما تساهم به من محتوى يُنشر بترخيص CC BY-SA 4.0.
-- **لا تنشر أبدًا معطيات تلاميذ حقيقيين:** لا أسماء ولا نقاط ولا غيابات ولا صور. استعمل أسماء وهمية.
-- مساهمات الكود بدعوة فقط إلى غاية الإطلاق.
-
 ## What we accept now
 
 The project is at stage 1 of its opening plan ([PRD §1.13](docs/prd/PRD.md#113-opening-in-stages)). We accept:
 - feedback and suggestions;
-- corrections to annual plans (التدرجات) and other reference data;
+- corrections to annual plans and other reference data;
 - print templates and layouts;
 - translations.
 
@@ -28,6 +20,10 @@ Why:
 
 Maintainers remove any post with real pupil data as soon as they see it, and tell its author privately why.
 
+## Report security problems privately
+
+Never report a security problem in a public issue. Follow [SECURITY.md](SECURITY.md) instead.
+
 ## Content contributions
 
 Each correction or template must state:
@@ -38,9 +34,11 @@ By contributing content, you agree to publish it under CC BY-SA 4.0. Tell us how
 
 ## Code contributions (by invitation, for now)
 
+Read the [contributor handbook](#the-contributor-handbook) before your first pull request. The essentials:
 - **Licence.** Code is licensed under AGPL-3.0-or-later.
 - **Sign-off.** Sign off every commit under the [Developer Certificate of Origin 1.1](https://developercertificate.org/) with `git commit -s`. The sign-off certifies that you have the right to submit the work under the project's licence. A GitHub no-reply email address is fine.
 - **Copyright.** There is no CLA: you keep the copyright in your contribution.
+- **Commit messages** follow [Conventional Commits](docs/contributing/commits.md), for example `fix(export): leave locked cells untouched in the grade workbook`.
 - **AI-assisted work** is welcome. You answer for it like any other work: you reviewed and tested it, and you have the right to submit it.
 - **Privacy-sensitive changes** get extra review ([PRD §1.7](docs/prd/PRD.md#17-contributions)). These are changes that touch:
   - network calls;
@@ -49,6 +47,18 @@ By contributing content, you agree to publish it under CC BY-SA 4.0. Tell us how
   - insights;
   - the export of marks;
   - anything that reads or writes the school's official files.
+
+## The contributor handbook
+
+| Guide | What it covers |
+|---|---|
+| [Workflow](docs/contributing/workflow.md) | Issues, branches, pull requests, review, merging and decision records |
+| [Commit messages](docs/contributing/commits.md) | The commit format, the sign-off and AI-assisted work |
+| [Versions](docs/contributing/versioning.md) | How the apps, the server, the file formats, the database and the reference data are versioned |
+| [Releases](docs/contributing/releases.md) | The release calendar, the release checks, signing and the changelog |
+| [Engineering rules](docs/contributing/engineering.md) | The rules every code change follows: privacy, secrets, test data, tests, dependencies and licences |
+
+Some tools the handbook mentions, such as the automated checks, `CHANGELOG.md` and `NETWORK.md`, arrive with the first code. Until then, its rules apply to the documents wherever they can.
 
 ## Language
 
