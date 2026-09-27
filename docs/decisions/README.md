@@ -15,3 +15,6 @@ Every decision about a principle, a licence, a data flow, the insights layer, mo
 | [0009](0009-goal-state-adoption-official-record.md) | The goal: state adoption as the official record | 2026-09-27 | Accepted |
 | [0010](0010-institution-mode-and-charter.md) | Institution mode and the data-use charter | 2026-09-27 | Accepted |
 | [0011](0011-insight-figures-review-and-limits.md) | Insight figures: the IGP's review and the limits on use | 2026-09-27 | Accepted |
+| [0012](0012-record-layers-and-encrypted-sync.md) | Record layers and end-to-end encrypted sync | 2026-09-27 | Accepted |
+| [0013](0013-insights-payload-and-minimum-group-sizes.md) | What the insights contain, and the minimum group sizes | 2026-09-27 | Accepted |
+| [0014](0014-business-model-and-sync-pricing.md) | The business model and how sync is priced | 2026-09-27 | Accepted |
