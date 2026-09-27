@@ -13,6 +13,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
+| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -1449,3 +1450,169 @@ These five technical risks are tested early, before the pilot depends on them:
 - **Shared school PCs.** Whether version 1 needs a temporary session that leaves nothing behind on a shared computer.
 - **The certified signature provider** for an official deployment. Chosen when a deployment is real.
 - **Whether the FET importer may call FET's command-line program** as a separate tool. Counsel confirms.
+
+---
+
+## 6. Privacy, security and non-functional requirements
+
+This section:
+- turns the privacy principles (§1.2, §1.5) into requirements;
+- sets out the compliance steps before each launch;
+- specifies the security design: threats, the device, keys, the web app and the server;
+- sets the non-functional requirements: devices, speed, reliability, accessibility and languages.
+
+Institution mode adds its own gates (§1.15), which Section 7 designs.
+
+### 6.1 The legal position in teacher mode
+
+- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it (principle 2). It is the controller only of what it holds about teachers: sync accounts, billing, support messages and pack-editor accounts (§1.4).
+- **The teacher's own position is open.** Teachers must keep their registers and journal (Decision 831 Art. 8–10). For official records, the school or the ministry is plausibly the controller, with the teacher acting under its authority. A working copy in a private app is a grey zone. Counsel answers this first (research 06).
+- **Whatever the answer, the product protects pupil data as if the strictest reading applied:**
+  - the minimum data (§5.6);
+  - nothing leaves the device by default (§1.5);
+  - encryption and the app lock (§6.4);
+  - real deletion (§5.5);
+  - no transfer abroad.
+- **Hosting in Algeria.** No rule found requires a private tool to store data in Algeria. But storing personal data abroad is a transfer that needs an ANPDP licence, and the ANPDP treats foreign-run platforms as transfers (deliberation 04). So every server that touches personal data runs in Algeria, and so does everything on that path: e-mail, monitoring and backups.
+- **Hidden routes abroad are closed:** the phone's cloud backup, crash and analytics SDKs, advertising and cloud AI (§1.5). Sending a file to another app is the teacher's own act, so the app warns first (§5.9).
+
+### 6.2 Compliance before each launch
+
+| Before | What must be in place |
+|---|---|
+| **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
+| **Sync** | • The encryption design published and reviewed (§1.9)<br>• The declaration extended to sync accounts, with its receipt<br>• Servers in Algeria, with no foreign sub-processor<br>• Processor terms in the terms of service, in case counsel finds that the teacher or the school is the controller<br>• The automated log for server-side processing, and the breach runbook (§6.7) |
+| **Paid services** | • A legal entity (§1.17), and a data-protection officer<br>• The commerce rules of Loi 18-05: a `.com.dz` site hosted in Algeria, a commercial-register entry, approved payment channels and invoices |
+| **Institution mode** | The gates in §1.15 |
+
+- **Sync opens only when its gates are met.** If they are not met by January 2027, the pilot runs without sync, using direct transfer and backup files (§5.8).
+- **Teachers' rights.** Teachers can see, correct and delete what the project holds about them. Corrections are made within 10 days.
+
+### 6.3 Threats the design must resist
+
+| Threat | Main defences |
+|---|---|
+| A lost or stolen phone | The app lock, the encrypted database and the automatic lock. The lost phone is removed from sync, and the teacher restores their data on a new device (§6.5) |
+| A shared or family device | The app lock. No pupil data in notifications. Screens with pupil data hidden from the recent-apps view |
+| A shared school PC | The web app's passphrase and automatic lock, and "erase this browser's data" (§5.7). Temporary sessions are an open point (§5.14) |
+| A curious or compromised server, or a demand to the project for data | End-to-end encryption: the server holds nothing it can read. Minimal metadata. Every demand listed in the transparency report (§1.11) |
+| An attacker on the network | Encryption in transit, a check of the server's identity, and signed reference data (§4.8) |
+| A malicious file | Every incoming file is untrusted: opened in isolation, allowlisted, and its macros never run (§5.9) |
+| A forged statement or package | Signed with the teacher's key (§5.5) |
+| A tampered web app | Updates the teacher accepts, a visible checksum and reproducible builds (§6.6) |
+| A compromised dependency or build | Few dependencies, pinned and reviewed. Reproducible, signed releases (§1.9). Two-factor sign-in for maintainers (§1.8) |
+| The records used against teachers | Record layers (§5.4), no clock times (§5.5), the charter (§1.15) and neutrality (§1.11) |
+| Leaks by sharing | Files marked confidential, an optional password, warnings, and no public links (§5.9) |
+
+### 6.4 Security on the device
+
+- **An encrypted database.**
+  - **Android:** the key is kept in the phone's hardware-backed keystore where there is one, and released by the app lock.
+  - **Web:** the key is derived from the teacher's passphrase, and held only in memory while the app is unlocked.
+- **The app lock:** a PIN, or the phone's own fingerprint or face prompt. The app never stores biometric data.
+- **The automatic lock** after a few minutes of inactivity. The teacher can change the delay.
+- **Nothing readable outside the app.**
+  - Notifications never show pupils' names or marks.
+  - Screens with pupil data are hidden from the recent-apps view and block screenshots. The teacher can allow screenshots.
+  - The phone's cloud backup never includes the database (§1.5).
+- **Minimal permissions.** No location, contacts or microphone. The camera is used only to scan QR codes, and is asked for on first use. Files are opened and saved only through the system's file picker.
+- **"Erase this device"** removes everything (§5.7).
+- **Exports that hold pupil data** can be protected with a password (§5.9).
+
+### 6.5 Keys, sync and recovery
+
+- **Proven cryptography only,** from a widely reviewed open-source library. The project writes no cryptography of its own.
+- **The teacher holds the keys.** Sync data is encrypted on the device before it leaves. Neither the server nor the project ever holds a key.
+- **Each device has its own key.**
+  - The teacher adds a device by scanning a QR code on a device that is already set up.
+  - A lost device can be removed, so it receives nothing new.
+- **The recovery sheet.** When sync or backup is set up, the app gives the teacher a recovery key to print or write down. It restores everything on a new device.
+- **The project cannot recover a teacher's data.** That is the price of end-to-end encryption. So:
+  - making a backup takes two taps;
+  - the app reminds the teacher when there has been no sync and no backup for 30 days.
+- **What the server sees:** an account, encrypted data, its size and when it arrived. No names, classes or subjects appear in what it stores or logs.
+- **An account needs no real name.** It needs a login. The payment provider handles payment details, which are kept apart (§1.10).
+- **Reviewed before launch.** The design is published (§1.9), and an independent reviewer checks it before sync opens.
+
+### 6.6 The web app
+
+- **Served from the project's site in Algeria** as a fixed bundle (§5.2). It loads no scripts, fonts or trackers from anywhere else, and a strict security policy blocks them.
+- **Installed for offline use.** After installation, it changes only when the teacher accepts an update.
+- **Checkable.** It shows its version and build checksum. The published checksums and reproducible builds let anyone check them (§1.9).
+- **Its data** stays in the browser on the teacher's own computer, encrypted with the passphrase (§6.4). The app asks the browser to keep that storage, and warns if the browser may clear it.
+- **Browsers:** current Chrome, Edge and Firefox, on Windows 10 and 11. Safari is not a target in version 1.
+
+### 6.7 The server and the project's operations
+
+- **What the server holds, and nothing more:**
+  - encrypted sync data;
+  - teacher accounts;
+  - billing records, kept apart;
+  - pack-editor accounts;
+  - the problem reports teachers chose to send.
+- **Hosted in Algeria,** with its backups, and encrypted.
+- **Administration** by named maintainers only, with two-factor sign-in. Every administrative action is logged.
+- **Security logs** are kept apart from everything else, for the shortest time the law allows, and never used to measure or judge teachers.
+- **Fixes.** Security fixes for critical flaws ship within 7 days. Dependencies are watched for known flaws (§1.9).
+- **The breach runbook:**
+  1. contain the breach and assess it;
+  2. notify the ANPDP within 5 days, a conservative target;
+  3. tell the teachers affected;
+  4. record it in the breach register;
+  5. report it in the transparency report (§1.11).
+- **Demands for data** from any authority are answered only as the law requires, and listed in the transparency report (§1.11). The project holds no pupil data to hand over.
+
+### 6.8 Non-functional requirements
+
+| Area | Requirement |
+|---|---|
+| Devices | Android 8 and later, which reaches about 97.9% of Algerian Android traffic. Designed for 360×800 screens, the most common size, and tested on budget Samsung, Xiaomi, Oppo and Realme phones. The web app runs on Windows 10 and 11 |
+| Speed, on a budget phone | • The app opens on Today in under 2 seconds<br>• Confirming a session responds at once<br>• Roll call for 45 pupils scrolls smoothly<br>• A month of journal pages becomes a PDF in under 10 seconds |
+| Size and data | A small install. Reference-data updates are small, and sync sends only new changes (§5.8). The teacher can limit sync to Wi-Fi |
+| Offline | Every daily task works offline. Only sync, updates and reports need a network |
+| No lost work | Every change is saved the moment it is made, so a crash or a flat battery loses nothing |
+| Battery | Nothing runs in the background except scheduled notifications and, if the teacher allows it, sync |
+| Accessibility | • Right to left first<br>• Works with the Android screen reader in Arabic, French and English<br>• Text can be enlarged to 200% without breaking a layout<br>• Touch targets of at least 48 dp<br>• Colour is never the only signal<br>• Contrast meets WCAG 2.2 level AA |
+| Languages | Arabic, French and English, with every text translatable (§1.14). Western digits, and dates as in §3.8 |
+| Print | Documents print at 100% on A4, in black and white, as the layouts specify. Any release that changes a layout is checked against printed samples |
+| Server | The daily work never depends on it. Sync aims to be available 99.5% of each month. Maintenance happens outside school hours, and never in the two weeks before a term-end export (§1.9) |
+| Load | There is no central deadline, because the daily work and the term export run on the device. The server must still absorb the term-end rush of syncs |
+| Time budget | About 5 seconds per ordinary session (§3.1), measured in the pilot |
+
+The speed and size figures are targets. The pilot confirms them on budget phones.
+
+### 6.9 Security and privacy while building
+
+- **A threat model,** published and updated with each major change.
+- **Every release is checked:**
+  - dependencies, for licences and known flaws;
+  - secrets scanning;
+  - `NETWORK.md` against the code;
+  - a reproducible, signed build (§1.9).
+- **Privacy-sensitive changes** need two maintainers' approval (§1.7).
+- **Tests use made-up data only** (§5.12).
+- **Security reports** go to the private address in `SECURITY.md`, and are acknowledged within three working days (§1.9).
+
+### 6.10 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Legal position | The project publishes the software, and controls only the teacher data it holds. Pupil data is protected as if the strictest reading applied |
+| Hosting | Everything that touches personal data stays in Algeria, with no foreign sub-processor |
+| Sync gates | Sync opens only once its design is published and reviewed, the declaration is filed and hosting is in place. Otherwise the pilot uses direct transfer and backup files |
+| Device | An encrypted database, the app lock and the automatic lock. No pupil data in notifications. Screenshots blocked on screens with pupil data unless the teacher allows them. Minimal permissions |
+| Keys | Held by the teacher, one per device, with a recovery sheet. The project cannot recover data, so backups are easy and reminded |
+| Web app | A fixed bundle with no outside scripts, updated only when the teacher accepts. A visible checksum |
+| Server | The minimum data, logs kept apart and short, the breach runbook and the transparency report |
+| Non-functional | The targets in §6.8, confirmed in the pilot |
+| Section 6 | Settled on 27 Sep 2026 |
+
+**Open**
+- **Who controls pupil data in teacher mode,** and the legal basis for minors' data. Counsel answers first.
+- **The ANPDP declaration and the data-protection officer before a legal entity exists:** whether the founder can file the declaration, and whether a DPO can be the founder or external. Counsel answers.
+- **Whether the sync service counts as a service provider** that must keep traffic data for a year (Loi 09-04). Counsel answers.
+- **Phones in class.** Whether roll call on a phone counts as a "pedagogical purpose" under circular 460. Also, whether keeping pupil data in a private app needs written authorisation (Ord. 06-03 Art. 48).
+- **Who does the independent security review,** with no budget. Candidates: university security labs and volunteer reviewers.
+- **The speed and size targets,** confirmed on budget phones in the pilot.
