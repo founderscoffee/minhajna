@@ -14,6 +14,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026 |
+| 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -1616,3 +1617,226 @@ The speed and size figures are targets. The pilot confirms them on budget phones
 - **Phones in class.** Whether roll call on a phone counts as a "pedagogical purpose" under circular 460. Also, whether keeping pupil data in a private app needs written authorisation (Ord. 06-03 Art. 48).
 - **Who does the independent security review,** with no budget. Candidates: university security labs and volunteer reviewers.
 - **The speed and size targets,** confirmed on budget phones in the pilot.
+
+---
+
+## 7. The school layer and institution mode
+
+This section designs how schools and education authorities use Tabachir:
+- reader mode and the coordinator's merge, which need no accounts;
+- the timetable package;
+- school mode, the first institution deployment;
+- deployments by a directorate.
+
+The rules in §1.15 and the data-use charter bind all of it. Section 8 covers the ministry and the IGP.
+
+### 7.1 Three steps for schools
+
+| Step | What the school gets | When | What it needs |
+|---|---|---|---|
+| 1. Reader mode and the coordinator's merge | Directors, coordinators and inspectors open what teachers share | The pilot, from January 2027 | Nothing beyond teacher mode: no accounts and no copy on a server |
+| 2. The timetable package | The director or the censeur sends each teacher their part of the school timetable | Launch, September 2027 | Counsel confirms that sending staff data as files needs no further formality |
+| 3. School mode | The school runs Tabachir as controller: the master timetable, cover, handovers and the operational dashboard | A first pilot in 2027/28, in one CEM or lycée | Every gate in §1.15 (§7.11) |
+
+### 7.2 Reader mode
+
+- **What it does.** A director, a deputy or an inspector opens the progress statements that teachers share, by scanning the QR code or opening the file. There is no account and nothing to enter.
+- **It checks each statement.** The reader verifies the signature and shows the statement's date (§5.5).
+- **The school's picture.** It lays the statements received side by side, by class and subject: plan position, weeks ahead or behind, and sessions lost to calendar causes and to other causes.
+- **Nothing leaves the reader's device,** and no copy goes to a server.
+- **Legal basis.** This stays inside the hierarchy and within the needs of the service (Ord. 06-03 Art. 48), so it needs no new formality (research 13). Counsel confirms.
+- **A spot-check sheet for inspectors.** The reader picks three dates at random from the period a statement covers. The inspector compares the teacher's record for those dates with pupils' exercise books. Checks like this, independent of the teacher's own entries, are what made figures credible abroad (research 11).
+
+### 7.3 The coordinator's merge
+
+- **For the teaching council.** The subject coordinator merges the statements that the subject's teachers choose to share. It feeds the council's pacing plan and the figures the coordinator brings to its meetings (Decision 69).
+- **What it shows:** each class's position against the plan, side by side. It prints for the council's register.
+- **Only what is shared.** Anything a teacher didn't share stays invisible. There are no accounts and no server.
+
+### 7.4 The timetable package
+
+**Making it**
+- The director or the censeur, with the ناظر or the education counsellor, brings in the school timetable in one of three ways:
+  - from FET, which most CEMs and lycées probably use (an estimate: no survey exists);
+  - from an Excel or CSV template;
+  - by hand, with live conflict checks.
+- Tabachir never builds a timetable automatically. FET already does that (research 12).
+- **Checks:** clashes of teachers, classes and rooms; each class's hours against the official grid; A/B weeks.
+- **Printouts:** class, teacher and room grids, with the official header, the A/B week, and signature boxes for the director and the censeur, plus the inspector in primary.
+
+**Sending it**
+- Each teacher receives only their own part: a signed file with stable IDs and no pupil data. It goes by file, QR code or encrypted sync (§5.9).
+- A teacher who works in several schools receives one package from each, merged on their device, with warnings about clashes (§3.2).
+- A teacher who drew their own week sees the differences before accepting the school's version.
+
+**Changing it**
+- **A change is a new version,** with an effective date, by default the next Sunday. A one-off change touches only its own date.
+- **The effect is previewed** before publishing. Only the teachers affected are notified, in plain words, for example: "From Sunday 11 October, your Monday slot 3 moves from class 2م1 to 2م3."
+- **Receipt.** A teacher can confirm receipt, which replaces signing the paper notice if the school wants.
+- **Recorded sessions are never rewritten** (§4.6).
+
+**Limits**
+- Assignments and weekly hours come from the state's system or from FET. Tabachir never manages them (§2.6).
+- The package holds staff data, such as names and loads, but no pupil data.
+
+### 7.5 School mode
+
+**What it is**
+- The school runs Tabachir as the controller of the records it requires, once the gates are met (§7.11).
+- The first pilot is one CEM or lycée, in 2027/28.
+- A primary school has no legal personality, so its directorate must be the controller. Primary schools therefore come with a directorate deployment (§7.9).
+
+**What it adds**
+- **The master timetable,** owned by the director and prepared by the ناظر or the education counsellor, with versions as in §7.4.
+- **The operational dashboard** (§7.6).
+- **Cover and make-up sessions** (§7.7).
+- **Handovers.** When the directorate appoints a substitute, the school records the appointment, and the substitute receives each course's progress (§3.10). The appointment ends when the holder returns.
+- **The director's visa, as a comment.** The director can visa or comment on a class's lesson record, but never change it. The paper visa stays until a text says otherwise (Decision 155).
+- **A delivery report for each course, every term:** sessions planned, held and lost. Lost sessions show only as calendar causes or "other".
+- **Inspectors' access,** which the authority grants (§7.8).
+
+**What enters the school's space, and what never does**
+
+| Enters | Never enters |
+|---|---|
+| Lesson records: items, stages, session types, homework and tests (§5.4) | Private notes, and the reasons a session was not held or an item skipped |
+| Each class's progress | Pupil records. They stay on the teachers' devices, as in teacher mode |
+| Timetables, cover and handovers | Clock times, "started" events and location |
+| Each teacher's access log, which that teacher sees | Any score, rank or rating of a teacher |
+
+Pupil records move to an institution's systems only for features for students and parents. Those need their own gates and their own decision (§1.15).
+
+**Teachers**
+- **Taking part is voluntary** in a pilot (research 13). A class whose teacher doesn't take part shows its timetable only, marked "not shared".
+- **No personal phone is needed.** A staffroom PC or paper remains possible (charter point 9). A session on a shared PC leaves nothing behind.
+- **Every teacher is told,** in Arabic, before the start (Loi 18-07 Art. 32), and sees their own access log.
+- **A teacher who leaves** takes a full copy of their own lesson records (principle 7).
+
+### 7.6 The operational dashboard
+
+The director's view in school mode (§2.4). It updates as teachers' devices sync, and shows:
+- **workload:** each teacher's weekly hours from the timetable, and the cover they gave, against their statutory load from the imported assignments;
+- **sessions awaiting confirmation,** for each class;
+- **classes behind the plan:** each class's position, weeks ahead or behind, the buffer used, and sessions lost to calendar causes and to other causes, in separate columns.
+
+**Guardrails** (charter points 2, 3 and 5; §1.11)
+- **"Awaiting confirmation" is neutral.** It is never an absence, never triggers an alert or a sanction, and never leaves the school.
+- **It lives only on the screen.** It is never printed, exported, totalled across the school or kept as history. A school-wide total or a trend would measure collective action, which no feature may do (§1.11).
+- **Classes, never rankings.** Classes appear in the school's own order. A filter can show the classes behind the plan, but nothing is sorted by delay, and no list of teachers is ever ranked.
+- **No colours for people and no clock times.** Dates only.
+- **The teacher sees the same view** for their own classes.
+- **Nothing from it** feeds pay, promotion, appraisal or discipline (charter point 2).
+
+### 7.7 Cover and make-up sessions
+
+- **Cover starts from the sessions that need it.** The director or a deputy marks the sessions that need cover.
+  - No reason is recorded, and nothing counts a teacher's absences (§2.6).
+  - The official absence channel stays the state's.
+- **A cover choice for each session,** with supervision as the default. The other choices:
+  - a study room;
+  - merging with another class;
+  - a swap or a move;
+  - a free colleague;
+  - letting pupils go, if it is the day's last session.
+- **A daily cover sheet** for the supervisors, printed or sent.
+- **The cover log** counts the cover each person gave, so it can be shared fairly. The app suggests; the director decides.
+- **Make-up sessions** are new sessions linked to the ones they replace, so progress stays right. Whether a missed session affects pay is decided in the official channel, never in Tabachir (charter point 2).
+
+### 7.8 Who can see and do what in school mode
+
+| Data | Teacher | Director and deputies | Inspector (own district and subject) |
+|---|---|---|---|
+| Pupil records | All, for their classes | None | None through Tabachir |
+| Lesson records | All. Corrections keep a history | Read, by class. May visa or comment; never edit | Read, with access the authority grants, limited in time |
+| Private notes and reasons | All | None | None |
+| Class progress | All | By class, in the dashboard | Classes in scope, while access lasts |
+| Timetables | Their own. Can propose changes | Create and change them | The timetables of teachers in scope |
+| Cover | Cover for their classes, and the cover they gave | Mark the sessions that need cover, and assign it | None |
+| Class statistics from marks | All | Only what the teacher shares: cells of at least 10 pupils, and never mid-term marks | Only what the teacher shares |
+| Access log | Every access to their own records | Their own actions | Their own actions |
+
+- **Inspectors' access** is granted by the authority, never by the director. It is limited in time and visible to the teacher (charter point 5).
+- **Never in Tabachir:** evaluating teachers, transferring them between schools, approving overtime or pay, or connecting to amatti or ostad (§2.6).
+
+### 7.9 Directorate deployments
+
+- **From 2027/28 at the earliest** (§1.15, step 3). The directorate is the controller, and runs Tabachir on its own or state infrastructure in Algeria. It is also the controller for its primary schools.
+- **It measures what the system owes teachers,** never whether teachers comply:
+  - cover provided;
+  - vacant posts and unassigned hours;
+  - sessions lost to closures, from the calendar;
+  - how pacing spreads across its schools;
+  - which plan items run long.
+- **Minimum group sizes** count teachers and schools. A figure covers at least 5 teachers and 3 schools; anything smaller is hidden, along with any cell that would reveal it by subtraction.
+- **Never:** named teachers, except for inspectors in their scope; league tables of schools; reasons; any count of strikes (§1.11).
+- **The software** is a self-hostable aggregator that the project publishes. Paid deployment and support are available (§1.10).
+- **Gates beyond school mode:**
+  - a decision by the directorate, and the ministry's view on whether the Council of Ministers must approve;
+  - the directorate's own ANPDP declaration;
+  - its security structure under Decree 26-07;
+  - hosting on state or directorate infrastructure;
+  - consultation of the technical committee and the representative unions;
+  - an instruction on inspectors' access;
+  - public procurement (Loi 23-12).
+
+### 7.10 How a deployment runs
+
+- **Its own space.** Each institution has a separate space for its data, keys and settings. It can be exported whole and handed back at any time, with no lock-in.
+- **Keys.** A school pilot hosted by the project in Algeria is end-to-end encrypted. The keys stay on the teachers' and the director's devices, and recovery goes through the institution. A directorate hosts its own deployment.
+- **The project's role:** the publisher of the software, or a processor under a written contract. It never sets the purposes (§1.15).
+- **Paper stays official** in steps 2 and 3. The texts book and the journal remain the official records (Decisions 155 and 831), and a digital visa is only a comment. Only a ministerial text changes that (step 4).
+- **Ready-made documents.** The project keeps templates ready before anyone asks:
+  - a register of processing;
+  - an impact-assessment template;
+  - processor-contract clauses;
+  - the charter (`CHARTER.md`);
+  - the published security design;
+  - a deployment guide.
+
+### 7.11 The gates, as a checklist
+
+Every school deployment needs all of these (§1.15):
+1. **Authorisation.** The Director of Education's written authorisation. Counsel checks whether the Council of Ministers' rule of 6 September 2026, under which any education proposal goes to the Council, reaches a free pilot.
+2. **The school's ANPDP declaration,** stating:
+   - the purposes: coordination, coverage checks and pacing statistics, and not evaluation;
+   - the recipients: the director and deputies, and the inspector for the subject;
+   - retention: 3 years, like the texts book;
+   - the security measures and the processor.
+3. **A processor contract,** with the Decree 26-07 security clauses, a ban on use in evaluation, and a publication clause (§1.8).
+4. **A data-protection officer:** the school's, or the directorate's shared one.
+5. **An impact assessment,** reviewed by that officer.
+6. **Teachers:** the notice in Arabic, a presentation to the teachers' council, the charter adopted by the council, voluntary participation, and no personal phone required.
+7. **The project:** a legal entity able to sign.
+
+### 7.12 Timeline
+
+| When | What |
+|---|---|
+| January–March 2027 (pilot) | Reader mode and the coordinator's merge, with the pilot's directors, coordinators and an inspector |
+| September 2027 (launch) | The timetable package |
+| 2027/28 | A first school-mode pilot in one CEM or lycée, once the gates are met. At the earliest, a directorate deployment, which is also the route for primary schools |
+
+### 7.13 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Three steps | Reader mode and the coordinator's merge in the pilot; the timetable package at launch; school mode after the gates |
+| Reader mode | No accounts and no server copy. Signatures checked. A spot-check sheet for inspectors |
+| Timetable package | From FET, a template or by hand; no solver. Each teacher gets only their part. Versions with effective dates |
+| School mode | The school is the controller. Lesson records, progress, timetables and cover enter its space; pupil records, private notes and reasons never do |
+| Dashboard | Workload, sessions awaiting confirmation per class, and classes behind the plan. "Awaiting confirmation" lives only on the screen: never printed, exported, totalled or kept. Nothing is ranked |
+| Cover | Starts from the sessions that need it, with no reason and no count of absences. Supervision by default. Make-up sessions linked; pay stays in the official channel |
+| Participation | Voluntary in pilots. A class not shared shows as "not shared". No personal phone needed |
+| Directorates | Figures on what the system owes teachers, with at least 5 teachers and 3 schools per figure. Never named teachers, except for inspectors in their scope |
+| Section 7 | Settled on 27 Sep 2026 |
+
+**Open.** Counsel answers most of these:
+- **The controller** in each type of school, and whether a school may rely on its public mission.
+- **Whether a free pilot needs Council of Ministers approval** under the 6 September 2026 rule.
+- **Whether reader mode and the timetable package need any formality.**
+- **Whether a directorate may receive school data through Tabachir,** rather than through the national interoperability system (Decree 25-320).
+- **Consultation duties:** technical committees and unions.
+- **Private schools:** who the controller is for teachers they employ (Loi 90-11).
+- **A willing school and directorate for 2027/28.** The field check and the state track look for them.
