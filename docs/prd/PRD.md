@@ -12,6 +12,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
+| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -728,7 +729,7 @@ Roll call replaces the paper roll-call book (دفتر المناداة) as the t
 - **Unit.** Per half-day in primary; per session in CEM and lycée. The same class can be taken twice in a day.
 - **Specialists** keep one register per class and count only their own sessions.
 - **Everyone is present by default.** The teacher marks only the exceptions:
-  - absent, with a reason if one is given;
+  - absent, marked justified or unjustified. The cause is never typed (§5.6);
   - late, which can happen several times a day, carries the date and doesn't count as an absence.
 - **When.** In class or after the lesson, because circular 460 Art. 48 limits phones in class.
 - **Paper fallback.** A printable blank sheet, entered later. It also serves a substitute or a day without the phone.
@@ -1214,3 +1215,237 @@ The same repository, review and yearly cycle hold the other data the app needs (
 - **Ramadan in primary:** which sessions shrink or drop.
 - **Subject maintainers:** at least two for each pilot pack, recruited from the field-check group.
 - **Whether the IGP will run the pipeline** or adopt the format. The state track (Section 8) finds out.
+
+---
+
+## 5. Data, formats and foundations
+
+This section specifies:
+- how the apps and the server fit together;
+- the data Tabachir keeps, and where each kind of record may go;
+- the history, sync and retention rules;
+- the files Tabachir reads and writes;
+- the foundations that let an authority adopt the records later without a rewrite.
+
+Section 6 covers encryption, security and the other non-functional requirements.
+
+### 5.1 Built for official use from day one
+
+- **Institution mode comes later; its foundations don't.** The goal is official status (principle 6), so the records are built for it from the first release, before any authority asks. Later means a later deployment, not a later architecture.
+- **Version 1 builds these foundations,** even where no screen uses them yet:
+  - stable identities for every record (§5.3);
+  - a history that is only ever added to, and shows any tampering (§5.5);
+  - record layers that decide where each record may go (§5.4);
+  - a permission model for every role (§5.10);
+  - logs of every correction, export, share, access and deletion, which the teacher sees;
+  - retention, archive and deletion rules (§5.7);
+  - documented open file formats (§5.9).
+- **Built only when a deployment is real,** for that deployment (Section 7):
+  - institution tenants;
+  - legal electronic signatures, through a certified provider;
+  - archive workflows;
+  - the procurement file.
+- **Being ready does not make a record official.** That starts only when an authority adopts Tabachir in writing (§1.15).
+
+### 5.2 Architecture
+
+| Part | Built with | What it does |
+|---|---|---|
+| Android app | React Native, for Android 8 and later | The whole teacher app, offline |
+| Web app for PCs | React, installable, offline | The same app in the browser. The data stays in that browser, on the teacher's own computer |
+| Shared core | TypeScript | The engine, the assessment rules, the file formats and the document templates. Both apps use the same code, so they give the same results |
+| Server | NestJS, hosted in Algeria | Relays encrypted sync data; mirrors the reference data; hosts the pack editor (§4.3) and receives problem reports. Later, the insights service and billing |
+
+- **The apps never need the server** to open or to do the daily work (§1.5).
+- **The server never holds readable pupil data** (principle 2).
+- **No proprietary libraries,** such as Google Play Services or Firebase (§1.3). Builds must be reproducible and pass F-Droid's checks. This is tested before the pilot (§5.13).
+- **Notifications are scheduled on the device.** There is no push service.
+- **Documents are made on the device.** Each document is built as a web page with print styles, then turned into a PDF by the device's own web engine, which shapes Arabic and mixes directions correctly. DOCX files are generated directly. Nothing is rendered on a server.
+- **The web app runs no code on the server.** It updates only when the teacher accepts the update, and it shows its build checksum, which anyone can compare with the published one (§1.9). Section 6 covers how that code is checked.
+- **One set of rules, one set of tests.** The formulas, the averages and the engine are checked against published test cases, run in both apps.
+
+### 5.3 The data model
+
+**Reference data.** Public and versioned, with effective dates, grouped by country code (§1.14). Section 4 lists it (§4.10):
+- the school year and the calendar layers;
+- bell-time templates and session-length profiles;
+- timetable grids;
+- plan packs, their releases and stage templates;
+- assessment rules: components, formulas, coefficients and the number of tests;
+- appreciation lists and banned phrases;
+- grade-workbook variants and print layouts.
+
+**The teacher's records.** Kept on the teacher's devices, or, in institution mode, on the institution's systems.
+
+| Record | What it holds |
+|---|---|
+| Teacher card | The details the documents print. The personal fields are optional |
+| School | Its name and level. A teacher can work in several |
+| Class and group | Level, stream and pupil counts. Groups: the whole class, half-groups and option groups |
+| Pupil | Only the fields in §5.6 |
+| Course | Class × subject × school year, the anchor for progress (§2.3, rule 3). It holds the pinned pack release and the teacher's changes to the plan (§4.2) |
+| Assignment | Who teaches the course, with dates: the holder, a substitute or a co-teacher |
+| Timetable version | Its entries (day, slot, week pattern, group, room), teacher blocks, effective dates and source |
+| Session | One dated occurrence of a course, and its state (§4.7) |
+| Session record | The outcome, the items and stages covered, the session type, homework, any test, the factual line and the private note |
+| Attendance entry | For each pupil, session or half-day: absent or late, and whether an absence is justified |
+| Assessment | Components and weights, marks, observations and the appreciations chosen |
+| Sharing record | What was shared, with whom, and on which day |
+
+**Identities**
+- **Every record gets a random ID on the device,** so records made on different devices never clash and can be merged.
+- **Reference data uses readable IDs** that never change meaning (§4.2).
+- **Pupils are matched by their official registration number,** never by name.
+- **Progress belongs to the course,** not to the teacher, so it survives a change of teacher.
+
+### 5.4 Where each record may go
+
+Every record belongs to a layer, and the layer travels with it. Every sync, export and share checks the layer, so a private note can never slip into a statement.
+
+| Layer | Examples | Where it may go |
+|---|---|---|
+| **Private** | Private notes; the reason a session was not held or an item skipped | Only the teacher's own devices and the teacher's own full export. Never into a statement, a handover, institution mode or insights |
+| **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices, and the files the teacher makes, such as the term export and prints. To a successor only by direct transfer, if the teacher chooses. In institution mode, the institution's systems |
+| **Lesson record** | Items and stages, session types, homework, tests, the factual line | Also into statements and handover packages, and, if the teacher opts in, lesson-level insights (§1.6) |
+| **Shared statement** | Progress statements and handover packages | Whoever the teacher gives it to. Each one goes into the sharing history |
+| **Official snapshot** | Exists only in a deployment with official status | The institution's archive, signed and unchangeable (§1.15) |
+
+### 5.5 History, corrections and signatures
+
+- **The history is the record.** Every change adds an entry, and nothing is overwritten. What the screens show is worked out from the history.
+- **Corrections keep both versions** (§3.1, rule 4). Corrections to roll call and marks ask for a short reason; other corrections may carry one.
+- **Tampering shows.** Each change is chained to the one before it, so an edit or a deletion made outside the app is detected.
+- **Dates, not clock times.** The history records the day and the order of each change, never the time of day (charter point 3).
+- **The teacher sees everything:** the change log, and every export, share, access and deletion.
+- **Signed files.** Each teacher has a signing key, made on their device. Statements, handover packages and timetable packages are signed, so a reader can check that nothing changed since they were issued, and that they come from the same teacher as before. This is not a legal signature.
+- **Legal signatures come only with official status.** In such a deployment, a certified provider signs under Law 15-04, and official snapshots are sealed. Later corrections are shown against the snapshot (§1.15).
+- **Deletion is real.** When the teacher deletes a pupil's data or a past year, the content is erased. The history keeps only the fact that something was deleted, and on which day.
+
+### 5.6 The minimum data
+
+- **Pupils:** the official registration number, the name (in Arabic, and in Latin letters if the list has them), sex, class and group, and movements with their dates and reasons. Nothing else is imported or asked for.
+- **Never collected:**
+  - health, disability, religion, ethnicity or biometric data;
+  - pupil photos;
+  - parents' details or home addresses. The confidential pages of the roll-call book print blank (§3.4).
+- **Absences are justified or unjustified.** The cause itself is never typed, because it is often a health matter.
+- **Imports keep only the listed columns** and drop the rest before anything is saved (§5.9).
+- **The teacher card's personal fields** are optional and never leave the device.
+
+### 5.7 Retention and the yearly archive
+
+- **Each school year closes into its own archive.** It stays available, can still be corrected, and can be exported whole.
+- **Retention classes,** with defaults the teacher can change:
+
+| Records | Default |
+|---|---|
+| Lesson records | Kept until the teacher deletes them. For comparison, schools keep the texts book for at least 3 years (Decision 155 Art. 13) |
+| Pupil records | Once the following school year ends, the app offers to erase that year's pupil records, keeping the lesson records |
+| Private notes | Kept until the teacher deletes them |
+| Logs | Kept as long as the records they describe |
+
+- **Year-end prompts** remind the teacher to export and to erase what they no longer need.
+- **"Erase this device"** removes everything from a phone or browser in one step.
+- **In institution mode,** the institution's declared retention applies instead. For example, lesson logs in school mode are kept for 3 years, like the texts book.
+
+### 5.8 Sync, backup and moving between devices
+
+- **Sync is optional,** for the teacher's own devices. It is end-to-end encrypted and runs through the project's server in Algeria, or through an institution's own server in institution mode. The server only stores and passes on data it cannot read. It is free during the pilot (§1.10).
+- **Only new changes travel.** Because the history is only ever added to, sync sends the changes made since the last sync. The payloads are small, and an interrupted sync resumes over mobile data.
+- **No change is ever lost.** If two devices change the same thing before they sync, both changes stay in the history. When they differ, the app asks the teacher which one to keep.
+- **The app shows how many changes are waiting to sync.**
+- **Direct transfer,** without the server, over the local network after scanning a QR code, or as an encrypted file (§3.10).
+- **Backup.** An encrypted backup file that the teacher keeps on a PC, an SD card or a USB key. The phone's cloud backup never receives pupil data (§1.5).
+- **A lost phone** is recovered from sync or from a backup, with the teacher's recovery key. Section 6 designs the keys.
+
+### 5.9 Files Tabachir reads and writes
+
+| File | In or out | What it holds | Rules |
+|---|---|---|---|
+| **The Tabachir archive** (the open format) | Both | Everything: records, history and pinned releases | Documented and versioned. Every older version can be imported. Free, at any time (principle 7) |
+| CSV | Out | Marks, roll call and the lesson log | For spreadsheets |
+| PDF and DOCX | Out | The documents (§3.8) | Made on the device |
+| The official class list (Excel) | In | Pupils | Only the columns in §5.6 |
+| The school's grade workbook | In, then out | Marks and appreciations | Only the unlocked cells change. The file is edited in place, so every other part stays exactly as it was (§3.7) |
+| Timetable package | In | A teacher's part of the school timetable | Signed, with stable IDs and no pupil data. Made from FET, an Excel or CSV template, or by hand (Section 7) |
+| Progress statement | Out | The fields in §3.10 | Signed, with no pupil data. Printed, as a PDF or as a QR code |
+| Handover package | Both | The class's progress, by topic (§3.10) | Signed. Pupil data only by direct transfer, if the teacher chooses |
+| Reference-data release | In | Packs, calendars and rules | Signed by the project (§4.8) |
+
+**Every file that comes in is untrusted**
+- It is opened in isolation and checked against its format.
+- Anything outside the allowed fields is dropped before saving.
+- Macros and formulas in workbooks are never run.
+- **FET files.** The importer is written from FET's documented file format, without using FET's code, which is licensed AGPL-3.0-only. It is tested with made-up files (research 12). Counsel confirms this approach.
+
+**Files that go out**
+- Files that hold pupil data are marked "internal / confidential", and can be protected with a password.
+- Before a file goes to a messaging or social app, the app warns that pupils' marks and attendance are covered by civil-service secrecy (Ord. 06-03 Art. 48).
+- There are no public links.
+
+**QR codes.** A progress statement fits inside a QR code, signed, so reading it needs no network. Larger files, such as a handover package, use the QR code only to open a short-lived direct transfer on the local network.
+
+### 5.10 The permission model
+
+Version 1 has one user: the teacher. The permission model already covers every role, so institution mode needs no rewrite.
+
+| Role | Can see | In version 1 |
+|---|---|---|
+| Teacher | All their own records | Yes |
+| Coordinator | The statements teachers share | Through files, with no accounts |
+| Director | Shared statements, in reader mode. In school mode, the operational dashboard (§2.4) | Reader mode |
+| Inspector | Shared statements. In school mode, access that the authority grants, limited in time and visible to the teacher | Shared statements |
+| Authority | Aggregates above the minimum group sizes, and nothing below the school (charter point 7) | No |
+
+- **Access is granted per course and per layer.** The private layer is never granted to anyone.
+- **Every access appears in the teacher's access log** (charter point 5).
+
+### 5.11 Formats offered to the state
+
+Four open formats are published, with examples and test files, and offered to the IGP and the national institute for research in education (INRE):
+1. **The plan pack** (§4.2).
+2. **The session log and progress statement,** with boxes for the director's visa and the teacher's signature. It comes with a request: that a printed, signed Tabachir page may replace re-copying once a text allows it (§1.15, step 1).
+3. **The timetable package,** with FET as the exchange format.
+4. **The insights payload** (§1.6).
+
+Their specifications are licensed CC BY-SA 4.0 (§1.3). Section 8 covers how they are offered.
+
+### 5.12 Test data
+
+- **Made-up data only** (§1.5): the demo class, and made-up class lists, workbooks and FET files.
+- **Published test cases** for every formula and every engine rule, run in both apps.
+- **Round trips.** Every export can be imported back, and it gives the same records.
+- **Blank workbook templates** collected in the field check, with any pupil rows removed, to test the term export in Excel and WPS.
+
+### 5.13 Checks before the pilot
+
+These five technical risks are tested early, before the pilot depends on them:
+1. **The Android build:** React Native, reproducible, passing F-Droid's checks, with no proprietary libraries.
+2. **Arabic PDFs** from the device's web engine: letter shaping, mixed directions, A4 landscape pages and embedded fonts.
+3. **The workbook fill:** real blank templates, in `.xls` and `.xlsx`, filled cell by cell, then opened in Excel and WPS.
+4. **The web app's storage:** its size limits, whether the browser may clear it, and encryption with the teacher's key.
+5. **Sync on weak mobile data:** resuming, payload sizes and conflict notices.
+
+### 5.14 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Foundations | Built into version 1: stable IDs, a history that is only added to and shows tampering, record layers, the permission model, logs, retention rules and open formats |
+| Architecture | An Android app and a web app sharing one TypeScript core. A NestJS server in Algeria that relays encrypted sync data, mirrors the reference data, hosts the pack editor and receives reports. Notifications on the device, documents made on the device |
+| Record layers | Private, pupil records, lesson record, shared statement and official snapshot, each with the routes in §5.4 |
+| History | Only added to, chained, with dates but no clock times. Roll-call and mark corrections ask for a reason. Deletion erases the content |
+| Minimum data | Pupils: registration number, name, sex, class and group, and movements. Absences: justified or unjustified, with no cause. No parents' details |
+| Retention | A yearly archive. Each year's pupil records are offered for erasure once the following school year ends. In institution mode, the institution's rules |
+| Sync | Optional and end-to-end encrypted, sending only new changes. Differing changes are both kept, and the teacher chooses. Direct transfer and an encrypted backup file |
+| Files | The open Tabachir archive; allowlisted imports; the workbook edited in place; signed statements and packages |
+| Early checks | The five checks in §5.13, before the pilot |
+| Section 5 | Settled on 27 Sep 2026 |
+
+**Open**
+- **Legal retention periods** for teachers' own records once the year ends. Counsel answers.
+- **The 2026/27 class-list file:** its columns, and whether it has names in Latin letters. The field check finds out.
+- **Shared school PCs.** Whether version 1 needs a temporary session that leaves nothing behind on a shared computer.
+- **The certified signature provider** for an official deployment. Chosen when a deployment is real.
+- **Whether the FET importer may call FET's command-line program** as a separate tool. Counsel confirms.
