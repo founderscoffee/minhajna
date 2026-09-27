@@ -15,6 +15,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026 |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026 |
+| 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026 |
 
 ---
 
@@ -1840,3 +1841,160 @@ Every school deployment needs all of these (§1.15):
 - **Consultation duties:** technical committees and unions.
 - **Private schools:** who the controller is for teachers they employ (Loi 90-11).
 - **A willing school and directorate for 2027/28.** The field check and the state track look for them.
+
+---
+
+## 8. The state layer
+
+This section designs how Tabachir works with the state towards the goal in principle 6:
+- what the state already runs, and the rules for working alongside it;
+- what Tabachir offers the ministry, the IGP and INRE;
+- the insights observatory, with the numbers §1.6 leaves to this section;
+- the state track, and what national adoption would take.
+
+### 8.1 What the state already runs
+
+- **The administrative backbone is the state's** (research 10).
+  - The sector's information system holds class groups and teacher assignments (compulsory since at least 2018), weekly hours (since 2020), staff records, pupil lists and marks.
+  - Pupil absences have been entered by the schools' pedagogical services since April 2026.
+  - Teachers enter marks in the teacher space (ostad) or in the grade workbook.
+  - Parents see absences, weekly timetables and exam calendars in their own space (awlyaa).
+- **Teachers' attendance belongs to HR and payroll.** A November 2024 report said teacher-absence entry had been switched on in the system, with automatic salary deductions.
+- **The ministry is building its own national data layer:** remote monitoring of schools, a system to analyse results, and database links with the High Commission for Digitisation (HCN).
+- **The gap is the lesson record.**
+  - No state tool records what was taught in each session, how far each programme has got, or the teacher's journal. Coverage is checked on paper.
+  - A digital texts book and digital inspection are on the ministry's July 2025 roadmap, and circular 465 orders accounts for inspectors. Nothing has shipped.
+  - Research 10 rates the chance that the state ships a digital texts book within 12–24 months as medium.
+- **There is no door for outside software.**
+  - There is no public API, developer programme or approval route. Every integration found is between state bodies.
+  - Since 6 September 2026, every education proposal goes to the Council of Ministers.
+  - The only structured door for outside innovators is INRE's Tarbya-Up Challenge.
+- **So Tabachir complements the state and never duplicates it** (§2.6). It covers the lesson record, which no state system covers, and meets the rest through files.
+
+### 8.2 Rules for working with the state
+
+- **Complement, don't race.** Tabachir keeps the teacher's capture and pacing. It hands the state what it needs in open formats, and never rebuilds what the state runs.
+- **Files only, until there is an agreement** (§2.6).
+  - No connectors, scraping or automation of ostad or amatti, and never teachers' passwords.
+  - Data moves only as files that users download or upload.
+  - An automated link needs the ministry's agreement, the ANPDP's authorisation for interconnection (Loi 18-07 Art. 19) and the national interoperability system (Decree 25-320).
+- **Outputs, never a tracker.** Tabachir is never described as "a platform for the ministry" or a way of "tracking teachers". It is the teacher's class logbook that prepares the official texts book and the term export.
+- **Every agreement is public,** and no principle is waived (§1.8). The state may also fork the code: a changed version it runs for teachers must offer them its source (§1.3).
+- **Watch and respond** (research 10):
+
+| If the state ships | Tabachir |
+|---|---|
+| A digital texts book | Adds an export into it, drops the print features it replaces, and keeps the teacher's capture and pacing |
+| A timetable screen or export | Adds an importer |
+| An inspector module | Aligns the progress statement with its fields |
+| A list of approved tools, or a ban | Complies, and offers its code and `NETWORK.md` for audit |
+
+### 8.3 What Tabachir offers the state
+
+1. **Four open formats** (§5.11): the plan pack, the session log and progress statement, the timetable package, and the insights payload.
+2. **The plan-pack pipeline** (§4.3). The IGP can publish its plans through Tabachir, by uploading the PDF or filling in the form, and its packs carry the status "official". Once the IGP publishes its own plans this way, the question of their copyright is settled.
+3. **Accepted printouts** (§1.15, step 1). The request: once a text allows it, a printed page signed by the teacher and countersigned by the director replaces re-copying into the texts book. Abroad, Ghana declared electronic lesson plans legal, and Russia and Portugal ban paper duplicates (research 11).
+4. **A curriculum-pacing observatory** for the IGP and the curriculum designers (§8.4).
+5. **The self-hostable aggregator,** for a directorate or the ministry that wants live views, on its own servers and as controller (§7.9).
+6. **A protocol for a national progress figure,** instead of teachers' data (§8.5).
+7. **Code, a deployment guide and support** for a national deployment (§8.7).
+
+### 8.4 The insights observatory
+
+It starts in 2027/28, with its code, payload and method published at least a month before collection (§1.13, stage 4). The rules in §1.6 bind it.
+
+**The questions it answers,** for the IGP and the curriculum designers:
+- Which items take more sessions than the plan allows?
+- Which items do teachers most often merge, skip, split or re-teach?
+- How far have classes got by the end of each term, by level, subject and wilaya?
+- Did this year's changes to a plan help?
+
+**The payload.** Only what was taught (§1.6), for each class whose teacher opts in:
+- the plan pack and release;
+- the sessions spent on each item;
+- the items merged, skipped, split or re-taught;
+- how far the class got by the end of each term.
+
+It never holds the date of a session, a reason a session was not held, pupil data, anything that identifies a teacher, or data from institution mode. Figures from institution deployments stay with their controllers.
+
+**Indicators,** each shown with its number of classes and a note that opt-in samples are self-selected:
+- the median sessions spent on each item, for each pack;
+- the items most often merged, skipped, split or re-taught;
+- how far classes got by the end of each term, as a median and a spread;
+- sessions lost to closures by wilaya, worked out from the public calendar, never from teachers' entries.
+
+**Minimum group sizes.** These are the numbers §1.6 leaves to this section.
+- A wilaya or national figure covers at least 10 teachers and 3 schools. Directorate figures in institution mode follow §7.9: at least 5 teachers and 3 schools.
+- A cell below the minimum is hidden, and so is any cell that would reveal it by subtraction.
+- In small cells, shares near 0% or 100% are shown in bands. Sparse cells are pooled across years.
+
+**The teacher's comparison** with their peers (§1.6) is worked out on the teacher's device, from the published figures. Nothing about the class is sent to make it.
+
+**How the figures may be used**
+- The method states that the figures describe the plan, not classes or teachers.
+- They are never used to set the scope of exams, to rank anyone, or for personnel decisions (§1.6).
+- **Why the exam-scope ban matters.** Algeria has set BAC "thresholds" from progress collections before (research 09, 11). When reported progress shrinks the exam scope, a class gains by reporting less. When it feeds pay, a class gains by reporting more. Either use corrupts the figures, so the method bans both. The IGP is asked to commit to this in writing.
+- **The IGP sees each report first,** and has 30 days to comment. Publication then follows the method (§1.6).
+
+**Before the first collection**
+- Counsel confirms that teachers may send lesson-level data without written authorisation (Ord. 06-03 Art. 48; §1.6). Counsel also checks whether publishing the figures needs the ministry's consent, or falls under the national statistics rules.
+- The pilot's data-quality audit compares two things: logged sessions against pupils' exercise books, and entries made before a director could see them against entries made after.
+
+### 8.5 A national progress figure: a protocol, not data
+
+- **If the state wants a national figure** for programme coverage, Tabachir offers a protocol rather than teachers' data. Inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year.
+- **Why.** Credible figures abroad came from independent samples like this, not from teachers' own reports (research 11). The reader mode's spot-check sheet supports it (§7.2).
+- **Honest expectations.** Covering the plan is not the same as learning. The big learning gains abroad came from structured lessons with coaching, never from tracking alone (research 11).
+
+### 8.6 The state track
+
+| When | State track | Gate |
+|---|---|---|
+| Now to December 2026 | • Find a contact at the IGP, the first step<br>• Read the Tarbya-Up terms<br>• Draft the plan-pack format<br>• Counsel's priority questions<br>• Plan the legal entity | The field check |
+| January–March 2027 | • A director and an inspector in the pilot<br>• The security design published<br>• The first printouts countersigned (step 1) | The pilot's success criteria |
+| September 2027 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• A Tarbya-Up entry, once its call and terms are known | The pilot's results, published |
+| 2027/28 | • The legal entity in place<br>• A school-mode pilot in a CEM, authorised in writing (step 2)<br>• Talks with a directorate<br>• The observatory's method published | The school-mode gates (§7.11) |
+| 2028 onwards | • A directorate deployment (step 3)<br>• A ministerial text for national adoption (step 4) | Steps 3 and 4 |
+
+**The doors**
+- **The IGP:** the plan-pack pipeline, the observatory and the formats. There is no contact yet, so finding one comes first.
+- **INRE,** the national institute for research in education: the formats, its incubator, and its journal (مجلة الابتكار التربوي), first published in September 2026.
+- **The Tarbya-Up Challenge 2027.** Edition 3 is open to sector staff and researchers, so the founder, a teacher in service, can lead an entry, for example an aggregator pilot in one directorate. Its IP terms are checked against the AGPL and the DCO first.
+- **The ministry's digitisation cell:** the session-log format, once INRE is engaged.
+- **Directorates:** a deployment (§7.9).
+
+### 8.7 National adoption
+
+National adoption is step 4 of the ladder (§1.15), 2028 at the earliest. It takes:
+- **Decisions.** A Council of Ministers decision, and a ministerial text giving the digital record official status, alongside or instead of Decisions 155 and 831.
+- **State plans and data exchange.** HCN review of the sector plan (Decree 23-314), and data exchanged only through the national interoperability system (Decree 25-320).
+- **Hosting** on state infrastructure: the ministry's data centre or the national data centre.
+- **The ANPDP,** consulted, or its authorisation for a national system.
+- **Records fit to be official:** signed exports and a history that cannot be altered (§1.15), with legal signatures under Law 15-04 (§5.5).
+- **Tabachir's role:** code, a deployment guide and a support contract (§1.10).
+- **The charter binds a national deployment too** (§1.15). An agreement that would break it is refused (§1.8). The state can instead fork the code under another name (§1.9).
+- **Paper goes** once the text allows it (§2.2).
+
+### 8.8 Decisions and open points
+
+**Decided on 27 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Relationship | Complement the state and never duplicate it. Files only until there is an agreement. Watch what the state ships, and respond |
+| The offer | The four formats, the pipeline for the IGP, accepted printouts, the observatory, the aggregator, a protocol for a national figure, and code with support |
+| Observatory | Opt-in and lesson-level: sessions per item, merges and skips, how far classes got by term end, and closures from the public calendar. No dates, reasons or institution-mode data |
+| Minimum sizes | At least 10 teachers and 3 schools for a wilaya or national figure, with suppression of cells that would reveal a hidden one |
+| Peer comparison | Worked out on the teacher's device from the published figures |
+| Use of figures | Never for exam scope, rankings or personnel decisions. The IGP sees each report first, with 30 days to comment |
+| National figure | An inspectors' sampling protocol, not teachers' data |
+| National adoption | The charter binds it. Otherwise the state may fork under another name |
+| Section 8 | Settled on 27 Sep 2026 |
+
+**Open**
+- **A contact at the IGP.** There is none yet.
+- **The Tarbya-Up 2027 call** and its IP terms.
+- **Publishing the figures:** whether it needs the ministry's consent, and whether the national statistics rules apply. Counsel answers.
+- **Whether and when the ministry ships its own digital texts book.**
+- **A willing directorate,** given the 6 September 2026 rule.
+- **The AGPL in a state deployment,** alongside Ord. 21-09 and the security levels of Decree 25-320. Counsel answers.
