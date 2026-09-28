@@ -826,7 +826,8 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 |---|---|
 | **Primary journal** (الكراس اليومي) | • **Front pages:** cover, teacher card, holidays and national days, seminars and training, the pupil list, and the weekly timetable with an "approved on" box<br>• **Daily page:** A4 landscape, with morning and afternoon bands. Columns: duration, subject, activity, content, competence indicator, plus the domain and the lesson-note number<br>• **A visa box for the director** (Decision 831 Art. 9), which the paper templates leave out<br>• **Specialists** in French, English and Tamazight get their own journal, in their language |
 | **CEM and lycée personal journal** | • **Front pages:** teacher card; seminars, training and meetings; holidays and national days<br>• **Daily page:** A4 portrait: date, from–to, class, how the session went, remarks. Plus domain, sequence and resource |
-| **Texts-book entries** (دفتر النصوص) | For each session:<br>• date and duration<br>• lesson title and stages<br>• any test<br>• homework and its due date<br><br>The teacher copies each entry in, or pastes a printed strip if the school accepts that. The app shows each entry's corrections, for the director's monthly check. The teacher signs by hand until the record becomes official (§1.15) |
+| **Texts-book entries** (دفتر النصوص) | For each session:<br>• date and duration<br>• lesson title and stages<br>• any test<br>• homework and its due date<br><br>The teacher copies each entry in, or pastes a printed strip if the school accepts that. The app shows each entry's corrections, for the director's monthly check. The teacher signs each entry by hand, or with the drawn signature below |
+| **Texts-book homework record** | A record in each subject's section of the book. For each homework:<br>• the date it was set, and the date it comes back<br>• the activity<br>• how many pupils did not do it, and how many relied on someone else<br>• each count as a percentage of the pupils on the class list, rounded to a whole number<br><br>Class counts only, never names. The teacher enters the two counts when the homework comes back. If homework was marked for each pupil (§3.5), the app proposes the counts it can work out from those marks. The counts are pupil records (§5.4) |
 | **Distributions** | Annual and monthly distributions from the plan pack, fitted to the class timetable, and the termly distribution the texts book needs (Decision 155 Art. 6) |
 | **Lesson notes** (المذكرة) | • A numbered template, filled in from the plan item: objectives, stages, resources, competence indicator<br>• The teacher completes it<br>• Last year's notes can be reused |
 | **Roll-call book and absence sheet** | See §3.4 |
@@ -834,6 +835,14 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | **Weekly timetable** | With signature boxes for the teacher, the director and the inspector |
 
 **One journal or several.** A teacher with several classes, streams or levels chooses one journal per class or one combined journal (brief §4.3).
+
+**The teacher's signature**
+- **By hand, or drawn once.** The teacher signs by hand, as on paper. Or the teacher turns on a drawn signature: they draw it once on the screen, and the app puts it in the signature column of each confirmed texts-book entry and in the teacher's signature boxes on the other documents.
+- **Always the teacher's choice.** It is off by default. Any printout can still leave the teacher's boxes blank, to sign by hand.
+- **Only what the teacher confirmed.** An entry awaiting confirmation never carries it. The director's and the inspector's boxes always stay blank.
+- **Printouts and PDFs only.** It never goes into a DOCX file, which anyone can edit. Before a PDF that carries it is shared, the app says that anyone who receives the file can copy the signature.
+- **Kept like the teacher card.** The drawing is one of the teacher card's personal fields: optional, and it never leaves the device (§3.2). It is not synced or backed up, so on another device the teacher draws it again. Only the image is kept, never the speed, pressure or timing of the strokes (§2.6).
+- **Not a legal signature.** Like a printed strip, it counts only where the school accepts it. A legal electronic signature, from a certified provider under Law 15-04, comes only with official status (§1.15, §5.5).
 
 **Print rules** (brief §11)
 - **Paper and ink.** Safe in black and white, with binding margins. One PDF that a print shop can use.
@@ -910,6 +919,13 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | Pilot | The slice in §3.11, measured against paper |
 | Section 3 | Settled on 27 Sep 2026 |
 
+**Decided on 28 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Homework record | A texts-book record for each subject: the dates, the activity, and two class counts with their percentages of the class list. Never names |
+| The teacher's signature | By hand, or a drawn signature that the teacher turns on. Kept like the teacher card's personal fields. Not a legal signature |
+
 **Open.** The field check, the pilot or the year's texts will settle these:
 - **Primary continuous assessment.** Whether it is by activity (circular 1711) or by learning domain (the 2024–2026 grade books) in 2026/27.
 - **The 2026/27 assessment circular.** How many tests (فروض), and when.
@@ -917,6 +933,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 - **Circular 244's list of appreciations.** It has not been found.
 - **Roll-call counting rules.** Directors confirm them.
 - **Printed pages.** Whether a printed texts-book strip, or a week-per-page journal, is accepted.
+- **Drawn signatures.** Whether directors and inspectors accept a printed signature in the texts book.
 - **The lesson-note template** for each level.
 - **Tamazight teachers.** What they keep, and in which script.
 - **A seating-plan view for roll call.** Whether it is wanted in version 1.
