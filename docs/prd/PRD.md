@@ -74,7 +74,7 @@ These eight principles override everything else in this PRD.
    - Records that an institution requires, as controller, belong to that institution. The teacher still keeps a full copy of their own lesson records and sees every access to them.
    - Private notes never leave the teacher's devices.
 
-   No agreement can override these principles, whoever it is with: the ministry, a directorate, a school, a sponsor or a funder.
+   No agreement can override these principles, whoever it is with: the Ministry, a directorate, a school, a sponsor or a funder.
 8. **Build in public, in Arabic first.** Plans, decisions, progress and money are public. Teachers hear about them where they already are.
 
 **Changing a principle** needs a public proposal, at least 30 days of comments and a recorded decision (§1.8). Principles 2 and 3 are permanent.
@@ -90,7 +90,7 @@ These eight principles override everything else in this PRD.
 | Fonts | SIL OFL 1.1 | Amiri, Noto Naskh Arabic, Noto Sans Arabic (brief §11) |
 | Name and logo | Not licensed | The name policy (§1.9) |
 
-- **Why AGPL.** Anyone who distributes a modified app, or runs a modified server for others, must offer the changed source to its users. A permissive licence would let a rival close the code and add ads. The ministry can still use, host and change the code freely. If it runs a changed version for teachers, it must offer them the changed source.
+- **Why AGPL.** Anyone who distributes a modified app, or runs a modified server for others, must offer the changed source to its users. A permissive licence would let a rival close the code and add ads. The Ministry can still use, host and change the code freely. If it runs a changed version for teachers, it must offer them the changed source.
 - **Copyright.** Each contributor keeps the copyright in their contribution. Until a legal entity exists, the founder holds the copyright in their own work and owns the name and logo. Both move to the entity when it is created.
 - **Contributor terms: the DCO.** Every code commit carries a "Signed-off-by" line under the [Developer Certificate of Origin 1.1](https://developercertificate.org/). With it, the contributor certifies that they have the right to submit the work under the project's licence.
   - There is no CLA, so nobody can relicense others' contributions without their consent, the founder included.
@@ -216,7 +216,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - **Members:** practising teachers from several levels and wilayas, starting with the field-check group, plus a director and an inspector where possible.
   - **Role:** it advises on the roadmap, the data repository and the print layouts. Its notes are public.
   - **Overrides:** when the lead maintainer goes against its advice, the decision record says why.
-- **Partnerships in the open.** Every agreement with the ministry, a directorate, a school, a sponsor or a funder is announced, with its parties, scope and money. It is also listed in the transparency report.
+- **Partnerships in the open.** Every agreement with the Ministry, a directorate, a school, a sponsor or a funder is announced, with its parties, scope and money. It is also listed in the transparency report.
   - Every agreement includes a clause allowing it to be published (Ord. 21-09 Art. 8).
   - An agreement that would break a principle is refused.
   - In the national system, the Ministry runs Tabachir itself, and the project is only the publisher of the software, never the controller (§1.15). Before adoption, the project runs no deployment for a school or an authority (29 Sep).
@@ -265,7 +265,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - exporting a teacher's own data.
 - **Paid services:**
   - end-to-end encrypted sync and backup between phone and PC, hosted in Algeria;
-  - deployment, training and support for private schools, directorates and, later, the ministry. Services for directorates and the ministry go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the security clauses of Decree 26-07.
+  - deployment, training and support for private schools, directorates and, later, the Ministry. Services for directorates and the Ministry go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the security clauses of Decree 26-07.
 - **Voluntary:** a supporter pass with a visible thank-you. It locks nothing.
 - **Grants and sponsors:**
   - accepted only if they respect every principle;
@@ -518,7 +518,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 
 ### 2.1 The problem
 
-- **Teachers copy the same lesson by hand, every day, into several documents.** The ministry's plans reach teachers as PDF files. From them, teachers write out (brief §1, §4):
+- **Teachers copy the same lesson by hand, every day, into several documents.** The Ministry's plans reach teachers as PDF files. From them, teachers write out (brief §1, §4):
   - their distributions;
   - their daily journal;
   - the texts-book entry for each class;
@@ -528,14 +528,14 @@ It complies with Section 1. Later sections design each part: the teacher app, th
   - In CEM and lycée, each class has a texts book (دفتر النصوص, Decision 155 of 1991). The teacher signs it every session, and the director endorses it.
   - Since 2025/26, CEM teachers also keep a continuous-assessment book (circular 270).
 - **The pieces exist, but the chain does not.** No product carries a lesson from the official plan to the day's session, and on to every document the teacher must keep, at every level (brief §1).
-- **The state's platforms cover marks, absences and parents, not lessons.** Lesson records are still on paper. A digital texts book is on the ministry's July 2025 roadmap (brief §9).
+- **The state's platforms cover marks, absences and parents, not lessons.** Lesson records are still on paper. A digital texts book is on the Ministry's July 2025 roadmap (brief §9).
 - **Scale.** About 630,000 teachers (February 2026) and 12 million pupils (September 2026) (brief §2).
 
 ### 2.2 The goal and the end state
 
 - **The goal** (principle 6). The Algerian state adopts Tabachir as the official digital record of teaching, and the Ministry runs it on government servers as one national system (29 Sep).
 - **The end state: Tabachir replaces the paper procedures completely.** It is not a supplement to them.
-  - The ministry publishes its plans through Tabachir.
+  - The Ministry publishes its plans through Tabachir.
   - The system gives every class its lesson for every session.
   - Teachers confirm what was taught instead of writing it.
   - The texts book, the journal, roll call and marks become the official record, which the teacher signs each week (§5.5, 29 Sep). The distributions and the lesson notes are made from the plan.
@@ -548,9 +548,9 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 
 ### 2.3 The core workflow
 
-1. **The plan goes in.** The ministry uploads its plan as a PDF, or fills in a form.
+1. **The plan goes in.** The Ministry uploads its plan as a PDF, or fills in a form.
    - Both produce the same plan pack, which is reviewed before it is published and then available to every teacher.
-   - Until the ministry joins, the project's curators and teacher-reviewers run the same process (§1.7).
+   - Until the Ministry joins, the project's curators and teacher-reviewers run the same process (§1.7).
 2. **Lessons get dates.** For each class, the system assigns each lesson to a session, using three inputs: the plan, the class timetable, and the calendar (holidays, exams, closures).
    - Primary plans are numbered by week, so the dates follow directly.
    - CEM and lycée plans give hours per sequence, so each class's dates depend on its timetable.
@@ -585,7 +585,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 | **Directorate** | In the national system, totals only, above the minimum group sizes: what the system owes teachers, such as cover provided, vacant posts and sessions lost to closures, and the curriculum report. Never a figure for one school or one teacher (§5.10) | The national system |
 | **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Tabachir by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10) | When the Ministry joins. The national system after adoption |
 | **Students and parents** | Nothing in Tabachir (29 Sep). Parents see marks, and absences where the school chooses, in the state's awlyaa space, fed through the national interoperability system (§5.9) | — |
-| **The project's curators and teacher-reviewers** | Turn plan PDFs into plan packs, with help from AI and a two-person review, until the ministry does it itself | From now |
+| **The project's curators and teacher-reviewers** | Turn plan PDFs into plan packs, with help from AI and a two-person review, until the Ministry does it itself | From now |
 
 ### 2.5 Version 1
 
@@ -623,7 +623,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | Decision | Choice |
 |---|---|
 | End state | Full replacement of the paper procedures, once a ministerial text allows it |
-| Core workflow | The plan goes in (ministry upload or form) → each class gets dated lessons → the teacher confirms with one tap → the documents follow |
+| Core workflow | The plan goes in (Ministry upload or form) → each class gets dated lessons → the teacher confirms with one tap → the documents follow |
 | Levels | Primary, CEM and lycée |
 | Version 1 | The lesson log and the register, with the documents listed in §2.5 |
 | Roll call | Replaces the paper roll-call book, as the teacher's own record |
@@ -1016,7 +1016,7 @@ It carries out steps 1 and 2 of the core workflow (§2.3) and feeds the teacher 
 
 ### 4.1 What exists today
 
-- **The ministry issues no lesson list.** It issues a chain of documents (research 09):
+- **The Ministry issues no lesson list.** It issues a chain of documents (research 09):
   - the curriculum and its accompanying document (2016), from the national curriculum commission;
   - annual plans (المخططات السنوية والتدرجات), from the IGP with each level's directorate. They call themselves "complementary working tools": teachers apply them, and inspectors may adapt them. The newest editions found date from September 2022;
   - textbooks and teachers' guides, which hold most lesson titles;
@@ -1132,7 +1132,7 @@ A plan pack holds one official plan as data. There is one pack for each level, g
 | August | New or changed packs are keyed, textbook references are updated, and drafts go to subject maintainers |
 | From teachers' return to pupils' start (13–21 September in 2026) | **The September release**, with status flags and a calendar holding the start dates |
 | The first four weeks | Quick fixes for reversals and freezes. In 2026, Decision 19 was frozen on 17 September |
-| When the ministry publishes them | The calendar release: holidays and exam windows |
+| When the Ministry publishes them | The calendar release: holidays and exam windows |
 | All year | Calendar fixes within 24 hours of a communiqué or closure |
 | June | Error reports and plan feedback are reviewed, and next year's work is planned |
 
@@ -1275,7 +1275,7 @@ The same repository, review and yearly cycle hold the other data the app needs (
 | | Field check (now to December 2026) | Pilot (January–March 2027) | Launch (September 2027) |
 |---|---|---|---|
 | Packs | About five packs keyed in full, once the pilot slice is chosen, for example:<br>• primary 5AP Arabic and maths (weeks)<br>• CEM 1AM maths and 3AM French (budgets)<br>• one lycée pack, such as 1AS maths (hybrid)<br><br>3AP and 4AP wait while their plans are stale | The same packs, with fixes from the field | The first full September release, for 2027/28, at all three levels, as far as packs exist. Lycée packs allow for the streams announced from 1AS in 2027/28 |
-| Calendar | The 2026/27 calendar, as the ministry publishes it | Ramadan 1448 (about 7 February to 8 March 2027) and a probable move of the term-2 exam week: a live test of the layers and session lengths | Fixes within 24 hours, all year |
+| Calendar | The 2026/27 calendar, as the Ministry publishes it | Ramadan 1448 (about 7 February to 8 March 2027) and a probable move of the term-2 exam week: a live test of the layers and session lengths | Fixes within 24 hours, all year |
 | Tested or measured | The anchors and the stage picker, with teachers. The September check, shown to an inspector | • Sessions confirmed as proposed, per pack<br>• Plan errors reported, and the time to fix them<br>• Time from a communiqué to the calendar fix | Published before launch |
 
 ### 4.12 Decisions and open points
@@ -1561,7 +1561,7 @@ Institution mode adds its own gates (§1.15), which Section 7 designs.
 ### 6.1 The legal position in teacher mode
 
 - **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it (principle 2). It is the controller only of what it holds about teachers: sync accounts, billing, support messages and pack-editor accounts (§1.4).
-- **The teacher's own position is open.** Teachers must keep their registers and journal (Decision 831 Art. 8–10). For official records, the school or the ministry is plausibly the controller, with the teacher acting under its authority. A working copy in a private app is a grey zone. Counsel answers this first (research 06).
+- **The teacher's own position is open.** Teachers must keep their registers and journal (Decision 831 Art. 8–10). For official records, the school or the Ministry is plausibly the controller, with the teacher acting under its authority. A working copy in a private app is a grey zone. Counsel answers this first (research 06).
 - **Whatever the answer, the product protects pupil data as if the strictest reading applied:**
   - the minimum data (§5.6);
   - nothing leaves the device by default (§1.5);
@@ -1941,7 +1941,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 
 This section designs how Tabachir works with the state towards the goal in principle 6:
 - what the state already runs, and the rules for working alongside it;
-- what Tabachir offers the ministry, the IGP and INRE;
+- what Tabachir offers the Ministry, the IGP and INRE;
 - the insights observatory, with the numbers §1.6 leaves to this section;
 - the state track, the first ask, and what national adoption takes.
 
@@ -1953,10 +1953,10 @@ This section designs how Tabachir works with the state towards the goal in princ
   - Teachers enter marks in the teacher space (ostad) or in the grade workbook.
   - Parents see absences, weekly timetables and exam calendars in their own space (awlyaa).
 - **Teachers' attendance belongs to HR and payroll.** A November 2024 report said teacher-absence entry had been switched on in the system, with automatic salary deductions.
-- **The ministry is building its own national data layer:** remote monitoring of schools, a system to analyse results, and database links with the High Commission for Digitisation (HCN).
+- **The Ministry is building its own national data layer:** remote monitoring of schools, a system to analyse results, and database links with the High Commission for Digitisation (HCN).
 - **The gap is the lesson record.**
   - No state tool records what was taught in each session, how far each programme has got, or the teacher's journal. Coverage is checked on paper.
-  - A digital texts book and digital inspection are on the ministry's July 2025 roadmap, and circular 465 orders accounts for inspectors. Nothing has shipped.
+  - A digital texts book and digital inspection are on the Ministry's July 2025 roadmap, and circular 465 orders accounts for inspectors. Nothing has shipped.
   - Research 10 rates the chance that the state ships a digital texts book within 12–24 months as medium.
 - **There is no door for outside software.**
   - There is no public API, developer programme or approval route. Every integration found is between state bodies.
@@ -1970,7 +1970,7 @@ This section designs how Tabachir works with the state towards the goal in princ
 - **Files only, until there is an agreement** (§2.6).
   - No connectors, scraping or automation of ostad or amatti, and never teachers' passwords.
   - Data moves only as files that users download or upload.
-  - An automated link needs the ministry's agreement, the ANPDP's authorisation for interconnection (Loi 18-07 Art. 19) and the national interoperability system (Decree 25-320). In the national system, that link is the connector (§5.9).
+  - An automated link needs the Ministry's agreement, the ANPDP's authorisation for interconnection (Loi 18-07 Art. 19) and the national interoperability system (Decree 25-320). In the national system, that link is the connector (§5.9).
 - **Outputs, never a tracker.** Tabachir is never described as a way of "tracking teachers". Until adoption, it is the teacher's class logbook, which prepares the official texts book and the term export. In the national system, it is the official record, which the teacher signs each week. The Ministry runs the servers but cannot read named records, and nothing on them tells time (§5.2).
 - **Every agreement is public,** and no principle is waived (§1.8). The state may also fork the code: a changed version it runs for teachers must offer them its source (§1.3).
 - **Watch and respond** (research 10):
@@ -2029,7 +2029,7 @@ It never holds the date of a session, a reason a session was not held, pupil dat
 - **The IGP sees each report first,** and has 30 days to comment. Publication then follows the method (§1.6).
 
 **Before the first collection**
-- Counsel confirms that teachers may send lesson-level data without written authorisation (Ord. 06-03 Art. 48; §1.6). Counsel also checks whether publishing the figures needs the ministry's consent, or falls under the national statistics rules.
+- Counsel confirms that teachers may send lesson-level data without written authorisation (Ord. 06-03 Art. 48; §1.6). Counsel also checks whether publishing the figures needs the Ministry's consent, or falls under the national statistics rules.
 - The pilot's data-quality audit compares two things: logged sessions against pupils' exercise books, and entries made before a director could see them against entries made after.
 
 ### 8.5 A national progress figure: a protocol, not data
@@ -2054,14 +2054,14 @@ Before adoption, the track seeks no official acceptance of printed pages, and ru
 - **The IGP:** the plan-pack pipeline, the observatory and the formats. There is no contact yet, so finding one comes first.
 - **INRE,** the national institute for research in education: the formats, its incubator, and its journal (مجلة الابتكار التربوي), first published in September 2026.
 - **The Tarbya-Up Challenge 2027.** Edition 3 is open to sector staff and researchers, so the founder, a teacher in service, can lead an entry, for example the teacher app, with the pilot's results. Its IP terms are checked against the AGPL and the DCO first.
-- **The ministry's digitisation cell:** the session-log format and the national system's design, once INRE is engaged.
+- **The Ministry's digitisation cell:** the session-log format and the national system's design, once INRE is engaged.
 
 ### 8.7 National adoption
 
 National adoption is the first ask (§1.15, 29 Sep). The national launch has no date yet: it is set once the Ministry adopts Tabachir, and the work is planned back from it (29 Sep). Adoption takes:
 - **Decisions.** A Council of Ministers decision, and a ministerial text giving the digital record official status, alongside or instead of Decisions 155 and 831, and making it compulsory from the national launch.
 - **State plans and data exchange.** HCN review of the sector plan (Decree 23-314), and data exchanged only through the national interoperability system (Decree 25-320).
-- **Hosting** on state infrastructure: the ministry's data centre or the national data centre, with no internet access and no outbound calls (§5.2, §6.7).
+- **Hosting** on state infrastructure: the Ministry's data centre or the national data centre, with no internet access and no outbound calls (§5.2, §6.7).
 - **The ANPDP,** consulted, or its authorisation for a national system.
 - **Records fit to be official:** signed exports and a history that cannot be altered (§1.15), with legal signatures under Law 15-04 (§5.5).
 - **Tabachir's role:** code, a deployment guide and a support contract (§1.10).
@@ -2101,8 +2101,8 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 **Open**
 - **A contact at the IGP.** There is none yet.
 - **The Tarbya-Up 2027 call** and its IP terms.
-- **Publishing the figures:** whether it needs the ministry's consent, and whether the national statistics rules apply. Counsel answers.
-- **Whether and when the ministry ships its own digital texts book.**
+- **Publishing the figures:** whether it needs the Ministry's consent, and whether the national statistics rules apply. Counsel answers.
+- **Whether and when the Ministry ships its own digital texts book.**
 - **The AGPL in a state deployment,** alongside Ord. 21-09 and the security levels of Decree 25-320. Counsel answers.
 
 ---
@@ -2123,7 +2123,7 @@ Prices and costs are estimates. The pilot tests them.
 |---|---|---|
 | **Teachers** | Nothing they must pay. Optional: sync and backup after the pilot, and a supporter pass | Any feature, the term export, any print layout, or getting their own data out |
 | **Private schools** | Deployment, training and support | The software |
-| **Directorates and the ministry** | Deployment, hosting, support and training, through public procurement (Loi 23-12) | The software, which the AGPL gives them freely |
+| **Directorates and the Ministry** | Deployment, hosting, support and training, through public procurement (Loi 23-12) | The software, which the AGPL gives them freely |
 | **Grants and sponsors** | The team's time, plan-pack curation, the field check and the security review | Any say over a principle |
 
 ### 9.2 What the market says
@@ -2154,7 +2154,7 @@ Prices and costs are estimates. The pilot tests them.
 ### 9.4 Services for institutions
 
 - **Private schools:** deployment, training and support, priced per school per year. Counsel first settles who the controller is for teachers that private schools employ (§7.13).
-- **Directorates and the ministry:** hosting where they don't host themselves, deployment, support and training. These go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the Decree 26-07 security clauses (§1.10). Counsel checks which procurement route fits a free, open-source product.
+- **Directorates and the Ministry:** hosting where they don't host themselves, deployment, support and training. These go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the Decree 26-07 security clauses (§1.10). Counsel checks which procurement route fits a free, open-source product.
 - **Prices are public.** The price list for services is published, like every agreement (§1.8).
 
 ### 9.5 Other income
@@ -2265,7 +2265,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 
 | When | Build | Content | Schools and the state | Legal and money | Gate |
 |---|---|---|---|---|---|
-| **Now to December 2026:** the field check | • A prototype: setup, Today and roll call<br>• The five technical checks (§5.13) | • About five plan packs keyed in full (§4.11)<br>• The 2026/27 calendar, as the ministry publishes it | • The field check (§10.2)<br>• A contact at the IGP<br>• The Tarbya-Up terms read, and the plan-pack format drafted | • Counsel's priority questions, with free help<br>• The legal entity decided (§9.8)<br>• The project's ANPDP declaration for the pilot (§6.2)<br>• The name protected (§1.17) | The field check's stop condition (§10.4) |
+| **Now to December 2026:** the field check | • A prototype: setup, Today and roll call<br>• The five technical checks (§5.13) | • About five plan packs keyed in full (§4.11)<br>• The 2026/27 calendar, as the Ministry publishes it | • The field check (§10.2)<br>• A contact at the IGP<br>• The Tarbya-Up terms read, and the plan-pack format drafted | • Counsel's priority questions, with free help<br>• The legal entity decided (§9.8)<br>• The project's ANPDP declaration for the pilot (§6.2)<br>• The name protected (§1.17) | The field check's stop condition (§10.4) |
 | **January–March 2027:** the pilot | • The pilot app (§3.11), reader mode and the coordinator's merge (§7.2–7.3)<br>• The national system designed alongside (§5.1) | Fixes from the field. Ramadan 1448 and any exam move as a live test (§4.11) | A director and an inspector in the pilot, in reader mode | • The security design published<br>• Sync only if its gates are met (§6.2) | The pilot's success criteria (§10.3) |
 | **April–August 2027** | The launch scope: every level's flows, the timetable package, handover, and sync, free for teachers | The first full September release prepared (§4.4) | The pilot's results published | • The legal entity in place<br>• The independent security review (§6.5) | Ready for launch |
 | **September 2027:** launch | • Google Play, the website and F-Droid<br>• Code contributions open to all (§1.13, stage 3) | The September release for 2027/28 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry (§8.6)<br>• A Tarbya-Up entry | • The first transparency report (§1.11)<br>• The teacher council (§1.8) | — |
