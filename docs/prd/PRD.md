@@ -1273,7 +1273,8 @@ Section 6 covers keys, encryption, security and the other non-functional require
   - the connector to the national interoperability system (§5.9);
   - the totals above the school (§5.10);
   - sign-in with a security key, for teachers without a smartphone (§6.6).
-- **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, compulsory from day one, covering the texts book, the journal, roll call and marks (29 Sep).
+- **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, compulsory from day one, covering the texts book, the journal, roll call and marks (29 Sep). The ask includes the charter's protections, as a request, not a condition (29 Sep).
+- **Until the Ministry's system opens, Tabachir runs in teacher mode only** (29 Sep). The project runs no school or directorate deployments before then.
 
 ### 5.2 Architecture
 
@@ -1286,9 +1287,11 @@ Section 6 covers keys, encryption, security and the other non-functional require
 
 **One package, two operators**
 - **Until the Ministry adopts Tabachir, the project runs the server package** in Algeria, free for teachers (29 Sep).
-- **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep). The Ministry runs its deployment under its own name; only the project's builds are called Tabachir (29 Sep, §1.9).
-- **The Ministry needs nothing from the project to run it.** It installs the releases the project publishes, on servers with no internet access. There is no project key, licence server or call home. The project steers the software through its public process, and the Ministry deploys each release within an agreed window, and security fixes within 7 days (29 Sep).
-- **Teachers move from the project's server to the Ministry's** one by one, when they join their school's space, with their consent (§5.8).
+- **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep).
+- **The Ministry's app is the project's release,** with the Ministry's name and icon as settings, built reproducibly so that anyone can check it against the published code (29 Sep). The Ministry runs its deployment under its own name; only the project's builds are called Tabachir (29 Sep, §1.9). The project's own app can always connect to the national system too.
+- **The Ministry needs nothing from the project to run it.** It installs the releases the project publishes, on servers with no internet access. There is no project key, licence server or call home.
+- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process, where releases, the principles and the charter are still decided. The Ministry deploys each release within an agreed window, and security fixes within 7 days (29 Sep).
+- **Teachers move from the project's server to the Ministry's** one by one, when they join their school's space, with their consent (§5.8). The project's server closes once they have moved (29 Sep).
 
 **Rules that hold whoever runs the server**
 - **The apps never need the server** to open or to do the daily work (§1.5). No deadline depends on the server (§6.8).
@@ -1430,6 +1433,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Out:** marks, in place of the workbook and ostad round trip (29 Sep); and pupils' absences, where the school chooses (29 Sep).
 - **The connector cannot read what it carries.** Marks and absences are encrypted on the teacher's or the school's device for the receiving state system alone.
 - **The files stay** as the fallback, and for teacher mode.
+- **Parents use the state's awlyaa space** (29 Sep). Marks, and absences where the school chooses, reach parents there. Tabachir builds no features for students or parents.
 - **A data catalogue** is generated from the data model, with each record's layer and classification, as Decree 25-320 requires of public bodies.
 
 **Every file that comes in is untrusted**
@@ -1523,7 +1527,11 @@ These five technical risks are tested early, before the pilot depends on them:
 | Joining | The school's QR code, made from the official assignment list. Fingerprint or PIN sign-in, no password. Without a smartphone, a security key on a school PC |
 | The state's systems | Through the national interoperability system: assignments and class lists in, marks out, absences out where the school chooses |
 | Above the school | Totals only, formed so the server never learns a figure for one school or one teacher |
-| Moving to the Ministry | Teacher by teacher, on joining the school space, with consent |
+| Moving to the Ministry | Teacher by teacher, on joining the school space, with consent. The project's server then closes |
+| Before adoption | Teacher mode only. No school or directorate deployments until the Ministry's system opens |
+| The Ministry's app | The project's release, with the Ministry's name and icon as settings, built reproducibly. The project's own app can always connect |
+| After adoption | The Ministry's staff maintain Tabachir, as maintainers in the project's public process |
+| Parents | Served by the state's awlyaa space. No student or parent features in Tabachir |
 
 **Open**
 - **Legal retention periods** for teachers' own records once the year ends. Counsel answers.
@@ -1569,7 +1577,6 @@ Institution mode adds its own gates (§1.15), which Section 7 designs. The natio
 |---|---|
 | **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
 | **Sync** | • The encryption design published and reviewed (§1.9)<br>• The declaration extended to sync accounts, with its receipt<br>• Servers in Algeria, with no foreign sub-processor<br>• Processor terms in the terms of service, in case counsel finds that the teacher or the school is the controller<br>• The automated log for server-side processing, and the breach runbook (§6.7) |
-| **The project's server for schools** (school spaces before adoption) | • A legal entity (§1.17), and a data-protection officer<br>• A processor contract with each school or directorate, with the Decree 26-07 clauses |
 | **Institution mode** | The gates in §1.15 |
 | **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' approval where required<br>• the launch gate in §6.8 |
 
