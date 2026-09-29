@@ -1285,6 +1285,11 @@ Section 6 covers keys, encryption, security and the other non-functional require
 | Shared core | TypeScript | The engine, the assessment rules, the file formats, the document templates, and all encryption and signing. Both apps use the same code, so they give the same results and enforce the same protections |
 | Server package | NestJS | One package, installed by whoever runs it. It stores and passes on encrypted records, holds the school spaces (§5.8), mirrors the reference data, hosts the pack editor (§4.3), receives problem reports and forms the totals above the school (§5.10). In the national system it also connects to the national interoperability system (§5.9) |
 
+**Maps on the web screens** (29 Sep)
+- **Four web screens show who holds what as a map:** the pack editor's release map (§4.3), the school key and its recovery (§6.5), what enters and leaves the school's space (§5.9), and the operators' view of the server package.
+- **They are drawn with React Flow** (MIT). It needs a browser, so the Android app has no maps.
+- **The maps are for reading.** Keys, devices and flows change only through buttons, never by dragging a link.
+
 **One package, two operators**
 - **Until the Ministry adopts Tabachir, the project runs the server package** in Algeria, free for teachers (29 Sep).
 - **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep).
