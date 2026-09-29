@@ -28,9 +28,9 @@ The founder chose not to wait for a legal text that protects teachers before the
 **Who runs the server**
 - **One server package, two operators.** Until the Ministry adopts Tabachir, the project runs it in Algeria, free for teachers. The Ministry then runs it on government servers, as one national system with a space for each directorate and each school.
 - **The Ministry needs nothing from the project.** The package installs from the published releases with no internet access, and makes no outbound calls. There is no project key, licence server or call home.
-- **The Ministry runs its deployment under its own name.** Only the project's builds are called Tabachir ([0007](0007-name-tabachir.md)).
-- **After adoption, the project's public process decides** what goes into each release. The Ministry deploys each release within an agreed window, and security fixes within 7 days.
-- **Teachers move to the Ministry's system one by one,** when they join their school's space there. The app shows what will move, and moves it once the teacher agrees. Private notes never move.
+- **The Ministry runs its deployment under its own name.** Its app is the project's release, with the Ministry's name and icon as settings, built reproducibly so that anyone can check it against the published code. Only the project's builds are called Tabachir ([0007](0007-name-tabachir.md)), and the project's own app can always connect to the national system.
+- **After adoption, the Ministry's own staff maintain Tabachir,** as maintainers in the project's public process. Releases, the principles and the charter are still decided in public. The Ministry deploys each release within an agreed window, and security fixes within 7 days.
+- **Teachers move to the Ministry's system one by one,** when they join their school's space there. The app shows what will move, and moves it once the teacher agrees. Private notes never move. The project's server closes once teachers have moved. Anyone outside the national system keeps the app, with direct transfer and backups.
 
 **Where records live, and who can read them**
 - **Device first.** The teacher's phone or PC holds the working record, and every daily task works offline. No deadline depends on a server.
@@ -72,10 +72,12 @@ The founder chose not to wait for a legal text that protects teachers before the
 - **What they cover:** the curriculum report, and what the system owes teachers: cover given, vacant posts and unassigned hours, and sessions lost to closures, worked out from the public calendar.
 - **Never** a figure for one school or one teacher, a ranking, a count of sessions not held, or anything from the private layer.
 - **How they are formed.** Each teacher's app prepares its share of each total. The shares are combined so that the server learns only totals that meet the minimum group sizes of 0013: 10 teachers and 3 schools for a wilaya or national figure, and 5 teachers and 3 schools for a directorate.
+- **The opt-in insights** of 0013 run in teacher mode from 2027/28, and are retired once the national system's totals exist.
 
 **The state's systems**
 - **Only through the national interoperability system** (Decree 25-320). Schools, class groups, class lists and assignments come in, so nobody types them twice. Marks go out, and absences too where the school chooses, once the Ministry decides who records absences.
 - **The connector cannot read what it carries.** Marks and absences are encrypted on the teacher's or the school's device for the receiving system alone.
+- **Parents use the state's awlyaa space.** Marks, and absences where the school chooses, reach parents there. Tabachir builds no features for students or parents.
 
 **Sync, backup and the minimum data**
 - **Sync is free for teachers,** between their own devices and to their school's space. It sends only new changes. When two devices differ, both versions are kept and the teacher chooses.
@@ -83,21 +85,24 @@ The founder chose not to wait for a legal text that protects teachers before the
 - **The minimum data of 0012 stays.** For pupils: the registration number, name, sex, class and group, and movements. An absence is justified or unjustified, and its cause is never typed. For teachers in the national system: only the official staff identifier and name, to join the school's space.
 
 **Official status and the national launch**
-- **The first ask to the Ministry** is a ministerial text that makes the full digital record official, and compulsory from the national launch.
+- **The first ask to the Ministry** is a ministerial text that makes the full digital record official, and compulsory from the national launch. The ask includes the charter's protections, as a request, not a condition.
+- **Until then, teacher mode only.** The project runs no school or directorate deployments, and seeks no official acceptance of printed pages, until the Ministry's system opens.
 - **The launch gate.** The mandate starts only once the national system has passed:
   - a load test at national scale, including the term-end peak;
   - a trial term end with real schools;
   - the independent security review;
   - a full restore from backup.
 - **Teachers are consulted first.** Before the rollout, the staff technical committees and the representative unions are consulted, and the results are published. The charter is presented to every school's teachers' council.
-- **The pilot stays in January to March 2027,** with the teacher app. The national system is designed alongside it.
+- **The pilot stays in January to March 2027,** with the teacher app. The national system is designed alongside it. Its launch date is set once the Ministry adopts Tabachir, and the work is planned back from it.
 
 Details: [PRD §5](../prd/PRD.md#5-data-formats-and-foundations) and [§6](../prd/PRD.md#6-privacy-security-and-non-functional-requirements).
 
 ## Consequences
 
-- **This record replaces 0012.** It also replaces the sync price in [0014](0014-business-model-and-sync-pricing.md), because sync is free. The rest of 0014, and [0006](0006-money-services-not-features.md), are the subject of a separate proposal on money. It changes principle 4, so it stays open for at least 30 days.
-- **Exam scope is proposed separately.** The founder also chose to let wilaya and national totals inform exam scope. That changes charter point 7 (PRD §1.15), so it follows the process for changing a principle, with 30 days of comments. Until it is accepted, the ban stands.
+- **This record replaces 0012.** It also replaces the sync price in [0014](0014-business-model-and-sync-pricing.md), because sync is free. The rest of 0014, and [0006](0006-money-services-not-features.md), are replaced by 0016, proposed separately because it changes principle 4 and needs 30 days of comments.
+- **Exam scope is proposed separately, in 0017.** The founder also chose to let wilaya and national totals inform exam scope. That changes charter point 7 (PRD §1.15), so it follows the process for changing a principle, with 30 days of comments. Until it is accepted, the ban stands.
+- **Students and parents.** [0010](0010-institution-mode-and-charter.md) allows features for them only in institution mode. None are planned: the state's awlyaa space serves parents.
+- **The launch gate's trial term end** runs on the Ministry's system, after adoption and before the mandate, since nothing runs in schools before then.
 - **The design is the only protection, so it has to stay intact wherever it runs:**
   - the protections hold only while teachers' apps run the published code. Builds are reproducible, the web app shows its checksum, and anyone who uses a modified version is entitled to its source ([0002](0002-licences.md));
   - an independent reviewer checks the encryption design before sync opens, and again before the national launch.
