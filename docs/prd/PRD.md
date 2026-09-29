@@ -1271,7 +1271,8 @@ Section 6 covers keys, encryption, security and the other non-functional require
   - legal electronic signatures (§5.5);
   - the school archive (§5.7);
   - the connector to the national interoperability system (§5.9);
-  - the totals above the school (§5.10).
+  - the totals above the school (§5.10);
+  - sign-in with a security key, for teachers without a smartphone (§6.6).
 - **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, compulsory from day one, covering the texts book, the journal, roll call and marks (29 Sep).
 
 ### 5.2 Architecture
@@ -1363,6 +1364,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Corrections are always possible** (29 Sep). A signed week can still be corrected. The correction is added and signed, and both versions stay and show, so an honest correction never looks like tampering. Official records are legal evidence; being able to correct them is what keeps that fair to teachers.
 - **Legal signatures in the national system.** When a teacher joins their school space, the state's certification authority certifies the signing key made on their device, so the weekly signature counts under Law 15-04. The key never leaves the device. Counsel confirms the route.
 - **The date is set on the device.** A signed week or a term export counts from the day it was signed on the device, even if the network delays it (§6.8). The Ministry's text sets this rule.
+- **Paper stays the fallback** (charter point 9). A session recorded on paper, when no device was at hand, is entered afterwards, with the day it was taught.
 - **Deletion is real.** When the teacher deletes a pupil's data or a past year, the content is erased. The history keeps only the fact that something was deleted, and on which day.
 
 ### 5.6 The minimum data
@@ -1399,7 +1401,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Two kinds of sync, both end-to-end encrypted.** The server only stores and passes on data it cannot read.
   - **Between the teacher's own devices,** readable only by the teacher. Free for teachers: on the project's server until adoption, then on the Ministry's (29 Sep).
   - **To the school space:** the school's copy of the teacher's courses (§5.4), readable only by the teacher and the school.
-- **Joining a school space** (29 Sep). The school gives each teacher a QR code made from the official assignment list. The teacher scans it once. The app links the key in the teacher's phone to their assignments in the school's space, and from then on the teacher signs in with the fingerprint prompt or a PIN (§6.4). There is no password, no account to activate and no reset through the director. The app keeps working offline without signing in, and the teacher is never locked out of their own copy.
+- **Joining a school space** (29 Sep). The school gives each teacher a QR code made from the official assignment list. The teacher scans it once. The app links the key in the teacher's phone to their assignments in the school's space, and from then on the teacher signs in with the fingerprint prompt or a PIN (§6.4). There is no password, no account to activate and no reset through the director. The app keeps working offline without signing in, and the teacher is never locked out of their own copy. A teacher who has no smartphone, or doesn't want to use their own, joins on a school PC with a security key the school issues (§6.6).
 - **Moving to the Ministry's system** (29 Sep). When the national system opens, the teacher joins their school's space there by scanning its QR code. The app shows what will move, and moves it once the teacher agrees. Only the teacher's app holds the keys, so only it can move the records. Private notes stay on the teacher's devices.
 - **Fixed batches.** The app sends to the server in batches of a fixed size, at set times of day, whether or not anything changed. So the server cannot tell when a teacher confirmed a session, or whether they did anything at all. The director's view of confirmation status (§7.6) updates with each batch, a few times a day.
 - **Only new changes travel.** Because the history is only ever added to, sync sends the changes made since the last sync. The payloads are small, and an interrupted sync resumes over mobile data.
@@ -1462,7 +1464,7 @@ Every role is enforced by keys, not only by screens. A role that holds no key ca
   - what the system owes teachers: cover given, vacant posts and unassigned hours, and sessions lost to closures, worked out from the public calendar.
 - **Never** a figure for one school or one teacher, a ranking, a count of sessions not held, or anything from the private layer.
 - **How they are formed.** Each teacher's app prepares its share of each total from its own records. The shares are combined so that the server learns only totals covering at least the minimum group sizes: 10 teachers and 3 schools for a wilaya or national figure, 5 teachers and 3 schools for a directorate (§8.4). The method comes from a widely reviewed open-source library (§6.5).
-- **Exam scope** (29 Sep). The Ministry may use wilaya and national totals of how far classes got when it sets exam scope. They are never broken down by school or teacher.
+- **Exam scope.** The founder proposes that the Ministry may use wilaya and national totals of how far classes got when it sets exam scope, never broken down by school or teacher (29 Sep). This changes charter point 7 (§1.15), so it is proposed separately, with 30 days of comments (§1.2). Until then, totals are never used for exam scope.
 
 - **Access is granted per course and per layer.** The private layer is never granted to anyone.
 - **Every access appears in the teacher's access log** (charter point 5).
@@ -1518,9 +1520,9 @@ These five technical risks are tested early, before the pilot depends on them:
 | The protection | The design alone. Named records are readable only by the teacher, the school and a granted inspector, whoever runs the server |
 | The main copy | Device first. The school's copy is kept on the server, encrypted |
 | The official record | The weekly signed record: texts book, journal, roll call and marks. Always correctable, with both versions shown |
-| Joining | The school's QR code, made from the official assignment list. Fingerprint or PIN sign-in, no password |
+| Joining | The school's QR code, made from the official assignment list. Fingerprint or PIN sign-in, no password. Without a smartphone, a security key on a school PC |
 | The state's systems | Through the national interoperability system: assignments and class lists in, marks out, absences out where the school chooses |
-| Above the school | Totals only, formed so the server never learns a figure for one school or one teacher. Wilaya and national totals may inform exam scope |
+| Above the school | Totals only, formed so the server never learns a figure for one school or one teacher |
 | Moving to the Ministry | Teacher by teacher, on joining the school space, with consent |
 
 **Open**
@@ -1530,6 +1532,7 @@ These five technical risks are tested early, before the pilot depends on them:
 - **The day a signed record counts:** the Ministry's text must say that the day signed on the device counts, not the day the server receives it.
 - **The method for totals** that hides each school's figure from the server, and its cost on budget phones. Tested before the national launch (§6.8).
 - **Access to the interoperability system,** and the agreements it needs with the bodies that issue the data.
+- **Exam scope.** Whether wilaya and national totals may inform it. Proposed separately, as a change to charter point 7 (§5.10).
 - **Whether the FET importer may call FET's command-line program** as a separate tool. Counsel confirms.
 
 ---
@@ -1579,7 +1582,7 @@ Institution mode adds its own gates (§1.15), which Section 7 designs. The natio
 |---|---|
 | A lost or stolen phone | The app lock, the encrypted database and the automatic lock. The lost phone is removed from sync, and the teacher restores their data on a new device (§6.5) |
 | A shared or family device | The app lock. No pupil data in notifications. Screens with pupil data hidden from the recent-apps view |
-| A shared school PC | Sign-in with the phone, and a session that leaves nothing behind (§6.6) |
+| A shared school PC | Sign-in with the phone or a security key, and a session that leaves nothing behind (§6.6) |
 | A curious or compromised server, or a demand for data to whoever runs it | End-to-end encryption: the server holds nothing named that it can read, whoever runs it. Minimal metadata. The project lists every demand it receives in the transparency report (§1.11) |
 | The operator reading teachers' records, or tracking entry across schools, for example during a strike | Named records readable only by the teacher, the school and a granted inspector (§6.5). Fixed sync batches, so arrival times reveal nothing (§5.8). Totals formed so that no school's figure reaches the server (§5.10) |
 | A national outage at term end | Device first: every task works offline, and a signed record counts from the day signed on the device (§5.5). The launch gate (§6.8) |
@@ -1644,6 +1647,7 @@ Institution mode adds its own gates (§1.15), which Section 7 designs. The natio
 
 - **Served by whoever runs the server,** from the project's site in Algeria or from the Ministry's, as a fixed bundle (§5.2). It loads no scripts, fonts or trackers from anywhere else, and a strict security policy blocks them.
 - **On a shared staffroom PC** (29 Sep), the teacher signs in by scanning a QR code on the screen with their phone, and approving with the fingerprint prompt. The session keeps the teacher's records in memory only, and leaves nothing behind when it closes or locks. On the teacher's own PC, Windows Hello can replace the phone.
+- **Without a smartphone** (charter point 9). A teacher who has no smartphone, or doesn't want to use their own, signs in on a school PC with a security key the school issues: a small USB key with its own PIN, which unlocks the teacher's keys for the session. Their records are kept in the school's space, encrypted like everyone's. A lost security key is replaced like a lost phone: the school issues a new one.
 - **Installed for offline use.** After installation, it changes only when the teacher accepts an update.
 - **Checkable.** It shows its version and build checksum. The published checksums and reproducible builds let anyone check them (§1.9).
 - **Its data** stays in the browser on the teacher's own computer, encrypted with the passphrase (§6.4). The app asks the browser to keep that storage, and warns if the browser may clear it.
@@ -1735,12 +1739,13 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 |---|---|
 | Keys | Nobody who runs a server holds a key to a named record. The school key is held by the school's staff, with recovery split between the school and its directorate |
 | Sign-in | The fingerprint or face prompt unlocks a key in the phone's secure chip. The biometric never leaves the phone, sign-ins are never recorded, and a PIN always works |
-| Shared PCs | Sign-in with the phone, and a session that leaves nothing behind |
+| Shared PCs | Sign-in with the phone, or with a security key the school issues for teachers without a smartphone. A session that leaves nothing behind |
 | The server | One package for the project and the Ministry. Installs with no internet access and makes no outbound calls |
 | The launch gate | The national system passes a national load test, a trial term end, the security review and a restore before the mandate starts |
 
 **Open**
 - **Traffic analysis.** Whether fixed sync batches cost too much battery or data on budget phones. Tested before the national launch.
+- **Security keys on school PCs.** Whether current Chrome and Edge, on Windows 10 and 11, can unlock a teacher's keys with one. Tested before the national launch.
 - **Who controls pupil data in teacher mode,** and the legal basis for minors' data. Counsel answers first.
 - **The ANPDP declaration and the data-protection officer before a legal entity exists:** whether the founder can file the declaration, and whether a DPO can be the founder or external. Counsel answers.
 - **Whether the sync service counts as a service provider** that must keep traffic data for a year (Loi 09-04). Counsel answers.
