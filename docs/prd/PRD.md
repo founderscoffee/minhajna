@@ -10,7 +10,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 |---|---|---|
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
-| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
+| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026 |
@@ -657,6 +657,8 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 
 ## 3. The teacher app
 
+*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
+
 This section specifies what the teacher does and gets. Three later sections cover the parts it relies on:
 - Section 4, the lesson engine that proposes each session's lesson;
 - Section 5, the data, file formats and sync;
@@ -675,11 +677,12 @@ Every screen follows these rules.
 4. **Correct anything, lose nothing.**
    - Any entry can be corrected at any time, and the history keeps both versions.
    - There are no deadlines, time windows or locks.
+   - In the national system, a signed week can still be corrected. The correction is signed too, and both versions show (§5.5).
 5. **Print what is checked.**
    - Every document prints the way directors and inspectors expect.
    - Every document can also print blank, with its headers filled in.
-6. **Offline, with no account.** The app opens and does all the daily work without a network or an account (§1.5).
-7. **The phone alone is enough.** Everything works on a budget Android phone, including the PDFs to print and the term export. A PC is optional, because far fewer teachers have laptops than phones (brief §11).
+6. **Offline, with no account.** The app opens and does all the daily work without a network or an account (§1.5). In the national system, the teacher joins their school's space once, with a QR code, and still needs no password (§5.8).
+7. **The phone alone is enough.** Everything works on a budget Android phone, including the PDFs to print and the term export. A PC is optional, because far fewer teachers have laptops than phones (brief §11). In the national system, no personal phone is required either: a teacher without a smartphone works on a school PC, with a security key the school issues (§6.6).
 8. **Neutral words.** The app states facts, such as "3 sessions awaiting confirmation" or "2 weeks behind the plan". It never judges, as in "you are late" or "you can do better".
 9. **Arabic first.**
    - The interface is in Arabic, French and English.
@@ -694,8 +697,14 @@ The goal is a usable app in about 10 minutes, without importing anything.
 - The teacher picks their levels, schools and subjects.
 - A teacher card holds the details the documents print. The personal fields are optional and never leave the device.
 
+**Joining the school's space** (national system, 29 Sep)
+- **One QR code.** The school gives each teacher a QR code made from the official assignment list. The teacher scans it once, and the app links the key in their phone to their assignments (§5.8).
+- **Nothing typed twice.** The school, the classes and the class lists come from the sector's information system, through the national interoperability system (§5.3, §5.9).
+- **Signing in** uses the phone's fingerprint prompt or a PIN, and is never recorded. A teacher without a smartphone joins and signs in on a school PC with a security key the school issues (§6.4, §6.6).
+- **Moving from teacher mode.** The app shows what will move into the school's space, and moves it once the teacher agrees. Private notes stay on the teacher's devices (§5.8).
+
 **Classes and pupils**
-- **Import** the pupil list from the official Excel file, keyed on the official registration number. Only the columns the app needs are kept.
+- **Import** the pupil list from the official Excel file, keyed on the official registration number. Only the columns the app needs are kept. In the national system, class lists come in by themselves (§5.9).
 - **Or type** the list.
 - **No fixed limit on class size.** The paper roll-call book stops at 52 rows, and a class of 57 has been reported (brief §5.2).
 - **Multigrade classes.** A primary class can hold up to three levels, each on its own plan (brief §4.3).
@@ -758,9 +767,15 @@ Special days are marked on it: holidays, seminars, councils, exam weeks, and cov
   The app warns against writing pupils' health or discipline details in either.
 - **No clock times.** A session is identified by its date and timetable slot. Printed times come from the timetable, never from when the teacher tapped.
 
+**Signing the week** (national system, 29 Sep)
+- **Once a week, for each course,** the app shows the week's record: the sessions and their outcomes, homework and tests, roll call and marks. The teacher signs it in one step, with the fingerprint prompt or a PIN (§5.5).
+- **Until then,** the week is the teacher's working record and changes freely. Once signed, it is the school's record, and the official record.
+- **Sessions still awaiting confirmation** are shown first. The teacher confirms them, or signs the week as it stands: a session left unconfirmed is never an absence (charter point 3).
+- **Corrections stay possible** after signing, and show as corrections (§3.1, rule 4).
+
 ### 3.4 Roll call: the digital roll-call book
 
-Roll call replaces the paper roll-call book (دفتر المناداة) as the teacher's own record. It never notifies parents, and it does not replace the school's official absence system (§2.5).
+Roll call replaces the paper roll-call book (دفتر المناداة) as the teacher's own record. It never notifies parents, and it does not replace the school's official absence system (§2.5). In the national system, roll call becomes part of the official record, signed each week (§5.5). Where the school chooses, pupils' absences also go to the state's absence system, and parents see them in awlyaa (§5.9).
 
 **Taking it**
 - **Unit.** Per half-day in primary; per session in CEM and lycée. The same class can be taken twice in a day.
@@ -826,7 +841,7 @@ Roll call replaces the paper roll-call book (دفتر المناداة) as the t
 
 ### 3.7 The term export
 
-The school chooses the route: the ostad grid, or the Excel workbook the administration extracts from amatti (brief §5.6).
+The school chooses the route: the ostad grid, or the Excel workbook the administration extracts from amatti (brief §5.6). In the national system, marks are part of the official record, and go straight to the state's system through the national interoperability system. The routes below stay as the fallback (§5.9, 29 Sep).
 
 - **The school's Excel workbook.**
   - The app fills only the unlocked cells, keeping the workbook's protection, structure and file type.
@@ -845,7 +860,7 @@ The school chooses the route: the ostad grid, or the Excel workbook the administ
   - the attendance summary.
 - **Never:**
   - ask for ostad or amatti passwords;
-  - automate the state's platforms;
+  - automate the state's platforms, outside the national interoperability system;
   - produce a report card (§2.6).
 
 ### 3.8 The documents
@@ -858,7 +873,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 |---|---|
 | **Primary journal** (الكراس اليومي) | • **Front pages:** cover, teacher card, holidays and national days, seminars and training, the pupil list, and the weekly timetable with an "approved on" box<br>• **Daily page:** A4 landscape, with morning and afternoon bands. Columns: duration, subject, activity, content, competence indicator, plus the domain and the lesson-note number<br>• **A visa box for the director** (Decision 831 Art. 9), which the paper templates leave out<br>• **Specialists** in French, English and Tamazight get their own journal, in their language |
 | **CEM and lycée personal journal** | • **Front pages:** teacher card; seminars, training and meetings; holidays and national days<br>• **Daily page:** A4 portrait: date, from–to, class, how the session went, remarks. Plus domain, sequence and resource |
-| **Texts-book entries** (دفتر النصوص) | For each session:<br>• date and duration<br>• lesson title and stages<br>• any test<br>• homework and its due date<br><br>The teacher copies each entry in, or pastes a printed strip if the school accepts that. The app shows each entry's corrections, for the director's monthly check. The teacher signs each entry by hand, or with the drawn signature below |
+| **Texts-book entries** (دفتر النصوص) | For each session:<br>• date and duration<br>• lesson title and stages<br>• any test<br>• homework and its due date<br><br>The teacher copies each entry in, or pastes a printed strip if the school accepts that. The app shows each entry's corrections, for the director's monthly check. The teacher signs each entry by hand, or with the drawn signature below. In the national system, the signed week replaces the paper book (§5.5) |
 | **Texts-book homework record** | A record in each subject's section of the book. For each homework:<br>• the date it was set, and the date it comes back<br>• the activity<br>• how many pupils did not do it, and how many relied on someone else<br>• each count as a percentage of the pupils on the class list, rounded to a whole number<br><br>Class counts only, never names. The teacher enters the two counts when the homework comes back. If homework was marked for each pupil (§3.5), the app proposes the counts it can work out from those marks. The counts are pupil records (§5.4) |
 | **Distributions** | Annual and monthly distributions from the plan pack, fitted to the class timetable, and the termly distribution the texts book needs (Decision 155 Art. 6) |
 | **Lesson notes** (المذكرة) | • A numbered template, filled in from the plan item: objectives, stages, resources, competence indicator<br>• The teacher completes it<br>• Last year's notes can be reused |
@@ -874,7 +889,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 - **Only what the teacher confirmed.** An entry awaiting confirmation never carries it. The director's and the inspector's boxes always stay blank.
 - **Printouts and PDFs only.** It never goes into a DOCX file, which anyone can edit. Before a PDF that carries it is shared, the app says that anyone who receives the file can copy the signature.
 - **Kept like the teacher card.** The drawing is one of the teacher card's personal fields: optional, and it never leaves the device (§3.2). It is not synced or backed up, so on another device the teacher draws it again. Only the image is kept, never the speed, pressure or timing of the strokes (§2.6).
-- **Not a legal signature.** Like a printed strip, it counts only where the school accepts it. A legal electronic signature, from a certified provider under Law 15-04, comes only with official status (§1.15, §5.5).
+- **Not a legal signature.** Like a printed strip, it counts only where the school accepts it. The legal signature comes with the national system: the weekly signature, with a key made on the teacher's device and certified by the state under Law 15-04 (§5.5).
 
 **Print rules** (brief §11)
 - **Paper and ink.** Safe in black and white, with binding margins. One PDF that a print shop can use.
@@ -892,7 +907,8 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 - spare sessions before the next exam window;
 - catch-up options (Section 4);
 - make-up sessions owed;
-- sessions still awaiting confirmation.
+- sessions still awaiting confirmation;
+- in the national system, weeks not yet signed.
 
 **Other notifications**
 - **A daily preview**, only if the teacher turns it on.
@@ -915,12 +931,13 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
   - the journal history;
   - the next item.
 
-  The pupil list and marks travel only by direct transfer, and only if the teacher chooses. The incoming teacher's app re-paces from the last entry.
+  The pupil list and marks travel only by direct transfer, and only if the teacher chooses. The incoming teacher's app re-paces from the last entry. In the national system, the incoming teacher receives the class's record through the school's space (§5.4).
 - **Phone and PC.** Two ways to move data between devices:
-  - the optional end-to-end encrypted sync, free during the pilot (§1.10);
+  - the optional end-to-end encrypted sync, free for teachers (§5.8);
   - a direct transfer between devices.
 
   Section 5 designs both.
+- **Staffroom PCs** (national system). The teacher signs in with their phone, or with a security key the school issues, and nothing stays behind when the session ends (§6.6).
 - **Export.** A full export of everything, free, at any time (principle 7).
 
 ### 3.11 Pilot and launch
@@ -928,9 +945,11 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | | Pilot (January–March 2027) | Launch (September 2027) |
 |---|---|---|
 | Levels | A few grades and subjects per level, chosen after the field check | All three levels, with the plan packs ready by then |
-| In the app | Setup, Today and confirmation, roll call, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement | All of this, plus the school's timetable package, handover, and sync with its price set |
+| In the app | Setup, Today and confirmation, roll call, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement | All of this, plus the school's timetable package, handover, and sync, free |
 | Languages | Arabic at least; French and English as their translations are ready | Arabic, French and English |
-| Measured | • Seconds per session: median and 90th percentile<br>• Minutes per week, against paper<br>• The share of sessions confirmed in one tap<br>• Term exports completed<br>• Pages that directors countersign | Published before launch |
+| Measured | • Seconds per session: median and 90th percentile<br>• Minutes per week, against paper<br>• The share of sessions confirmed in one tap<br>• Term exports completed | Published before launch |
+
+The national system adds joining with a QR code, the weekly signature, the school's space and marks sent to the state's system, once the Ministry adopts Tabachir (§5.1). Its date is set then.
 
 ### 3.12 Decisions and open points
 
@@ -958,6 +977,18 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | Homework record | A texts-book record for each subject: the dates, the activity, and two class counts with their percentages of the class list. Never names |
 | The teacher's signature | By hand, or a drawn signature that the teacher turns on. Kept like the teacher card's personal fields. Not a legal signature |
 
+**Proposed on 29 Sep 2026 (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| Joining | In the national system, one QR code from the official assignment list. Class lists come in by themselves |
+| Signing in | The fingerprint prompt or a PIN, never recorded. Without a smartphone, a school-issued security key on a school PC |
+| The weekly signature | Each course's week, signed in one step. Unconfirmed sessions can stay unconfirmed. Corrections stay possible |
+| What becomes official | The texts book, the journal, roll call and marks, in the national system |
+| Marks and absences | Marks go to the state's system through the national interoperability system. Absences too, where the school chooses. The files stay as the fallback |
+| Sync | Free for teachers |
+| The pilot | No longer measures pages that directors countersign: before adoption, the project seeks no official acceptance of printed pages |
+
 **Open.** The field check, the pilot or the year's texts will settle these:
 - **Primary continuous assessment.** Whether it is by activity (circular 1711) or by learning domain (the 2024–2026 grade books) in 2026/27.
 - **The 2026/27 assessment circular.** How many tests (فروض), and when.
@@ -968,6 +999,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 - **Drawn signatures.** Whether directors and inspectors accept a printed signature in the texts book.
 - **The lesson-note template** for each level.
 - **Tamazight teachers.** What they keep, and in which script.
+- **The weekly signature's screen.** How a week with sessions still awaiting confirmation is signed, and how corrections to a signed week look. Drawn on the design canvas first.
 - **A seating-plan view for roll call.** Whether it is wanted in version 1.
 
 ---
