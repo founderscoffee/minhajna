@@ -9,7 +9,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | § | Section | Status |
 |---|---|---|
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
-| 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
+| 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
@@ -506,6 +506,8 @@ The code and the reference data live in separate repositories, because they have
 
 ## 2. Goal, users and scope
 
+*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
+
 This section sets out:
 - what Tabachir is for;
 - who uses it;
@@ -531,18 +533,18 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 
 ### 2.2 The goal and the end state
 
-- **The goal** (principle 6). The Algerian state adopts Tabachir as the official digital record of teaching.
+- **The goal** (principle 6). The Algerian state adopts Tabachir as the official digital record of teaching, and the Ministry runs it on government servers as one national system (29 Sep).
 - **The end state: Tabachir replaces the paper procedures completely.** It is not a supplement to them.
   - The ministry publishes its plans through Tabachir.
   - The system gives every class its lesson for every session.
   - Teachers confirm what was taught instead of writing it.
-  - The journal, the texts book, the distributions, the lesson notes and the roll-call book become digital records.
-  - Official marks go into the state's system through the export.
-- **Paper goes when the law says so.** Official texts require the paper books. They disappear once a ministerial text gives the digital record official status (§1.15, step 4). Until then, Tabachir removes the copying and prints what the paper rules still require.
+  - The texts book, the journal, roll call and marks become the official record, which the teacher signs each week (§5.5, 29 Sep). The distributions and the lesson notes are made from the plan.
+  - Marks go to the state's system through the national interoperability system (§5.9).
+- **Paper goes when the law says so.** Official texts require the paper books. They give way once a ministerial text makes the digital record official, and compulsory from the national launch (§1.15). Until then, Tabachir removes the copying and prints what the paper rules still require. After that, paper stays only as the fallback (§5.5).
 - **The path** (§1.15). It has three parts:
-  - teachers first, because the state adopts what teachers already use;
-  - a design that meets the needs of an official record from the first release;
-  - the state's doors worked in parallel.
+  - teachers first, in teacher mode, until the Ministry's system opens, because the state adopts what teachers already use;
+  - a design built for the national system from the first release (§5.1);
+  - the state track worked in parallel, with the first ask: the full digital record, compulsory from the national launch (Section 8).
 
 ### 2.3 The core workflow
 
@@ -563,6 +565,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 5. **Everything else follows.**
    - The system writes the journal and texts-book entries, the distributions and the lesson-note drafts.
    - It re-paces the following lessons from what was actually taught.
+6. **In the national system, the teacher signs each week** of each course, in one step, with the fingerprint prompt or a PIN. The signed week is the official record, and it can always be corrected (§5.5).
 
 **Five rules**
 1. **A proposed lesson is never a taught lesson.** Only the teacher's confirmation records it. A record that filled itself in could show a lesson on a day the teacher was absent or the school was closed.
@@ -575,18 +578,18 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 
 | Participant | What they do and get | When |
 |---|---|---|
-| **Teacher** (primary, CEM, lycée) | The app, with:<br>• the day's lessons and one-tap confirmation<br>• roll call and continuous assessment<br>• the documents and the term export<br>• a weekly digest<br>• progress statements and handovers | Pilot, then launch |
+| **Teacher** (primary, CEM, lycée) | The app, with:<br>• the day's lessons and one-tap confirmation<br>• roll call and continuous assessment<br>• the documents and the term export<br>• a weekly digest<br>• progress statements and handovers<br>• in the national system, joining the school's space with a QR code, and signing each week (§5.5, §5.8) | Pilot, then launch. The national system after adoption |
 | **Subject coordinator and teaching council** | A merge of the progress statements that teachers choose to share, for the council's pacing plan | Pilot |
-| **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **School mode:** an operational dashboard showing workload, sessions awaiting confirmation and classes behind the plan. It stays inside the school, and the teacher sees the same view | Reader mode in the pilot; the package at launch; school mode after the gates (§1.15) |
-| **Inspector** | Progress statements before a visit. In school mode, access granted by the authority, limited in time and visible to the teacher | Pilot; school mode |
-| **Directorate** | In its own deployment, as controller: figures on what the system owes teachers, such as cover provided, vacant posts, sessions lost to closures and how pace varies | From 2027/28 (§1.15, step 3) |
-| **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• Sees insight reports first (§1.6)<br>• Adopts Tabachir nationally (step 4) | When the ministry joins |
-| **Students and parents** | Nothing yet: the ministry's parent space serves them today. Their data is designed into Tabachir from the start, but features for them run only in institution mode, on the institution's systems (§1.15) | After the gates |
+| **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§5.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
+| **Inspector** | Progress statements before a visit. In the national system, a grant from the authority opens the named courses and weeks, between its dates, and the teacher sees it (§5.10) | Pilot; the national system |
+| **Directorate** | In the national system, totals only, above the minimum group sizes: what the system owes teachers, such as cover provided, vacant posts and sessions lost to closures, and the curriculum report. Never a figure for one school or one teacher (§5.10) | The national system |
+| **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Tabachir by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10) | When the Ministry joins. The national system after adoption |
+| **Students and parents** | Nothing in Tabachir (29 Sep). Parents see marks, and absences where the school chooses, in the state's awlyaa space, fed through the national interoperability system (§5.9) | — |
 | **The project's curators and teacher-reviewers** | Turn plan PDFs into plan packs, with help from AI and a two-person review, until the ministry does it itself | From now |
 
 ### 2.5 Version 1
 
-Version 1 is tested in a pilot from January to March 2027 and launched in September 2027.
+Version 1 is tested in a pilot from January to March 2027 and launched in September 2027, in teacher mode. The national system's launch date is set once the Ministry adopts Tabachir (29 Sep).
 
 | Area | Version 1 |
 |---|---|
@@ -599,18 +602,18 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | Devices | An Android app, and an installable web app for PCs. Both work offline |
 | Languages | Arabic, French and English interfaces. Documents come out in the subject's language |
 | AI | For curators only, never with pupil data. None in the teacher app |
-| School layer | • Reader mode in the pilot<br>• The timetable package at launch<br>• School mode after the gates, first as a pilot in 2027/28 |
-| Not in version 1 | • Features for students and parents<br>• Directorate and ministry deployments<br>• The insights observatory (2027/28)<br>• An iPhone app<br>• AI in the teacher app |
+| School layer | • Reader mode in the pilot<br>• The timetable package at launch<br>• The school's space only in the national system, after adoption (§1.15) |
+| Not in version 1 | • The national system: school spaces, the weekly signature, the interoperability connector and the totals, built for the national launch (§5.1)<br>• The insights observatory (2027/28)<br>• An iPhone app<br>• AI in the teacher app |
 
 ### 2.6 What Tabachir never does
 
 - **Ask anyone to assign lessons to sessions by hand,** or record a lesson as taught without the teacher's confirmation.
-- **Track teachers.** No attendance, absence reasons, clock times, "started" events, location or biometrics, and no personal phone required.
-- **Judge teachers.** No scores, rankings or colour codes for teachers, and no inference of their effort or performance. Whether sessions are confirmed stays inside the school (§1.11).
-- **Hold readable pupil data on the project's servers** (principle 2).
-- **Run features for students or parents outside institution mode.**
+- **Track teachers.** No attendance, absence reasons, clock times, "started" events, sign-in events, location or biometric data, and no personal phone required. The phone's fingerprint prompt never leaves the phone (§6.4).
+- **Judge teachers.** No scores, rankings or colour codes for teachers, and no inference of their effort or performance. Whether sessions are confirmed stays inside the school, and in the national system only the school key opens it (§1.11, §6.5).
+- **Hold pupil data that a server can read,** whoever runs the server (principle 2, §6.5). Only the state's own systems read the marks and absences sent to them (§5.9).
+- **Build features for students or parents.** The state's awlyaa space serves them (29 Sep).
 - **Duplicate what the state's systems already hold,** such as teacher assignments and hours, official absences and official results. It imports from them or exports to them.
-- **Connect to or automate state platforms without an agreement.** Data moves as files.
+- **Connect to or automate state platforms without an agreement.** In teacher mode, data moves as files. In the national system, it moves only through the national interoperability system (§5.9).
 - **Let its figures be used for exam thresholds or personnel decisions** (§1.6).
 
 ### 2.7 Decisions and open points
@@ -633,12 +636,22 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | Dates | Pilot January–March 2027; launch September 2027 |
 | Section 2 | Settled on 27 Sep 2026 |
 
+**Proposed on 29 Sep 2026 (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| Goal | The Ministry runs Tabachir on government servers, as one national system |
+| End state | The texts book, the journal, roll call and marks become the official record, signed each week and always correctable. Compulsory from the national launch |
+| The path | Teacher mode only until the Ministry's system opens. The first ask is the full digital record |
+| The director's view | The school's space in the national system: confirmation status stays inside the school, opened only by the school key, updated a few times a day |
+| Students and parents | No features in Tabachir. The state's awlyaa space serves them |
+| The national launch | No date yet. It is set once the Ministry adopts Tabachir |
+
 **Open**
 - **The pilot slice.** Which grades, subjects and schools. It is chosen after the field check, by December 2026.
 - **Plan packs for lycée.** An archive of 89 lycée plan files from September 2022, covering 23 subjects, was found (research 09). The field check finds out which of them are in force (§4.12).
 - **The lesson-note template for each level,** and whether inspectors accept it. The field check tests this.
-- **Whether directors will countersign printed pages** (§1.15, step 1). The pilot tests this.
-- **Which body would issue the text for national adoption** (step 4), and when. The state track finds out.
+- **Which body would issue the text for national adoption** (§1.15), and when. The state track finds out.
 
 ---
 
