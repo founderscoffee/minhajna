@@ -8,7 +8,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 | § | Section | Status |
 |---|---|---|
-| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026 |
+| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
@@ -23,16 +23,18 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 ## 1. Open-source strategy and governing guidelines
 
+*Changes proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Tabachir on government servers. They take effect when that decision is accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+
 The whole system is open source from its first line of code: the apps, the servers, the tools and the documents. This section sets the rules that govern the project:
 - what is open, and under which licence;
 - what stays private, and why;
 - how pupils' data is protected in public;
 - how people contribute and how decisions are made;
 - how the project pays for itself without closing anything;
-- how schools and education authorities may use it, and the charter that binds them;
+- how the Ministry runs it as one national system, and the charter that protects teachers;
 - why it serves Algeria first, and how other countries can use it later.
 
-The project's goal is for the Algerian state to adopt Tabachir as the official digital record of teaching (principle 6).
+The project's goal is for the Algerian state to adopt Tabachir as the official digital record of teaching (principle 6), with the Ministry running it on government servers (29 Sep).
 
 Every later section of this PRD must comply with this one. When a feature conflicts with a principle in §1.2, the feature changes, not the principle.
 
@@ -45,7 +47,7 @@ Every later section of this PRD must comply with this one. When a feature confli
 
   By contrast, at least one paid rival stores teachers' data on servers abroad (brief §10).
 - **The tool outlives its company.** This year one developer's whole Google Play account vanished, and its teacher apps went with it (research 04). With open code and an open file format, teachers are never stranded.
-- **State-ready by construction, because state adoption is the goal.** The ministry can audit the code, host it in Algeria, or reuse parts of it in the digital دفتر النصوص on its July 2025 roadmap (brief §9). It can do all this without buying from a startup.
+- **State-ready by construction, because state adoption is the goal.** The Ministry can audit the code, run it on government servers as one national system (§5.2), or reuse parts of it in the digital دفتر النصوص on its July 2025 roadmap (brief §9). It needs nothing from the project to do so, and it can do all this without buying from a startup.
 - **A community for the yearly data.** Timetables, plans and print templates change every September (brief §8). Teachers already share them on blogs and in groups; the open data repository gives that sharing a home.
 
 Open source earns trust, but it does not bring installs by itself. Teachers find their tools through content sites, Facebook groups, YouTube and staffrooms (brief §12). So the project builds in public in those places, in Arabic (§1.11), with the open code as the proof behind it.
@@ -86,7 +88,7 @@ These eight principles override everything else in this PRD.
 | Content teachers make for the data repository: plans, distributions, templates, corrections | CC BY-SA 4.0 | Each item records its source and its contributor |
 | Official texts and plans | Not relicensed | Included only when counsel clears them, otherwise linked. Ord. 03-05 Art. 11 excludes regulations from copyright; the national inspectorate's (IGP) plans are unclear (brief §8) |
 | Fonts | SIL OFL 1.1 | Amiri, Noto Naskh Arabic, Noto Sans Arabic (brief §11) |
-| Name and logo | Not licensed | Trademarks (§1.9) |
+| Name and logo | Not licensed | The name policy (§1.9) |
 
 - **Why AGPL.** Anyone who distributes a modified app, or runs a modified server for others, must offer the changed source to its users. A permissive licence would let a rival close the code and add ads. The ministry can still use, host and change the code freely. If it runs a changed version for teachers, it must offer them the changed source.
 - **Copyright.** Each contributor keeps the copyright in their contribution. Until a legal entity exists, the founder holds the copyright in their own work and owns the name and logo. Both move to the entity when it is created.
@@ -119,17 +121,18 @@ These eight principles override everything else in this PRD.
 | What the project holds about teachers: sync accounts, billing, support messages | Personal data under Loi 18-07, for which the project is the controller | Kept to the minimum, hosted in Algeria and stored apart from everything else. Covered by the project's own ANPDP declaration (brief §10) |
 | The raw research: verbatim quotes with links, the competitor dossier | The privacy and copyright of the people quoted. It also names small Algerian developers alongside their install counts | Publish the conclusions only, scrubbed |
 | Pupil data | — | Never reaches the project (principle 2) |
-| The records of an institutional deployment | The school or education authority is their controller (§1.15) | Held on the institution's systems. The project may hold them only as ciphertext, as a processor under a written contract |
+| The records of the national system | The Ministry is their controller (§1.15) | Held on the Ministry's servers, encrypted so that only the teacher, their school and a granted inspector can read them (§5.4). The project holds none of them |
 
 ### 1.5 Pupil data and privacy rules
 
 **In the product**
-- **Nothing leaves the device by default.** Pupil data leaves the device only inside the end-to-end encrypted sync or backup, and only if the teacher turns it on.
-  - The app never needs the project's servers to open or to do the daily work.
+- **Nothing leaves the device by default.** In teacher mode, pupil data leaves the device only inside the end-to-end encrypted sync or backup, and only if the teacher turns it on.
+  - **In the national system,** the school's copy of the teacher's pupil records is kept in the school's space, encrypted so that only the teacher and the school can read it. Marks, and absences where the school chooses, go to the state's systems, encrypted for them alone (§5.4, §5.9).
+  - The app never needs a server, the project's or the Ministry's, to open or to do the daily work.
   - The storage rules in brief §10 apply: no OS cloud backup of pupil data, an encrypted database, and an app lock.
 - **No third-party SDKs that send data.** No analytics, advertising, crash-reporting or AI SDKs.
 - **A public network inventory.** `NETWORK.md` lists every address the app can contact, what it sends and why. A change that adds or widens a network call is a *privacy-sensitive change* (§1.7).
-- **Crash reports are off by default.** The teacher sees each report before it is sent. Names and marks are removed, and the report goes to the project's server in Algeria.
+- **Crash reports are off by default.** The teacher sees each report before it is sent. Names and marks are removed, and the report goes to the server in Algeria that the teacher uses: the project's, or the Ministry's in the national system.
 - **AI follows the same rules.** If the product ever uses AI, no pupil data goes to an AI service abroad. The model, the prompts and where it runs are public.
 
 **In the project's public spaces** (the code host, the website, the teacher group, videos and support chats)
@@ -143,7 +146,7 @@ These eight principles override everything else in this PRD.
 
 ### 1.6 Anonymous insights: rules for openness
 
-The insights layer is opt-in and shares lesson-level data only. A later section designs it; the rules below bind that design.
+The insights layer is opt-in and shares lesson-level data only. A later section designs it; the rules below bind that design. It runs in teacher mode from 2027/28, and is retired once the national system's totals exist (§5.10, 29 Sep).
 
 - **Publish before collecting.** The insights server's code, the exact payload and the aggregation method are public at least one month before collection starts.
 - **The teacher is in control.**
@@ -216,26 +219,28 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 - **Partnerships in the open.** Every agreement with the ministry, a directorate, a school, a sponsor or a funder is announced, with its parties, scope and money. It is also listed in the transparency report.
   - Every agreement includes a clause allowing it to be published (Ord. 21-09 Art. 8).
   - An agreement that would break a principle is refused.
-  - In an institutional deployment, the project is only the publisher of the software or a processor under contract, never the controller (§1.15).
+  - In the national system, the Ministry runs Tabachir itself, and the project is only the publisher of the software, never the controller (§1.15). Before adoption, the project runs no deployment for a school or an authority (29 Sep).
 - **The state may adopt, host or fork the project** under its licence. The project publishes a deployment guide, and the state can contract larger support (§1.10).
+- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep). They join the project's public process as maintainers, so releases, the principles and the charter are still decided in public (§5.2).
 - **Accounts.** The code lives in a GitHub organisation, not a personal account, so it can be handed over without breaking links. Every maintainer uses two-factor authentication.
 
 ### 1.9 Official builds, releases, the name and security
 
 - **Built only from the public source.** Official builds contain nothing that is not in the public repositories.
 - **Official sources.** Google Play, the project's `.dz` website (Android APK, PC or web) and F-Droid. The website and the README say that no other source is official.
+- **The Ministry's app** (29 Sep). In the national system, the Ministry's app is the project's release, with the Ministry's name and icon as settings. It is built reproducibly, so anyone can check it against the published code, and the project publishes its checksums with each release. The project's own app can always connect to the national system too (§5.2).
 - **Signed releases.**
   - Every release is signed.
   - The fingerprint of the signing key and the checksums of each release are published on the website and in the README.
   - The goal is reproducible builds, so that anyone, F-Droid included, can check that a build matches the source.
 - **The release calendar follows the school year.** In the two weeks before each term-end export window, only fixes ship. The windows fall around mid-December, March and May (brief §14).
-- **Changelog.** Every release has notes written for teachers, in Arabic and English.
+- **Changelog.** Every release has notes written for teachers. `CHANGELOG.md` is in English (29 Sep). Teachers read the notes in Arabic in the app and in the teacher group.
 - **The name: Tabachir (طباشير).**
   - **Meaning.** Chalk, the teacher's everyday tool. Written in Latin letters, it also reads as تباشير: the first light of dawn, or good news.
   - **Spelling.** Always "Tabachir" in Latin letters, never "Tabashir", which is taken on GitHub. The Arabic form is طباشير.
   - **Descriptive line.** The words teachers search for go in the line under the name, never in the name itself, for example "Tabachir: الكراس اليومي ودفتر المناداة والتنقيط" or "Tabachir: the teacher's class logbook".
-  - **Registration.** The name and logo are registered as trademarks with INAPI.
-  - **Forks.** The trademark policy (`TRADEMARKS.md`) lets anyone fork, but under another name and logo, and without suggesting that the fork is the official app.
+  - **Not registered** (29 Sep). The name and logo are not registered as trademarks. They are protected only by use, by the official sources above and by the published checksums.
+  - **Forks.** The name policy (`TRADEMARKS.md`) lets anyone fork, but under another name and logo, and without suggesting that the fork is the official app. The Ministry's deployment runs under its own name (§5.2).
   - **Official builds.** Unmodified official builds may be shared as they are.
 - **Naming rule**, for the product and for anything the project later names:
   - **Distinctive.** It must be an invented word, or an ordinary word used for something unrelated, and never a description of the product. INAPI refuses signs that lack distinctive character (Ord. 03-06, Art. 7 point 2). Only a registrable name can separate official builds from forks.
@@ -295,12 +300,12 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - security incidents;
   - money in and out, by source;
   - partnerships and sponsors.
-- **Code of conduct** (`CODE_OF_CONDUCT.md`, adapted from the Contributor Covenant, in Arabic and English).
+- **Code of conduct** (`CODE_OF_CONDUCT.md`, adapted from the Contributor Covenant, in English, 29 Sep). The README summarises it in Arabic.
   - Respect; no harassment or personal attacks.
   - Project spaces stay about the product: no political or union campaigning, and no attacks on named people, whether officials, colleagues, pupils or parents.
 - **Neutrality.** The project takes no side in disputes between teachers and the administration. It follows the official texts and cites them.
   - No feature detects, counts or reports collective action.
-  - Whether sessions are recorded or still awaiting confirmation never leaves the school.
+  - Whether sessions are recorded or still awaiting confirmation never leaves the school. In the national system, only the school key opens it (§6.5).
 
 ### 1.12 Continuity pledge
 
@@ -308,7 +313,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 - **If the project stops or its legal entity closes:**
   - the code, the data repository and the documents stay public as archives;
   - the last release keeps working offline, because the daily work never depended on the project's servers;
-  - the sync service gives at least six months' notice, runs until after that school year's last term export, and provides a full export for every teacher;
+  - the sync service gives at least six months' notice, runs until after that school year's last term export, and provides a full export for every teacher. The same applies when the project's server closes after the Ministry's system opens (§5.2);
   - the name and the repositories pass to a successor that keeps these principles, or are archived.
 
 ### 1.13 Opening in stages
@@ -363,49 +368,44 @@ This is the only work done for other countries before then.
   - Section 1 names Algerian laws, bodies, hosting and payment channels, such as Loi 18-07, the ANPDP, the IGP, INAPI and hosting in Algeria.
   - An edition applies its own country's equivalents, and never a weaker protection.
 - **Each country stays separate:** its data, its insights and its servers.
-- **The name.** Only an official edition may use the Tabachir name in another country. The trademark is registered there before that edition launches.
+- **The name.** Only an official edition may use the Tabachir name in another country.
 
 ### 1.15 Institution mode
 
-Institution mode is how a school or an education authority uses Tabachir as an institution, not only through its teachers' own apps. It is the road to the goal in principle 6. A later section designs it; the rules below bind that design.
+Institution mode is how an education authority uses Tabachir as an institution, not only through its teachers' own apps. It is the road to the goal in principle 6.
+
+- **It has one form: the national system** (29 Sep). The Ministry runs Tabachir on government servers, as one national system with a space for each directorate and each school (§5.2).
+- **Until the Ministry's system opens, Tabachir runs in teacher mode only** (29 Sep). Before then, the project runs no deployment for a school or an authority, and seeks no official acceptance of printed pages.
+- **The design protects teachers** (29 Sep). No legal text is required before the Ministry hosts Tabachir, so the protections are built into what the servers can read and compute (§5.1, §6.5).
 
 **Who is responsible**
-- **The institution is the controller.** The school or education authority controls the records it requires. The project is only the publisher of the software, or a processor under a written contract (Loi 18-07 Art. 39).
-- **Which institution, per kind of school.** Counsel settles who the controller is for each kind of school. A primary school may need its directorate as controller.
-- **Students and parents.** Features for them exist only in institution mode, on the institution's own systems, after the gates below.
-  - The data model is designed for them from the start.
-  - Pupil data still never reaches the project (principle 2).
+- **The Ministry is the controller** of the records it requires, and runs the servers. The project is only the publisher of the software. It holds none of the records and runs none of the servers.
+- **The roles within the Ministry.** Counsel confirms how the Ministry, its directorates and its schools share the controller's role.
+- **Students and parents** (29 Sep). Tabachir builds no features for them. Parents see marks, and absences where the school chooses, in the state's awlyaa space (§5.9). Pupil data still never reaches the project (principle 2).
 
-**Gates before any deployment**
-- the competent authority's written authorisation, and any higher approval the law requires, which counsel confirms;
-- the institution's declaration to the ANPDP, and an impact assessment where the law requires one;
-- a processor contract with:
-  - the security clauses of Decree 26-07;
-  - a ban on using the records to evaluate teachers;
-  - a publication clause (§1.8);
-- a data-protection officer or contact for the deployment;
+**What the national system needs before the mandate starts**
+
+These are the Ministry's to meet (§6.2). The project asks for them, and builds the system so that its protections hold even where one is missing.
+- the ministerial text that makes the record official (below);
+- the Ministry's declaration to the ANPDP, an impact assessment where the law requires one, and a data-protection officer;
 - notice to the teachers concerned (Loi 18-07 Art. 32);
-- the data-use charter below, adopted by the teachers' council before the deployment starts;
-- a legal entity for the project, able to sign.
+- consultation of the staff technical committees and the representative unions before the rollout, with the results published (29 Sep);
+- the charter presented to every school's teachers' council (29 Sep);
+- the launch gate: a load test at national scale, a trial term end, the independent security review and a full restore from backup (§6.8).
 
-**The ladder to official status**
-
-| Step | What becomes official | Who decides |
-|---|---|---|
-| 0. A teacher's tool | Nothing: Tabachir prepares and prints | — |
-| 1. Accepted printouts | Directors countersign printed pages. Then the state accepts a printed, signed page instead of re-copying | Directors; then the IGP or the ministry |
-| 2. A school deployment | The school runs Tabachir, as controller | The Director of Education, in writing |
-| 3. A directorate deployment | The directorate runs it for its schools, hosted in Algeria | The directorate |
-| 4. National adoption | A ministerial text gives the digital record official status | The ministry, with the Council of Ministers' approval where required |
-
-- **From step 2,** every gate above applies.
-- **Once a record is official,** signed exports and a history that cannot be altered become requirements.
+**The path to official status**
+- **Now: a teacher's tool.** Tabachir prepares and prints what the school and the state's platforms ask for, and nothing it makes is official.
+- **The first ask** (29 Sep): a ministerial text that makes the full digital record official, and compulsory from the national launch. It covers the texts book, the journal, roll call and marks (§5.5). The ask includes the charter's protections, as a request, not a condition.
+- **The national launch.** The mandate starts only once the national system has passed the launch gate (§6.8). Its date is set once the Ministry adopts Tabachir (29 Sep).
+- **Once a record is official,** the weekly signed record is the official record, with signed exports and a history that cannot be altered (§5.5).
 
 **The data-use charter**
 
 The charter is:
-- bound into every institutional agreement;
-- published as `CHARTER.md`, in Arabic and English;
+- published as `CHARTER.md`, in English (29 Sep). The README summarises it in Arabic;
+- asked for in the Ministry's text, but not required (29 Sep);
+- presented to every school's teachers' council before the national launch (29 Sep);
+- built into the design wherever the design can enforce it (§5, §6);
 - changed only through the process for changing a principle (§1.2).
 
 It has ten points:
@@ -433,15 +433,15 @@ It has ten points:
 | `LICENSE`, `LICENSES/` | Licence texts (REUSE) |
 | `README` (Arabic and English) | What the project is, the official download sources, the signing-key fingerprint |
 | `CONTRIBUTING.md` | Ways to contribute, the DCO sign-off, review rules, rules on data sources |
-| `CODE_OF_CONDUCT.md` | Conduct rules, in Arabic and English |
+| `CODE_OF_CONDUCT.md` | Conduct rules, in English. The README summarises them in Arabic |
 | `GOVERNANCE.md` | Roles, how decisions are made, how principles change, the teacher council |
 | `SECURITY.md` | Private reporting, response times |
-| `TRADEMARKS.md` | What forks may and may not do with the name and logo |
+| `TRADEMARKS.md` | The name policy: what forks may and may not do with the name and logo |
 | `PRIVACY.md` | What the project holds about teachers and why, and what it never holds |
-| `CHARTER.md` | The data-use charter for institution mode (§1.15), in Arabic and English |
+| `CHARTER.md` | The data-use charter (§1.15), in English. The README summarises it in Arabic |
 | `NETWORK.md` | Every address the app contacts, what it sends and why |
 | `docs/decisions/` | Decision records |
-| `CHANGELOG.md` | Release notes for teachers, in Arabic and English |
+| `CHANGELOG.md` | Release notes, in English. Teachers read them in Arabic in the app (§1.9) |
 | `transparency/` | The yearly reports |
 
 The code and the reference data live in separate repositories, because they have different licences, contributors and review rules.
@@ -465,20 +465,39 @@ The code and the reference data live in separate repositories, because they have
 | Insight figures | The IGP sees each report first and has 30 days to comment. Figures are never used for exam thresholds or personnel decisions (§1.6) |
 | Section 1 | Settled on 27 Sep 2026. From now on, changing a principle follows §1.2 |
 
+**Decided on 29 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Languages | `CHARTER.md`, `CODE_OF_CONDUCT.md` and `CHANGELOG.md` are in English. The README summarises them in Arabic, and teachers read the release notes in Arabic in the app |
+| The name | Not registered as a trademark. Protected by use, the official sources and the published checksums |
+
+**Proposed on 29 Sep 2026 (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| Goal | National adoption, with the Ministry running Tabachir on government servers |
+| Institution mode | One form: the national system, run by the Ministry. Teacher mode only until it opens. No school or directorate deployments before then |
+| Who is responsible | The Ministry is the controller and runs the servers. The project only publishes the software |
+| The first ask | A ministerial text making the full digital record official and compulsory from the national launch, with the charter's protections asked for, not required |
+| Before the mandate | The Ministry's own compliance, the consultation of teachers' representatives, the charter presented to every teachers' council, and the launch gate |
+| Students and parents | No features for them. Parents use the state's awlyaa space |
+| The Ministry's app | The project's release, with the Ministry's name and icon as settings, built reproducibly. The project's own app can always connect |
+| After adoption | The Ministry's staff maintain Tabachir, as maintainers in the project's public process |
+| Insights | Opt-in, in teacher mode, from 2027/28 until the national totals exist |
+
 **Open**
-- **Protecting the name.** Three steps:
+- **Protecting the name.** Two steps, since the trademark is not registered:
   - reserve the GitHub organisation `tabachir` so nobody else takes it;
-  - register `tabachir.dz` and `tabachir.com.dz`, under the registry's conditions;
-  - file the trademark with INAPI through counsel.
+  - register `tabachir.dz` and `tabachir.com.dz`, under the registry's conditions.
 - **The legal entity.** Not decided yet. It is needed to sell services, to receive grants and to sign any institutional agreement (§1.15).
 - **The minimum group sizes for insights.** The insights section sets them.
-- **Questions for counsel.** There is no budget for counsel yet, so the project will look for free help, for example university law clinics or incubators. School deployments wait for the answers. The questions:
-  - who the controller is for each kind of school, and whether a school deployment needs any approval beyond the Director of Education's (§1.15);
+- **Questions for counsel.** There is no budget for counsel yet, so the project will look for free help, for example university law clinics or incubators. The questions:
+  - how the Ministry, its directorates and its schools share the controller's role in the national system (§1.15);
   - whether teachers may send lesson-level insights without written authorisation (§1.6);
   - the copyright status of the IGP plans (brief §8);
   - the rules on foreign funding;
-  - whether the scrubbed research may be published;
-  - the trademark filing.
+  - whether the scrubbed research may be published.
 - **Funding the team's time** until services and institutions pay. The business section covers this.
 - **Members of the teacher council.** Chosen after the field check.
 - **Other countries.** Whether another country follows Algeria, and which, is decided after the 2027/28 school year (§1.14).
