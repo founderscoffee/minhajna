@@ -1019,6 +1019,10 @@ A plan pack holds one official plan as data. There is one pack for each level, g
   - a school variant, for parallel classes;
   - the teacher's own changes.
 - Each layer holds only operations: reorder, merge, split, re-budget, skip and add. A fix to the national pack still reaches every class.
+- When a class moves to a new release, the migration entries that carry its progress also carry every layer's operations. The app does this on the device:
+  - an operation on a renamed item stays as it is;
+  - an operation on a split or merged item is carried across when its meaning stays clear. Skipping a split item skips every part, and an item added after it comes after the last part;
+  - when the meaning is not clear, the app asks the teacher before the move, and never guesses. For example, the teacher gave an item two sessions, and the new release splits it in two. The answer goes into the teacher's own layer.
 - A variant is never labelled official.
 
 **Where each pack comes from is always shown.** Until the IGP publishes a pack itself, the app says so, for example: "Based on the September 2022 national edition, keyed by Tabachir's curators. Check with your inspector." (principle 6).
@@ -1226,6 +1230,12 @@ The same repository, review and yearly cycle hold the other data the app needs (
 | Updates | A class stays on its release until the teacher moves it. Recorded sessions never change |
 | Pilot packs | About five packs, keyed in full by December 2026, once the pilot slice is chosen |
 | Section 4 | Settled on 27 Sep 2026 |
+
+**Decided on 29 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Layers across releases | When a class moves to a new release, the migration entries carry every layer's operations, on the device. What they cannot carry clearly, the teacher decides before the move |
 
 **Open**
 - **The copyright status of the IGP's plans** (§1.17). Until counsel answers, packs hold structure and links only.
