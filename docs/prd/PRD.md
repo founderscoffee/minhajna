@@ -1555,7 +1555,7 @@ This section:
 - specifies the security design: threats, the device, keys, the web app and the server;
 - sets the non-functional requirements: devices, speed, reliability, national scale, accessibility and languages.
 
-Institution mode adds its own gates (§1.15), which Section 7 designs. The national system adds the Ministry's (§6.2).
+The national system adds the Ministry's own steps (§6.2), and what it needs before the mandate (§1.15, §7.11).
 
 ### 6.1 The legal position in teacher mode
 
@@ -1577,7 +1577,6 @@ Institution mode adds its own gates (§1.15), which Section 7 designs. The natio
 |---|---|
 | **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
 | **Sync** | • The encryption design published and reviewed (§1.9)<br>• The declaration extended to sync accounts, with its receipt<br>• Servers in Algeria, with no foreign sub-processor<br>• Processor terms in the terms of service, in case counsel finds that the teacher or the school is the controller<br>• The automated log for server-side processing, and the breach runbook (§6.7) |
-| **Institution mode** | The gates in §1.15 |
 | **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' approval where required<br>• the launch gate in §6.8 |
 
 - **Sync opens only when its gates are met.** If they are not met by January 2027, the pilot runs without sync, using direct transfer and backup files (§5.8).
