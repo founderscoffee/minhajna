@@ -1477,7 +1477,7 @@ Every role is enforced by keys, not only by screens. A role that holds no key ca
 
 Four open formats are published, with examples and test files, and offered to the IGP and the national institute for research in education (INRE):
 1. **The plan pack** (§4.2).
-2. **The session log and progress statement,** with boxes for the director's visa and the teacher's signature. It comes with a request: that a printed, signed Tabachir page may replace re-copying once a text allows it (§1.15, step 1).
+2. **The session log and progress statement,** with boxes for the director's visa and the teacher's signature. In the national system, the signed week replaces re-copying (§5.5).
 3. **The timetable package,** with FET as the exchange format.
 4. **The insights payload** (§1.6).
 
