@@ -12,8 +12,8 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026 |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026 |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
-| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026 |
-| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026 |
+| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
+| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026 |
 | 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026 |
 | 9 | [Business](#9-business) | Settled on 27 Sep 2026 |
@@ -1242,44 +1242,58 @@ The same repository, review and yearly cycle hold the other data the app needs (
 
 ## 5. Data, formats and foundations
 
+*Redesign proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Tabachir on government servers. It takes effect when that decision is accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+
 This section specifies:
-- how the apps and the server fit together;
+- how the apps and the server fit together, and who runs the server;
 - the data Tabachir keeps, and where each kind of record may go;
-- the history, sync and retention rules;
+- the history, signing, sync and retention rules;
 - the files Tabachir reads and writes;
-- the foundations that let an authority adopt the records later without a rewrite.
+- the foundations that make the records official when the Ministry adopts them.
 
-Section 6 covers encryption, security and the other non-functional requirements.
+Section 6 covers keys, encryption, security and the other non-functional requirements.
 
-### 5.1 Built for official use from day one
+### 5.1 Built for the national system from day one
 
-- **Institution mode comes later; its foundations don't.** The goal is official status (principle 6), so the records are built for it from the first release, before any authority asks. Later means a later deployment, not a later architecture.
+- **The target is one national system, run by the Ministry** on government servers (29 Sep). The teacher app comes first, and every part of it is built for that system from the first release. Later means a later deployment, not a later architecture.
+- **The design is the teachers' protection** (29 Sep). No agreement or ministerial text is required before the Ministry hosts Tabachir. So everything that protects teachers must hold whoever runs the servers: what the server can read and compute is limited by the design itself (§5.2, §6.5).
 - **Version 1 builds these foundations,** even where no screen uses them yet:
   - stable identities for every record (§5.3);
   - a history that is only ever added to, and shows any tampering (§5.5);
-  - record layers that decide where each record may go (§5.4);
-  - a permission model for every role (§5.10);
+  - record layers that decide where each record may go and who holds its keys (§5.4, §6.5);
+  - the weekly signed record (§5.5);
+  - a permission model for every role, enforced by keys (§5.10);
   - logs of every correction, export, share, access and deletion, which the teacher sees;
   - retention, archive and deletion rules (§5.7);
   - documented open file formats (§5.9).
-- **Built only when a deployment is real,** for that deployment (Section 7):
-  - institution tenants;
-  - legal electronic signatures, through a certified provider;
-  - archive workflows;
-  - the procurement file.
-- **Being ready does not make a record official.** That starts only when an authority adopts Tabachir in writing (§1.15).
+- **Built for the national launch,** before the mandate starts (§6.8):
+  - school spaces on the server (§5.8);
+  - legal electronic signatures (§5.5);
+  - the school archive (§5.7);
+  - the connector to the national interoperability system (§5.9);
+  - the totals above the school (§5.10).
+- **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, compulsory from day one, covering the texts book, the journal, roll call and marks (29 Sep).
 
 ### 5.2 Architecture
 
 | Part | Built with | What it does |
 |---|---|---|
-| Android app | React Native, for Android 8 and later | The whole teacher app, offline |
-| Web app for PCs | React, installable, offline | The same app in the browser. The data stays in that browser, on the teacher's own computer |
-| Shared core | TypeScript | The engine, the assessment rules, the file formats and the document templates. Both apps use the same code, so they give the same results |
-| Server | NestJS, hosted in Algeria | Relays encrypted sync data; mirrors the reference data; hosts the pack editor (§4.3) and receives problem reports. Later, the insights service and billing |
+| Android app | React Native, for Android 8 and later | The whole teacher app, offline. The phone holds the teacher's working record (device first, 29 Sep) |
+| Web app for PCs | React, installable, offline | The same app in the browser. On the teacher's own PC, the data stays in that browser. On a shared staffroom PC, the teacher signs in with their phone, and nothing stays behind (§6.6) |
+| Shared core | TypeScript | The engine, the assessment rules, the file formats, the document templates, and all encryption and signing. Both apps use the same code, so they give the same results and enforce the same protections |
+| Server package | NestJS | One package, installed by whoever runs it. It stores and passes on encrypted records, holds the school spaces (§5.8), mirrors the reference data, hosts the pack editor (§4.3), receives problem reports and forms the totals above the school (§5.10). In the national system it also connects to the national interoperability system (§5.9) |
 
-- **The apps never need the server** to open or to do the daily work (§1.5).
-- **The server never holds readable pupil data** (principle 2).
+**One package, two operators**
+- **Until the Ministry adopts Tabachir, the project runs the server package** in Algeria, free for teachers (29 Sep).
+- **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep). The Ministry runs its deployment under its own name; only the project's builds are called Tabachir (29 Sep, §1.9).
+- **The Ministry needs nothing from the project to run it.** It installs the releases the project publishes, on servers with no internet access. There is no project key, licence server or call home. The project steers the software through its public process, and the Ministry deploys each release within an agreed window, and security fixes within 7 days (29 Sep).
+- **Teachers move from the project's server to the Ministry's** one by one, when they join their school's space, with their consent (§5.8).
+
+**Rules that hold whoever runs the server**
+- **The apps never need the server** to open or to do the daily work (§1.5). No deadline depends on the server (§6.8).
+- **The server cannot read named records.** Everything it stores about a teacher, a class or a pupil is encrypted to keys held only by the teacher, their school and, for a limited time, their inspector (§6.5). The Ministry's staff cannot read it, even though the Ministry runs the servers.
+- **Above the school, only totals,** formed so that the server never learns a figure for one school or one teacher (§5.10).
+- **Nothing on the server tells time.** No clock times, "started" events, sign-in events or locations exist anywhere to be read, and sync arrives in fixed batches that reveal nothing about when a teacher worked (§5.8).
 - **No proprietary libraries,** such as Google Play Services or Firebase (§1.3). Builds must be reproducible and pass F-Droid's checks. This is tested before the pilot (§5.13).
 - **Notifications are scheduled on the device.** There is no push service.
 - **Documents are made on the device.** Each document is built as a web page with print styles, then turned into a PDF by the device's own web engine, which shapes Arabic and mixes directions correctly. DOCX files are generated directly. Nothing is rendered on a server.
@@ -1297,12 +1311,12 @@ Section 6 covers encryption, security and the other non-functional requirements.
 - appreciation lists and banned phrases;
 - grade-workbook variants and print layouts.
 
-**The teacher's records.** Kept on the teacher's devices, or, in institution mode, on the institution's systems.
+**The teacher's records.** Kept on the teacher's devices. When the teacher belongs to a school space, the school's copy is kept on the server, encrypted so that only the teacher and the school can read it (§5.4, §6.5).
 
 | Record | What it holds |
 |---|---|
 | Teacher card | The details the documents print. The personal fields are optional |
-| School | Its name and level. A teacher can work in several |
+| School | Its official code, name, level and wilaya, from the sector's information system. In teacher mode, typed by the teacher. A teacher can work in several |
 | Class and group | Level, stream and pupil counts. Groups: the whole class, half-groups and option groups |
 | Pupil | Only the fields in §5.6 |
 | Course | Class × subject × school year, the anchor for progress (§2.3, rule 3). It holds the pinned pack release and the teacher's changes to the plan (§4.2) |
@@ -1313,24 +1327,29 @@ Section 6 covers encryption, security and the other non-functional requirements.
 | Attendance entry | For each pupil, session or half-day: absent or late, and whether an absence is justified |
 | Assessment | Components and weights, marks, observations and the appreciations chosen |
 | Sharing record | What was shared, with whom, and on which day |
+| Signed week | One week of a course's records, signed by the teacher. In the national system, it is the official record (§5.5) |
+| School membership | A teacher's place in a school space: the assignments it covers and the teacher's device keys (§5.8) |
+| Inspection grant | An inspector's access to named courses, granted by the authority, with its start and end dates (§5.10) |
 
 **Identities**
 - **Every record gets a random ID on the device,** so records made on different devices never clash and can be merged.
 - **Reference data uses readable IDs** that never change meaning (§4.2).
+- **Official identifiers come from the state.** In the national system, schools, class groups and assignments carry the codes of the sector's information system, imported through the interoperability connector (§5.9), so nobody types them twice. A new school appears when the state's system lists it.
 - **Pupils are matched by their official registration number,** never by name.
 - **Progress belongs to the course,** not to the teacher, so it survives a change of teacher.
 
 ### 5.4 Where each record may go
 
-Every record belongs to a layer, and the layer travels with it. Every sync, export and share checks the layer, so a private note can never slip into a statement.
+Every record belongs to a layer, and the layer travels with it. Every sync, export and share checks the layer, so a private note can never slip into a statement. Each layer's keys decide who can read it on a server (§6.5), so the rules hold whoever runs the server.
 
-| Layer | Examples | Where it may go |
-|---|---|---|
-| **Private** | Private notes; the reason a session was not held or an item skipped | Only the teacher's own devices and the teacher's own full export. Never into a statement, a handover, institution mode or insights |
-| **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices, and the files the teacher makes, such as the term export and prints. To a successor only by direct transfer, if the teacher chooses. In institution mode, the institution's systems |
-| **Lesson record** | Items and stages, session types, homework, tests, the factual line | Also into statements and handover packages, and, if the teacher opts in, lesson-level insights (§1.6) |
-| **Shared statement** | Progress statements and handover packages | Whoever the teacher gives it to. Each one goes into the sharing history |
-| **Official snapshot** | Exists only in a deployment with official status | The institution's archive, signed and unchangeable (§1.15) |
+| Layer | Examples | Where it may go | Who can read it on a server |
+|---|---|---|---|
+| **Private** | Private notes; the reason a session was not held or an item skipped | Only the teacher's own devices and the teacher's own full export. Never into a statement, a handover, a school space or any total | Nobody. It never reaches a server, except encrypted for the teacher's own devices |
+| **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices and the files the teacher makes. In a school space, the school's copy (29 Sep). Marks go to the state's system through the interoperability connector (29 Sep), and absences too if the school chooses (29 Sep). To a successor through the school space, or by direct transfer | The teacher and the school. The state's system receives marks, and absences where the school chooses, encrypted for it alone |
+| **Lesson record** | Items and stages, session types, homework, tests, the factual line, and each session's confirmation status | Statements and handover packages. In a school space, each session's confirmation status as it syncs, for the director's view (29 Sep), and the full record once the teacher signs the week (§5.5). In teacher mode, lesson-level insights only if the teacher opts in (§1.6) | The teacher, the school, and the teacher's own inspector during a grant |
+| **Shared statement** | Progress statements and handover packages | Whoever the teacher gives it to. Each one goes into the sharing history | Only those it is given to |
+| **Official snapshot** | The signed weeks, in the national system | The school's archive, signed, kept for the declared period. Corrections are added, never overwritten (§5.5) | The teacher, the school, and the teacher's own inspector during a grant |
+| **Totals** | Figures above the school | The directorate's and the Ministry's screens, only above the minimum group sizes (§5.10) | The Ministry, as totals only. Never a figure for one school or one teacher |
 
 ### 5.5 History, corrections and signatures
 
@@ -1339,8 +1358,11 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Tampering shows.** Each change is chained to the one before it, so an edit or a deletion made outside the app is detected.
 - **Dates, not clock times.** The history records the day and the order of each change, never the time of day (charter point 3).
 - **The teacher sees everything:** the change log, and every export, share, access and deletion.
-- **Signed files.** Each teacher has a signing key, made on their device. Statements, handover packages and timetable packages are signed, so a reader can check that nothing changed since they were issued, and that they come from the same teacher as before. This is not a legal signature.
-- **Legal signatures come only with official status.** In such a deployment, a certified provider signs under Law 15-04, and official snapshots are sealed. Later corrections are shown against the snapshot (§1.15).
+- **Signed files.** Each teacher has a signing key, made on their device. Statements, handover packages and timetable packages are signed, so a reader can check that nothing changed since they were issued, and that they come from the same teacher as before. In teacher mode, this is not a legal signature.
+- **The weekly signature** (29 Sep). The teacher signs each week of each course, in one step, with the fingerprint prompt or the PIN. Until then, the week is the teacher's working record and changes freely. Once signed, it becomes the school's record, and in the national system the official record: the official snapshot (§5.4).
+- **Corrections are always possible** (29 Sep). A signed week can still be corrected. The correction is added and signed, and both versions stay and show, so an honest correction never looks like tampering. Official records are legal evidence; being able to correct them is what keeps that fair to teachers.
+- **Legal signatures in the national system.** When a teacher joins their school space, the state's certification authority certifies the signing key made on their device, so the weekly signature counts under Law 15-04. The key never leaves the device. Counsel confirms the route.
+- **The date is set on the device.** A signed week or a term export counts from the day it was signed on the device, even if the network delays it (§6.8). The Ministry's text sets this rule.
 - **Deletion is real.** When the teacher deletes a pupil's data or a past year, the content is erased. The history keeps only the fact that something was deleted, and on which day.
 
 ### 5.6 The minimum data
@@ -1353,6 +1375,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Absences are justified or unjustified.** The cause itself is never typed, because it is often a health matter.
 - **Imports keep only the listed columns** and drop the rest before anything is saved (§5.9).
 - **The teacher card's personal fields** are optional and never leave the device.
+- **Teachers, in the national system:** the official staff identifier and name from the assignment list, used only to join the school space (§5.8). No phone number, e-mail address or password.
 
 ### 5.7 Retention and the yearly archive
 
@@ -1368,17 +1391,23 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 
 - **Year-end prompts** remind the teacher to export and to erase what they no longer need.
 - **"Erase this device"** removes everything from a phone or browser in one step.
-- **In institution mode,** the institution's declared retention applies instead. For example, lesson logs in school mode are kept for 3 years, like the texts book.
+- **In a school space,** the school's copy and the official record follow the retention the controller declares: the Ministry in the national system. For example, the signed weeks are kept for 3 years, like the texts book. The teacher's own copy keeps the teacher's settings.
+- **A teacher who leaves the school** keeps a full copy of their own lesson records (principle 7). The school keeps its copy and the official record.
 
-### 5.8 Sync, backup and moving between devices
+### 5.8 Sync, school spaces, backup and moving between devices
 
-- **Sync is optional,** for the teacher's own devices. It is end-to-end encrypted and runs through the project's server in Algeria, or through an institution's own server in institution mode. The server only stores and passes on data it cannot read. It is free during the pilot (§1.10).
+- **Two kinds of sync, both end-to-end encrypted.** The server only stores and passes on data it cannot read.
+  - **Between the teacher's own devices,** readable only by the teacher. Free for teachers: on the project's server until adoption, then on the Ministry's (29 Sep).
+  - **To the school space:** the school's copy of the teacher's courses (§5.4), readable only by the teacher and the school.
+- **Joining a school space** (29 Sep). The school gives each teacher a QR code made from the official assignment list. The teacher scans it once. The app links the key in the teacher's phone to their assignments in the school's space, and from then on the teacher signs in with the fingerprint prompt or a PIN (§6.4). There is no password, no account to activate and no reset through the director. The app keeps working offline without signing in, and the teacher is never locked out of their own copy.
+- **Moving to the Ministry's system** (29 Sep). When the national system opens, the teacher joins their school's space there by scanning its QR code. The app shows what will move, and moves it once the teacher agrees. Only the teacher's app holds the keys, so only it can move the records. Private notes stay on the teacher's devices.
+- **Fixed batches.** The app sends to the server in batches of a fixed size, at set times of day, whether or not anything changed. So the server cannot tell when a teacher confirmed a session, or whether they did anything at all. The director's view of confirmation status (§7.6) updates with each batch, a few times a day.
 - **Only new changes travel.** Because the history is only ever added to, sync sends the changes made since the last sync. The payloads are small, and an interrupted sync resumes over mobile data.
 - **No change is ever lost.** If two devices change the same thing before they sync, both changes stay in the history. When they differ, the app asks the teacher which one to keep.
 - **The app shows how many changes are waiting to sync.**
 - **Direct transfer,** without the server, over the local network after scanning a QR code, or as an encrypted file (§3.10).
 - **Backup.** An encrypted backup file that the teacher keeps on a PC, an SD card or a USB key. The phone's cloud backup never receives pupil data (§1.5).
-- **A lost phone** is recovered from sync or from a backup, with the teacher's recovery key. Section 6 designs the keys.
+- **A lost phone** is recovered from sync or from a backup, with the teacher's recovery key. In a school space, the school can also issue a new QR code. The lost phone is removed and receives nothing new. Section 6 designs the keys.
 
 ### 5.9 Files Tabachir reads and writes
 
@@ -1392,7 +1421,14 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 | Timetable package | In | A teacher's part of the school timetable | Signed, with stable IDs and no pupil data. Made from FET, an Excel or CSV template, or by hand (Section 7) |
 | Progress statement | Out | The fields in §3.10 | Signed, with no pupil data. Printed, as a PDF or as a QR code |
 | Handover package | Both | The class's progress, by topic (§3.10) | Signed. Pupil data only by direct transfer, if the teacher chooses |
-| Reference-data release | In | Packs, calendars and rules | Signed by the project (§4.8) |
+| Reference-data release | In | Packs, calendars and rules | Signed by whoever issues it: the IGP for its official packs, the project for the others (§4.8). The app shows who signed |
+
+**The national interoperability system.** In the national system, exchanges with the state's other systems go only through the national interoperability system, on its separate network (Decree 25-320). The server package has a connector for it:
+- **In:** schools, class groups, class lists and assignments from the sector's information system, so nobody types them (§5.3).
+- **Out:** marks, in place of the workbook and ostad round trip (29 Sep); and pupils' absences, where the school chooses (29 Sep).
+- **The connector cannot read what it carries.** Marks and absences are encrypted on the teacher's or the school's device for the receiving state system alone.
+- **The files stay** as the fallback, and for teacher mode.
+- **A data catalogue** is generated from the data model, with each record's layer and classification, as Decree 25-320 requires of public bodies.
 
 **Every file that comes in is untrusted**
 - It is opened in isolation and checked against its format.
@@ -1409,15 +1445,24 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 
 ### 5.10 The permission model
 
-Version 1 has one user: the teacher. The permission model already covers every role, so institution mode needs no rewrite.
+Every role is enforced by keys, not only by screens. A role that holds no key cannot read a record, whoever runs the server (§6.5).
 
-| Role | Can see | In version 1 |
+| Role | Can read | How |
 |---|---|---|
-| Teacher | All their own records | Yes |
-| Coordinator | The statements teachers share | Through files, with no accounts |
-| Director | Shared statements, in reader mode. In school mode, the operational dashboard (§2.4) | Reader mode |
-| Inspector | Shared statements. In school mode, access that the authority grants, limited in time and visible to the teacher | Shared statements |
-| Authority | Aggregates above the minimum group sizes, and nothing below the school (charter point 7) | No |
+| Teacher | All their own records | Their device keys |
+| Director and deputies | Their school's space: the signed weeks, the pupil records, and each class's confirmation status as it syncs (29 Sep, §7.6) | The school key, on their devices |
+| Coordinator | The statements teachers share | Files, with no account |
+| Inspector | The courses named in a grant, only between its dates (29 Sep) | Keys shared for the grant. The teacher sees the grant and every access |
+| Directorate and Ministry | Totals only, above the minimum group sizes (29 Sep) | Totals formed across schools. No key to any named record |
+| Whoever runs the server | Nothing named: encrypted records, and the minimum metadata needed to run the service | No key |
+
+**Totals above the school** (29 Sep)
+- **What they cover:**
+  - the curriculum report: sessions spent on each item, items merged, skipped or re-taught, how far classes got by term end, and plans that run long;
+  - what the system owes teachers: cover given, vacant posts and unassigned hours, and sessions lost to closures, worked out from the public calendar.
+- **Never** a figure for one school or one teacher, a ranking, a count of sessions not held, or anything from the private layer.
+- **How they are formed.** Each teacher's app prepares its share of each total from its own records. The shares are combined so that the server learns only totals covering at least the minimum group sizes: 10 teachers and 3 schools for a wilaya or national figure, 5 teachers and 3 schools for a directorate (§8.4). The method comes from a widely reviewed open-source library (§6.5).
+- **Exam scope** (29 Sep). The Ministry may use wilaya and national totals of how far classes got when it sets exam scope. They are never broken down by school or teacher.
 
 - **Access is granted per course and per layer.** The private layer is never granted to anyone.
 - **Every access appears in the teacher's access log** (charter point 5).
@@ -1465,28 +1510,46 @@ These five technical risks are tested early, before the pilot depends on them:
 | Early checks | The five checks in §5.13, before the pilot |
 | Section 5 | Settled on 27 Sep 2026 |
 
+**Proposed on 29 Sep 2026 (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| The target | One national system, run by the Ministry on government servers, with a space for each directorate and school. The project runs the same package, free, until adoption |
+| The protection | The design alone. Named records are readable only by the teacher, the school and a granted inspector, whoever runs the server |
+| The main copy | Device first. The school's copy is kept on the server, encrypted |
+| The official record | The weekly signed record: texts book, journal, roll call and marks. Always correctable, with both versions shown |
+| Joining | The school's QR code, made from the official assignment list. Fingerprint or PIN sign-in, no password |
+| The state's systems | Through the national interoperability system: assignments and class lists in, marks out, absences out where the school chooses |
+| Above the school | Totals only, formed so the server never learns a figure for one school or one teacher. Wilaya and national totals may inform exam scope |
+| Moving to the Ministry | Teacher by teacher, on joining the school space, with consent |
+
 **Open**
 - **Legal retention periods** for teachers' own records once the year ends. Counsel answers.
 - **The 2026/27 class-list file:** its columns, and whether it has names in Latin letters. The field check finds out.
-- **Shared school PCs.** Whether version 1 needs a temporary session that leaves nothing behind on a shared computer.
-- **The certified signature provider** for an official deployment. Chosen when a deployment is real.
+- **Legal signatures in the national system:** whether the state's certification authority can certify keys made on teachers' phones. Counsel confirms.
+- **The day a signed record counts:** the Ministry's text must say that the day signed on the device counts, not the day the server receives it.
+- **The method for totals** that hides each school's figure from the server, and its cost on budget phones. Tested before the national launch (§6.8).
+- **Access to the interoperability system,** and the agreements it needs with the bodies that issue the data.
 - **Whether the FET importer may call FET's command-line program** as a separate tool. Counsel confirms.
 
 ---
 
 ## 6. Privacy, security and non-functional requirements
 
+*Redesign proposed on 29 Sep 2026 in decision 0015, with Section 5, for the national system run by the Ministry on government servers. It takes effect when that decision is accepted.*
+
 This section:
 - turns the privacy principles (§1.2, §1.5) into requirements;
 - sets out the compliance steps before each launch;
 - specifies the security design: threats, the device, keys, the web app and the server;
-- sets the non-functional requirements: devices, speed, reliability, accessibility and languages.
+- sets the non-functional requirements: devices, speed, reliability, national scale, accessibility and languages.
 
-Institution mode adds its own gates (§1.15), which Section 7 designs.
+Institution mode adds its own gates (§1.15), which Section 7 designs. The national system adds the Ministry's (§6.2).
 
 ### 6.1 The legal position in teacher mode
 
-- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it (principle 2). It is the controller only of what it holds about teachers: sync accounts, billing, support messages and pack-editor accounts (§1.4).
+- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it in readable form (principle 2). It is the controller only of what it holds about teachers on its own server: sync accounts, support messages and pack-editor accounts (§1.4).
+- **In the national system, the Ministry is the controller,** and runs the servers. The project publishes the software and holds nothing.
 - **The teacher's own position is open.** Teachers must keep their registers and journal (Decision 831 Art. 8–10). For official records, the school or the ministry is plausibly the controller, with the teacher acting under its authority. A working copy in a private app is a grey zone. Counsel answers this first (research 06).
 - **Whatever the answer, the product protects pupil data as if the strictest reading applied:**
   - the minimum data (§5.6);
@@ -1503,8 +1566,9 @@ Institution mode adds its own gates (§1.15), which Section 7 designs.
 |---|---|
 | **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
 | **Sync** | • The encryption design published and reviewed (§1.9)<br>• The declaration extended to sync accounts, with its receipt<br>• Servers in Algeria, with no foreign sub-processor<br>• Processor terms in the terms of service, in case counsel finds that the teacher or the school is the controller<br>• The automated log for server-side processing, and the breach runbook (§6.7) |
-| **Paid services** | • A legal entity (§1.17), and a data-protection officer<br>• The commerce rules of Loi 18-05: a `.com.dz` site hosted in Algeria, a commercial-register entry, approved payment channels and invoices |
+| **The project's server for schools** (school spaces before adoption) | • A legal entity (§1.17), and a data-protection officer<br>• A processor contract with each school or directorate, with the Decree 26-07 clauses |
 | **Institution mode** | The gates in §1.15 |
+| **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' approval where required<br>• the launch gate in §6.8 |
 
 - **Sync opens only when its gates are met.** If they are not met by January 2027, the pilot runs without sync, using direct transfer and backup files (§5.8).
 - **Teachers' rights.** Teachers can see, correct and delete what the project holds about them. Corrections are made within 10 days.
@@ -1515,8 +1579,11 @@ Institution mode adds its own gates (§1.15), which Section 7 designs.
 |---|---|
 | A lost or stolen phone | The app lock, the encrypted database and the automatic lock. The lost phone is removed from sync, and the teacher restores their data on a new device (§6.5) |
 | A shared or family device | The app lock. No pupil data in notifications. Screens with pupil data hidden from the recent-apps view |
-| A shared school PC | The web app's passphrase and automatic lock, and "erase this browser's data" (§5.7). Temporary sessions are an open point (§5.14) |
-| A curious or compromised server, or a demand to the project for data | End-to-end encryption: the server holds nothing it can read. Minimal metadata. Every demand listed in the transparency report (§1.11) |
+| A shared school PC | Sign-in with the phone, and a session that leaves nothing behind (§6.6) |
+| A curious or compromised server, or a demand for data to whoever runs it | End-to-end encryption: the server holds nothing named that it can read, whoever runs it. Minimal metadata. The project lists every demand it receives in the transparency report (§1.11) |
+| The operator reading teachers' records, or tracking entry across schools, for example during a strike | Named records readable only by the teacher, the school and a granted inspector (§6.5). Fixed sync batches, so arrival times reveal nothing (§5.8). Totals formed so that no school's figure reaches the server (§5.10) |
+| A national outage at term end | Device first: every task works offline, and a signed record counts from the day signed on the device (§5.5). The launch gate (§6.8) |
+| A lost school key, or a director who leaves | The school key is held by several of the school's staff, with recovery split between the school and its directorate (§6.5) |
 | An attacker on the network | Encryption in transit, a check of the server's identity, and signed reference data (§4.8) |
 | A malicious file | Every incoming file is untrusted: opened in isolation, allowlisted, and its macros never run (§5.9) |
 | A forged statement or package | Signed with the teacher's key (§5.5) |
@@ -1531,6 +1598,8 @@ Institution mode adds its own gates (§1.15), which Section 7 designs.
   - **Android:** the key is kept in the phone's hardware-backed keystore where there is one, and released by the app lock.
   - **Web:** the key is derived from the teacher's passphrase, and held only in memory while the app is unlocked.
 - **The app lock:** a PIN, or the phone's own fingerprint or face prompt. The app never stores biometric data.
+- **Signing in to a school space uses the same prompt** (29 Sep). It unlocks a key kept in the phone's secure chip, and that key proves who the teacher is. The fingerprint or face never leaves the phone, so no server ever handles biometric data. A PIN always works too, since many budget phones and most school PCs have no sensor. The app holds its own key rather than using Google's passkeys, which need Google Play Services (§1.3).
+- **Sign-ins are never recorded as events,** on the device or on a server. A sign-in log would work as an attendance clock (charter point 3).
 - **The automatic lock** after a few minutes of inactivity. The teacher can change the delay.
 - **Nothing readable outside the app.**
   - Notifications never show pupils' names or marks.
@@ -1543,45 +1612,67 @@ Institution mode adds its own gates (§1.15), which Section 7 designs.
 ### 6.5 Keys, sync and recovery
 
 - **Proven cryptography only,** from a widely reviewed open-source library. The project writes no cryptography of its own.
-- **The teacher holds the keys.** Sync data is encrypted on the device before it leaves. Neither the server nor the project ever holds a key.
+- **Nobody who runs a server holds a key** (29 Sep). Records are encrypted on the device before they leave it. Neither the project nor the Ministry holds a key to a named record on its servers.
+- **The keys, and who holds them:**
+
+| Key | Held by | Opens |
+|---|---|---|
+| Device key | Each device, in its secure chip where it has one | That device's database |
+| The teacher's keys | The teacher's own devices | Everything the teacher records, including the private layer |
+| The teacher's signing key | Made on the teacher's device. In the national system, certified by the state (§5.5) | Nothing: it signs the weeks, statements and packages |
+| The school key | The director and deputies, on their devices | The school's space: the signed weeks, the pupil records and the confirmation status |
+| Grant keys | The inspector's device, for the dates of a grant | Only the courses named in the grant |
+| The receiving system's key | The state system that receives marks or absences | Only what is sent to it (§5.9) |
+
+- **Private notes are encrypted for the teacher's own devices only,** never for the school.
+- **Grants end.** After a grant's end date, the inspector's device receives no new keys and deletes what it holds. What an inspector has already read cannot be unread, so a grant names only the courses and the weeks it needs.
 - **Each device has its own key.**
   - The teacher adds a device by scanning a QR code on a device that is already set up.
   - A lost device can be removed, so it receives nothing new.
-- **The recovery sheet.** When sync or backup is set up, the app gives the teacher a recovery key to print or write down. It restores everything on a new device.
-- **The project cannot recover a teacher's data.** That is the price of end-to-end encryption. So:
+- **Recovery.**
+  - **The recovery sheet.** When sync or backup is set up, the app gives the teacher a recovery key to print or write down. It restores everything on a new device.
+  - **In a school space,** a lost phone doesn't lose the class. The school's copy stays, and the school issues a new QR code.
+  - **The school key** is held by several of the school's staff. Its recovery is split between the school and its directorate, so neither can open the school's records alone.
+- **Nobody but the teacher can recover the teacher's private notes.** That is the price of end-to-end encryption. So:
   - making a backup takes two taps;
   - the app reminds the teacher when there has been no sync and no backup for 30 days.
-- **What the server sees:** an account, encrypted data, its size and when it arrived. No names, classes or subjects appear in what it stores or logs.
-- **An account needs no real name.** It needs a login. The payment provider handles payment details, which are kept apart (§1.10).
-- **Reviewed before launch.** The design is published (§1.9), and an independent reviewer checks it before sync opens.
+- **What the server sees:** memberships, encrypted data in fixed batches (§5.8), and their sizes. No names, classes, subjects or times of activity appear in what it stores or logs.
+- **No account needs a real name or a password.** In teacher mode, sync uses a login. In a school space, the teacher is known by their key and their assignment (§5.8).
+- **Reviewed before launch.** The design is published (§1.9), and an independent reviewer checks it before sync opens, and again before the national launch.
 
 ### 6.6 The web app
 
-- **Served from the project's site in Algeria** as a fixed bundle (§5.2). It loads no scripts, fonts or trackers from anywhere else, and a strict security policy blocks them.
+- **Served by whoever runs the server,** from the project's site in Algeria or from the Ministry's, as a fixed bundle (§5.2). It loads no scripts, fonts or trackers from anywhere else, and a strict security policy blocks them.
+- **On a shared staffroom PC** (29 Sep), the teacher signs in by scanning a QR code on the screen with their phone, and approving with the fingerprint prompt. The session keeps the teacher's records in memory only, and leaves nothing behind when it closes or locks. On the teacher's own PC, Windows Hello can replace the phone.
 - **Installed for offline use.** After installation, it changes only when the teacher accepts an update.
 - **Checkable.** It shows its version and build checksum. The published checksums and reproducible builds let anyone check them (§1.9).
 - **Its data** stays in the browser on the teacher's own computer, encrypted with the passphrase (§6.4). The app asks the browser to keep that storage, and warns if the browser may clear it.
 - **Browsers:** current Chrome, Edge and Firefox, on Windows 10 and 11. Safari is not a target in version 1.
 
-### 6.7 The server and the project's operations
+### 6.7 The server and its operators
 
 - **What the server holds, and nothing more:**
-  - encrypted sync data;
-  - teacher accounts;
-  - billing records, kept apart;
+  - encrypted records: the teachers' own sync, and the school spaces (§5.8);
+  - memberships: which device keys belong to which assignments;
+  - the totals above the school (§5.10);
   - pack-editor accounts;
   - the problem reports teachers chose to send.
+- **Built to run on government servers:**
+  - it installs and updates from the published release, with no internet access;
+  - it makes no outbound calls: no content networks, web fonts, analytics or error trackers;
+  - it runs as containers on ordinary servers, in the national data centre or with any host in Algeria;
+  - it comes with an admin console, monitoring, backups with regular restore tests, and a deployment guide.
 - **Hosted in Algeria,** with its backups, and encrypted.
-- **Administration** by named maintainers only, with two-factor sign-in. Every administrative action is logged.
+- **Administration** by named people only, with two-factor sign-in. Every administrative action is logged. Nobody administers it from abroad.
 - **Security logs** are kept apart from everything else, for the shortest time the law allows, and never used to measure or judge teachers.
-- **Fixes.** Security fixes for critical flaws ship within 7 days. Dependencies are watched for known flaws (§1.9).
-- **The breach runbook:**
+- **Fixes.** Security fixes for critical flaws ship within 7 days, and the Ministry deploys them within the same window (§5.2). Dependencies are watched for known flaws (§1.9).
+- **The breach runbook,** for whoever runs the server:
   1. contain the breach and assess it;
   2. notify the ANPDP within 5 days, a conservative target;
   3. tell the teachers affected;
   4. record it in the breach register;
-  5. report it in the transparency report (§1.11).
-- **Demands for data** from any authority are answered only as the law requires, and listed in the transparency report (§1.11). The project holds no pupil data to hand over.
+  5. on the project's server, report it in the transparency report (§1.11).
+- **Demands for data** from any authority are answered only as the law requires. The project lists those it receives in the transparency report (§1.11). Whoever runs the server holds no named record it can read.
 
 ### 6.8 Non-functional requirements
 
@@ -1596,11 +1687,19 @@ Institution mode adds its own gates (§1.15), which Section 7 designs.
 | Accessibility | • Right to left first<br>• Works with the Android screen reader in Arabic, French and English<br>• Text can be enlarged to 200% without breaking a layout<br>• Touch targets of at least 48 dp<br>• Colour is never the only signal<br>• Contrast meets WCAG 2.2 level AA |
 | Languages | Arabic, French and English, with every text translatable (§1.14). Western digits, and dates as in §3.8 |
 | Print | Documents print at 100% on A4, in black and white, as the layouts specify. Any release that changes a layout is checked against printed samples |
-| Server | The daily work never depends on it. Sync aims to be available 99.5% of each month. Maintenance happens outside school hours, and never in the two weeks before a term-end export (§1.9) |
-| Load | There is no central deadline, because the daily work and the term export run on the device. The server must still absorb the term-end rush of syncs |
+| Server | The daily work never depends on it, and neither does any deadline: a record counts from the day it was signed on the device (§5.5). Sync aims to be available 99.5% of each month. Maintenance happens outside school hours, and never in the two weeks before a term-end export (§1.9) |
+| National scale | Every public-school teacher, about 630,000 in February 2026 (research 00), and their classes. Fixed sync batches spread the load across the day (§5.8). The peak is the term-end export of marks to the state's systems |
 | Time budget | About 5 seconds per ordinary session (§3.1), measured in the pilot |
 
 The speed and size figures are targets. The pilot confirms them on budget phones.
+
+**The launch gate** (proposed). Tabachir is compulsory from the national launch (29 Sep), so the national system must be proven before that day. The mandate starts only once the national system has passed:
+- a load test at national scale, including the term-end peak;
+- a trial term end with real schools;
+- the independent security review (§6.5);
+- a full restore from backup.
+
+Morocco's national register shows the cost of skipping this: its top complaint is that it won't load (research 04).
 
 ### 6.9 Security and privacy while building
 
@@ -1630,7 +1729,18 @@ The speed and size figures are targets. The pilot confirms them on budget phones
 | Non-functional | The targets in §6.8, confirmed in the pilot |
 | Section 6 | Settled on 27 Sep 2026 |
 
+**Proposed on 29 Sep 2026 (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| Keys | Nobody who runs a server holds a key to a named record. The school key is held by the school's staff, with recovery split between the school and its directorate |
+| Sign-in | The fingerprint or face prompt unlocks a key in the phone's secure chip. The biometric never leaves the phone, sign-ins are never recorded, and a PIN always works |
+| Shared PCs | Sign-in with the phone, and a session that leaves nothing behind |
+| The server | One package for the project and the Ministry. Installs with no internet access and makes no outbound calls |
+| The launch gate | The national system passes a national load test, a trial term end, the security review and a restore before the mandate starts |
+
 **Open**
+- **Traffic analysis.** Whether fixed sync batches cost too much battery or data on budget phones. Tested before the national launch.
 - **Who controls pupil data in teacher mode,** and the legal basis for minors' data. Counsel answers first.
 - **The ANPDP declaration and the data-protection officer before a legal entity exists:** whether the founder can file the declaration, and whether a DPO can be the founder or external. Counsel answers.
 - **Whether the sync service counts as a service provider** that must keep traffic data for a year (Loi 09-04). Counsel answers.
