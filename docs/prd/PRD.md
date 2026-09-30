@@ -15,7 +15,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
-| 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
+| 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0016) |
 | 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite proposed on 29 Sep 2026 (decision 0016) |
 | 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0016) |
 
@@ -2076,7 +2076,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 
 ## 8. The state layer
 
-*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015 and 0016, for the national system run by the Ministry, with nothing sold. They take effect when those decisions are accepted.*
 
 This section designs how Tabachir works with the state towards the goal in principle 6:
 - what the state already runs, and the rules for working alongside it;
@@ -2236,6 +2236,12 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 | The state track | Teacher mode only until the Ministry's system opens: no accepted printouts, school trials or directorate deployments. The first ask goes with the pilot's results, in September 2027 |
 | National adoption | The first ask: a ministerial text makes the full digital record official, and compulsory from the national launch. The charter's protections are asked for, not required, and the design protects teachers either way. The launch date is set once the Ministry adopts Tabachir |
 | After adoption | The Ministry's own staff maintain Tabachir in the project's public process. The Ministry's app is the project's release under the Ministry's name. The project's server closes once teachers have moved |
+
+**Proposed on 29 Sep 2026 (decision 0016)**
+
+| Decision | Choice |
+|---|---|
+| The offer | The code, the deployment guide, the administration manual and the training material, free. The project sells nothing, and signs no support contract |
 
 **Open**
 - **A contact at the IGP.** There is none yet.
