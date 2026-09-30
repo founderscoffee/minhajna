@@ -100,7 +100,7 @@ Details: [PRD §5](../prd/PRD.md#5-data-formats-and-foundations) and [§6](../pr
 ## Consequences
 
 - **This record replaces 0012.** It also replaces the sync price in [0014](0014-business-model-and-sync-pricing.md), because sync is free. The rest of 0014, and [0006](0006-money-services-not-features.md), are replaced by 0016, proposed separately because it changes principle 4 and needs 30 days of comments.
-- **Exam scope is proposed separately, in 0017.** The founder also chose to let wilaya and national totals inform exam scope. That changes charter point 7 (PRD §1.15), so it follows the process for changing a principle, with 30 days of comments. Until it is accepted, the ban stands.
+- **Exam scope is proposed separately, in 0017.** The founder also chose to let how far classes got inform the scope of every exam, at the level that sets it. That changes charter point 7 (PRD §1.15), so it follows the process for changing a principle, with 30 days of comments. Until it is accepted, the ban stands.
 - **Students and parents.** [0010](0010-institution-mode-and-charter.md) allows features for them only in institution mode. None are planned: the state's awlyaa space serves parents.
 - **The launch gate's trial term end** runs on the Ministry's system, after adoption and before the mandate, since nothing runs in schools before then.
 - **The design is the only protection, so it has to stay intact wherever it runs:**
