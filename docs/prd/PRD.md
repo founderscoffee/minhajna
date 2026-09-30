@@ -1479,7 +1479,7 @@ Every role is enforced by keys, not only by screens. A role that holds no key ca
   - what the system owes teachers: cover given, vacant posts and unassigned hours, and sessions lost to closures, worked out from the public calendar.
 - **Never** a figure for one school or one teacher, a ranking, a count of sessions not held, or anything from the private layer.
 - **How they are formed.** Each school's space prepares its share of each total from the school's records, on a device that holds the school key (29 Sep). The shares are combined across schools, so the server learns only totals covering at least the minimum group sizes: 10 teachers and 3 schools for a wilaya or national figure, 5 teachers and 3 schools for a directorate (§8.4). No school's figure reaches the server. The method comes from a widely reviewed open-source library (§6.5).
-- **Exam scope.** The founder proposes that the Ministry may use wilaya and national totals of how far classes got when it sets exam scope, never broken down by school or teacher (29 Sep). This changes charter point 7 (§1.15), so it is proposed separately, with 30 days of comments (§1.2). Until then, totals are never used for exam scope.
+- **Exam scope.** The founder proposes that how far classes got may inform the scope of every exam, at the level that sets it: a school's own records for its term and mock exams, a directorate's totals for its exams, and wilaya and national totals for national exams (29 and 30 Sep). No figure for one class or one teacher leaves the school. Above it, totals count only signed weeks and are formed only on dates announced at the start of the year. This changes charter point 7 (§1.15), so it is proposed separately in 0017, with 30 days of comments (§1.2). Until then, totals are never used for exam scope.
 
 - **Access is granted per course and per layer.** The private layer is never granted to anyone.
 - **Every access appears in the teacher's access log** (charter point 5).
@@ -1551,7 +1551,7 @@ These five technical risks are tested early, before the pilot depends on them:
 - **The day a signed record counts:** the Ministry's text must say that the day signed on the device counts, not the day the server receives it.
 - **The method for totals** that hides each school's figure from the server, and its cost on budget phones. Tested before the national launch (§6.8).
 - **Access to the interoperability system,** and the agreements it needs with the bodies that issue the data.
-- **Exam scope.** Whether wilaya and national totals may inform it. Proposed separately, as a change to charter point 7 (§5.10).
+- **Exam scope.** Whether how far classes got may inform the scope of each exam, at the level that sets it. Proposed separately in 0017, as a change to charter point 7 (§5.10).
 - **Whether the FET importer may call FET's command-line program** as a separate tool. Counsel confirms.
 
 ---
