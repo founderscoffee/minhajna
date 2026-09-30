@@ -121,7 +121,7 @@ These eight principles override everything else in this PRD.
 | What the project holds about teachers: sync accounts, pack-editor accounts, problem reports, pilot contacts, support messages and donors' details | Personal data under Loi 18-07, for which the project is the controller | Kept to the minimum, hosted in Algeria and stored apart from everything else. Covered by the project's own ANPDP declaration (brief §10) |
 | The raw research: verbatim quotes with links, the competitor dossier | The privacy and copyright of the people quoted. It also names small Algerian developers alongside their install counts | Publish the conclusions only, scrubbed |
 | Pupil data | — | Never reaches the project (principle 2) |
-| The records of the national system | The Ministry is their controller (§1.15) | Held on the Ministry's servers, encrypted so that only the teacher, their school and a granted inspector can read them (§5.4). The project holds none of them |
+| The records of the national system | The Ministry is their controller (§1.15) | Held on the Ministry's servers, encrypted so that only the teacher and their school can read them, and a granted inspector only the lesson records a grant names (§5.4). The project holds none of them |
 
 ### 1.5 Pupil data and privacy rules
 
@@ -593,7 +593,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 | **Teacher** (primary, CEM, lycée) | The app, with:<br>• the day's lessons and one-tap confirmation<br>• roll call and continuous assessment<br>• the documents and the term export<br>• a weekly digest<br>• progress statements and handovers<br>• in the national system, joining the school's space with a QR code, and signing each week (§5.5, §5.8)<br>• in the national system, where their classes stand against each exam's date, as the director sees it, and signing a school exam's cut as one of its setters (§7.10) | Pilot, then launch. The national system after adoption |
 | **Subject coordinator and teaching council** | A merge of the progress statements that teachers choose to share, for the council's pacing plan | Pilot |
 | **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§7.6)<br>• **Exam thresholds** for the school's term and mock exams, first on its dashboard (§7.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
-| **Inspector** | Progress statements before a visit. In the national system, a grant from the authority opens the named courses and weeks, between its dates, and the teacher sees it (§5.10) | Pilot; the national system |
+| **Inspector** | Progress statements before a visit. In the national system, a grant from the authority opens the lesson records of the named courses and weeks, between its dates, and the teacher sees it (§5.10) | Pilot; the national system |
 | **Directorate** | In the national system, totals only, above the minimum group sizes: the threshold of its own unified and mock exams, first on its dashboard (§7.10); what the system owes teachers, such as cover provided, vacant posts and sessions lost to closures; and the curriculum report. Never a figure for one school or one teacher (§5.10) | The national system |
 | **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Tabachir by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10)<br>• Sets the threshold of national exams, such as the BEM and the BAC, through its committee with inspectors (§7.10) | When the Ministry joins. The national system after adoption |
 | **Students and parents** | Nothing in Tabachir (29 Sep). Parents see marks, and absences where the school chooses, in the state's awlyaa space, fed through the national interoperability system (§5.9) | — |
@@ -1428,7 +1428,7 @@ Section 6 covers keys, encryption, security and the other non-functional require
 
 **Rules that hold whoever runs the server**
 - **The apps never need the server** to open or to do the daily work (§1.5). No deadline depends on the server (§6.8).
-- **The server cannot read named records.** Everything it stores about a teacher, a class or a pupil is encrypted to keys held only by the teacher, their school and, for a limited time, their inspector (§6.5). The Ministry's staff cannot read it, even though the Ministry runs the servers.
+- **The server cannot read named records.** Everything it stores about a teacher, a class or a pupil is encrypted to keys held only by the teacher and their school, and, for a limited time, by their inspector, for lesson records only (§6.5). The Ministry's staff cannot read it, even though the Ministry runs the servers.
 - **Above the school, only totals,** formed so that the server never learns a figure for one school or one teacher (§5.10).
 - **Nothing on the server tells time.** No clock times, "started" events, sign-in events or locations exist anywhere to be read, and sync arrives in fixed batches that reveal nothing about when a teacher worked (§5.8).
 - **No proprietary libraries,** such as Google Play Services or Firebase (§1.3). Builds must be reproducible and pass F-Droid's checks. This is tested before the pilot (§5.13).
@@ -1466,7 +1466,7 @@ Section 6 covers keys, encryption, security and the other non-functional require
 | Sharing record | What was shared, with whom, and on which day |
 | Signed week | One week of a course's records, signed by the teacher. In the national system, it is the official record (§5.5) |
 | School membership | A teacher's place in a school space: the assignments it covers and the teacher's device keys (§5.8) |
-| Inspection grant | An inspector's access to named courses, granted by the authority, with its start and end dates (§5.10) |
+| Inspection grant | An inspector's access to the lesson records of named courses and weeks, granted by the authority, with its start and end dates (§5.10) |
 | Exam threshold | For an exam with a common paper: its announced date, the figures taken that day, the cuts proposed and the one adopted, with the setters' signatures. Kept in the space of the level that sets the exam (§7.10) |
 
 **Identities**
@@ -1484,9 +1484,9 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 |---|---|---|---|
 | **Private** | Private notes; the reason a session was not held or an item skipped | Only the teacher's own devices and the teacher's own full export. Never into a statement, a handover, a school space or any total | Nobody. It never reaches a server, except encrypted for the teacher's own devices |
 | **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices and the files the teacher makes. In a school space, the school's copy, once the teacher signs the week (29 Sep). Class lists come in from the sector's information system (§5.9). Marks go to the state's system through the interoperability connector (29 Sep), and absences too if the school chooses (29 Sep). To a successor through the school space, or by direct transfer | The teacher and the school. The state's system receives marks, and absences where the school chooses, encrypted for it alone |
-| **Lesson record** | Items and stages, session types, homework, tests, the factual line, and each session's confirmation status | Statements and handover packages. In a school space, each session's confirmation status as it syncs, for the director's view (29 Sep), and the full record once the teacher signs the week (§5.5). The school's copy holds each session's current status, never the day it was confirmed (§7.6). In teacher mode, lesson-level insights only if the teacher opts in (§1.6) | The teacher, the school, and the teacher's own inspector during a grant |
+| **Lesson record** | Items and stages, session types, homework, tests, the factual line, and each session's confirmation status | Statements and handover packages. In a school space, each session's confirmation status as it syncs, for the director's view (29 Sep), and the full record once the teacher signs the week (§5.5). The school's copy holds each session's current status, never the day it was confirmed (§7.6). In teacher mode, lesson-level insights only if the teacher opts in (§1.6) | The teacher and the school. The teacher's own inspector, during a grant, reads the signed weeks it names, never the confirmation status as it syncs |
 | **Shared statement** | Progress statements and handover packages | Whoever the teacher gives it to. Each one goes into the sharing history | Only those it is given to |
-| **Official snapshot** | The signed weeks, in the national system | The school's archive, signed, kept for the declared period. Corrections are added, never overwritten (§5.5) | The teacher, the school, and the teacher's own inspector during a grant |
+| **Official snapshot** | The signed weeks, in the national system | The school's archive, signed, kept for the declared period. Corrections are added, never overwritten (§5.5) | The teacher and the school. The teacher's own inspector, during a grant, reads their lesson record, never their pupil records |
 | **Totals** | Figures above the school | The directorate's and the Ministry's screens, only above the minimum group sizes (§5.10). The figures behind a directorate's or a national exam's threshold are published after the exam (§7.10) | The directorate and the Ministry, as totals only. Never a figure for one school or one teacher |
 
 ### 5.5 History, corrections and signatures
@@ -1592,7 +1592,7 @@ Every role is enforced by keys, not only by screens. A role that holds no key ca
 | Teacher | All their own records | Their device keys |
 | Director and deputies | Their school's space: the signed weeks, the pupil records, and each class's confirmation status as it syncs (29 Sep, §7.6) | The school key, on their devices |
 | Coordinator | The statements teachers share | Files, with no account |
-| Inspector | The courses named in a grant, only between its dates (29 Sep) | Keys shared for the grant. The teacher sees the grant and every access |
+| Inspector | The lesson records of the courses and signed weeks named in a grant, only between its dates (29 Sep). Never pupil records (30 Sep) | Keys shared for the grant. The teacher sees the grant and every access |
 | Directorate and Ministry | Totals only, above the minimum group sizes (29 Sep) | Totals formed across schools. No key to any named record |
 | Whoever runs the server | Nothing named: encrypted records, and the minimum metadata needed to run the service | No key |
 
@@ -1772,7 +1772,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 | The teacher's keys | The teacher's own devices | Everything the teacher records, including the private layer |
 | The teacher's signing key | Made on the teacher's device. In the national system, certified by the state (§5.5) | Nothing: it signs the weeks, statements and packages |
 | The school key | The director and deputies, on their devices | The school's space: the signed weeks, the pupil records and the confirmation status |
-| Grant keys | The inspector's device, for the dates of a grant | Only the courses named in the grant |
+| Grant keys | The inspector's device, for the dates of a grant | Only the lesson records of the courses and weeks named in the grant |
 | The receiving system's key | The state system that receives marks or absences | Only what is sent to it (§5.9) |
 
 - **Private notes are encrypted for the teacher's own devices only,** never for the school.
@@ -1993,7 +1993,7 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
 | Each teacher's access log, which that teacher sees | Any score, rank or rating of a teacher |
 | The school's exam thresholds: the cuts, the setters' signatures and the figures they came from (§7.10) | — |
 
-- **Everything in it is encrypted,** so that only the teacher and the school can read it, and an inspector during a grant (§6.5). The Ministry's staff, who run the servers, cannot.
+- **Everything in it is encrypted,** so that only the teacher and the school can read it, and an inspector the lesson records a grant names (§6.5). The Ministry's staff, who run the servers, cannot.
 - **What teachers record about pupils enters when the teacher signs the week,** as part of the official record (29 Sep). Marks go on to the state's system, and absences too where the school chooses. Class lists come in from the sector's information system (§5.9).
 
 **Teachers**
@@ -2036,15 +2036,15 @@ The director's view of the school's space (§2.4). It updates with each sync bat
 
 | Data | Teacher | Director and deputies | Inspector, during a grant |
 |---|---|---|---|
-| Pupil records | All, for their classes | Read, in the signed weeks | Read, in the signed weeks the grant names |
-| Lesson records | All. Corrections keep a history | Read the signed weeks, by class. May visa or comment; never edit | Read the courses and weeks the grant names |
+| Pupil records | All, for their classes | Read, in the signed weeks | None |
+| Lesson records | All. Corrections keep a history | Read the signed weeks, by class. May visa or comment; never edit | Read the signed weeks of the courses the grant names |
 | Private notes and reasons | All | None | None |
-| Class progress | All | By class, in the dashboard | The courses in the grant |
+| Class progress | All | By class, in the dashboard | The courses in the grant, from their signed weeks |
 | Timetables | Their own. Can propose changes | Create and change them | The timetables of the teachers in the grant |
 | Cover | Cover for their classes, and the cover they gave | Mark the sessions that need cover, and assign it | None |
 | Access log | Every access to their own records | Their own actions | Their own actions |
 
-- **Inspectors' access** is granted by the authority, never by the director. A grant names the courses and weeks, is limited in time and is visible to the teacher (charter point 5, §6.5).
+- **Inspectors' access** is granted by the authority, never by the director. A grant names the courses and weeks, is limited in time and is visible to the teacher (charter point 5, §6.5). It opens their lesson records only, never pupil records or the confirmation status as it syncs (30 Sep).
 - **Never in Tabachir:** evaluating teachers, transferring them between schools, approving overtime or pay, or connecting to amatti or ostad outside the national interoperability system (§2.6).
 
 ### 7.9 Directorates and the Ministry: totals only
@@ -2159,7 +2159,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 |---|---|
 | School mode | Replaced by the school's space in the national system, after adoption. Before then, no school runs Tabachir as an institution |
 | What enters the school's space | Each session's confirmation status as it syncs, and the signed weeks with roll call and marks. Never the working record before signing, the days sessions were confirmed, private notes or reasons |
-| Who reads it | The teacher and the school, and an inspector during a grant. Nobody who runs the servers |
+| Who reads it | The teacher and the school. An inspector during a grant reads only the lesson records it names. Nobody who runs the servers |
 | Participation | Compulsory from the national launch. Voluntary during the trial term end before it |
 | Directorates | No directorate deployments. Totals only, in the national system |
 | Keys | The school key with the director and the deputies. Recovery split between the school and its directorate |
