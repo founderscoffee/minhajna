@@ -1290,6 +1290,12 @@ Section 6 covers keys, encryption, security and the other non-functional require
 - **They are drawn with React Flow** (MIT). It needs a browser, so the Android app has no maps.
 - **The maps are for reading.** Keys, devices and flows change only through buttons, never by dragging a link.
 
+**Charts on the web screens** (29 Sep)
+- **Progress and totals are drawn with Apache ECharts** (Apache-2.0), run by the Apache Software Foundation: how far classes got, the totals above the school (§5.10), and each exam's threshold if 0017 is accepted.
+- **Charts of a school's own records are drawn on the device,** since the server cannot read them. Reports that carry only totals, such as a published threshold, are rendered on the server as SVG for printing.
+- **ECharts has no right-to-left mode and no keyboard navigation,** so the app mirrors the axes and puts a table of the same figures beside every chart.
+- **The Android app draws its few charts itself** with react-native-svg, with labels as native text so that Arabic is shaped correctly.
+
 **One package, two operators**
 - **Until the Ministry adopts Tabachir, the project runs the server package** in Algeria, free for teachers (29 Sep).
 - **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep).
