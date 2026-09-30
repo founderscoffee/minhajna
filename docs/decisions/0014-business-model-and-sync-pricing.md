@@ -35,7 +35,7 @@ Hosting in Algeria is cheap. The real cost is people's time.
 - **Other income:** the supporter pass, grants and sponsors, as in [0006](0006-money-services-not-features.md).
 - **Where money goes first:** plan-pack curation, then the independent security review, hosting and support.
 
-Details: [PRD §9](../prd/PRD.md#9-business).
+Details: [PRD §9](../prd/PRD.md#9-funding-and-sustainability).
 
 ## Consequences
 

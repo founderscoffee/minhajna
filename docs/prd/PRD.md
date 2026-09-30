@@ -8,7 +8,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 | § | Section | Status |
 |---|---|---|
-| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
+| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0016) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
@@ -16,21 +16,21 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
-| 9 | [Business](#9-business) | Settled on 27 Sep 2026 |
-| 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
+| 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite proposed on 29 Sep 2026 (decision 0016) |
+| 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0016) |
 
 ---
 
 ## 1. Open-source strategy and governing guidelines
 
-*Changes proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Tabachir on government servers. They take effect when that decision is accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+*Changes proposed on 29 Sep 2026 in decisions 0015 and 0016, for the project's goal: national adoption, with the Ministry running Tabachir on government servers, and nothing sold. They take effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
 
 The whole system is open source from its first line of code: the apps, the servers, the tools and the documents. This section sets the rules that govern the project:
 - what is open, and under which licence;
 - what stays private, and why;
 - how pupils' data is protected in public;
 - how people contribute and how decisions are made;
-- how the project pays for itself without closing anything;
+- how the project is funded without selling anything;
 - how the Ministry runs it as one national system, and the charter that protects teachers;
 - why it serves Algeria first, and how other countries can use it later.
 
@@ -46,7 +46,7 @@ Every later section of this PRD must comply with this one. When a feature confli
   - marks stay as confidential as circular 465 §3.5 requires.
 
   By contrast, at least one paid rival stores teachers' data on servers abroad (brief §10).
-- **The tool outlives its company.** This year one developer's whole Google Play account vanished, and its teacher apps went with it (research 04). With open code and an open file format, teachers are never stranded.
+- **The tool outlives its maker.** This year one developer's whole Google Play account vanished, and its teacher apps went with it (research 04). With open code and an open file format, teachers are never stranded.
 - **State-ready by construction, because state adoption is the goal.** The Ministry can audit the code, run it on government servers as one national system (§5.2), or reuse parts of it in the digital دفتر النصوص on its July 2025 roadmap (brief §9). It needs nothing from the project to do so, and it can do all this without buying from a startup.
 - **A community for the yearly data.** Timetables, plans and print templates change every September (brief §8). Teachers already share them on blogs and in groups; the open data repository gives that sharing a home.
 
@@ -59,7 +59,7 @@ These eight principles override everything else in this PRD.
 1. **Open by default.** Every part of the system is public from its first line: code, documents, decisions and roadmap. Only the items listed in §1.4 stay private, each for a stated reason.
 2. **Pupil data never reaches the project.** Pupils' names, marks and absences live on the teacher's devices, or, in institution mode, on the institution's own systems (§1.15). Sync and backup are end-to-end encrypted, so the project cannot read them. No pupil data goes to any third party, SDK or AI service (brief §10).
 3. **No ads, no trackers, and no sale or sharing of data. Ever.**
-4. **Charge for services, never for features.** Everything the app does is free. Money comes from services that cost money to run or need people (§1.10).
+4. **Free, and never for sale.** Everything Tabachir does is free, for teachers and for the state. The project sells nothing: no features, services, support or data. Until the Ministry adopts Tabachir, it is funded by public grants and prizes, teachers' donations and sponsors who get no access to data. After adoption, the Ministry maintains Tabachir with its own staff, in the project's public process (§1.10).
 5. **Open code is not open data.** The code is public and teachers' records are private. Figures leave a teacher's device only in two ways:
    - through the opt-in insights in §1.6;
    - in institution mode (§1.15), where a school or an education authority is the controller.
@@ -118,7 +118,7 @@ These eight principles override everything else in this PRD.
 | Signing keys, server passwords, tokens | Whoever holds them can impersonate the project | Held by named maintainers, with an offline backup. Never in a repository. Secret scanning runs on every change |
 | Security reports, until fixed | Publishing first would expose teachers | Sent to a private reporting address. A public advisory follows the fix (§1.9) |
 | Raw insight submissions | Could single out a teacher | Only groups above the minimum size are published (§1.6) |
-| What the project holds about teachers: sync accounts, billing, support messages | Personal data under Loi 18-07, for which the project is the controller | Kept to the minimum, hosted in Algeria and stored apart from everything else. Covered by the project's own ANPDP declaration (brief §10) |
+| What the project holds about teachers: sync accounts, support messages and donors' details | Personal data under Loi 18-07, for which the project is the controller | Kept to the minimum, hosted in Algeria and stored apart from everything else. Covered by the project's own ANPDP declaration (brief §10) |
 | The raw research: verbatim quotes with links, the competitor dossier | The privacy and copyright of the people quoted. It also names small Algerian developers alongside their install counts | Publish the conclusions only, scrubbed |
 | Pupil data | — | Never reaches the project (principle 2) |
 | The records of the national system | The Ministry is their controller (§1.15) | Held on the Ministry's servers, encrypted so that only the teacher, their school and a granted inspector can read them (§5.4). The project holds none of them |
@@ -220,7 +220,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - Every agreement includes a clause allowing it to be published (Ord. 21-09 Art. 8).
   - An agreement that would break a principle is refused.
   - In the national system, the Ministry runs Tabachir itself, and the project is only the publisher of the software, never the controller (§1.15). Before adoption, the project runs no deployment for a school or an authority (29 Sep).
-- **The state may adopt, host or fork the project** under its licence. The project publishes a deployment guide, and the state can contract larger support (§1.10).
+- **The state may adopt, host or fork the project** under its licence. The project publishes the deployment guide, the administration manual and the training material, free, so the state can do the work itself. It sells the state nothing (§1.10).
 - **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep). They join the project's public process as maintainers, so releases, the principles and the charter are still decided in public (§5.2).
 - **Accounts.** The code lives in a GitHub organisation, not a personal account, so it can be handed over without breaking links. Every maintainer uses two-factor authentication.
 
@@ -258,28 +258,24 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 
 ### 1.10 Money
 
-**Why services, not features.** Under an open licence, anyone may legally rebuild the app without a paywall. Google Play can't bill Algerians, so a paid feature would have to be an unlock key sold through Chargily or BaridiMob. A free rebuild would then spread through the same groups (brief §12). What can be sold is services that cost money to run or need people.
+**Why nothing is sold** (29 Sep). The goal is a Ministry that runs Tabachir without the project. Selling services to schools and authorities would make the project the state's supplier, with a stake in the Ministry depending on it. And teachers fear that a free tool will start charging once their records are in it (research 04, 05).
 
-- **Always free:**
-  - every feature of the app, including the term export and every print layout;
-  - exporting a teacher's own data.
-- **Paid services:**
-  - end-to-end encrypted sync and backup between phone and PC, hosted in Algeria;
-  - deployment, training and support for private schools, directorates and, later, the Ministry. Services for directorates and the Ministry go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the security clauses of Decree 26-07.
-- **Voluntary:** a supporter pass with a visible thank-you. It locks nothing.
-- **Grants and sponsors:**
-  - accepted only if they respect every principle;
-  - disclosed in the transparency report;
-  - foreign funding only after a legal check.
+- **Teachers never pay.** Every feature is free, and so are sync, backup and every export. Donations are voluntary and unlock nothing.
+- **Nobody else pays the project either.** It takes no payment from the Ministry, directorates or schools, for Tabachir or for help with it. The deployment guide, the administration manual and the training material are published free, so the Ministry can do the work itself.
+- **Funding until adoption:**
+  - public grants and prizes that are open to any project, such as INRE's Tarbya-Up Challenge;
+  - teachers' donations, once the association exists, through channels approved in Algeria (brief §12);
+  - sponsors who get no access to data.
+
+  No international grants. Every source is disclosed, and every income and cost appears in the transparency report (§1.11).
+- **Sponsors** get no data, no say in the roadmap and no place in the app. They are thanked on the website and in the transparency report.
+- **After adoption, the Ministry maintains Tabachir** with its own staff, who join the project's public process as maintainers (§1.8).
 - **Never:**
-  - ads;
+  - ads or trackers;
   - selling or sharing data;
   - paid features;
-  - charging teachers to get their own data out.
-- **Payment:**
-  - only through channels approved in Algeria: Chargily, CIB, Edahabia, BaridiMob (brief §12);
-  - billing data is kept apart from everything else (research 06).
-- **Prices.** Sync is free during the pilot. The business section sets prices from the pilot's data.
+  - charging anyone to get their own data out.
+- **No promise beyond the principles.** The charter carries no "free forever" promise, and there is no committed support channel. Volunteers give support as they can.
 
 ### 1.11 Community, transparency and building in public
 
@@ -486,19 +482,28 @@ The code and the reference data live in separate repositories, because they have
 | After adoption | The Ministry's staff maintain Tabachir, as maintainers in the project's public process |
 | Insights | Opt-in, in teacher mode, from 2027/28 until the national totals exist |
 
+**Proposed on 29 Sep 2026 (decision 0016)**
+
+| Decision | Choice |
+|---|---|
+| Principle 4 | "Free, and never for sale." Everything Tabachir does is free, for teachers and for the state, and the project sells nothing |
+| Funding | Until adoption: public grants and prizes open to any project, teachers' donations, and sponsors with no access to data. No international grants |
+| After adoption | The Ministry maintains Tabachir with its own staff (§1.8) |
+| Legal entity | An association, which counsel confirms |
+
 **Open**
 - **Protecting the name.** Two steps, since the trademark is not registered:
   - reserve the GitHub organisation `tabachir` so nobody else takes it;
   - register `tabachir.dz` and `tabachir.com.dz`, under the registry's conditions.
-- **The legal entity.** Not decided yet. It is needed to sell services, to receive grants and to sign any institutional agreement (§1.15).
+- **The association** (29 Sep). Counsel confirms the form, and the rules for an association that receives donations and grants (§9.8).
 - **The minimum group sizes for insights.** The insights section sets them.
 - **Questions for counsel.** There is no budget for counsel yet, so the project will look for free help, for example university law clinics or incubators. The questions:
   - how the Ministry, its directorates and its schools share the controller's role in the national system (§1.15);
   - whether teachers may send lesson-level insights without written authorisation (§1.6);
   - the copyright status of the IGP plans (brief §8);
-  - the rules on foreign funding;
+  - the rules for an association that receives donations and grants;
   - whether the scrubbed research may be published.
-- **Funding the team's time** until services and institutions pay. The business section covers this.
+- **Funding the team's time** until adoption, from grants, prizes, donations and sponsors (§9.7).
 - **Members of the teacher council.** Chosen after the field check.
 - **Other countries.** Whether another country follows Algeria, and which, is decided after the 2027/28 school year (§1.14).
 
@@ -514,7 +519,7 @@ This section sets out:
 - how the daily workflow runs;
 - what version 1 covers.
 
-It complies with Section 1. Later sections design each part: the teacher app, the lesson engine and plan packs, data and formats, privacy and security, institution mode, the state layer, the business and the roadmap.
+It complies with Section 1. Later sections design each part: the teacher app, the lesson engine and plan packs, data and formats, privacy and security, institution mode, the state layer, funding and sustainability, and the roadmap.
 
 ### 2.1 The problem
 
@@ -1646,7 +1651,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 
 ### 6.1 The legal position in teacher mode
 
-- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it in readable form (principle 2). It is the controller only of what it holds about teachers on its own server: sync accounts, support messages and pack-editor accounts (§1.4).
+- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it in readable form (principle 2). It is the controller only of what it holds about teachers itself: sync accounts, support messages, pack-editor accounts and donors' details (§1.4).
 - **In the national system, the Ministry is the controller,** and runs the servers. The project publishes the software and holds nothing.
 - **The teacher's own position is open.** Teachers must keep their registers and journal (Decision 831 Art. 8–10). For official records, the school or the Ministry is plausibly the controller, with the teacher acting under its authority. A working copy in a private app is a grey zone. Counsel answers this first (research 06).
 - **Whatever the answer, the product protects pupil data as if the strictest reading applied:**
@@ -2123,7 +2128,7 @@ This section designs how Tabachir works with the state towards the goal in princ
 3. **The national system** (Section 5): the full digital record, official and compulsory from the national launch, run by the Ministry on government servers, with the protections built into its design. This is the first ask (§1.15, 29 Sep). Paper then stays only as the fallback. Abroad, Ghana declared electronic lesson plans legal, and Russia and Portugal ban paper duplicates (research 11).
 4. **A curriculum-pacing observatory** for the IGP and the curriculum designers, until the national system's totals exist (§8.4).
 5. **A protocol for a national progress figure,** instead of teachers' data (§8.5).
-6. **Code, a deployment guide, an administration manual and support** for the national system (§7.10, §8.7).
+6. **The code, the deployment guide, the administration manual and the training material,** free, for the national system (§7.10, §8.7). The project sells nothing (§1.10).
 
 ### 8.4 The insights observatory
 
@@ -2176,10 +2181,10 @@ It never holds the date of a session, a reason a session was not held, pupil dat
 
 | When | State track | Gate |
 |---|---|---|
-| Now to December 2026 | • Find a contact at the IGP, the first step<br>• Read the Tarbya-Up terms<br>• Draft the plan-pack format<br>• Counsel's priority questions<br>• Plan the legal entity | The field check |
+| Now to December 2026 | • Find a contact at the IGP, the first step<br>• Read the Tarbya-Up terms<br>• Draft the plan-pack format<br>• Counsel's priority questions<br>• Prepare the association | The field check |
 | January–March 2027 | • A director and an inspector in the pilot, in reader mode<br>• The security design published | The pilot's success criteria |
 | September 2027 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry, with the pilot's results and the national system's design (§1.15)<br>• A Tarbya-Up entry, once its call and terms are known | The pilot's results, published |
-| 2027/28 | • The legal entity in place<br>• The observatory's method published, then its first collection | The method published at least a month before collection (§8.4) |
+| 2027/28 | • The association in place<br>• The observatory's method published, then its first collection | The method published at least a month before collection (§8.4) |
 | Once the Ministry adopts Tabachir | • The ministerial text, and the Council of Ministers' decision<br>• The national system on government servers, then a trial term end<br>• Teachers move to it, and the project's server closes (§5.2)<br>• The mandate from the national launch, whose date is set at adoption | What the national system needs (§7.11), and the launch gate (§6.8) |
 
 Before adoption, the track seeks no official acceptance of printed pages, and runs no school or directorate deployments (§1.15, 29 Sep).
@@ -2198,7 +2203,7 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 - **Hosting** on state infrastructure: the Ministry's data centre or the national data centre, with no internet access and no outbound calls (§5.2, §6.7).
 - **The ANPDP,** consulted, or its authorisation for a national system.
 - **Records fit to be official:** signed exports and a history that cannot be altered (§1.15), with legal signatures under Law 15-04 (§5.5).
-- **Tabachir's role:** code, a deployment guide and a support contract (§1.10).
+- **Tabachir's role:** the code, the deployment guide, the administration manual and the training material, free. The project sells nothing, and signs no support contract (§1.10).
 - **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process. The Ministry deploys each release within an agreed window, and security fixes within 7 days (§5.2).
 - **The design protects teachers** (§1.15). The ask includes the charter's protections, as a request, not a condition. Whatever the text says, nobody who runs the servers can read named records, and above the school there are only totals (§5.2, §6.5).
 - **The Ministry's app** is the project's release, with the Ministry's name and icon as settings, built reproducibly. The Ministry's deployment runs under its own name, and the project's own app can always connect to it (§1.9, 29 Sep).
@@ -2241,84 +2246,80 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 
 ---
 
-## 9. Business
+## 9. Funding and sustainability
 
-This section turns the money rules (§1.10) into a model:
-- who pays for what, and at what price;
-- what it costs, and how the team is funded until income arrives;
+*Rewrite proposed on 29 Sep 2026 in decision 0016: Tabachir is free, and the project sells nothing. It takes effect when that decision is accepted.*
+
+This section turns the money rules (§1.10) into a plan:
+- what everyone gets, and what nobody pays;
+- how the project is funded until the Ministry adopts Tabachir;
+- what it costs;
 - the legal entity;
 - how teachers find Tabachir.
 
-Prices and costs are estimates. The pilot tests them.
+Costs are estimates. The pilot tests them.
 
 ### 9.1 The model
 
-| Who | Pays for | Never pays for |
+| Who | Their part | Never |
 |---|---|---|
-| **Teachers** | Nothing they must pay. Optional: sync and backup after the pilot, and a supporter pass | Any feature, the term export, any print layout, or getting their own data out |
-| **Private schools** | Deployment, training and support | The software |
-| **Directorates and the Ministry** | Deployment, hosting, support and training, through public procurement (Loi 23-12) | The software, which the AGPL gives them freely |
-| **Grants and sponsors** | The team's time, plan-pack curation, the field check and the security review | Any say over a principle |
+| **Teachers** | Use everything free: every feature, sync and backup, every export and print layout. They may donate, which unlocks nothing | Pay for anything |
+| **The Ministry, directorates and schools** | Get the software, the deployment guide, the administration manual and the training material, free. After adoption, the Ministry's staff maintain Tabachir (§1.8) | Pay the project, or buy a service from it |
+| **Public grants and prizes** open to any project | Fund the team's time, plan-pack curation, the field check and the security review | Override a principle (§1.2) |
+| **Sponsors** | Are thanked on the website and in the transparency report | Get data, a say in the roadmap or a place in the app |
 
-### 9.2 What the market says
+### 9.2 What teachers are used to
 
 - **Free is the norm** (brief §12).
   - Every Algerian register or journal app found is free, often with ads.
-  - Teachers pay for paper registers (about 350 DA each), printing and design tools. But no Algerian teacher in the research named a price they would pay for an app.
-- **Prices elsewhere.**
-  - The one paid Algerian register tool found charges 800–1,600 DA per term or per year, paid by postal transfer or BaridiMob.
-  - Teacher apps abroad charge about €14–30 a year, or about $20 once. Their users' most common complaints are the yearly fee and having to pay before the app does anything.
-- **What teachers ask for** (research 05): a free core, any price shown before they enter data, a one-time payment rather than a subscription, and a subscription tied to the account, not to one device.
+  - Teachers pay for paper registers (about 350 DA each), printing and design tools.
+- **Teachers fear that a free tool will start charging** once their records are in it, and they have seen teacher apps vanish (research 04, 05). Principle 4 and the continuity pledge answer both (§1.12).
 - **The adoption ceiling.** No Algerian register or journal tool has passed about 10,000 real installs. Content apps get about ten times the installs of tool apps (brief §4.6, §12).
 - **Seasons.** Demand for export and appreciation tools peaks at the term-end windows in December and March.
 - **Scale.** About 630,000 teachers (§2.1).
 
-### 9.3 Sync, the one paid service for teachers
+### 9.3 Sync and backup, free
 
-- **Free during the pilot** (§1.10), once its gates are met (§6.2).
-- **Priced from the pilot's data.** The pilot tests three prices: 500, 1,000 and 1,500 DA a year.
-- **How it is sold:**
-  - one payment per school year, never monthly;
-  - per teacher account, covering all the teacher's devices;
-  - the price shown before sync is set up, and never a paywall in front of a feature.
-- **If a payment lapses,** sync stops, and nothing else changes. The data stays on the teacher's devices, and exporting stays free (§1.12).
-- **Payment** goes through channels approved in Algeria: Chargily, CIB, Edahabia and BaridiMob (§1.10). Selling needs the legal entity and the commerce rules in §6.2.
-- **Google Play.** Google Play cannot bill Algerians, and its rules restrict pointing users to other payment methods from inside an app. So the Google Play build shows no prices or payment links. Teachers subscribe on the project's `.com.dz` website, and the app only signs in.
+- **Free for every teacher** (§1.10), once its gates are met (§6.2). There is no price, subscription or payment.
+- **The project runs the sync server** in Algeria until the Ministry's system opens. Teachers then move to it, and the project's server closes (§5.2).
+- **The same app everywhere.** With nothing to sell, every build is the same, with no prices, payment links or donation links. Donations happen only on the website (§9.5).
 
-### 9.4 Services for institutions
+### 9.4 What the state gets
 
-- **Private schools:** deployment, training and support, priced per school per year. Counsel first settles who the controller is for teachers that private schools employ (§7.13).
-- **Directorates and the Ministry:** hosting where they don't host themselves, deployment, support and training. These go through public procurement (Loi 23-12), with processor terms, hosting in Algeria and the Decree 26-07 security clauses (§1.10). Counsel checks which procurement route fits a free, open-source product.
-- **Prices are public.** The price list for services is published, like every agreement (§1.8).
+- **Everything, free:** the software under the AGPL, the deployment guide, the administration manual and the training material, so the Ministry can do the work itself (§1.10). Nothing goes through public procurement, because nothing is sold.
+- **Everything the Ministry's team needs is documented,** from building a release to restoring a backup (decision 0016).
+- **No deployments by the project.** Before adoption, it runs none for a school or an authority. After adoption, the Ministry runs the national system, and its staff maintain Tabachir (§1.8, §1.15).
 
-### 9.5 Other income
+### 9.5 Grants, prizes, donations and sponsors
 
-- **The supporter pass:** voluntary, with a visible thank-you. It unlocks nothing (§1.10).
-- **Grants and sponsors,** accepted only if they respect every principle, and disclosed in the transparency report. Foreign funding comes only after a legal check (§1.10). Candidates include INRE's incubator after a Tarbya-Up entry (§8.6), university partnerships, and open-source and education funds.
-- **Never:** ads, selling or sharing data, paid features, or charging teachers for their own data (§1.10).
+- **Public grants and prizes open to any project,** such as INRE's Tarbya-Up Challenge (§8.6). No international grants.
+- **Teachers' donations,** on the website, once the association exists and has an account, through channels approved in Algeria (§1.10). They are voluntary and unlock nothing, and the app never asks for them.
+- **Sponsors** who get no access to data, no say in the roadmap and no place in the app. They are thanked on the website and in the transparency report.
+- **Every source is disclosed,** and every income and cost appears in the transparency report (principle 8, §1.11).
+- **Never:** ads, trackers, selling or sharing data, paid features, or charging anyone to get their own data out (§1.10).
 
 ### 9.6 Costs
 
 | Cost | Estimate | Source |
 |---|---|---|
-| Sync servers in Algeria | About 5,000–15,000 DA a month, on one or two servers with redundancy | Research 06 |
+| Sync servers in Algeria, until the Ministry's system opens | About 5,000–15,000 DA a month, on one or two servers with redundancy | Research 06 |
 | Website, downloads and the reference-data mirror | About 1,000–10,000 DA a month, on shared hosting in Algeria | Research 06 |
-| Domains, the trademark filing, the ANPDP formalities, setting up the entity and accounting | One-off and yearly fees | To be quoted |
+| Domains, the ANPDP formalities, setting up the association and its accounts | One-off and yearly fees | To be quoted |
 | **People's time:** development, plan-pack curation, support and security | By far the largest cost | The funding plan (§9.7) |
 
-- **Hosting is cheap. People are not.** At 1,000 DA a year, fewer than 200 paying teachers would cover the servers. What sync revenue must eventually pay for is people's time.
+- **Hosting is cheap. People are not.** Grants and donations go first to people's time (§9.7).
+- **After adoption,** the Ministry pays for its own servers and staff. The project's costs shrink to the website, the reference data and the public process.
 - **Counsel** has no budget yet, so the project looks for free help, such as university law clinics and incubators (§1.17).
 
-### 9.7 Funding until income arrives
+### 9.7 Funding until adoption
 
-- **Until launch,** the work runs on the founder's and volunteers' time, plus any grants. Sync earns nothing during the pilot.
+- **Until launch,** the work runs on the founder's and volunteers' time, plus any grants and prizes.
 - **Spending priorities,** when money comes in:
   1. **Plan-pack curation.** It is the slowest part of the work, and it recurs every September (§4.4). Subject maintainers are credited, and paid once money allows.
   2. **The independent security review** before sync opens (§6.5).
-  3. **Hosting** (§9.6).
-  4. **Support** for teachers, in Arabic (§1.11).
-- **The pilot must answer five money questions:**
-  - Would teachers pay for sync, and at which of the three prices?
+  3. **Hosting** in Algeria (§9.6).
+- **Support** comes from volunteers, as they can. There is no committed support channel (§1.10).
+- **The pilot must answer four questions for this plan:**
   - What share of teachers turn sync on?
   - How much support do 100 teachers need?
   - How long does one plan pack take to key and check?
@@ -2326,20 +2327,14 @@ Prices and costs are estimates. The pilot tests them.
 
 ### 9.8 The legal entity
 
-Not decided yet (§1.17). Whatever form it takes, it must be able to:
-- sell sync online: a commercial-register entry and a `.com.dz` site hosted in Algeria (Loi 18-05);
-- sign processor contracts, institutional agreements and public contracts (§1.15, §7.11);
+**An association, not a company** (29 Sep), which counsel confirms (§1.17). It must be able to:
 - hold the copyright, the name and the repositories, and hand them to a successor (§1.12);
-- receive grants;
+- receive grants, prizes and donations;
+- sign agreements with public bodies, none of them a sale (§1.8);
 - appoint or share a data-protection officer (§6.2).
 
-| Option | For | Against |
-|---|---|---|
-| Auto-entrepreneur status (Loi 22-23) | The simplest and cheapest | It is unclear whether it may sell online, since Loi 18-05 requires a register entry. It is weak for signing institutional contracts |
-| A company, owned by the founder at first | Can sell, sign contracts and hold the name | Setup and accounting costs. Its statutes must bind it to the principles |
-| An association | Fits a shared, open project, and can receive grants | Selling services and signing processor contracts may be harder. Association law may limit foreign funding |
-
-**Recommendation:** a company, with the principles written into its statutes, set up before any paid service or school pilot. The founder decides, after counsel or an incubator has advised. If the ANPDP declaration for the pilot cannot be filed by the founder personally (§6.10), the entity is needed before January 2027.
+- **Why an association.** With nothing sold, the project needs no commercial register entry, and the e-commerce rules of Loi 18-05 no longer apply. Counsel checks the rules for an association that receives donations and grants.
+- **When.** If the ANPDP declaration for the pilot cannot be filed by the founder personally (§6.10), the association is needed before January 2027. Donations start once it exists and has an account.
 
 ### 9.9 How teachers find Tabachir
 
@@ -2350,7 +2345,7 @@ Teachers find Tabachir where they already are (§1.1), never through inspectors 
   - free templates and blank documents with their headers filled in;
   - plain guides to the official rules: formulas, circulars and the calendar;
   - a public view of the plan packs;
-  - the official downloads (§1.9) and the sync subscription.
+  - the official downloads (§1.9).
 - **Word of mouth in the staffroom.** Handover packages and shared statements carry Tabachir from one colleague to the next.
 - **The season.** Launch in September, and promote the term export before the windows in mid-December, March and May.
 - **Every store review gets a reply** (§1.11).
@@ -2371,18 +2366,27 @@ Teachers find Tabachir where they already are (§1.1), never through inspectors 
 | Distribution | The Facebook group, YouTube tutorials and a content website. Never through inspectors or schools |
 | Section 9 | Settled on 27 Sep 2026 |
 
+**Proposed on 29 Sep 2026 (decision 0016)**
+
+| Decision | Choice |
+|---|---|
+| The model | Nothing is sold. Teachers, the Ministry, directorates and schools pay nothing, and the project takes no payment for Tabachir or for help with it |
+| Sync | Free for every teacher, with no price or subscription |
+| The state | The software, the deployment guide, the administration manual and the training material, free. After adoption, the Ministry's staff maintain Tabachir |
+| Funding | Public grants and prizes open to any project, teachers' donations, and sponsors with no access to data. No international grants. Every source disclosed |
+| Spending | Curation first, then the security review and hosting. Volunteers give support |
+| Legal entity | An association, which counsel confirms |
+
 **Open**
-- **The legal entity.** A company is recommended (§9.8). The founder decides.
-- **The sync price,** from the pilot's data.
-- **Whether auto-entrepreneur status may sell online,** and whether a withdrawal right applies to digital subscriptions. Counsel answers.
-- **Funding the team's time** until services pay (§1.17).
-- **Which grants to apply for,** and the legal check on foreign funding.
+- **Counsel confirms the association,** and the rules for one that receives donations and grants.
+- **Which grants and prizes to apply for.**
+- **Funding the team's time** until adoption (§1.17).
 
 ---
 
 ## 10. Roadmap, metrics and risks
 
-*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015 and 0016, for the national system run by the Ministry, with nothing sold. They take effect when those decisions are accepted.*
 
 This section brings the plan together:
 - the roadmap and its gates;
@@ -2399,9 +2403,9 @@ Two tracks run side by side: the product for teachers and schools, and the state
 
 | When | Build | Content | Schools and the state | Legal and money | Gate |
 |---|---|---|---|---|---|
-| **Now to December 2026:** the field check | • A prototype: setup, Today and roll call<br>• The five technical checks (§5.13) | • About five plan packs keyed in full (§4.11)<br>• The 2026/27 calendar, as the Ministry publishes it | • The field check (§10.2)<br>• A contact at the IGP<br>• The Tarbya-Up terms read, and the plan-pack format drafted | • Counsel's priority questions, with free help<br>• The legal entity decided (§9.8)<br>• The project's ANPDP declaration for the pilot (§6.2)<br>• The name protected (§1.17) | The field check's stop condition (§10.4) |
+| **Now to December 2026:** the field check | • A prototype: setup, Today and roll call<br>• The five technical checks (§5.13) | • About five plan packs keyed in full (§4.11)<br>• The 2026/27 calendar, as the Ministry publishes it | • The field check (§10.2)<br>• A contact at the IGP<br>• The Tarbya-Up terms read, and the plan-pack format drafted | • Counsel's priority questions, with free help<br>• The association set up, if the pilot's declaration needs it (§9.8)<br>• The project's ANPDP declaration for the pilot (§6.2)<br>• The name protected (§1.17) | The field check's stop condition (§10.4) |
 | **January–March 2027:** the pilot | • The pilot app (§3.11), reader mode and the coordinator's merge (§7.2–7.3)<br>• The national system designed alongside (§5.1) | Fixes from the field. Ramadan 1448 and any exam move as a live test (§4.11) | A director and an inspector in the pilot, in reader mode | • The security design published<br>• Sync only if its gates are met (§6.2) | The pilot's success criteria (§10.3) |
-| **April–August 2027** | The launch scope: every level's flows, the timetable package, handover, and sync, free for teachers | The first full September release prepared (§4.4) | The pilot's results published | • The legal entity in place<br>• The independent security review (§6.5) | Ready for launch |
+| **April–August 2027** | The launch scope: every level's flows, the timetable package, handover, and sync, free for teachers | The first full September release prepared (§4.4) | The pilot's results published | • The association in place<br>• The independent security review (§6.5) | Ready for launch |
 | **September 2027:** launch | • Google Play, the website and F-Droid<br>• Code contributions open to all (§1.13, stage 3) | The September release for 2027/28 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry (§8.6)<br>• A Tarbya-Up entry | • The first transparency report (§1.11)<br>• The teacher council (§1.8) | — |
 | **2027/28** | More teachers. The observatory, in teacher mode, with its method published a month before collection (§8.4) | The yearly cycle | No school or directorate deployments before adoption (§1.15) | Counsel confirms that lesson-level data needs no written authorisation (§8.4) | The method published at least a month before collection |
 | **2028 onwards** | A second country only if one is decided (§1.14) | — | Teacher mode until the Ministry's system opens (§1.15) | — | — |
@@ -2429,10 +2433,11 @@ Two tracks run side by side: the product for teachers and schools, and the state
 1. Who the controller is in each type of school, and whether a teacher showing their own record to their director is an internal communication.
 2. Whether teachers may send lesson-level insights without written authorisation.
 3. Whether the founder can file the ANPDP declaration and serve as data-protection officer, and whether a processor that stores only data it can't read is still a processor.
-4. Whether the charter's "no personnel use" clause can be written into a ministerial text and enforced.
-5. The copyright status of the IGP's plans.
-6. The FET importer, under FET's licence.
-7. For the first ask (§1.15):
+4. The association's form, and the rules for an association that receives donations and grants (§9.8).
+5. Whether the charter's "no personnel use" clause can be written into a ministerial text and enforced.
+6. The copyright status of the IGP's plans.
+7. The FET importer, under FET's licence.
+8. For the first ask (§1.15):
    - how the Ministry, its directorates and its schools share the controller's role;
    - whether the state's certification authority can certify keys made on teachers' phones (§5.5);
    - whether the Ministry's text can make a record count from the day it was signed on the device (§5.5);
@@ -2458,7 +2463,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 - **Time:** seconds per session and minutes per week, from surveys and volunteer panels.
 - **Trust:** privacy incidents, and security fixes shipped on time.
 - **Content:** packs published, by status. Plan errors fixed, and how fast. Calendar fixes made within 24 hours.
-- **Money:** income against costs (§9).
+- **Money:** income by source, and costs (§9.5, §9.6).
 - **The goal** (§1.15): a working contact at the IGP or INRE, the formats proposed, the first ask made, the independent security review passed, and the Ministry's decision to adopt Tabachir. Also: directors and inspectors who check statements in reader mode.
 
 **Measured without spying on teachers**
@@ -2483,7 +2488,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 | Few installs: no Algerian teacher tool has passed about 10,000 | High | High | The content website and tutorials, free features, offline use, the term export as the pull, and word of mouth through handovers (§9.9) |
 | The state ships a digital texts book or an inspector space within 12–24 months | Medium | Medium | Offer it the formats and the national system's design (§8.3). Otherwise complement it: export into it, and keep the teacher's capture and pacing (§8.2) |
 | Legal questions stay unanswered, with no budget for counsel | High | High | Protect data as if the strictest reading applied (§6.1). Free legal help. The national system's legal steps are the Ministry's to meet before the mandate (§7.11) |
-| No legal entity in time for the pilot's declaration or sync | Medium | High | Decide the entity now (§9.8). The pilot can run without sync (§6.2) |
+| No association in time for the pilot's declaration or sync | Medium | High | Set it up during the field check if the pilot's declaration needs it (§9.8). The pilot can run without sync (§6.2) |
 | Too much scope for a small team: three levels, all the documents, three languages, two platforms, and the national system | High | High | The pilot slice before the launch scope (§3.11, §4.11). The technical checks early (§5.13). The national system is designed alongside the pilot, and built on a plan worked back from its launch date (§5.1, §8.7) |
 | Technical blocks: F-Droid builds, Arabic PDFs, filling `.xls` workbooks, browser storage | Medium | High | The five checks before the pilot (§5.13) |
 | Reference data changes without warning, and the workbook changes at an export deadline | High | Medium | Versioned data, fixes within 24 hours, and only fixes before each export window (§1.9, §4.4) |
@@ -2493,7 +2498,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 | A breach of the server, whoever runs it | Low | High | End-to-end encryption: nobody who runs a server holds a key, so there is nothing readable to steal (§6.5). The breach runbook (§6.7) |
 | The Google Play account is lost or the app removed | Low | High | The website and F-Droid as official sources (§1.9). Accounts held by the organisation (§1.8) |
 | Too much depends on the founder | High | High | Everything public, the continuity pledge (§1.12), and more maintainers (§1.8). After adoption, the Ministry's staff maintain Tabachir too (§1.8) |
-| Money runs out before income arrives | Medium | High | Grants, low hosting costs and clear priorities (§9.7) |
+| Money runs out before adoption | Medium | High | Grants, prizes and donations, low hosting costs and clear priorities (§9.7). The daily work never depends on the project's servers (§1.12) |
 | The 6 September 2026 rule slows the first ask | High | Medium | Teacher mode and reader mode need no approval (§7.2). Patience on the state track |
 | Self-reported figures mislead | Medium | Medium | Figures describe the plan, never exam scope. The data-quality audit, and a sampling protocol for national figures (§8.4, §8.5) |
 | The Ministry does not adopt Tabachir | High | High | Teacher mode stands on its own. The formats, the pipeline and the observatory serve the state anyway (§8.3) |
@@ -2528,8 +2533,16 @@ The risk register is reviewed each term, in public (principle 8).
 | Stop conditions | The mandate waits until the national system passes the launch gate. A charter breach in the national system is reported in public |
 | Risks | Four added: no adoption, resistance to the mandate, the first term end, and a modified app |
 
+**Proposed on 29 Sep 2026 (decision 0016)**
+
+| Decision | Choice |
+|---|---|
+| Money | Nothing is sold. Income is reported by source, with the costs (§9) |
+| Legal entity | An association, set up during the field check if the pilot's declaration needs it (§9.8) |
+| Field check | Counsel's questions add the association's form, and the rules on donations and grants |
+
 **Open**
 - **The pilot's size and schools,** chosen after the field check. About 30 teachers in 3 to 5 schools, across the three levels, is a starting point.
 - **A contact at the IGP.**
-- **The legal entity** (§9.8).
-- **Funding the team's time** until services pay (§1.17).
+- **Counsel's confirmation of the association** (§9.8).
+- **Funding the team's time** until adoption (§9.7).
