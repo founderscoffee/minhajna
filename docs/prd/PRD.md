@@ -8,7 +8,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 | § | Section | Status |
 |---|---|---|
-| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015, 0016 and 0017) |
+| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 and 30 Sep 2026 (decisions 0015, 0016, 0017 and 0018) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
@@ -23,7 +23,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 ## 1. Open-source strategy and governing guidelines
 
-*Changes proposed on 29 Sep 2026 in decisions 0015, 0016 and 0017, for the project's goal: national adoption, with the Ministry running Tabachir on government servers, nothing sold, and exam scope set at each exam's own level. They take effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+*Changes proposed on 29 and 30 Sep 2026 in decisions 0015, 0016, 0017 and 0018, for the project's goal: national adoption, with the Ministry running Tabachir on government servers, nothing sold, and exam scope set at each exam's own level. They take effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
 
 The whole system is open source from its first line of code: the apps, the servers, the tools and the documents. This section sets the rules that govern the project:
 - what is open, and under which licence;
@@ -405,7 +405,7 @@ The charter is:
 - changed only through the process for changing a principle (§1.2).
 
 It has ten points:
-1. **Purpose.** The records serve three things: the teacher's planning, the teaching council's coordination, and the checks the official texts give directors and inspectors. Nothing else.
+1. **Purpose.** The records serve three things: the teacher's planning, the teaching council's coordination, and the checks the official texts give directors and inspectors. Figures drawn from them serve only what point 7 allows. Nothing else.
 2. **No personnel use.** Entries never feed pay, promotion, appraisal, bonuses, discipline or transfers. No rankings, and no colour-coded lists of teachers.
 3. **No surveillance.**
    - No clock times, no "started" events, no location.
@@ -499,6 +499,12 @@ The code and the reference data live in separate repositories, because they have
 |---|---|
 | Charter point 7 | How far classes got may inform the scope of an exam only at the level that sets it: the school's own records, the directorate's totals, or wilaya and national totals. The figures are taken on a date announced in advance, published after the exam and checked against the inspectors' sample. Never for personnel decisions |
 | Insight figures | Keep their ban: never used for exam scope (§1.6) |
+
+**Proposed on 30 Sep 2026 (decision 0018)**
+
+| Decision | Choice |
+|---|---|
+| Charter point 1 | Adds "Figures drawn from them serve only what point 7 allows." Nothing else in the charter changes |
 
 **Open**
 - **Protecting the name.** Two steps, since the trademark is not registered:
