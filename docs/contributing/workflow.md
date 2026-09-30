@@ -186,8 +186,8 @@ While there is only one maintainer, a public notice goes out at least a week bef
 A decision about a principle, a licence, a data flow, the insights layer, money or a partnership gets a record in [`docs/decisions/`](../decisions/) ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)).
 
 1. **Propose.** Copy [the template](../decisions/template.md), give it the next number and the status `Proposed`, and open a pull request titled `docs(decisions): propose 00NN on <subject>`. Link it from the issue.
-2. **Discuss.** A proposal stays open for comments for at least 7 days. A change to a principle stays open for at least 30 days ([PRD §1.2](../prd/PRD.md#12-principles)).
-3. **Decide.** Until the launch, the lead maintainer decides ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)). After it, `GOVERNANCE.md` says who does. The status becomes `Accepted` or `Rejected`, and the record is merged either way, so the reasons stay public.
+2. **Discuss.** A proposal stays open for comments for at least 7 days. A change to a principle stays open for at least 30 days ([PRD §1.2](../prd/PRD.md#12-principles)). Teachers hear about it where they are: an Arabic summary goes on the website and in the teachers' Facebook group, with the website's form for comments, and the field-check teachers are asked directly. Comments made there count like those on the pull request, and each gets an answer in the record ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)).
+3. **Decide.** Until the launch, the lead maintainer decides ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)). After it, `GOVERNANCE.md` says who does. After adoption, a change to a principle or the charter also needs the teacher council's consent ([0016](../decisions/0016-non-commercial.md)). The status becomes `Accepted` or `Rejected`, and the record is merged either way, so the reasons stay public.
 4. **Change it later.** An accepted record is not rewritten. A new record replaces it, and the old one's status becomes `Superseded by 00NN`. Typos and broken links may be fixed at any time.
 
 The pull requests that carry out a decision link to its record.
