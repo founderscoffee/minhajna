@@ -1400,7 +1400,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 
 | Records | Default |
 |---|---|
-| Lesson records | Kept until the teacher deletes them. For comparison, schools keep the texts book for at least 3 years (Decision 155 Art. 13) |
+| Lesson records | Kept until the teacher deletes them. For comparison, schools keep the texts book in their archive for at least 3 years after the school year (Decision 155 of 1991, Art. 13, and the Ministry's 1999 schedule of school documents) |
 | Pupil records | Once the following school year ends, the app offers to erase that year's pupil records, keeping the lesson records |
 | Private notes | Kept until the teacher deletes them |
 | Logs | Kept as long as the records they describe |
