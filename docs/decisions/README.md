@@ -20,4 +20,4 @@ To propose one, copy [the template](template.md) and follow the [workflow](../co
 | [0012](0012-record-layers-and-encrypted-sync.md) | Record layers and end-to-end encrypted sync | 2026-09-27 | Accepted |
 | [0013](0013-insights-payload-and-minimum-group-sizes.md) | What the insights contain, and the minimum group sizes | 2026-09-27 | Accepted |
 | [0014](0014-business-model-and-sync-pricing.md) | The business model and how sync is priced | 2026-09-27 | Accepted |
-| [0017](0017-exam-scope-from-national-totals.md) | National totals may inform exam scope, under three safeguards | 2026-09-29 | Proposed |
+| [0017](0017-exam-scope-at-each-level.md) | How far classes got may inform the scope of every exam, at the level that sets it | 2026-09-29 | Proposed |
