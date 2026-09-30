@@ -1,6 +1,6 @@
-# 0018. Charter point 1 leaves the use of figures to point 7
+# 0018. Charter point 1 leaves figures above the school to point 7
 
-- **Date:** 2026-09-30
+- **Date:** 2026-09-30, amended the same day
 - **Status:** Proposed
 - **Decided by:** the lead maintainer, after at least 30 days of comments, because this changes the charter
 
@@ -14,6 +14,8 @@ Point 7 sets the rules for figures drawn from the records: aggregates only above
 
 Read alone, point 1's "Nothing else" seems to forbid what point 7 allows. A review of the whole PRD on 30 September 2026 found this. The charter is presented to every school's teachers' council, so it must not seem to contradict itself.
 
+Point 7 governs figures above the school. Read strictly, a sentence that sent every figure to point 7 would also forbid the figures inside the school that serve point 1's own purposes: a teacher's count of buffer sessions, the council's charts, the director's dashboard. So, the same day and before any comments, the founder limited the new sentence to figures above the school. This record was amended to match.
+
 ## Options
 
 - **Leave the charter as it is,** and read point 7 as the rule for figures, which point 1's general purpose does not override. Nothing changes, but a teacher reading the charter may still see a contradiction.
@@ -24,14 +26,15 @@ Read alone, point 1's "Nothing else" seems to forbid what point 7 allows. A revi
 
 - **Charter point 1 becomes:**
 
-  > **Purpose.** The records serve three things: the teacher's planning, the teaching council's coordination, and the checks the official texts give directors and inspectors. Figures drawn from them serve only what point 7 allows. Nothing else.
+  > **Purpose.** The records serve three things: the teacher's planning, the teaching council's coordination, and the checks the official texts give directors and inspectors. Above the school, figures drawn from them serve only what point 7 allows. Nothing else.
 
+- Inside the school, figures drawn from the records serve the three purposes of point 1, like the records themselves.
 - Nothing else in the charter changes.
 
 Details: [PRD §1.15](../prd/PRD.md#115-institution-mode), once this is accepted.
 
 ## Consequences
 
-- **Only charter point 1 changes.** It stays open for at least 30 days of comments (PRD §1.2).
-- **It holds whatever 0017 decides.** If 0017 is accepted, point 7 allows the totals above the school and each exam's threshold, under its safeguards. If it is rejected, point 7 keeps its ban on exam thresholds. Either way, point 1 sends every use of figures to point 7.
+- **Only charter point 1 changes.** It was amended on the day it was proposed, before any comments, and stays open for at least 30 days of comments (PRD §1.2).
+- **It holds whatever 0017 decides.** If 0017 is accepted, point 7 allows the totals above the school and each exam's threshold, under its safeguards. If it is rejected, point 7 keeps its ban on exam thresholds. Either way, point 1 sends every use of figures above the school to point 7.
 - **The PRD's §1.15 is brought in line** once this is accepted.
