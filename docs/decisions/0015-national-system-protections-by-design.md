@@ -1,6 +1,6 @@
 # 0015. The national system, with protections built into its design
 
-- **Date:** 2026-09-29
+- **Date:** 2026-09-29, amended 2026-09-30
 - **Status:** Proposed
 - **Decided by:** the lead maintainer
 
@@ -17,6 +17,8 @@ The research shows where teachers accept a digital record, and where they turn a
 
 The founder chose not to wait for a legal text that protects teachers before the Ministry hosts Tabachir. So the protections must hold whoever runs the servers.
 
+On 30 September, before any comments, the founder settled five more points: how totals are formed, what an inspector's grant opens, when totals of how far classes got are formed, how objections from the consultation are handled, and what the project does if the Ministry's build weakens the charter. This record was amended to match.
+
 ## Options
 
 - **The Ministry's server holds the live record and can read it,** like most national registers. It is the simplest to build and run. But every protection then depends on the policy of the day: entry rates for each school or teacher become computable, and an outage at a deadline stops every school at once.
@@ -29,7 +31,8 @@ The founder chose not to wait for a legal text that protects teachers before the
 - **One server package, two operators.** Until the Ministry adopts Tabachir, the project runs it in Algeria, free for teachers. The Ministry then runs it on government servers, as one national system with a space for each directorate and each school.
 - **The Ministry needs nothing from the project.** The package installs from the published releases with no internet access, and makes no outbound calls. There is no project key, licence server or call home.
 - **The Ministry runs its deployment under its own name.** Its app is the project's release, with the Ministry's name and icon as settings, built reproducibly so that anyone can check it against the published code. Only the project's builds are called Tabachir ([0007](0007-name-tabachir.md)), and the project's own app can always connect to the national system.
-- **After adoption, the Ministry's own staff maintain Tabachir,** as maintainers in the project's public process. Releases, the principles and the charter are still decided in public. The Ministry deploys each release within an agreed window, and security fixes within 7 days.
+- **A build that weakens the charter is made public at once.** If a check finds that the Ministry's build differs from the published code in a way that weakens the charter, such as a key the Ministry holds, the project publishes the finding at once and sends it to the Ministry. Teachers can then use the project's own app.
+- **After adoption, the Ministry's own staff maintain Tabachir,** as maintainers in the project's public process. Releases, the principles and the charter are still decided in public. The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days.
 - **Teachers move to the Ministry's system one by one,** when they join their school's space there. The app shows what will move, and moves it once the teacher agrees. Private notes never move. The project's server closes once teachers have moved. Anyone outside the national system keeps the app, with direct transfer and backups.
 
 **Where records live, and who can read them**
@@ -43,11 +46,11 @@ The founder chose not to wait for a legal text that protects teachers before the
   | Pupil records | Class lists, roll call, marks, observations and appreciations | The teacher's devices and files, and the school's space. Marks go to the state's system, and absences too where the school chooses | The teacher and the school. The state's system reads only what is sent to it |
   | Lesson record | Items and stages, homework, tests, the factual line, and each session's confirmation status | Statements and handover packages. The school's space: the confirmation status as it syncs, and the full record once the week is signed. In teacher mode, the opt-in insights ([0013](0013-insights-payload-and-minimum-group-sizes.md)) | The teacher, the school, and the teacher's inspector during a grant |
   | Shared statement | Progress statements and handover packages | Whoever the teacher gives it to, logged in the sharing history | Only those it is given to |
-  | Official snapshot | The signed weeks, in the national system | The school's archive, for the declared period | The teacher, the school, and the teacher's inspector during a grant |
+  | Official snapshot | The signed weeks, in the national system | The school's archive, for the declared period | The teacher and the school. The teacher's inspector, during a grant, reads only its lesson record |
   | Totals | Figures above the school | The directorate's and the Ministry's screens | The directorate and the Ministry, as totals only |
 
 - **The school key** is held by the director and the deputies. Its recovery is split between the school and its directorate, so neither can open the school's records alone.
-- **Inspectors** read only the courses and weeks named in a grant, between its dates. The authority grants it, and the teacher sees the grant and every access.
+- **Inspectors** read only the lesson records of the courses and signed weeks named in a grant, between its dates: never pupil records, and never the confirmation status as it syncs. The authority grants it, and the teacher sees the grant and every access.
 
 **The official record**
 - **The weekly signature.** The teacher signs each week of each course, in one step. Until then, the week is the teacher's working record. Once signed, it is the school's record, and in the national system the official record.
@@ -71,7 +74,8 @@ The founder chose not to wait for a legal text that protects teachers before the
 **Above the school: totals only**
 - **What they cover:** the curriculum report, and what the system owes teachers: cover given, vacant posts and unassigned hours, and sessions lost to closures, worked out from the public calendar.
 - **Never** a figure for one school or one teacher, a ranking, a count of sessions not held, or anything from the private layer.
-- **How they are formed.** Each teacher's app prepares its share of each total. The shares are combined so that the server learns only totals that meet the minimum group sizes of 0013: 10 teachers and 3 schools for a wilaya or national figure, and 5 teachers and 3 schools for a directorate.
+- **How they are formed.** Each school's share of each total is prepared from the school's records, on a device that holds the school key, since the server cannot read them. The shares are combined across schools, so the server learns only totals that meet the minimum group sizes of 0013: 10 teachers and 3 schools for a wilaya or national figure, and 5 teachers and 3 schools for a directorate. No school's figure reaches the server.
+- **Only on announced days.** Totals of how far classes got are formed only on days announced in advance: each term's end, set at the start of the school year, and each exam's date where charter point 7 allows. There is no weekly or monthly series, whatever 0017 decides.
 - **The opt-in insights** of 0013 run in teacher mode from 2027/28, and are retired once the national system's totals exist.
 
 **The state's systems**
@@ -92,7 +96,7 @@ The founder chose not to wait for a legal text that protects teachers before the
   - a trial term end with real schools;
   - the independent security review;
   - a full restore from backup.
-- **Teachers are consulted first.** Before the rollout, the staff technical committees and the representative unions are consulted, and the results are published. The charter is presented to every school's teachers' council.
+- **Teachers are consulted first.** Before the rollout, the staff technical committees and the representative unions are consulted, and the results are published. Every objection gets a public answer before the mandate starts: from the project on the software, and from the Ministry on the mandate. The Ministry is asked for this, as a request. The charter is presented to every school's teachers' council.
 - **The pilot stays in January to March 2027,** with the teacher app. The national system is designed alongside it. Its launch date is set once the Ministry adopts Tabachir, and the work is planned back from it.
 
 Details: [PRD §5](../prd/PRD.md#5-data-formats-and-foundations) and [§6](../prd/PRD.md#6-privacy-security-and-non-functional-requirements).
