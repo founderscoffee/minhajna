@@ -20,3 +20,4 @@ To propose one, copy [the template](template.md) and follow the [workflow](../co
 | [0012](0012-record-layers-and-encrypted-sync.md) | Record layers and end-to-end encrypted sync | 2026-09-27 | Accepted |
 | [0013](0013-insights-payload-and-minimum-group-sizes.md) | What the insights contain, and the minimum group sizes | 2026-09-27 | Accepted |
 | [0014](0014-business-model-and-sync-pricing.md) | The business model and how sync is priced | 2026-09-27 | Accepted |
+| [0018](0018-charter-purpose-and-figures.md) | Charter point 1 leaves the use of figures to point 7 | 2026-09-30 | Proposed |
