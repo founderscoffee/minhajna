@@ -1311,7 +1311,7 @@ Section 6 covers keys, encryption, security and the other non-functional require
 - **Nothing on the server tells time.** No clock times, "started" events, sign-in events or locations exist anywhere to be read, and sync arrives in fixed batches that reveal nothing about when a teacher worked (§5.8).
 - **No proprietary libraries,** such as Google Play Services or Firebase (§1.3). Builds must be reproducible and pass F-Droid's checks. This is tested before the pilot (§5.13).
 - **Notifications are scheduled on the device.** There is no push service.
-- **Documents are made on the device.** Each document is built as a web page with print styles, then turned into a PDF by the device's own web engine, which shapes Arabic and mixes directions correctly. DOCX files are generated directly. Nothing is rendered on a server.
+- **Documents are made on the device.** Each document is built as a web page with print styles, then turned into a PDF by the device's own web engine, which shapes Arabic and mixes directions correctly. DOCX files are generated directly. Nothing that names a teacher, a class or a pupil is rendered on a server.
 - **The web app runs no code on the server.** It updates only when the teacher accepts the update, and it shows its build checksum, which anyone can compare with the published one (§1.9). Section 6 covers how that code is checked.
 - **One set of rules, one set of tests.** The formulas, the averages and the engine are checked against published test cases, run in both apps.
 
