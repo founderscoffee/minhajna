@@ -11,7 +11,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015, 0016 and 0017) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
-| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026 |
+| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
 | 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
@@ -47,7 +47,7 @@ Every later section of this PRD must comply with this one. When a feature confli
 
   By contrast, at least one paid rival stores teachers' data on servers abroad (brief §10).
 - **The tool outlives its maker.** This year one developer's whole Google Play account vanished, and its teacher apps went with it (research 04). With open code and an open file format, teachers are never stranded.
-- **State-ready by construction, because state adoption is the goal.** The Ministry can audit the code, run it on government servers as one national system (§5.2), or reuse parts of it in the digital دفتر النصوص on its July 2025 roadmap (brief §9). It needs nothing from the project to do so, and it can do all this without buying from a startup.
+- **State-ready by construction, because state adoption is the goal.** The Ministry can audit the code, run it on government servers as one national system (§5.2), or reuse parts of it in the digital دفتر النصوص on its July 2025 roadmap (brief §9). It needs nothing from the project to do so, and there is nothing to buy: the project sells nothing (§1.10).
 - **A community for the yearly data.** Timetables, plans and print templates change every September (brief §8). Teachers already share them on blogs and in groups; the open data repository gives that sharing a home.
 
 Open source earns trust, but it does not bring installs by itself. Teachers find their tools through content sites, Facebook groups, YouTube and staffrooms (brief §12). So the project builds in public in those places, in Arabic (§1.11), with the open code as the proof behind it.
@@ -118,7 +118,7 @@ These eight principles override everything else in this PRD.
 | Signing keys, server passwords, tokens | Whoever holds them can impersonate the project | Held by named maintainers, with an offline backup. Never in a repository. Secret scanning runs on every change |
 | Security reports, until fixed | Publishing first would expose teachers | Sent to a private reporting address. A public advisory follows the fix (§1.9) |
 | Raw insight submissions | Could single out a teacher | Only groups above the minimum size are published (§1.6) |
-| What the project holds about teachers: sync accounts, support messages and donors' details | Personal data under Loi 18-07, for which the project is the controller | Kept to the minimum, hosted in Algeria and stored apart from everything else. Covered by the project's own ANPDP declaration (brief §10) |
+| What the project holds about teachers: sync accounts, pack-editor accounts, problem reports, pilot contacts, support messages and donors' details | Personal data under Loi 18-07, for which the project is the controller | Kept to the minimum, hosted in Algeria and stored apart from everything else. Covered by the project's own ANPDP declaration (brief §10) |
 | The raw research: verbatim quotes with links, the competitor dossier | The privacy and copyright of the people quoted. It also names small Algerian developers alongside their install counts | Publish the conclusions only, scrubbed |
 | Pupil data | — | Never reaches the project (principle 2) |
 | The records of the national system | The Ministry is their controller (§1.15) | Held on the Ministry's servers, encrypted so that only the teacher, their school and a granted inspector can read them (§5.4). The project holds none of them |
@@ -146,7 +146,7 @@ These eight principles override everything else in this PRD.
 
 ### 1.6 Anonymous insights: rules for openness
 
-The insights layer is opt-in and shares lesson-level data only. A later section designs it; the rules below bind that design. It runs in teacher mode from 2027/28, and is retired once the national system's totals exist (§5.10, 29 Sep).
+The insights layer is opt-in and shares lesson-level data only. A later section designs it; the rules below bind that design. It runs in teacher mode from 2027/28, and is retired once the national system's totals exist (§5.10, §8.4, 29 Sep).
 
 - **Publish before collecting.** The insights server's code, the exact payload and the aggregation method are public at least one month before collection starts.
 - **The teacher is in control.**
@@ -159,7 +159,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 - **How it is grouped.** By level, subject and wilaya.
   - Minimum group sizes count teachers and schools, not only pupils. A group below the minimum is never shown.
   - Cells that would let a hidden figure be worked out by subtraction are hidden too.
-  - The insights section sets the numbers.
+  - §8.4 sets the numbers.
 - **What the figures may be used for.** The published method states that the figures describe the curriculum plan, not classes or teachers. They are never used:
   - to set the scope of exams ("thresholds"). Only the national system's figures may inform exam scope, under charter point 7 (§1.15);
   - to rank anyone;
@@ -243,7 +243,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - **Forks.** The name policy (`TRADEMARKS.md`) lets anyone fork, but under another name and logo, and without suggesting that the fork is the official app. The Ministry's deployment runs under its own name (§5.2).
   - **Official builds.** Unmodified official builds may be shared as they are.
 - **Naming rule**, for the product and for anything the project later names:
-  - **Distinctive.** It must be an invented word, or an ordinary word used for something unrelated, and never a description of the product. INAPI refuses signs that lack distinctive character (Ord. 03-06, Art. 7 point 2). Only a registrable name can separate official builds from forks.
+  - **Distinctive.** It must be an invented word, or an ordinary word used for something unrelated, and never a description of the product. INAPI refuses signs that lack distinctive character (Ord. 03-06, Art. 7 point 2). The name is not registered, so the official sources and the published checksums are what separate official builds from forks.
   - **Easy to say.** It must be easy to say in Algerian Arabic, French and English, with one fixed Latin spelling.
   - **No official echo.** No echo of official documents (دفتر النصوص, كراس القسم, سجل المناداة, المنهاج), state bodies or state platforms (ostad, amatti, awlyaa, mowadaf, the "ديوان" offices, Morocco's Massar).
   - **No echo of existing teacher apps.**
@@ -381,7 +381,7 @@ Institution mode is how an education authority uses Tabachir as an institution, 
 
 **What the national system needs before the mandate starts**
 
-These are the Ministry's to meet (§6.2). The project asks for them, and builds the system so that its protections hold even where one is missing.
+These are the Ministry's to meet (§6.2, §7.12). The project asks for them, and builds the system so that its protections hold even where one is missing.
 - the ministerial text that makes the record official (below);
 - the Ministry's declaration to the ANPDP, an impact assessment where the law requires one, and a data-protection officer;
 - notice to the teachers concerned (Loi 18-07 Art. 32);
@@ -391,7 +391,7 @@ These are the Ministry's to meet (§6.2). The project asks for them, and builds 
 
 **The path to official status**
 - **Now: a teacher's tool.** Tabachir prepares and prints what the school and the state's platforms ask for, and nothing it makes is official.
-- **The first ask** (29 Sep): a ministerial text that makes the full digital record official, and compulsory from the national launch. It covers the texts book, the journal, roll call and marks (§5.5). The ask includes the charter's protections, with the three safeguards on exam scope (point 7), as a request, not a condition.
+- **The first ask** (29 Sep): a ministerial text that makes the full digital record official, and compulsory from the national launch. It covers the texts book, the journal, roll call and marks (§5.1, §5.5). The ask includes the charter's protections, with the three safeguards on exam scope (point 7), as a request, not a condition.
 - **The national launch.** The mandate starts only once the national system has passed the launch gate (§6.8). Its date is set once the Ministry adopts Tabachir (29 Sep).
 - **Once a record is official,** the weekly signed record is the official record, with signed exports and a history that cannot be altered (§5.5).
 
@@ -505,12 +505,10 @@ The code and the reference data live in separate repositories, because they have
   - reserve the GitHub organisation `tabachir` so nobody else takes it;
   - register `tabachir.dz` and `tabachir.com.dz`, under the registry's conditions.
 - **The association** (29 Sep). Counsel confirms the form, and the rules for an association that receives donations and grants (§9.8).
-- **The minimum group sizes for insights.** The insights section sets them.
 - **Questions for counsel.** There is no budget for counsel yet, so the project will look for free help, for example university law clinics or incubators. The questions:
   - how the Ministry, its directorates and its schools share the controller's role in the national system (§1.15);
   - whether teachers may send lesson-level insights without written authorisation (§1.6);
   - the copyright status of the IGP plans (brief §8);
-  - the rules for an association that receives donations and grants;
   - whether the scrubbed research may be published.
 - **Funding the team's time** until adoption, from grants, prizes, donations and sponsors (§9.7).
 - **Members of the teacher council.** Chosen after the field check.
@@ -594,7 +592,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 |---|---|---|
 | **Teacher** (primary, CEM, lycée) | The app, with:<br>• the day's lessons and one-tap confirmation<br>• roll call and continuous assessment<br>• the documents and the term export<br>• a weekly digest<br>• progress statements and handovers<br>• in the national system, joining the school's space with a QR code, and signing each week (§5.5, §5.8)<br>• in the national system, where their classes stand against each exam's date, as the director sees it, and signing a school exam's cut as one of its setters (§7.10) | Pilot, then launch. The national system after adoption |
 | **Subject coordinator and teaching council** | A merge of the progress statements that teachers choose to share, for the council's pacing plan | Pilot |
-| **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§5.10)<br>• **Exam thresholds** for the school's term and mock exams, first on its dashboard (§7.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
+| **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§7.6)<br>• **Exam thresholds** for the school's term and mock exams, first on its dashboard (§7.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
 | **Inspector** | Progress statements before a visit. In the national system, a grant from the authority opens the named courses and weeks, between its dates, and the teacher sees it (§5.10) | Pilot; the national system |
 | **Directorate** | In the national system, totals only, above the minimum group sizes: the threshold of its own unified and mock exams, first on its dashboard (§7.10); what the system owes teachers, such as cover provided, vacant posts and sessions lost to closures; and the curriculum report. Never a figure for one school or one teacher (§5.10) | The national system |
 | **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Tabachir by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10)<br>• Sets the threshold of national exams, such as the BEM and the BAC, through its committee with inspectors (§7.10) | When the Ministry joins. The national system after adoption |
@@ -617,7 +615,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | Languages | Arabic, French and English interfaces. Documents come out in the subject's language |
 | AI | For curators only, never with pupil data. None in the teacher app |
 | School layer | • Reader mode in the pilot<br>• The timetable package at launch<br>• The school's space only in the national system, after adoption (§1.15) |
-| Not in version 1 | • The national system: school spaces, the weekly signature, the interoperability connector and the totals, built for the national launch (§5.1)<br>• The insights observatory (2027/28)<br>• An iPhone app<br>• AI in the teacher app |
+| Not in version 1 | • The national system: school spaces, legal signatures, the interoperability connector and the totals, built for the national launch (§5.1)<br>• The insights observatory (2027/28)<br>• An iPhone app<br>• AI in the teacher app |
 
 ### 2.6 What Tabachir never does
 
@@ -672,7 +670,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 - **The pilot slice.** Which grades, subjects and schools. It is chosen after the field check, by December 2026.
 - **Plan packs for lycée.** An archive of 89 lycée plan files from September 2022, covering 23 subjects, was found (research 09). The field check finds out which of them are in force (§4.12).
 - **The lesson-note template for each level,** and whether inspectors accept it. The field check tests this.
-- **Which body would issue the text for national adoption** (§1.15), and when. The state track finds out.
+- **When the Ministry would issue its text** for national adoption, with the Council of Ministers' decision (§1.15, §8.7). The state track finds out.
 
 ---
 
@@ -947,12 +945,12 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 ### 3.10 Sharing, handover and devices
 
 - **The progress statement.**
-  - One per class, as a print, a PDF or a short-lived QR code.
+  - One per class, as a print, a PDF or a QR code (§5.9).
   - Its fields follow the state's April 2026 request:
     - the last domain or sequence completed;
     - the last learning resource;
     - weeks of delay;
-    - sessions not held, shown only as calendar causes or "other" unless the teacher chooses to show more;
+    - sessions not held, shown only as calendar causes or "other". The reasons stay on the teacher's devices (§5.4);
     - the plan pack and its release.
   - It carries no pupil data.
   - The teacher decides when to share it, and a sharing history shows what went to whom.
@@ -975,7 +973,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | | Pilot (January–March 2027) | Launch (September 2027) |
 |---|---|---|
 | Levels | A few grades and subjects per level, chosen after the field check | All three levels, with the plan packs ready by then |
-| In the app | Setup, Today and confirmation, roll call, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement | All of this, plus the school's timetable package, handover, and sync, free |
+| In the app | Setup, Today and confirmation, roll call, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement. Sync only if its gates are met (§6.2) | All of this, plus the school's timetable package, handover, and sync, free |
 | Languages | Arabic at least; French and English as their translations are ready | Arabic, French and English |
 | Measured | • Seconds per session: median and 90th percentile<br>• Minutes per week, against paper<br>• The share of sessions confirmed in one tap<br>• Term exports completed | Published before launch |
 
@@ -1007,6 +1005,12 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 | Homework record | A texts-book record for each subject: the dates, the activity, and two class counts with their percentages of the class list. Never names |
 | The teacher's signature | By hand, or a drawn signature that the teacher turns on. Kept like the teacher card's personal fields. Not a legal signature |
 
+**Decided on 30 Sep 2026**
+
+| Decision | Choice |
+|---|---|
+| Supervised or additional lessons | The texts book's page for them is filled only from sessions the teacher logs outside the timetable, and prints blank when there are none. The app never shows a teacher's unused hours |
+
 **Proposed on 29 Sep 2026 (decision 0015)**
 
 | Decision | Choice |
@@ -1031,8 +1035,6 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 - **The 2026/27 grade workbook.** Its file type and columns.
 - **Circular 244's list of appreciations.** It has not been found.
 - **Roll-call counting rules.** Directors confirm them.
-- **Printed pages.** Whether a printed texts-book strip, or a week-per-page journal, is accepted.
-- **Drawn signatures.** Whether directors and inspectors accept a printed signature in the texts book.
 - **The lesson-note template** for each level.
 - **Tamazight teachers.** What they keep, and in which script.
 - **The weekly signature's screen.** How a week with sessions still awaiting confirmation is signed, and how corrections to a signed week look. Drawn on the design canvas first.
@@ -1041,6 +1043,8 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 ---
 
 ## 4. The lesson engine and plan packs
+
+*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
 
 This section specifies how Tabachir knows the lesson for each session:
 - the plan packs, which hold the official plans as data;
@@ -1090,7 +1094,7 @@ A plan pack holds one official plan as data. There is one pack for each level, g
   - the primary half-week of integration, assessment and remediation after each sequence;
   - lycée remediation weeks.
 - **Essential and optional items, and proposed merges.** A merge is only ever a proposal to the teacher.
-- **Stage templates, as the official material prints them.** For example: تهيئة → بناء → تطبيق → تقويم, from the primary session plans. An item without a template uses "started / done".
+- **Stage templates, as the official material prints them.** For example: تهيئة → بناء → تطبيق → تقويم, from the primary session plans. An item without a template uses "in progress / done".
 - **Textbook references,** by page.
 - **Provenance:** the issuer as printed, the edition, the source pages and where the file was found. Personal names are removed.
 - **A licence mode:** link only, structure only, or full text once counsel clears it (§1.3).
@@ -1154,7 +1158,7 @@ A plan pack holds one official plan as data. There is one pack for each level, g
 
 **AI** helps extract drafts, for curators only (§2.5). It never sees pupil data, and the model, the prompts and where it runs are public (§1.5). Personal names are removed from files before any processing.
 
-**Uploaded files are untrusted.** They are opened in isolation, their metadata is removed, and any active content in them is never run (Section 6).
+**Uploaded files are untrusted.** They are opened in isolation, their metadata is removed, and any active content in them is never run (§5.9).
 
 **Sources are kept as references,** not copies, until counsel clears their text (§1.3).
 
@@ -1229,7 +1233,7 @@ plan pack → course (class × subject × school year) → timetable version →
 2. Proposed.
 3. Recorded: done, changed or not held.
 4. Covered, or carried over from the stage reached.
-5. An official snapshot, only where an authority has adopted Tabachir as the official record (§1.15).
+5. An official snapshot, once the teacher signs the week in the national system (§5.4, §5.5).
 
 **The proposal**
 - **It is always the class's next unfinished item,** starting at the first stage not yet covered.
@@ -1243,7 +1247,7 @@ plan pack → course (class × subject × school year) → timetable version →
 
 **Progress**
 - **Stages, not percentages.** "Last stage reached" keeps the item at the head of the queue. Its remaining stages move to the next ordinary session of the same class and subject, not to a TD, remediation or exam session. The journal and the texts-book entry read "تابع: <title>", with the stages still to cover.
-- **No template:** "started / done", plus the sessions spent.
+- **No template:** "in progress / done", plus the sessions spent.
 - **Fractions** such as "2 of 4 stages" can be shown, but never typed.
 - **Half-groups.** An item taught in fortnightly TD counts as done for the class only when every half-group has had it.
 - **Never locked to the plan.** Free text and unplanned content are always allowed. Abroad, registers that locked the log to the plan made teachers republish the plan just to merge two topics (research 11).
@@ -1288,6 +1292,7 @@ plan pack → course (class × subject × school year) → timetable version →
 
 - **The teacher's own sharing.** Progress statements carry the pack ID and release, so statements from different classes and schools can be compared (§3.10).
 - **Plan feedback, in the opt-in insights (§1.6).** Which items teachers most often merge, skip, split or re-teach. That describes the plan, never a teacher, and it can show where a programme is too dense to finish. Section 8 designs the insights.
+- **In the national system,** the curriculum report gives the same feedback as totals above the school (§5.10). It replaces the opt-in insights once it exists (§8.4).
 
 ### 4.10 The rest of the reference data
 
@@ -1337,6 +1342,13 @@ The same repository, review and yearly cycle hold the other data the app needs (
 |---|---|
 | Layers across releases | When a class moves to a new release, the migration entries carry every layer's operations, on the device. What they cannot carry clearly, the teacher decides before the move |
 
+**Proposed on 29 Sep 2026 (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| Official snapshot | A session becomes part of the official record once the teacher signs its week, in the national system |
+| Plan feedback | In the national system, the curriculum report's totals, which replace the opt-in insights once they exist |
+
 **Open**
 - **The copyright status of the IGP's plans** (§1.17). Until counsel answers, packs hold structure and links only.
 - **The 2026/27 plans.** Whether new editions reach teachers through their accounts, and which plans cover 3AP, 4AP (including French from scratch) and English in 1AM and 2AM.
@@ -1383,7 +1395,7 @@ Section 6 covers keys, encryption, security and the other non-functional require
   - the connector to the national interoperability system (§5.9);
   - the totals above the school (§5.10);
   - sign-in with a security key, for teachers without a smartphone (§6.6).
-- **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, compulsory from day one, covering the texts book, the journal, roll call and marks (29 Sep). The ask includes the charter's protections, as a request, not a condition (29 Sep).
+- **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, official and compulsory from the national launch, covering the texts book, the journal, roll call and marks (29 Sep). The ask includes the charter's protections, as a request, not a condition (29 Sep).
 - **Until the Ministry's system opens, Tabachir runs in teacher mode only** (29 Sep). The project runs no school or directorate deployments before then.
 
 ### 5.2 Architecture
@@ -1393,10 +1405,10 @@ Section 6 covers keys, encryption, security and the other non-functional require
 | Android app | React Native, for Android 8 and later | The whole teacher app, offline. The phone holds the teacher's working record (device first, 29 Sep) |
 | Web app for PCs | React, installable, offline | The same app in the browser. On the teacher's own PC, the data stays in that browser. On a shared staffroom PC, the teacher signs in with their phone, and nothing stays behind (§6.6) |
 | Shared core | TypeScript | The engine, the assessment rules, the file formats, the document templates, and all encryption and signing. Both apps use the same code, so they give the same results and enforce the same protections |
-| Server package | NestJS | One package, installed by whoever runs it. It stores and passes on encrypted records, holds the school spaces (§5.8), mirrors the reference data, hosts the pack editor (§4.3), receives problem reports and forms the totals above the school (§5.10). In the national system it also connects to the national interoperability system (§5.9) |
+| Server package | NestJS | One package, installed by whoever runs it. It stores and passes on encrypted records, mirrors the reference data, hosts the pack editor (§4.3) and receives problem reports. In the national system it also holds the school and directorate spaces (§5.8), forms the totals above the school (§5.10) and connects to the national interoperability system (§5.9) |
 
 **Maps on the web screens** (29 Sep)
-- **Four web screens show who holds what as a map:** the pack editor's release map (§4.3), the school key and its recovery (§6.5), what enters and leaves the school's space (§5.9), and the operators' view of the server package.
+- **Four web screens show who holds what as a map:** the pack editor's release map (§4.3), the school key and its recovery (§6.5), what enters and leaves the school's space (§5.9, §7.5), and the operators' view of the server package.
 - **They are drawn with React Flow** (MIT). It needs a browser, so the Android app has no maps.
 - **The maps are for reading.** Keys, devices and flows change only through buttons, never by dragging a link.
 
@@ -1407,11 +1419,11 @@ Section 6 covers keys, encryption, security and the other non-functional require
 - **The Android app draws its few charts itself** with react-native-svg, with labels as native text so that Arabic is shaped correctly.
 
 **One package, two operators**
-- **Until the Ministry adopts Tabachir, the project runs the server package** in Algeria, free for teachers (29 Sep).
+- **Until teachers have moved to the Ministry's system, the project runs the server package** in Algeria, free for teachers (29 Sep).
 - **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep).
 - **The Ministry's app is the project's release,** with the Ministry's name and icon as settings, built reproducibly so that anyone can check it against the published code (29 Sep). The Ministry runs its deployment under its own name; only the project's builds are called Tabachir (29 Sep, §1.9). The project's own app can always connect to the national system too.
 - **The Ministry needs nothing from the project to run it.** It installs the releases the project publishes, on servers with no internet access. There is no project key, licence server or call home.
-- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process, where releases, the principles and the charter are still decided. The Ministry deploys each release within an agreed window, and security fixes within 7 days (29 Sep).
+- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process, where releases, the principles and the charter are still decided. The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days (29 Sep, §6.7).
 - **Teachers move from the project's server to the Ministry's** one by one, when they join their school's space, with their consent (§5.8). The project's server closes once they have moved (29 Sep).
 
 **Rules that hold whoever runs the server**
@@ -1471,11 +1483,11 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 | Layer | Examples | Where it may go | Who can read it on a server |
 |---|---|---|---|
 | **Private** | Private notes; the reason a session was not held or an item skipped | Only the teacher's own devices and the teacher's own full export. Never into a statement, a handover, a school space or any total | Nobody. It never reaches a server, except encrypted for the teacher's own devices |
-| **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices and the files the teacher makes. In a school space, the school's copy, once the teacher signs the week (29 Sep). Marks go to the state's system through the interoperability connector (29 Sep), and absences too if the school chooses (29 Sep). To a successor through the school space, or by direct transfer | The teacher and the school. The state's system receives marks, and absences where the school chooses, encrypted for it alone |
+| **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices and the files the teacher makes. In a school space, the school's copy, once the teacher signs the week (29 Sep). Class lists come in from the sector's information system (§5.9). Marks go to the state's system through the interoperability connector (29 Sep), and absences too if the school chooses (29 Sep). To a successor through the school space, or by direct transfer | The teacher and the school. The state's system receives marks, and absences where the school chooses, encrypted for it alone |
 | **Lesson record** | Items and stages, session types, homework, tests, the factual line, and each session's confirmation status | Statements and handover packages. In a school space, each session's confirmation status as it syncs, for the director's view (29 Sep), and the full record once the teacher signs the week (§5.5). The school's copy holds each session's current status, never the day it was confirmed (§7.6). In teacher mode, lesson-level insights only if the teacher opts in (§1.6) | The teacher, the school, and the teacher's own inspector during a grant |
 | **Shared statement** | Progress statements and handover packages | Whoever the teacher gives it to. Each one goes into the sharing history | Only those it is given to |
 | **Official snapshot** | The signed weeks, in the national system | The school's archive, signed, kept for the declared period. Corrections are added, never overwritten (§5.5) | The teacher, the school, and the teacher's own inspector during a grant |
-| **Totals** | Figures above the school | The directorate's and the Ministry's screens, only above the minimum group sizes (§5.10). The figures behind a directorate's or a national exam's threshold are published after the exam (§7.10) | The Ministry, as totals only. Never a figure for one school or one teacher |
+| **Totals** | Figures above the school | The directorate's and the Ministry's screens, only above the minimum group sizes (§5.10). The figures behind a directorate's or a national exam's threshold are published after the exam (§7.10) | The directorate and the Ministry, as totals only. Never a figure for one school or one teacher |
 
 ### 5.5 History, corrections and signatures
 
@@ -1518,14 +1530,14 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 
 - **Year-end prompts** remind the teacher to export and to erase what they no longer need.
 - **"Erase this device"** removes everything from a phone or browser in one step.
-- **In a school space,** the school's copy and the official record follow the retention the controller declares: the Ministry in the national system. For example, the signed weeks are kept for 3 years, like the texts book. The teacher's own copy keeps the teacher's settings.
+- **In the school's space, in the national system,** the school's copy and the official record follow the retention the Ministry declares as controller (§1.15). For example, the signed weeks are kept for 3 years, like the texts book. The teacher's own copy keeps the teacher's settings.
 - **A teacher who leaves the school** keeps a full copy of their own lesson records (principle 7). The school keeps its copy and the official record.
 
 ### 5.8 Sync, school spaces, backup and moving between devices
 
 - **Two kinds of sync, both end-to-end encrypted.** The server only stores and passes on data it cannot read.
-  - **Between the teacher's own devices,** readable only by the teacher. Free for teachers: on the project's server until adoption, then on the Ministry's (29 Sep).
-  - **To the school space:** the school's copy of the teacher's courses (§5.4), readable only by the teacher and the school.
+  - **Between the teacher's own devices,** readable only by the teacher. Free for teachers: on the project's server until the teacher moves to the Ministry's system, then on the Ministry's (29 Sep).
+  - **To the school space, in the national system:** the school's copy of the teacher's courses (§5.4), readable only by the teacher and the school.
 - **Joining a school space** (29 Sep). The school gives each teacher a QR code made from the official assignment list. The teacher scans it once. The app links the key in the teacher's phone to their assignments in the school's space, and from then on the teacher signs in with the fingerprint prompt or a PIN (§6.4). There is no password, no account to activate and no reset through the director. The app keeps working offline without signing in, and the teacher is never locked out of their own copy. A teacher who has no smartphone, or doesn't want to use their own, joins on a school PC with a security key the school issues (§6.6).
 - **Moving to the Ministry's system** (29 Sep). When the national system opens, the teacher joins their school's space there by scanning its QR code. The app shows what will move, and moves it once the teacher agrees. Only the teacher's app holds the keys, so only it can move the records. Private notes stay on the teacher's devices.
 - **Fixed batches.** The app sends to the server in batches of a fixed size, at set times of day, whether or not anything changed. So the server cannot tell when a teacher confirmed a session, or whether they did anything at all. The director's view of confirmation status (§7.6) updates with each batch, a few times a day.
@@ -1589,7 +1601,7 @@ Every role is enforced by keys, not only by screens. A role that holds no key ca
   - the curriculum report: sessions spent on each item, items merged, skipped or re-taught, how far classes got by term end, and plans that run long;
   - what the system owes teachers: cover given, vacant posts and unassigned hours, and sessions lost to closures, worked out from the public calendar.
 - **Never** a figure for one school or one teacher, a ranking, a count of sessions not held, or anything from the private layer.
-- **How they are formed.** Each school's space prepares its share of each total from the school's records, on a device that holds the school key (29 Sep). The shares are combined across schools, so the server learns only totals covering at least the minimum group sizes: 10 teachers and 3 schools for a wilaya or national figure, 5 teachers and 3 schools for a directorate (§8.4). No school's figure reaches the server. The method comes from a widely reviewed open-source library (§6.5).
+- **How they are formed.** Each school's space prepares its share of each total from the school's records, on a device that holds the school key (29 Sep). The shares are combined across schools, so the server learns only totals covering at least the minimum group sizes: 10 teachers and 3 schools for a wilaya or national figure, 5 teachers and 3 schools for a directorate (§7.9). No school's figure reaches the server. The method comes from a widely reviewed open-source library (§6.5).
 - **Only on announced days** (29 and 30 Sep). Totals of how far classes got are formed only on days announced at the start of the school year: each term's end and each exam's own date. There is no weekly or monthly series. They count only what classes completed in signed weeks, and classes' own plans stay inside the school.
 - **Exam scope** (charter point 7). How far classes got may inform the scope of an exam only at the level that sets it: a school's own records for its term and mock exams, formed in its space and never sent out; a directorate's totals for its exams; and wilaya and national totals for national exams. The system forms each exam's figures only on its announced date, keeps each signed cut with the figures it came from, and publishes them after the exam, so no unpublished figure from it can be used (§7.10).
 
@@ -1643,7 +1655,7 @@ These five technical risks are tested early, before the pilot depends on them:
 
 | Decision | Choice |
 |---|---|
-| The target | One national system, run by the Ministry on government servers, with a space for each directorate and school. The project runs the same package, free, until adoption |
+| The target | One national system, run by the Ministry on government servers, with a space for each directorate and school. The project runs the same package, free, until teachers have moved to the Ministry's system |
 | The protection | The design alone. Named records are readable only by the teacher, the school and a granted inspector, whoever runs the server |
 | The main copy | Device first. The school's copy is kept on the server, encrypted |
 | The official record | The weekly signed record: texts book, journal, roll call and marks. Always correctable, with both versions shown |
@@ -1655,6 +1667,7 @@ These five technical risks are tested early, before the pilot depends on them:
 | The Ministry's app | The project's release, with the Ministry's name and icon as settings, built reproducibly. The project's own app can always connect |
 | After adoption | The Ministry's staff maintain Tabachir, as maintainers in the project's public process |
 | Parents | Served by the state's awlyaa space. No student or parent features in Tabachir |
+| Record layers | A sixth layer, totals, for figures above the school (§5.4) |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
 
@@ -1668,8 +1681,8 @@ These five technical risks are tested early, before the pilot depends on them:
 - **The 2026/27 class-list file:** its columns, and whether it has names in Latin letters. The field check finds out.
 - **Legal signatures in the national system:** whether the state's certification authority can certify keys made on teachers' phones. Counsel confirms.
 - **The day a signed record counts:** the Ministry's text must say that the day signed on the device counts, not the day the server receives it.
-- **The method for totals** that hides each school's figure from the server, and its cost on budget phones. Tested before the national launch (§6.8).
-- **Access to the interoperability system,** and the agreements it needs with the bodies that issue the data.
+- **The method for totals** that hides each school's figure from the server, and its cost on budget phones. Tested before the national launch.
+- **Access to the interoperability system,** the agreements it needs with the bodies that issue the data, and how class lists and the assignment list reach the school's space without the server reading them (§2.6).
 - **Whether the FET importer may call FET's command-line program** as a separate tool. Counsel confirms.
 
 ---
@@ -1688,7 +1701,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 
 ### 6.1 The legal position in teacher mode
 
-- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it in readable form (principle 2). It is the controller only of what it holds about teachers itself: sync accounts, support messages, pack-editor accounts and donors' details (§1.4).
+- **The project is the software's publisher, not a controller of pupil data,** because pupil data never reaches it in readable form (principle 2). It is the controller only of what it holds about teachers itself: sync accounts, pack-editor accounts, problem reports, pilot contacts, support messages and donors' details (§1.4).
 - **In the national system, the Ministry is the controller,** and runs the servers. The project publishes the software and holds nothing.
 - **The teacher's own position is open.** Teachers must keep their registers and journal (Decision 831 Art. 8–10). For official records, the school or the Ministry is plausibly the controller, with the teacher acting under its authority. A working copy in a private app is a grey zone. Counsel answers this first (research 06).
 - **Whatever the answer, the product protects pupil data as if the strictest reading applied:**
@@ -1706,7 +1719,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 |---|---|
 | **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
 | **Sync** | • The encryption design published and reviewed (§1.9)<br>• The declaration extended to sync accounts, with its receipt<br>• Servers in Algeria, with no foreign sub-processor<br>• Processor terms in the terms of service, in case counsel finds that the teacher or the school is the controller<br>• The automated log for server-side processing, and the breach runbook (§6.7) |
-| **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' approval where required<br>• the launch gate in §6.8 |
+| **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' decision (§8.7)<br>• the launch gate in §6.8 |
 
 - **Sync opens only when its gates are met.** If they are not met by January 2027, the pilot runs without sync, using direct transfer and backup files (§5.8).
 - **Teachers' rights.** Teachers can see, correct and delete what the project holds about them. Corrections are made within 10 days.
@@ -1774,7 +1787,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 - **Nobody but the teacher can recover the teacher's private notes.** That is the price of end-to-end encryption. So:
   - making a backup takes two taps;
   - the app reminds the teacher when there has been no sync and no backup for 30 days.
-- **What the server sees:** memberships, encrypted data in fixed batches (§5.8), and their sizes. No names, classes, subjects or times of activity appear in what it stores or logs.
+- **What the server sees:** memberships, encrypted data in fixed batches (§5.8), and their sizes. No names or times of activity appear in what it stores or logs. Classes and subjects appear only as assignment codes, and in the totals above the school (§5.10).
 - **No account needs a real name or a password.** In teacher mode, sync uses a login. In a school space, the teacher is known by their key and their assignment (§5.8).
 - **Reviewed before launch.** The design is published (§1.9), and an independent reviewer checks it before sync opens, and again before the national launch.
 
@@ -1791,14 +1804,13 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 ### 6.7 The server and its operators
 
 - **What the server holds, and nothing more:**
-  - encrypted records: the teachers' own sync, and the school spaces (§5.8);
-  - memberships: which device keys belong to which assignments;
-  - the totals above the school (§5.10);
+  - encrypted records: the teachers' own sync (§5.8);
+  - in the national system only: the school and directorate spaces, the memberships that link device keys to assignments, and the totals above the school (§5.8, §5.10);
   - pack-editor accounts;
   - the problem reports teachers chose to send.
 - **Built to run on government servers:**
   - it installs and updates from the published release, with no internet access;
-  - it makes no outbound calls: no content networks, web fonts, analytics or error trackers;
+  - it makes no outbound calls, except through its connector to the national interoperability system (§5.9): no content networks, web fonts, analytics or error trackers;
   - it runs as containers on ordinary servers, in the national data centre or with any host in Algeria;
   - it comes with an admin console, monitoring, backups with regular restore tests, and a deployment guide.
 - **Hosted in Algeria,** with its backups, and encrypted.
@@ -1875,11 +1887,11 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 | Keys | Nobody who runs a server holds a key to a named record. The school key is held by the school's staff, with recovery split between the school and its directorate |
 | Sign-in | The fingerprint or face prompt unlocks a key in the phone's secure chip. The biometric never leaves the phone, sign-ins are never recorded, and a PIN always works |
 | Shared PCs | Sign-in with the phone, or with a security key the school issues for teachers without a smartphone. A session that leaves nothing behind |
-| The server | One package for the project and the Ministry. Installs with no internet access and makes no outbound calls |
+| The server | One package for the project and the Ministry. Installs with no internet access and makes no outbound calls, except through the connector to the national interoperability system |
 | The launch gate | The national system passes a national load test, a trial term end, the security review and a restore before the mandate starts |
 
 **Open**
-- **Traffic analysis.** Whether fixed sync batches cost too much battery or data on budget phones. Tested before the national launch.
+- **Traffic analysis.** Whether fixed sync batches cost too much battery or data on budget phones. Tested before sync opens.
 - **Security keys on school PCs.** Whether current Chrome and Edge, on Windows 10 and 11, can unlock a teacher's keys with one. Tested before the national launch.
 - **Who controls pupil data in teacher mode,** and the legal basis for minors' data. Counsel answers first.
 - **The ANPDP declaration and the data-protection officer before a legal entity exists:** whether the founder can file the declaration, and whether a DPO can be the founder or external. Counsel answers.
@@ -1940,7 +1952,7 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
 - **Printouts:** class, teacher and room grids, with the official header, the A/B week, and signature boxes for the director and the censeur, plus the inspector in primary.
 
 **Sending it**
-- Each teacher receives only their own part: a signed file with stable IDs and no pupil data. It goes by file, QR code or encrypted sync (§5.9), and in the national system through the school's space.
+- Each teacher receives only their own part: a signed file with stable IDs and no pupil data. It goes by file or QR code (§5.9), and in the national system through the school's space.
 - A teacher who works in several schools receives one package from each, merged on their device, with warnings about clashes (§3.2).
 - A teacher who drew their own week sees the differences before accepting the school's version.
 
@@ -1977,11 +1989,12 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
 |---|---|
 | Each session's confirmation status, as it syncs (§7.6) | Private notes, and the reasons a session was not held or an item skipped |
 | The signed weeks: the texts book, the journal, roll call and marks, with their corrections (§5.5) | The teacher's working record before it is signed, and the days on which sessions were confirmed |
-| Timetables, cover and handovers | Clock times, "started" events, sign-in events and location |
+| Timetables, cover and handovers, and the class lists and assignments from the sector's information system (§5.9) | Clock times, "started" events, sign-in events and location |
 | Each teacher's access log, which that teacher sees | Any score, rank or rating of a teacher |
+| The school's exam thresholds: the cuts, the setters' signatures and the figures they came from (§7.10) | — |
 
 - **Everything in it is encrypted,** so that only the teacher and the school can read it, and an inspector during a grant (§6.5). The Ministry's staff, who run the servers, cannot.
-- **Pupil records enter when the teacher signs the week,** as part of the official record (29 Sep). Marks go on to the state's system, and absences too where the school chooses (§5.9).
+- **What teachers record about pupils enters when the teacher signs the week,** as part of the official record (29 Sep). Marks go on to the state's system, and absences too where the school chooses. Class lists come in from the sector's information system (§5.9).
 
 **Teachers**
 - **Every teacher is told,** in Arabic, before the start (Loi 18-07 Art. 32), and sees their own access log.
@@ -2075,7 +2088,7 @@ An exam's threshold is the last lesson it may cover. Every exam with a common pa
 **The three safeguards** (charter point 7)
 1. **A date set in advance,** at the start of the school year.
 2. **Published after the exam:** the cut, its date, the figures used and how they shaped the exam.
-3. **Checked:** inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year, and the results are published with the figures (§8.5).
+3. **Checked:** inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year, and the results are published with the figures, as totals only (§8.5).
 
 The Ministry is asked to adopt all three in its text, as a request, not a condition (§1.15).
 
@@ -2104,15 +2117,15 @@ The Ministry is asked to adopt all three in its text, as a request, not a condit
 ### 7.12 What the national system needs, as a checklist
 
 Before the mandate starts (§1.15). These are the Ministry's to meet; the project asks for them.
-1. **The ministerial text** that makes the digital record official and compulsory, with the Council of Ministers' approval where required. The charter's protections are asked for in it, not required.
+1. **The ministerial text** that makes the digital record official and compulsory, with the Council of Ministers' decision (§8.7). The charter's protections are asked for in it, not required.
 2. **The Ministry's ANPDP declaration,** stating:
-   - the purposes: the official record of teaching, coordination, coverage checks and pacing statistics, and not evaluation;
+   - the purposes: the official record of teaching, coordination, coverage checks, pacing statistics and exam thresholds (§7.10), and not evaluation;
    - the recipients: the director and deputies, inspectors during a grant, and the state's systems that receive marks and absences;
    - retention: for example 3 years for the signed weeks, like the texts book;
    - the security measures.
 3. **A data-protection officer,** and the Ministry's security unit under Decree 26-07.
 4. **An impact assessment,** reviewed by that officer.
-5. **The data catalogue, and access to the national interoperability system** (Decree 25-320).
+5. **The state's digital rules:** the data catalogue and access to the national interoperability system (Decree 25-320), the ANPDP's authorisation for the interconnection (Loi 18-07 Art. 19), and the HCN's review of the sector plan (Decree 23-314).
 6. **Teachers:** the notice in Arabic; the consultation of the staff technical committees and the representative unions, with the results published; the charter presented to every school's teachers' council; and no personal phone required.
 7. **The launch gate** (§6.8): a load test at national scale, a trial term end with real schools, the independent security review, and a full restore from backup.
 
@@ -2166,6 +2179,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 - **Whether reader mode and the timetable package need any formality.**
 - **Consultation duties:** technical committees and unions.
 - **Private schools:** whether they join the national system, and who the controller is for the teachers they employ (Loi 90-11).
+- **Who prepares the master timetable** (§7.4, §7.5): whether the staff who prepare it hold the school key like the deputies, or only a timetable role (§7.8).
 
 ---
 
@@ -2222,7 +2236,7 @@ This section designs how Tabachir works with the state towards the goal in princ
 2. **The plan-pack pipeline** (§4.3). The IGP can publish its plans through Tabachir, by uploading the PDF or filling in the form, and its packs carry the status "official". Once the IGP publishes its own plans this way, the question of their copyright is settled.
 3. **The national system** (Section 5): the full digital record, official and compulsory from the national launch, run by the Ministry on government servers, with the protections built into its design. This is the first ask (§1.15, 29 Sep). Paper then stays only as the fallback. Abroad, Ghana declared electronic lesson plans legal, and Russia and Portugal ban paper duplicates (research 11).
 4. **A curriculum-pacing observatory** for the IGP and the curriculum designers, until the national system's totals exist (§8.4).
-5. **A protocol for a national progress figure,** instead of teachers' data (§8.5).
+5. **A national progress figure:** the inspectors' sample before adoption, then the national system's totals, which the sample checks (§8.5).
 6. **The code, the deployment guide, the administration manual and the training material,** free, for the national system (§7.11, §8.7). The project sells nothing (§1.10).
 
 ### 8.4 The insights observatory
@@ -2267,10 +2281,11 @@ It never holds the date of a session, a reason a session was not held, pupil dat
 - Counsel confirms that teachers may send lesson-level data without written authorisation (Ord. 06-03 Art. 48; §1.6). Counsel also checks whether publishing the figures needs the Ministry's consent, or falls under the national statistics rules.
 - The pilot's data-quality audit compares two things: logged sessions against pupils' exercise books, and entries made before a director could see them against entries made after.
 
-### 8.5 A national progress figure: a protocol, not data
+### 8.5 A national progress figure, checked by a sample
 
-- **If the state wants a national figure** for programme coverage, Tabachir offers a protocol rather than teachers' data. Inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year.
-- **The same sample checks the figures behind every exam's threshold** (charter point 7, §7.10). Its results are published with them.
+- **Before adoption,** if the state wants a national figure for programme coverage, Tabachir offers a protocol rather than teachers' data. Inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year.
+- **In the national system,** the figure comes from totals of signed weeks, formed only on announced days (§5.10). The same sample checks them, and the figures behind every exam's threshold (charter point 7, §7.10).
+- **The sample's results are published** with the figures they check, as totals only, never for one class or one teacher.
 - **Why.** Credible figures abroad came from independent samples like this, not from teachers' own reports (research 11). The reader mode's spot-check sheet supports it (§7.2).
 - **Honest expectations.** Covering the plan is not the same as learning. The big learning gains abroad came from structured lessons with coaching, never from tracking alone (research 11).
 
@@ -2280,8 +2295,8 @@ It never holds the date of a session, a reason a session was not held, pupil dat
 |---|---|---|
 | Now to December 2026 | • Find a contact at the IGP, the first step<br>• Read the Tarbya-Up terms<br>• Draft the plan-pack format<br>• Counsel's priority questions<br>• Prepare the association | The field check |
 | January–March 2027 | • A director and an inspector in the pilot, in reader mode<br>• The security design published | The pilot's success criteria |
-| September 2027 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry, with the pilot's results and the national system's design (§1.15)<br>• A Tarbya-Up entry, once its call and terms are known | The pilot's results, published |
-| 2027/28 | • The association in place<br>• The observatory's method published, then its first collection | The method published at least a month before collection (§8.4) |
+| September 2027 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry, with the pilot's results and the national system's design (§1.15)<br>• A Tarbya-Up entry, once its call and terms are known<br>• The association in place (§9.8) | The pilot's results, published |
+| 2027/28 | • The observatory's method published, then its first collection | The method published at least a month before collection (§8.4) |
 | Once the Ministry adopts Tabachir | • The ministerial text, and the Council of Ministers' decision<br>• The national system on government servers, then a trial term end<br>• Teachers move to it, and the project's server closes (§5.2)<br>• The mandate from the national launch, whose date is set at adoption | What the national system needs (§7.12), and the launch gate (§6.8) |
 
 Before adoption, the track seeks no official acceptance of printed pages, and runs no school or directorate deployments (§1.15, 29 Sep).
@@ -2297,11 +2312,11 @@ Before adoption, the track seeks no official acceptance of printed pages, and ru
 National adoption is the first ask (§1.15, 29 Sep). The national launch has no date yet: it is set once the Ministry adopts Tabachir, and the work is planned back from it (29 Sep). Adoption takes:
 - **Decisions.** A Council of Ministers decision, and a ministerial text giving the digital record official status, alongside or instead of Decisions 155 and 831, and making it compulsory from the national launch.
 - **State plans and data exchange.** HCN review of the sector plan (Decree 23-314), and data exchanged only through the national interoperability system (Decree 25-320).
-- **Hosting** on state infrastructure: the Ministry's data centre or the national data centre, with no internet access and no outbound calls (§5.2, §6.7).
+- **Hosting** on state infrastructure: the Ministry's data centre or the national data centre, with no internet access, and no outbound calls except through the interoperability connector (§5.2, §5.9, §6.7).
 - **The ANPDP,** consulted, or its authorisation for a national system.
 - **Records fit to be official:** signed exports and a history that cannot be altered (§1.15), with legal signatures under Law 15-04 (§5.5).
 - **Tabachir's role:** the code, the deployment guide, the administration manual and the training material, free. The project sells nothing, and signs no support contract (§1.10).
-- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process. The Ministry deploys each release within an agreed window, and security fixes within 7 days (§5.2).
+- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process. The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days (§5.2, §6.7).
 - **The design protects teachers** (§1.15). The ask includes the charter's protections, with the three safeguards on exam scope (charter point 7), as a request, not a condition. Whatever the text says, nobody who runs the servers can read named records, and above the school there are only totals (§5.2, §6.5).
 - **The Ministry's app** is the project's release, with the Ministry's name and icon as settings, built reproducibly. The Ministry's deployment runs under its own name, and the project's own app can always connect to it (§1.9, 29 Sep).
 - **Teachers are consulted first:** the staff technical committees and the representative unions, with the results published, and the charter presented to every school's teachers' council (§1.15).
@@ -2345,7 +2360,7 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 | Decision | Choice |
 |---|---|
 | Use of figures | The observatory's figures never inform exam scope. In the national system, exam scope follows charter point 7, at each exam's own level (§7.10) |
-| National figure | The inspectors' sample also checks the figures behind every threshold, and its results are published with them |
+| National figure | In the national system, it comes from the totals, which the inspectors' sample checks along with every threshold. The sample's results are published as totals only |
 | National adoption | The first ask includes the three safeguards on exam scope, as a request |
 
 **Open**
@@ -2419,7 +2434,7 @@ Costs are estimates. The pilot tests them.
 | **People's time:** development, plan-pack curation, support and security | By far the largest cost | The funding plan (§9.7) |
 
 - **Hosting is cheap. People are not.** Grants and donations go first to people's time (§9.7).
-- **After adoption,** the Ministry pays for its own servers and staff. The project's costs shrink to the website, the reference data and the public process.
+- **After adoption,** the Ministry pays for its own servers and staff. Once teachers have moved to its system, the project's costs shrink to the website, the reference data and the public process.
 - **Counsel** has no budget yet, so the project looks for free help, such as university law clinics and incubators (§1.17).
 
 ### 9.7 Funding until adoption
@@ -2519,7 +2534,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 | **April–August 2027** | The launch scope: every level's flows, the timetable package, handover, and sync, free for teachers | The first full September release prepared (§4.4) | The pilot's results published | • The association in place<br>• The independent security review (§6.5) | Ready for launch |
 | **September 2027:** launch | • Google Play, the website and F-Droid<br>• Code contributions open to all (§1.13, stage 3) | The September release for 2027/28 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry (§8.6)<br>• A Tarbya-Up entry | • The first transparency report (§1.11)<br>• The teacher council (§1.8) | — |
 | **2027/28** | More teachers. The observatory, in teacher mode, with its method published a month before collection (§8.4) | The yearly cycle | No school or directorate deployments before adoption (§1.15) | Counsel confirms that lesson-level data needs no written authorisation (§8.4) | The method published at least a month before collection |
-| **2028 onwards** | A second country only if one is decided (§1.14) | — | Teacher mode until the Ministry's system opens (§1.15) | — | — |
+| **2028/29 onwards** | A second country only if one is decided (§1.14) | — | Teacher mode until the Ministry's system opens (§1.15) | — | — |
 | **Once the Ministry adopts Tabachir** | • The national system built, on a plan worked back from its launch date (§5.1, §8.7)<br>• The Ministry's staff join as maintainers (§1.8)<br>• Teachers move over, and the project's server closes (§5.2) | — | • The ministerial text (§8.7)<br>• Teachers' committees and unions consulted, and the charter presented to every teachers' council (§1.15)<br>• A trial term end, then the mandate from the national launch | What the national system needs, which is the Ministry's to meet (§7.12) | The launch gate (§6.8) |
 
 ### 10.2 The field check
@@ -2554,6 +2569,8 @@ Two tracks run side by side: the product for teachers and schools, and the state
    - whether the Ministry's text can make a record count from the day it was signed on the device (§5.5);
    - the access and agreements that the interoperability system needs (§5.9).
 
+Counsel's other questions are in each section's open points.
+
 ### 10.3 How success is measured
 
 **The pilot's success criteria**
@@ -2570,7 +2587,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 | Data-quality audit | Its two comparisons published (§8.4) |
 
 **After launch.** Reported in the monthly progress posts and the transparency report (§1.11):
-- **Use:** downloads, active sync accounts, term exports, statements shared, and teachers still active after a term (from surveys).
+- **Use:** downloads and active sync accounts. From surveys: term exports, statements shared, and teachers still active after a term.
 - **Time:** seconds per session and minutes per week, from surveys and volunteer panels.
 - **Trust:** privacy incidents, and security fixes shipped on time.
 - **Content:** packs published, by status. Plan errors fixed, and how fast. Calendar fixes made within 24 hours.
@@ -2587,7 +2604,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 - **After the field check.** If teachers read Tabachir as surveillance, the design changes before the pilot.
 - **After the pilot.** If ordinary sessions take far longer than 5 seconds, or teachers keep paper and Tabachir side by side with no time saved, the flow is reworked before launch. Parallel paper and digital records were the worst case abroad (research 11).
 - **Before the mandate.** If the national system fails the launch gate, the mandate waits until it passes (§6.8).
-- **In the national system.** If the Ministry's use breaks the charter, the project stops supporting it and reports the breach in the transparency report, where the law allows (§1.11). The design still keeps named records and times out of the servers' reach (§5.2).
+- **In the national system.** If the Ministry's use breaks the charter, the project reports the breach in public, in the transparency report, where the law allows (§1.11). The design still keeps named records and times out of the servers' reach (§5.2).
 - **If the state ships its own texts book,** Tabachir follows §8.2 rather than competing.
 
 ### 10.5 Risks
@@ -2613,7 +2630,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 | The 6 September 2026 rule slows the first ask | High | Medium | Teacher mode and reader mode need no approval (§7.2). Patience on the state track |
 | Self-reported figures mislead, now that they can shape an exam: a class gains by reporting less (research 11) | Medium | High | Only signed progress counts above the school, taken on dates announced in advance, published after the exam and checked against the inspectors' sample (charter point 7, §7.10). The observatory's figures never inform exam scope. The data-quality audit (§8.4, §8.5) |
 | The Ministry does not adopt Tabachir | High | High | Teacher mode stands on its own. The formats, the pipeline and the observatory serve the state anyway (§8.3) |
-| A compulsory mandate meets resistance or a boycott, as digital platforms have in Algeria and Morocco (research 13) | High | High | Teachers' committees and unions consulted first, with the results published, and the charter presented to every teachers' council (§1.15). The protections built into the design: corrections always possible, no clock times and no personal phone required (§5.2). Neutrality, and no count of strikes (§1.11, §7.9) |
+| A compulsory mandate meets resistance or a boycott, as digital platforms have in Algeria and Morocco (research 13) | High | High | Teachers' committees and unions consulted first, with the results published, and the charter presented to every teachers' council (§1.15). The protections built into the design: corrections always possible, no clock times and no personal phone required (§5.2, §5.5, §6.6). Neutrality, and no count of strikes (§1.11, §7.9) |
 | The national system fails at its first term end | Medium | High | Device first: every task works offline, and a record counts from the day it was signed on the device (§5.5). The launch gate, with its load test and trial term end (§6.8) |
 | The Ministry's app is modified in a way that weakens the protections | Low | High | Reproducible builds with published checksums, which the web app also shows. Teachers are entitled to the source of any modified version, and the project's own app can always connect (§1.9, §5.2) |
 
