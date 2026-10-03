@@ -612,7 +612,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 |---|---|---|
 | **Teacher** (primary, CEM, lycée) | The app, with:<br>• the day's lessons and one-tap confirmation<br>• roll call and continuous assessment<br>• the documents and the term export<br>• a weekly digest<br>• progress statements and handovers<br>• in the national system, joining the school's space with a QR code, and signing each week (§5.5, §5.8)<br>• in the national system, where their classes stand against each exam's date, as the director sees it, and signing a school exam's cut as one of its setters (§7.10) | Pilot, then launch. The national system after adoption |
 | **Subject coordinator and teaching council** | A merge of the progress statements that teachers choose to share, for the council's pacing plan | Pilot |
-| **Director**, with the ناظر or the education counsellor | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§7.6)<br>• **Exam thresholds** for the school's term and mock exams, first on its dashboard (§7.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
+| **Director and deputies**, the censeur (ناظر) among them | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§7.6)<br>• **Exam thresholds** for the school's term and mock exams, first on its dashboard (§7.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
 | **Inspector** | Progress statements before a visit. In the national system, a grant from the authority opens the lesson records of the named courses and weeks, between its dates, and the teacher sees it (§5.10) | Pilot; the national system |
 | **Directorate** | In the national system, totals only, above the minimum group sizes: the threshold of its own unified and mock exams, first on its dashboard (§7.10); what the system owes teachers, such as cover provided, vacant posts and sessions lost to closures; and the curriculum report. Never a figure for one school or one teacher (§5.10) | The national system |
 | **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Tabachir by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10)<br>• Sets the threshold of national exams, such as the BEM and the BAC, through its committee with inspectors (§7.10) | When the Ministry joins. The national system after adoption |
@@ -1617,6 +1617,7 @@ Every role is enforced by keys, not only by screens. A role that holds no key ca
 |---|---|---|
 | Teacher | All their own records | Their device keys |
 | Director and deputies | Their school's space: the signed weeks, the pupil records, and each class's confirmation status as it syncs (29 Sep, §7.6) | The school key, on their devices |
+| Timetable preparers (3 Oct) | The school's timetables, and the assignments they are built from. Never pupil records, lesson records or the confirmation status | The timetable key, on their devices. Never the school key |
 | Coordinator | The statements teachers share | Files, with no account |
 | Inspector | The lesson records of the courses and signed weeks named in a grant, only between its dates (29 Sep). Never pupil records (30 Sep) | Keys shared for the grant. The teacher sees the grant and every access |
 | Directorate and Ministry | Totals only, above the minimum group sizes (29 Sep) | Totals formed across schools. No key to any named record |
@@ -1798,6 +1799,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 | The teacher's keys | The teacher's own devices | Everything the teacher records, including the private layer |
 | The teacher's signing key | Made on the teacher's device. In the national system, certified by the state (§5.5) | Nothing: it signs the weeks, statements and packages |
 | The school key | The director and deputies, on their devices | The school's space: the signed weeks, the pupil records and the confirmation status |
+| The timetable key | The director and deputies, and the staff who help prepare the master timetable (3 Oct) | Only the school's timetables, and the assignments they are built from |
 | Grant keys | The inspector's device, for the dates of a grant | Only the lesson records of the courses and weeks named in the grant |
 | The receiving system's key | The state system that receives marks or absences | Only what is sent to it (§5.9) |
 
@@ -1969,7 +1971,7 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
 ### 7.4 The timetable package
 
 **Making it**
-- The director or the censeur, with the ناظر or the education counsellor, brings in the school timetable in one of three ways:
+- The director or the censeur (ناظر), helped by an education counsellor or a supervisor where the school has one, brings in the school timetable in one of three ways:
   - from FET, which most CEMs and lycées probably use (an estimate: no survey exists);
   - from an Excel or CSV template;
   - by hand, with live conflict checks.
@@ -2000,7 +2002,7 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
 - **Primary schools** have a space like any other school. Counsel confirms how the Ministry, the directorates and the schools share the controller's role (§1.15).
 
 **What it adds**
-- **The master timetable,** owned by the director and prepared by the ناظر or the education counsellor, with versions as in §7.4.
+- **The master timetable,** owned by the director and prepared by the censeur (ناظر), with versions as in §7.4. Others who help prepare it, such as an education counsellor, a supervisor or a teacher, hold a timetable role (3 Oct, §7.8).
 - **The operational dashboard** (§7.6).
 - **Exam thresholds** for the school's term and mock exams (§7.10).
 - **Cover and make-up sessions** (§7.7).
@@ -2060,16 +2062,18 @@ The director's view of the school's space (§2.4). It updates with each sync bat
 
 ### 7.8 Who can see and do what in the school's space
 
-| Data | Teacher | Director and deputies | Inspector, during a grant |
-|---|---|---|---|
-| Pupil records | All, for their classes | Read, in the signed weeks | None |
-| Lesson records | All. Corrections keep a history | Read the signed weeks, by class. May visa or comment; never edit | Read the signed weeks of the courses the grant names |
-| Private notes and reasons | All | None | None |
-| Class progress | All | By class, in the dashboard | The courses in the grant, from their signed weeks |
-| Timetables | Their own. Can propose changes | Create and change them | The timetables of the teachers in the grant |
-| Cover | Cover for their classes, and the cover they gave | Mark the sessions that need cover, and assign it | None |
-| Access log | Every access to their own records | Their own actions | Their own actions |
+| Data | Teacher | Director and deputies | Timetable preparers | Inspector, during a grant |
+|---|---|---|---|---|
+| Pupil records | All, for their classes | Read, in the signed weeks | None | None |
+| Lesson records | All. Corrections keep a history | Read the signed weeks, by class. May visa or comment; never edit | None | Read the signed weeks of the courses the grant names |
+| Private notes and reasons | All | None | None | None |
+| Class progress | All | By class, in the dashboard | None | The courses in the grant, from their signed weeks |
+| Timetables | Their own. Can propose changes | Create and change them | Create and change them | None |
+| Cover | Cover for their classes, and the cover they gave | Mark the sessions that need cover, and assign it | None in this role. Supervisors get the daily cover sheet (§7.7) | None |
+| Access log | Every access to their own records | Their own actions | Their own actions | Their own actions |
 
+- **The censeur (ناظر)** is the director's pedagogical deputy, and holds the school key like the other deputies (research 08).
+- **Timetable preparers** (3 Oct). Staff who help prepare the master timetable without being the director or a deputy, such as an education counsellor, a supervisor or a teacher, hold a timetable role. Its key opens only the timetables and the assignments they are built from (§6.5). The school key stays with the director and the deputies.
 - **Inspectors' access** is granted by the authority, never by the director. A grant names the courses and weeks, is limited in time and is visible to the teacher (charter point 5, §6.5). It opens their lesson records only, never pupil records or the confirmation status as it syncs (30 Sep).
 - **Never in Tabachir:** evaluating teachers, transferring them between schools, approving overtime or pay, or connecting to amatti or ostad outside the national interoperability system (§2.6).
 
@@ -2131,7 +2135,7 @@ The Ministry is asked to adopt all three in its text, as a request, not a condit
 ### 7.11 How the national system runs
 
 - **A space for each school,** and one for each directorate, in one national system (§5.2). A school's space can be exported whole.
-- **Keys.** The school key is held by the director and the deputies, on their devices. Its recovery is split between the school and its directorate, so neither can open the school's records alone (§6.5). Nobody who runs the servers holds a key.
+- **Keys.** The school key is held by the director and the deputies, on their devices. Its recovery is split between the school and its directorate, so neither can open the school's records alone (§6.5). Staff who only help with the timetable hold a timetable key, which opens nothing else (§7.8). Nobody who runs the servers holds a key.
 - **The project's role:** the publisher of the software. It never sets the purposes, and holds none of the records (§1.15).
 - **Paper stays official until the Ministry's text.** The texts book and the journal remain the official records (Decisions 155 and 831) until a ministerial text makes the digital record official (§1.15). After that, paper stays only as the fallback (§5.5).
 - **Ready-made documents.** The project keeps templates ready before anyone asks:
@@ -2147,7 +2151,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 1. **The ministerial text** that makes the digital record official and compulsory, with the Council of Ministers' decision (§8.7). The charter's protections are asked for in it, not required.
 2. **The Ministry's ANPDP declaration,** stating:
    - the purposes: the official record of teaching, coordination, coverage checks, pacing statistics and exam thresholds (§7.10), and not evaluation;
-   - the recipients: the director and deputies, inspectors during a grant, and the state's systems that receive marks and absences;
+   - the recipients: the director and deputies, staff who help with the timetable, for the timetables only, inspectors during a grant, and the state's systems that receive marks and absences;
    - retention: for example 3 years for the signed weeks, like the texts book;
    - the security measures.
 3. **A data-protection officer,** and the Ministry's security unit under Decree 26-07.
@@ -2180,6 +2184,12 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 | Directorates | Figures on what the system owes teachers, with at least 5 teachers and 3 schools per figure. Never named teachers, except for inspectors in their scope |
 | Section 7 | Settled on 27 Sep 2026 |
 
+**Decided on 3 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Timetable preparers | Staff who help prepare the master timetable without being the director or a deputy hold a timetable role, whose key opens only the timetables and the assignments they are built from. The school key stays with the director and the deputies, the censeur (ناظر) among them (§5.10, §6.5, §7.8) |
+
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
 
 | Decision | Choice |
@@ -2210,7 +2220,6 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 - **Whether reader mode and the timetable package need any formality.**
 - **Consultation duties:** technical committees and unions.
 - **Private schools:** whether they join the national system, and who the controller is for the teachers they employ (Loi 90-11).
-- **Who prepares the master timetable** (§7.4, §7.5): whether the staff who prepare it hold the school key like the deputies, or only a timetable role (§7.8).
 
 ---
 
