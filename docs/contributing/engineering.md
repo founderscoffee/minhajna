@@ -15,7 +15,7 @@ These rules put the PRD's principles into code. A pull request that breaks one i
 
 ## Pupil data and privacy
 
-- **Pupil data leaves the device only** in the end-to-end encrypted sync or backup, and only when the teacher has turned it on (principle 2, [PRD §1.5](../prd/PRD.md#15-pupil-data-and-privacy-rules)).
+- **In teacher mode, pupil data leaves the device only** in the end-to-end encrypted sync or backup, and only when the teacher has turned it on. In the national system, the school's copy goes to the school's space, encrypted so that only the teacher and the school can read it. Marks, and absences where the school chooses, go to the state's systems, encrypted for them alone (principle 2, [PRD §1.5](../prd/PRD.md#15-pupil-data-and-privacy-rules)).
 - **Every network call is listed in `NETWORK.md`,** with the address, what is sent and why. Adding or widening a call is a privacy-sensitive change, and `NETWORK.md` changes in the same pull request.
 - **No third-party code that sends data:** no analytics, advertising, crash-reporting or AI SDKs.
 - **No proprietary libraries,** such as Google Play Services or Firebase, including any that another dependency pulls in. Anyone, F-Droid included, must be able to build the apps from source ([PRD §1.3](../prd/PRD.md#13-licences)).

@@ -88,18 +88,18 @@ Releases follow the school year ([PRD §1.9](../prd/PRD.md#19-official-builds-re
 ## Fixes and security releases
 
 - **A fix between releases** takes the same path: a pull request into `main`, a cherry-pick to the release branch, then a patch release. The beta may be shortened, but the checks never are.
-- **A security fix** is prepared in private, in a GitHub security advisory. It ships in a release, then the advisory is published, crediting the reporter. Critical flaws are fixed within 7 days ([PRD §6.7](../prd/PRD.md#67-the-server-and-the-projects-operations)).
+- **A security fix** is prepared in private, in a GitHub security advisory. It ships in a release, then the advisory is published, crediting the reporter. Critical flaws are fixed within 7 days ([PRD §6.7](../prd/PRD.md#67-the-server-and-its-operators)).
 
 ## The changelog
 
-`CHANGELOG.md` holds the release notes for teachers, in Arabic and English ([PRD §1.9](../prd/PRD.md#19-official-builds-releases-the-name-and-security)).
+`CHANGELOG.md` holds the release notes for teachers, in English. Teachers read the same notes in Arabic in the app and in the teacher group ([PRD §1.9](../prd/PRD.md#19-official-builds-releases-the-name-and-security)).
 
 - **Written for teachers:** what changes for them, in plain words, without jargon or code names.
-- **Newest first.** Each release has its version and date, then an Arabic part and an English part.
+- **Newest first.** Each release has its version and date, then its sections.
 - **Credit.** Each release thanks its contributors. Only those who agreed are listed, under the names they chose ([PRD §1.7](../prd/PRD.md#17-contributions)).
 - **Changes only developers notice,** such as refactors and new checks, stay out of `CHANGELOG.md`. The GitHub release lists every merged pull request.
 
-Each release has these sections, in this order, each only when it has entries. The Arabic part uses the same sections.
+Each release has these sections, in this order, each only when it has entries. The Arabic notes in the app use the same sections.
 
 | Section | For |
 |---|---|
@@ -108,7 +108,7 @@ Each release has these sections, in this order, each only when it has entries. T
 | Going away | Features to be removed in a later release ([versioning.md](versioning.md#taking-something-away)) |
 | Removed | Features removed |
 | Fixed | Bug fixes |
-| Privacy | Every privacy-sensitive change, in plain Arabic ([PRD §1.7](../prd/PRD.md#17-contributions)) |
+| Privacy | Every privacy-sensitive change, in plain words. The app's Arabic notes carry its plain-Arabic line ([PRD §1.7](../prd/PRD.md#17-contributions)) |
 | Security | Security fixes |
 
 ### Changelog fragments
@@ -127,7 +127,7 @@ credit: Nour B.
 - **`section`** is one of `new`, `changed`, `going-away`, `removed`, `fixed`, `privacy` or `security`.
 - **`credit`** is the name to thank. Leave it out if you'd rather not be listed.
 - **If you can't write the Arabic line,** leave it out, and a maintainer adds it before the release.
-- **At release time,** the release manager gathers the fragments into `CHANGELOG.md` and deletes them.
+- **At release time,** the release manager gathers the English lines into `CHANGELOG.md` and the Arabic lines into the app's release notes, then deletes the fragments.
 
 Fragments avoid conflicts in `CHANGELOG.md` when many pull requests are open at once.
 

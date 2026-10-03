@@ -14,7 +14,7 @@
 
 - **We acknowledge your report within three working days** ([PRD §1.9](docs/prd/PRD.md#19-official-builds-releases-the-name-and-security)).
 - **We keep you informed** while we fix it, and agree a publication date with you.
-- **Critical flaws are fixed within 7 days** ([PRD §6.7](docs/prd/PRD.md#67-the-server-and-the-projects-operations)).
+- **Critical flaws are fixed within 7 days** ([PRD §6.7](docs/prd/PRD.md#67-the-server-and-its-operators)).
 - **After the fix,** we publish an advisory that credits you, unless you'd rather not be named.
 - **Please keep the problem private** until the fix ships. Without our agreement, that is no longer than 90 days after your report.
 
