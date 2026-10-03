@@ -830,6 +830,7 @@ Roll call replaces the paper roll-call book (دفتر المناداة) as the t
 - **Everyone is present by default.** The teacher marks only the exceptions:
   - absent, marked justified or unjustified. The cause is never typed (§5.6);
   - late, which can happen several times a day, carries the date and doesn't count as an absence.
+- **A list or a seating plan** (3 Oct). The teacher marks the exceptions on the class list, or on a seating plan of the class or group, arranged once by placing each pupil on a seat. Tapping a seat marks the same exceptions as the list, and both record the same roll call. The seating plan stays on the teacher's devices, in the private layer (§5.4), and prints on one A4 page, for example for a substitute. It is erased with that year's pupil records (§5.7).
 - **When.** In class or after the lesson, because circular 460 Art. 48 limits phones in class.
 - **Paper fallback.** A printable blank sheet, entered later. It also serves a substitute or a day without the phone.
 - **Corrections.** Past days can be corrected, and an audit trail keeps every change, because roll calls carry legal weight.
@@ -993,7 +994,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | | Pilot (January–March 2027) | Launch (September 2027) |
 |---|---|---|
 | Levels | A few grades and subjects per level, chosen after the field check | All three levels, with the plan packs ready by then |
-| In the app | Setup, Today and confirmation, roll call, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement. Sync only if its gates are met (§6.2) | All of this, plus the school's timetable package, handover, and sync, free |
+| In the app | Setup, Today and confirmation, roll call by list or seating plan, continuous assessment and marks, the term-2 export in March, the documents, the weekly digest, the progress statement. Sync only if its gates are met (§6.2) | All of this, plus the school's timetable package, handover, and sync, free |
 | Languages | Arabic at least; French and English as their translations are ready | Arabic, French and English |
 | Measured | • Seconds per session: median and 90th percentile<br>• Minutes per week, against paper<br>• The share of sessions confirmed in one tap<br>• Term exports completed | Published before launch |
 
@@ -1031,6 +1032,12 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 |---|---|
 | Supervised or additional lessons | The texts book's page for them is filled only from sessions the teacher logs outside the timetable, and prints blank when there are none. The app never shows a teacher's unused hours |
 
+**Decided on 3 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Seating plan | Roll call by list or by seating plan, from the pilot. The plan stays on the teacher's devices, in the private layer, and prints on one page |
+
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
 
 | Decision | Choice |
@@ -1057,8 +1064,6 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 - **Roll-call counting rules.** Directors confirm them.
 - **The lesson-note template** for each level.
 - **Tamazight teachers.** What they keep, and in which script.
-- **The weekly signature's screen.** How a week with sessions still awaiting confirmation is signed, and how corrections to a signed week look. Drawn on the design canvas first.
-- **A seating-plan view for roll call.** Whether it is wanted in version 1.
 
 ---
 
@@ -1482,6 +1487,7 @@ Section 6 covers keys, encryption, security and the other non-functional require
 | Session | One dated occurrence of a course, and its state (§4.7) |
 | Session record | The outcome, the items and stages covered, the session type, homework, any test, the factual line and the private note |
 | Attendance entry | For each pupil, session or half-day: absent or late, and whether an absence is justified |
+| Seating plan | A class's or group's seats, as the teacher arranges them for roll call. Private layer (§3.4) |
 | Assessment | Components and weights, marks, observations and the appreciations chosen |
 | Sharing record | What was shared, with whom, and on which day |
 | Signed week | One week of a course's records, signed by the teacher. In the national system, it is the official record (§5.5) |
@@ -1502,7 +1508,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 
 | Layer | Examples | Where it may go | Who can read it on a server |
 |---|---|---|---|
-| **Private** | Private notes; the reason a session was not held or an item skipped | Only the teacher's own devices and the teacher's own full export. Never into a statement, a handover, a school space or any total | Nobody. It never reaches a server, except encrypted for the teacher's own devices |
+| **Private** | Private notes; the reason a session was not held or an item skipped; the seating plan (3 Oct) | Only the teacher's own devices, the teacher's own full export, and the seating plan's printout (§3.4). Never into a statement, a handover, a school space or any total | Nobody. It never reaches a server, except encrypted for the teacher's own devices |
 | **Pupil records** | Class lists, roll call, marks, observations, appreciations | The teacher's devices and the files the teacher makes. In a school space, the school's copy, once the teacher signs the week (29 Sep). Class lists come in from the sector's information system (§5.9). Marks go to the state's system through the interoperability connector (29 Sep), and absences too if the school chooses (29 Sep). To a successor through the school space, or by direct transfer | The teacher and the school. The state's system receives marks, and absences where the school chooses, encrypted for it alone |
 | **Lesson record** | Items and stages, session types, homework, tests, the factual line, and each session's confirmation status | Statements and handover packages. In a school space, each session's confirmation status as it syncs, for the director's view (29 Sep), and the full record once the teacher signs the week (§5.5). The school's copy holds each session's current status, never the day it was confirmed (§7.6). In teacher mode, lesson-level insights only if the teacher opts in (§1.6) | The teacher and the school. The teacher's own inspector, during a grant, reads the signed weeks it names, never the confirmation status as it syncs |
 | **Shared statement** | Progress statements and handover packages | Whoever the teacher gives it to. Each one goes into the sharing history | Only those it is given to |
@@ -1544,7 +1550,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 | Records | Default |
 |---|---|
 | Lesson records | Kept until the teacher deletes them. For comparison, schools keep the texts book in their archive for at least 3 years after the school year (Decision 155 of 1991, Art. 13, and the Ministry's 1999 schedule of school documents) |
-| Pupil records | Once the following school year ends, the app offers to erase that year's pupil records, keeping the lesson records |
+| Pupil records | Once the following school year ends, the app offers to erase that year's pupil records and seating plans, keeping the lesson records |
 | Private notes | Kept until the teacher deletes them |
 | Logs | Kept as long as the records they describe |
 
