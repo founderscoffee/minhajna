@@ -205,6 +205,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 ### 1.8 Governance and decisions
 
 - **Until launch in September 2027, the founder leads.** The founder is the lead maintainer and decides, in public, after hearing contributors.
+- **From launch, the lead maintainer still decides** (3 Oct), in public, after hearing contributors and the teacher council, and invites new maintainers in public (`GOVERNANCE.md`).
 - **Roles:**
   - lead maintainer;
   - maintainers, who can merge changes;
@@ -217,7 +218,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - **Members:** practising teachers from several levels and wilayas, starting with the field-check group, plus a director and an inspector where possible.
   - **Role:** it advises on the roadmap, the data repository and the print layouts. Its notes are public.
   - **Overrides:** when the lead maintainer goes against its advice, the decision record says why.
-  - **Consent after adoption** (30 Sep). Once the Ministry's staff are maintainers, a change to the principles or the charter passes only with the council's consent, after its 30 days of comments. The Ministry's maintainers can propose a change, but never decide one alone.
+  - **Consent after adoption** (30 Sep). Once the Ministry's staff are maintainers, a change to the principles or the charter passes only with the council's consent, after its 30 days of comments. The Ministry's maintainers can propose a change, but never decide one alone. The council consents when more than half of all its members vote for the change, in public (3 Oct). Without that vote, the change fails (`GOVERNANCE.md`).
 - **Partnerships in the open.** Every agreement with the Ministry, a directorate, a school, a sponsor or a funder is announced, with its parties, scope and money. It is also listed in the transparency report.
   - Every agreement includes a clause allowing it to be published (Ord. 21-09 Art. 8).
   - An agreement that would break a principle is refused.
@@ -323,9 +324,9 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 
 | Stage | When | What becomes public | Contributions accepted |
 |---|---|---|---|
-| 1. From the first line | Now to December 2026 (field check) | The repository, the licences, an Arabic and English README, this PRD and the decision records. The research only after scrubbing (§1.4) | Feedback, plans, templates and translations; code by invitation |
+| 1. From the first line | Now to December 2026 (field check) | The repository, the licences, an Arabic and English README, this PRD, the decision records, and the charter, governance, conduct, privacy and name-policy files (3 Oct). The research only after scrubbing (§1.4) | Feedback, plans, templates and translations; code by invitation |
 | 2. Pilot | January–March 2027 | A public beta group and the changelog | The same, plus invited code contributors |
-| 3. Launch | September 2027 | `GOVERNANCE.md`, the teacher council, the F-Droid listing and the first transparency report | Code contributions open to all |
+| 3. Launch | September 2027 | The teacher council, the F-Droid listing and the first transparency report | Code contributions open to all |
 | 4. Insights | 2027/28 | The insights code, payload and method, at least one month before collection | Comments on the method |
 
 ### 1.14 Algeria first, flexible for other countries
@@ -482,6 +483,15 @@ The code and the reference data live in separate repositories, because they have
 | Decision | Choice |
 |---|---|
 | Comments on proposals | Each proposal gets an Arabic summary on the website and in the teachers' Facebook group, with the website's form for comments. The field-check teachers are asked directly, and every comment gets an answer in the record |
+
+**Decided on 3 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Repository files | `CHARTER.md`, `GOVERNANCE.md`, `CODE_OF_CONDUCT.md`, `PRIVACY.md` and `TRADEMARKS.md` are published in stage 1. The README summarises the charter and the code of conduct in Arabic (§1.13, §1.16) |
+| After launch | The lead maintainer still decides, in public, after hearing contributors and the teacher council, and invites new maintainers in public |
+| The council's consent | After adoption, a change to the principles or the charter needs the votes of more than half of all the council's members |
+| Reports | Until the project has an address of its own, conduct problems are reported through GitHub's tool for reporting content to maintainers, or to the admins of the teachers' Facebook group, and privacy questions go in an issue, without personal details |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
 
@@ -1744,7 +1754,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 
 | Before | What must be in place |
 |---|---|
-| **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
+| **The pilot** (January 2027) | • An Arabic privacy notice, shown before first use (Loi 18-07 Art. 32)<br>• `PRIVACY.md` updated for the app, and `NETWORK.md` published (§1.5, §1.16)<br>• The project's ANPDP declaration for what it processes itself, such as pilot contacts and problem reports, with a register of processing and a named data-protection contact |
 | **Sync** | • The encryption design published and reviewed (§1.9)<br>• The declaration extended to sync accounts, with its receipt<br>• Servers in Algeria, with no foreign sub-processor<br>• Processor terms in the terms of service, in case counsel finds that the teacher or the school is the controller<br>• The automated log for server-side processing, and the breach runbook (§6.7) |
 | **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' decision (§8.7)<br>• the launch gate in §6.8 |
 
