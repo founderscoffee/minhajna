@@ -187,7 +187,7 @@ A decision about a principle, a licence, a data flow, the insights layer, money 
 
 1. **Propose.** Copy [the template](../decisions/template.md), give it the next number and the status `Proposed`, and open a pull request titled `docs(decisions): propose 00NN on <subject>`. Link it from the issue.
 2. **Discuss.** A proposal stays open for comments for at least 7 days. A change to a principle stays open for at least 30 days ([PRD §1.2](../prd/PRD.md#12-principles)). Teachers hear about it where they are: an Arabic summary goes on the website and in the teachers' Facebook group, with the website's form for comments, and the field-check teachers are asked directly. Comments made there count like those on the pull request, and each gets an answer in the record ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)).
-3. **Decide.** Until the launch, the lead maintainer decides ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)). After it, `GOVERNANCE.md` says who does. After adoption, a change to a principle or the charter also needs the teacher council's consent ([0016](../decisions/0016-non-commercial.md)). The status becomes `Accepted` or `Rejected`, and the record is merged either way, so the reasons stay public.
+3. **Decide.** The lead maintainer decides, after hearing contributors and, from the launch, the teacher council ([GOVERNANCE.md](../../GOVERNANCE.md)). After adoption, a change to a principle or the charter also needs the teacher council's consent ([0016](../decisions/0016-non-commercial.md)). The status becomes `Accepted` or `Rejected`, and the record is merged either way, so the reasons stay public.
 4. **Change it later.** An accepted record is not rewritten. A new record replaces it, and the old one's status becomes `Superseded by 00NN`. Typos and broken links may be fixed at any time.
 
 The pull requests that carry out a decision link to its record.
@@ -201,7 +201,7 @@ The pull requests that carry out a decision link to its record.
 
 ## Becoming a maintainer
 
-Maintainers are invited from regular contributors whose changes and reviews show good judgement, above all about the principles. Until the launch, the lead maintainer invites them. After it, `GOVERNANCE.md` sets the process.
+Maintainers are invited from regular contributors whose changes and reviews show good judgement, above all about the principles. The lead maintainer invites them, and announces each invitation in public ([GOVERNANCE.md](../../GOVERNANCE.md)).
 
 Every maintainer turns on two-factor authentication ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)), and signs the release tags they make.
 
@@ -217,5 +217,6 @@ These settings enforce the rules above. They are listed here so that anyone can 
   - no force-push and no deletion.
 - **Merging:** squash and rebase only. Branches are deleted after the merge.
 - **Security:** secret scanning with push protection, private vulnerability reporting, and alerts for vulnerable dependencies.
+- **Reported content:** reports to the maintainers accepted from all users, so conduct problems can be reported privately ([CODE_OF_CONDUCT.md](../../CODE_OF_CONDUCT.md)).
 - **Sign-off required** for commits made on the GitHub website.
 - **Two-factor authentication** required for every member of the organisation.

@@ -60,6 +60,8 @@ Read the [contributor handbook](#the-contributor-handbook) before your first pul
 
 Some tools the handbook mentions, such as the automated checks, `CHANGELOG.md` and `NETWORK.md`, arrive with the first code. Until then, its rules apply to the documents wherever they can.
 
+How the project decides, and the teacher council's part in it, are in [GOVERNANCE.md](GOVERNANCE.md).
+
 ## Language
 
 - **With teachers:** Arabic.
@@ -71,4 +73,4 @@ Be respectful. Don't harass anyone or make personal attacks.
 
 The project's spaces stay about the product. That means no political or union campaigning, and no attacks on named people, whether officials, colleagues, pupils or parents.
 
-A full code of conduct will follow ([PRD §1.11](docs/prd/PRD.md#111-community-transparency-and-building-in-public)).
+The full rules, and how to report a problem privately, are in [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
