@@ -1,5 +1,9 @@
 # Tabachir · طباشير
 
+> **اسم جديد مقترح للمشروع:** «منهاجنا»، وعنوان المستودع يحمله منذ الآن ([المقترح 0019](https://github.com/founderscoffee/minhajna/pull/11)).
+>
+> **A new name is proposed for the project:** Minhajna (منهاجنا). The repository's address already uses it ([decision 0019](https://github.com/founderscoffee/minhajna/pull/11)).
+
 **العربية** · [English](#english)
 
 **طباشير** تطبيق مفتوح المصدر لأساتذة الجزائر، يجمع في مكان واحد الكراس اليومي ودفتر المناداة ودفتر التنقيط. يعمل على الهاتف دون حاجة إلى الإنترنت، ويطبع الوثائق التي يطلبها المدير والمفتش.
