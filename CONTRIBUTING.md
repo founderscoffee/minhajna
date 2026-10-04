@@ -1,4 +1,4 @@
-# Contributing to Tabachir
+# Contributing to Minhajna
 
 ## What we accept now
 

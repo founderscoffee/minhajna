@@ -19,7 +19,7 @@ This guide is for everyone who changes the project's files through Git: develope
 
 | Place | For |
 |---|---|
-| [Issues](https://github.com/founderscoffee/tabachir/issues) | Bugs, plan corrections, templates, translations and agreed tasks |
+| [Issues](https://github.com/founderscoffee/minhajna/issues) | Bugs, plan corrections, templates, translations and agreed tasks |
 | Discussions | Questions, and ideas that are not yet a task |
 | Pull requests | Proposed changes |
 | The private channel in [SECURITY.md](../../SECURITY.md) | Security problems. Never a public issue |
@@ -41,9 +41,9 @@ This guide is for everyone who changes the project's files through Git: develope
 Fork the repository on GitHub, then:
 
 ```sh
-git clone https://github.com/<your-account>/tabachir.git
-cd tabachir
-git remote add upstream https://github.com/founderscoffee/tabachir.git
+git clone https://github.com/<your-account>/minhajna.git
+cd minhajna
+git remote add upstream https://github.com/founderscoffee/minhajna.git
 git config user.name "The name you use in the project"
 git config user.email "you@example.org"
 ```

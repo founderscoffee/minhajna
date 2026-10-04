@@ -1,6 +1,6 @@
-# Tabachir: Product Requirements Document
+# Minhajna: Product Requirements Document
 
-*Tabachir (طباشير) is the product's name, chosen on 26 Sep 2026. Repository: [github.com/founderscoffee/tabachir](https://github.com/founderscoffee/tabachir). Started 26 Sep 2026.*
+*Minhajna (منهاجنا) is the product's name, proposed on 4 Oct 2026 in decision 0019. Until then it was called Tabachir (طباشير). Repository: [github.com/founderscoffee/minhajna](https://github.com/founderscoffee/minhajna). Started 26 Sep 2026.*
 
 This PRD is written one section at a time, and we settle each section before starting the next. Each section records decisions and ends with a list of what is still open.
 
@@ -8,7 +8,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 | § | Section | Status |
 |---|---|---|
-| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 and 30 Sep 2026 (decisions 0015, 0016, 0017 and 0018) |
+| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 and 30 Sep and 4 Oct 2026 (decisions 0015, 0016, 0017, 0018 and 0019) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
@@ -21,28 +21,30 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 ## Which requirements govern
 
-Four proposed decisions change this PRD: 0015 to 0018. Each section's note names the ones it carries out, and its decisions table gives their choices under "Proposed".
+Five proposed decisions change this PRD: 0015 to 0019. Each section's note names the ones it carries out, and its decisions table gives their choices under "Proposed".
 
-- **Plans aim at this PRD as written** (3 Oct), including the parts that carry out the four proposals. A plan marks each item that rests on a proposal, and says what would change if that proposal were rejected or amended.
+- **Plans aim at this PRD as written** (3 Oct), including the parts that carry out the five proposals. A plan marks each item that rests on a proposal, and says what would change if that proposal were rejected or amended.
 - **A proposal takes effect when its record is accepted** ([workflow](../contributing/workflow.md#decision-records)). Until then, the records and decided rows it would change still stand as the project's decisions. So a plan builds nothing that only they need, such as paid sync or school and directorate deployments, and treats nothing that rests on a proposal as final.
 - **The decisions tables show which rows a proposal changes.** A decided row that a proposal changes is marked "(changed by 00NN)", and a row decided after a proposal that works out its details is marked "(takes effect with 00NN)". A row that a proposal only adds to is not marked. When a proposal is accepted, its tables become decided ones, and the marks stay as history.
+- **The new name is used throughout,** decided rows included, except in the two rows that 0019 changes: the name and the code host in §1.17.
 - **Dates in the text,** such as "(29 Sep)", say when a choice was made, not whether it is decided or proposed. The tables say which.
-- **Two decided rows change steps that accepted records planned,** both in §1.17: `CHARTER.md` is in English, where 0010 planned Arabic and English, and the name is not registered, where 0004, 0007 and 0008 planned to register it. The rows name those records, whose decisions stand.
+- **Two decided rows change steps that accepted records planned,** both in §1.17: `CHARTER.md` is in English, where 0010 planned Arabic and English, and the name is not registered, where 0004, 0007 and 0008 planned to register it. The rows name those records, whose decisions stand, though 0019 would replace 0007.
 
 | Proposal | Its pull request | What it changes | Carried out in |
 |---|---|---|---|
-| 0015: the national system, with protections built into its design | [founderscoffee/tabachir#4](https://github.com/founderscoffee/tabachir/pull/4) | Replaces record 0012, and the sync price in record 0014. Changes part of record 0010: institution mode becomes one national system run by the Ministry, the project only publishes the software, and the charter is asked of the Ministry rather than bound into an agreement | §1 to §10 |
-| 0016: a project that sells nothing | [founderscoffee/tabachir#5](https://github.com/founderscoffee/tabachir/pull/5) | Replaces record 0006, and what 0015 leaves of record 0014. Principle 4 becomes "Free, and never for sale". After adoption, a change to the principles or the charter needs the teacher council's consent | §1, §8, §9 and §10 |
-| 0017: exam scope at each exam's own level | [founderscoffee/tabachir#6](https://github.com/founderscoffee/tabachir/pull/6) | Charter point 7, which said aggregates are never used for exam thresholds: how far classes got may inform an exam's scope at the level that sets it, under three safeguards. Personnel use stays banned, and the opt-in insights keep their ban | §1, §2, §3, §5, §7, §8 and §10 |
-| 0018: charter point 1 and figures above the school | [founderscoffee/tabachir#10](https://github.com/founderscoffee/tabachir/pull/10) | Charter point 1 gains a sentence: "Above the school, figures drawn from them serve only what point 7 allows." The rest of the point is unchanged | §1 |
+| 0015: the national system, with protections built into its design | [founderscoffee/minhajna#4](https://github.com/founderscoffee/minhajna/pull/4) | Replaces record 0012, and the sync price in record 0014. Changes part of record 0010: institution mode becomes one national system run by the Ministry, the project only publishes the software, and the charter is asked of the Ministry rather than bound into an agreement | §1 to §10 |
+| 0016: a project that sells nothing | [founderscoffee/minhajna#5](https://github.com/founderscoffee/minhajna/pull/5) | Replaces record 0006, and what 0015 leaves of record 0014. Principle 4 becomes "Free, and never for sale". After adoption, a change to the principles or the charter needs the teacher council's consent | §1, §8, §9 and §10 |
+| 0017: exam scope at each exam's own level | [founderscoffee/minhajna#6](https://github.com/founderscoffee/minhajna/pull/6) | Charter point 7, which said aggregates are never used for exam thresholds: how far classes got may inform an exam's scope at the level that sets it, under three safeguards. Personnel use stays banned, and the opt-in insights keep their ban | §1, §2, §3, §5, §7, §8 and §10 |
+| 0018: charter point 1 and figures above the school | [founderscoffee/minhajna#10](https://github.com/founderscoffee/minhajna/pull/10) | Charter point 1 gains a sentence: "Above the school, figures drawn from them serve only what point 7 allows." The rest of the point is unchanged | §1 |
+| 0019: the name Minhajna | [founderscoffee/minhajna#11](https://github.com/founderscoffee/minhajna/pull/11) | Replaces record 0007: the product is called Minhajna (منهاجنا) rather than Tabachir, and the naming rule is loosened. Changes part of record 0005: the repository's name | §1.9 and §1.17, and the name throughout |
 
-The repository files on this branch, such as `CHARTER.md`, `GOVERNANCE.md` and the README, are written the same way, as if the four proposals were accepted. Their links to the records point to `docs/decisions/`, where each record is kept once it is decided. Until then, the table above links to its pull request.
+The repository files on this branch, such as `CHARTER.md`, `GOVERNANCE.md` and the README, are written the same way, as if the five proposals were accepted. Their links to the records point to `docs/decisions/`, where each record is kept once it is decided. Until then, the table above links to its pull request.
 
 ---
 
 ## 1. Open-source strategy and governing guidelines
 
-*Changes proposed on 29 and 30 Sep 2026 in decisions 0015, 0016, 0017 and 0018, for the project's goal: national adoption, with the Ministry running Tabachir on government servers, nothing sold, and exam scope set at each exam's own level. They take effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+*Changes proposed on 29 and 30 Sep 2026 in decisions 0015, 0016, 0017 and 0018, for the project's goal: national adoption, with the Ministry running Minhajna on government servers, nothing sold, and exam scope set at each exam's own level. On 4 Oct 2026, decision 0019 proposed renaming the product Minhajna. The changes take effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
 
 The whole system is open source from its first line of code: the apps, the servers, the tools and the documents. This section sets the rules that govern the project:
 - what is open, and under which licence;
@@ -53,7 +55,7 @@ The whole system is open source from its first line of code: the apps, the serve
 - how the Ministry runs it as one national system, and the charter that protects teachers;
 - why it serves Algeria first, and how other countries can use it later.
 
-The project's goal is for the Algerian state to adopt Tabachir as the official digital record of teaching (principle 6), with the Ministry running it on government servers (29 Sep).
+The project's goal is for the Algerian state to adopt Minhajna as the official digital record of teaching (principle 6), with the Ministry running it on government servers (29 Sep).
 
 Every later section of this PRD must comply with this one. When a feature conflicts with a principle in §1.2, the feature changes, not the principle.
 
@@ -78,13 +80,13 @@ These eight principles override everything else in this PRD.
 1. **Open by default.** Every part of the system is public from its first line: code, documents, decisions and roadmap. Only the items listed in §1.4 stay private, each for a stated reason.
 2. **Pupil data never reaches the project.** Pupils' names, marks and absences live on the teacher's devices, or, in institution mode, on the institution's own systems (§1.15). Sync and backup are end-to-end encrypted, so the project cannot read them. No pupil data goes to any third party, SDK or AI service (brief §10).
 3. **No ads, no trackers, and no sale or sharing of data. Ever.**
-4. **Free, and never for sale.** Everything Tabachir does is free, for teachers and for the state. The project sells nothing: no features, services, support or data. Until the Ministry adopts Tabachir, it is funded by public grants and prizes, teachers' donations and sponsors who get no access to data. After adoption, the Ministry maintains Tabachir with its own staff, in the project's public process (§1.10).
+4. **Free, and never for sale.** Everything Minhajna does is free, for teachers and for the state. The project sells nothing: no features, services, support or data. Until the Ministry adopts Minhajna, it is funded by public grants and prizes, teachers' donations and sponsors who get no access to data. After adoption, the Ministry maintains Minhajna with its own staff, in the project's public process (§1.10).
 5. **Open code is not open data.** The code is public and teachers' records are private. Figures leave a teacher's device only in two ways:
    - through the opt-in insights in §1.6;
    - in institution mode (§1.15), where a school or an education authority is the controller.
 
    Above the school, only aggregates that meet the minimum group sizes are shown or published.
-6. **Built to become the official record, never by default.** The goal is for the state to adopt Tabachir as the official digital record of teaching. Until a competent authority adopts it in writing, as controller, Tabachir is a teacher's tool:
+6. **Built to become the official record, never by default.** The goal is for the state to adopt Minhajna as the official digital record of teaching. Until a competent authority adopts it in writing, as controller, Minhajna is a teacher's tool:
    - it prepares and prints what the school and the state's platforms ask for;
    - it never claims official status on its own;
    - it never works around a protection in an official file. For example, it fills only the unlocked cells of the school's grade workbook (brief §9, §11).
@@ -241,9 +243,9 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 - **Partnerships in the open.** Every agreement with the Ministry, a directorate, a school, a sponsor or a funder is announced, with its parties, scope and money. It is also listed in the transparency report.
   - Every agreement includes a clause allowing it to be published (Ord. 21-09 Art. 8).
   - An agreement that would break a principle is refused.
-  - In the national system, the Ministry runs Tabachir itself, and the project is only the publisher of the software, never the controller (§1.15). Before adoption, the project runs no deployment for a school or an authority (29 Sep).
+  - In the national system, the Ministry runs Minhajna itself, and the project is only the publisher of the software, never the controller (§1.15). Before adoption, the project runs no deployment for a school or an authority (29 Sep).
 - **The state may adopt, host or fork the project** under its licence. The project publishes the deployment guide, the administration manual and the training material, free, so the state can do the work itself. It sells the state nothing (§1.10).
-- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep). They join the project's public process as maintainers, so releases, the principles and the charter are still decided in public, the last two only with the teacher council's consent (§5.2, 30 Sep).
+- **After adoption, the Ministry's own staff maintain Minhajna** (29 Sep). They join the project's public process as maintainers, so releases, the principles and the charter are still decided in public, the last two only with the teacher council's consent (§5.2, 30 Sep).
 - **Accounts.** The code lives in a GitHub organisation, not a personal account, so it can be handed over without breaking links. Every maintainer uses two-factor authentication.
 
 ### 1.9 Official builds, releases, the name and security
@@ -258,21 +260,22 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - The goal is reproducible builds, so that anyone, F-Droid included, can check that a build matches the source.
 - **The release calendar follows the school year.** In the two weeks before each term-end export window, only fixes ship. The windows fall around mid-December, March and May (brief §14).
 - **Changelog.** Every release has notes written for teachers. `CHANGELOG.md` is in English (29 Sep). Teachers read the notes in Arabic in the app and in the teacher group.
-- **The name: Tabachir (طباشير).**
-  - **Meaning.** Chalk, the teacher's everyday tool. Written in Latin letters, it also reads as تباشير: the first light of dawn, or good news.
-  - **Spelling.** Always "Tabachir" in Latin letters, never "Tabashir", which is taken on GitHub. The Arabic form is طباشير.
-  - **Descriptive line.** The words teachers search for go in the line under the name, never in the name itself, for example "Tabachir: الكراس اليومي ودفتر المناداة والتنقيط" or "Tabachir: the teacher's class logbook".
+- **The name: Minhajna (منهاجنا)** (4 Oct, decision 0019). Until then it was Tabachir (طباشير).
+  - **Meaning.** "Our curriculum": the app follows the official curriculum, through the yearly plan, down to each lesson.
+  - **Spelling.** Always "Minhajna" in Latin letters, never "Minhadjna" or "Manhajna". The Arabic form is منهاجنا. In Arabic sentences it is written «منهاجنا», so that it reads as the app's name rather than as "our curriculum".
+  - **The line under the name.** «من التدرّج إلى الحصّة», in English "From the yearly plan to every lesson".
+  - **Store listings.** The words teachers search for go after the name, never in the name itself, for example "Minhajna: الكراس اليومي ودفتر المناداة والتنقيط" or "Minhajna: the teacher's class logbook".
+  - **Not the state's app by its name.** Neither the name nor the app suggests that it comes from the Ministry. It becomes the official record only through a competent authority's written decision (principle 6).
   - **Not registered** (29 Sep). The name and logo are not registered as trademarks. They are protected only by use, by the official sources above and by the published checksums.
-  - **Forks.** The name policy (`TRADEMARKS.md`) lets anyone fork, but under another name and logo, and without suggesting that the fork is the official app. The Ministry's deployment runs under its own name (§5.2).
+  - **Forks.** The name policy (`TRADEMARKS.md`) lets anyone fork, but under another name and logo, and without suggesting that the fork is the project's app. The Ministry's deployment runs under its own name (§5.2).
   - **Official builds.** Unmodified official builds may be shared as they are.
-- **Naming rule**, for the product and for anything the project later names:
-  - **Distinctive.** It must be an invented word, or an ordinary word used for something unrelated, and never a description of the product. INAPI refuses signs that lack distinctive character (Ord. 03-06, Art. 7 point 2). The name is not registered, so the official sources and the published checksums are what separate official builds from forks.
+- **Naming rule**, for the product and for anything the project later names. Decision 0019 loosened it on 4 Oct. Since the name is not registered, a name no longer has to be distinctive. Since the project's repositories live under `founderscoffee`, it is no longer checked on GitHub. The echo rules now cover only exact official names and the apps that teachers use in Algeria.
   - **Easy to say.** It must be easy to say in Algerian Arabic, French and English, with one fixed Latin spelling.
-  - **No official echo.** No echo of official documents (دفتر النصوص, كراس القسم, سجل المناداة, المنهاج), state bodies or state platforms (ostad, amatti, awlyaa, mowadaf, the "ديوان" offices, Morocco's Massar).
-  - **No echo of existing teacher apps.**
-  - **Neutral.** No religious or political words. No translation of a well-known mark (Art. 7 point 8).
+  - **No official name.** Never the exact name of an official document (دفتر النصوص, كراس القسم, سجل المناداة, المنهاج), a state body or a state platform (ostad, amatti, awlyaa, mowadaf, the "ديوان" offices, Morocco's Massar). A word they share, such as منهاج, is allowed.
+  - **No echo of the apps that teachers use in Algeria.**
+  - **Neutral.** No religious or political words. No translation of a well-known mark (Ord. 03-06, Art. 7 point 8).
   - **Fits every teacher**, whatever the number of classes or the level.
-  - **Available** on Google Play, GitHub, the `.dz` registry and Facebook, checked before adoption.
+  - **Available** on Google Play, the `.dz` registry and Facebook, checked before adoption.
 - **Security.**
   - `SECURITY.md` gives a private reporting address. Reports are acknowledged within three working days. After the fix, a public advisory credits the reporter.
   - Secrets never enter a repository, and scanning checks every change.
@@ -281,10 +284,10 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 
 ### 1.10 Money
 
-**Why nothing is sold** (29 Sep). The goal is a Ministry that runs Tabachir without the project. Selling services to schools and authorities would make the project the state's supplier, with a stake in the Ministry depending on it. And teachers fear that a free tool will start charging once their records are in it (research 04, 05).
+**Why nothing is sold** (29 Sep). The goal is a Ministry that runs Minhajna without the project. Selling services to schools and authorities would make the project the state's supplier, with a stake in the Ministry depending on it. And teachers fear that a free tool will start charging once their records are in it (research 04, 05).
 
 - **Teachers never pay.** Every feature is free, and so are sync, backup and every export. Donations are voluntary and unlock nothing.
-- **Nobody else pays the project either.** It takes no payment from the Ministry, directorates or schools, for Tabachir or for help with it. The deployment guide, the administration manual and the training material are published free, so the Ministry can do the work itself.
+- **Nobody else pays the project either.** It takes no payment from the Ministry, directorates or schools, for Minhajna or for help with it. The deployment guide, the administration manual and the training material are published free, so the Ministry can do the work itself.
 - **Funding until adoption:**
   - public grants and prizes that are open to any project, such as INRE's Tarbya-Up Challenge;
   - teachers' donations, once the association exists, through channels approved in Algeria (brief §12);
@@ -295,7 +298,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 - **Sponsors** get no data, no say in the roadmap and no place in the app. They are thanked on the website and in the transparency report.
   - The project refuses sponsors that sell to schools, teachers, pupils or parents, such as publishers, tutoring firms, EdTech firms and private schools, and any party, union or religious body (30 Sep).
   - No sponsor gives more than a quarter of the project's income in any year.
-- **After adoption, the Ministry maintains Tabachir** with its own staff, who join the project's public process as maintainers (§1.8).
+- **After adoption, the Ministry maintains Minhajna** with its own staff, who join the project's public process as maintainers (§1.8).
 - **Never:**
   - ads or trackers;
   - selling or sharing data;
@@ -350,7 +353,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
 
 ### 1.14 Algeria first, flexible for other countries
 
-Tabachir is built for Algerian teachers first. It is also built so that teachers in other countries can use it later. A new country adds its own data instead of rewriting the code, and no principle is weakened.
+Minhajna is built for Algerian teachers first. It is also built so that teachers in other countries can use it later. A new country adds its own data instead of rewriting the code, and no principle is weakened.
 
 **Algeria first**
 - **Only Algeria until the end of the 2027/28 school year**, the first full year after launch. Until then, the project builds, tests and supports the product for Algerian teachers only, covering:
@@ -379,8 +382,8 @@ This is the only work done for other countries before then.
 - **Servers can run in any country.** Sync, backup and insights can be hosted wherever a country's law requires.
 - **Flexible, not generic.** Flexibility must never delay Algeria. When a general design would, the project builds for Algeria and records what another country would need.
 
-**How another country can use Tabachir**
-- **A fork, at any time.** The licences let anyone adapt Tabachir for their country, under another name and logo (§1.9).
+**How another country can use Minhajna**
+- **A fork, at any time.** The licences let anyone adapt Minhajna for their country, under another name and logo (§1.9).
 - **An official country edition** needs:
   - that country's data, with named data curators there;
   - a check of that country's data-protection and education law;
@@ -388,23 +391,23 @@ This is the only work done for other countries before then.
   - people who can support its teachers in their language;
   - a decision record (§1.8).
 - **The principles travel unchanged.** Every principle in §1.2 applies in every country.
-  - Section 1 names Algerian laws, bodies, hosting and payment channels, such as Loi 18-07, the ANPDP, the IGP, INAPI and hosting in Algeria.
+  - Section 1 names Algerian laws, bodies, hosting and payment channels, such as Loi 18-07, the ANPDP, the IGP and hosting in Algeria.
   - An edition applies its own country's equivalents, and never a weaker protection.
 - **Each country stays separate:** its data, its insights and its servers.
-- **The name.** Only an official edition may use the Tabachir name in another country.
+- **The name.** Only an official edition may use the Minhajna name in another country.
 
 ### 1.15 Institution mode
 
-Institution mode is how an education authority uses Tabachir as an institution, not only through its teachers' own apps. It is the road to the goal in principle 6.
+Institution mode is how an education authority uses Minhajna as an institution, not only through its teachers' own apps. It is the road to the goal in principle 6.
 
-- **It has one form: the national system** (29 Sep). The Ministry runs Tabachir on government servers, as one national system with a space for each directorate and each school (§5.2).
-- **Until the Ministry's system opens, Tabachir runs in teacher mode only** (29 Sep). Before then, the project runs no deployment for a school or an authority, and seeks no official acceptance of printed pages.
-- **The design protects teachers** (29 Sep). No legal text is required before the Ministry hosts Tabachir, so the protections are built into what the servers can read and compute (§5.1, §6.5).
+- **It has one form: the national system** (29 Sep). The Ministry runs Minhajna on government servers, as one national system with a space for each directorate and each school (§5.2).
+- **Until the Ministry's system opens, Minhajna runs in teacher mode only** (29 Sep). Before then, the project runs no deployment for a school or an authority, and seeks no official acceptance of printed pages.
+- **The design protects teachers** (29 Sep). No legal text is required before the Ministry hosts Minhajna, so the protections are built into what the servers can read and compute (§5.1, §6.5).
 
 **Who is responsible**
 - **The Ministry is the controller** of the records it requires, and runs the servers. The project is only the publisher of the software. It holds none of the records and runs none of the servers.
 - **The roles within the Ministry.** Counsel confirms how the Ministry, its directorates and its schools share the controller's role.
-- **Students and parents** (29 Sep). Tabachir builds no features for them. Parents see marks, and absences where the school chooses, in the state's awlyaa space (§5.9). Pupil data still never reaches the project (principle 2).
+- **Students and parents** (29 Sep). Minhajna builds no features for them. Parents see marks, and absences where the school chooses, in the state's awlyaa space (§5.9). Pupil data still never reaches the project (principle 2).
 
 **What the national system needs before the mandate starts**
 
@@ -417,9 +420,9 @@ These are the Ministry's to meet (§6.2, §7.12). The project asks for them, and
 - the launch gate: a load test at national scale, a trial term end, the independent security review and a full restore from backup (§6.8).
 
 **The path to official status**
-- **Now: a teacher's tool.** Tabachir prepares and prints what the school and the state's platforms ask for, and nothing it makes is official.
+- **Now: a teacher's tool.** Minhajna prepares and prints what the school and the state's platforms ask for, and nothing it makes is official.
 - **The first ask** (29 Sep): a ministerial text that makes the full digital record official, and compulsory from the national launch. It covers the texts book, the journal, roll call and marks (§5.1, §5.5). The ask includes the charter's protections, with the three safeguards on exam scope (point 7), as a request, not a condition.
-- **The national launch.** The mandate starts only once the national system has passed the launch gate (§6.8). Its date is set once the Ministry adopts Tabachir (29 Sep).
+- **The national launch.** The mandate starts only once the national system has passed the launch gate (§6.8). Its date is set once the Ministry adopts Minhajna (29 Sep).
 - **Once a record is official,** the weekly signed record is the official record, with signed exports and a history that cannot be altered (§5.5).
 
 **The data-use charter**
@@ -481,11 +484,11 @@ The code and the reference data live in separate repositories, because they have
 | Code licence | AGPL-3.0-or-later |
 | Contributor terms | DCO; no CLA and no relicensing |
 | Copyright and trademark | Held by the founder until a legal entity exists |
-| Code host | A GitHub organisation: the repository is `founderscoffee/tabachir`, which is public |
+| Code host (changed by 0019) | A GitHub organisation: the repository is `founderscoffee/tabachir`, which is public |
 | Money (changed by 0016) | Charge for services, never for features; the term export is free |
-| Name | **Tabachir** (طباشير), chosen from about 60 candidates. On 26 Sep 2026 the GitHub name `tabachir` was free, `tabachir.dz` and `tabachir.com.dz` were free in the registry, and no app on Google Play Algeria used the name. `tabachir.com` is taken |
-| Countries | Algeria first: until the end of the 2027/28 school year, the project builds only for Algerian teachers. Country specifics are data, not code, so other countries can use Tabachir later (§1.14) |
-| Goal | The state adopts Tabachir as the official digital record of teaching. Principle 6 now reads: built to become the official record, never by default |
+| Name (changed by 0019) | **Tabachir** (طباشير), chosen from about 60 candidates. On 26 Sep 2026 the GitHub name `tabachir` was free, `tabachir.dz` and `tabachir.com.dz` were free in the registry, and no app on Google Play Algeria used the name. `tabachir.com` is taken |
+| Countries | Algeria first: until the end of the 2027/28 school year, the project builds only for Algerian teachers. Country specifics are data, not code, so other countries can use Minhajna later (§1.14) |
+| Goal | The state adopts Minhajna as the official digital record of teaching. Principle 6 now reads: built to become the official record, never by default |
 | Institution mode (changed by 0015) | The school or authority is the controller; the project is only the publisher or a processor. Gates and the data-use charter bind every deployment (§1.15) |
 | Insight figures | The IGP sees each report first and has 30 days to comment. Figures are never used for exam thresholds or personnel decisions (§1.6) |
 | Section 1 | Settled on 27 Sep 2026. From now on, changing a principle follows §1.2 |
@@ -517,24 +520,24 @@ The code and the reference data live in separate repositories, because they have
 
 | Decision | Choice |
 |---|---|
-| Goal | National adoption, with the Ministry running Tabachir on government servers |
+| Goal | National adoption, with the Ministry running Minhajna on government servers |
 | Institution mode | One form: the national system, run by the Ministry. Teacher mode only until it opens. No school or directorate deployments before then |
 | Who is responsible | The Ministry is the controller and runs the servers. The project only publishes the software |
 | The first ask | A ministerial text making the full digital record official and compulsory from the national launch, with the charter's protections asked for, not required |
 | Before the mandate | The Ministry's own compliance, the consultation of teachers' representatives with every objection answered in public, the charter presented to every teachers' council, and the launch gate |
 | Students and parents | No features for them. Parents use the state's awlyaa space |
 | The Ministry's app | The project's release, with the Ministry's name and icon as settings, built reproducibly. The project's own app can always connect. A build that weakens the charter is made public at once |
-| After adoption | The Ministry's staff maintain Tabachir, as maintainers in the project's public process |
+| After adoption | The Ministry's staff maintain Minhajna, as maintainers in the project's public process |
 | Insights | Opt-in, in teacher mode, from 2027/28 until the national totals exist |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
 
 | Decision | Choice |
 |---|---|
-| Principle 4 | "Free, and never for sale." Everything Tabachir does is free, for teachers and for the state, and the project sells nothing |
+| Principle 4 | "Free, and never for sale." Everything Minhajna does is free, for teachers and for the state, and the project sells nothing |
 | Funding | Until adoption: public grants and prizes open to any project, teachers' donations, and sponsors with no access to data. No money from abroad |
 | Sponsors | None that sell to schools, teachers, pupils or parents, and no party, union or religious body. None gives more than a quarter of a year's income |
-| After adoption | The Ministry maintains Tabachir with its own staff (§1.8). A change to the principles or the charter then needs the teacher council's consent |
+| After adoption | The Ministry maintains Minhajna with its own staff (§1.8). A change to the principles or the charter then needs the teacher council's consent |
 | Legal entity | An association, which counsel confirms |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
@@ -550,10 +553,18 @@ The code and the reference data live in separate repositories, because they have
 |---|---|
 | Charter point 1 | Adds "Above the school, figures drawn from them serve only what point 7 allows." Nothing else in the charter changes |
 
+**Proposed on 4 Oct 2026 (decision 0019)**
+
+| Decision | Choice |
+|---|---|
+| Name | **Minhajna** (منهاجنا), with the line «من التدرّج إلى الحصّة», "From the yearly plan to every lesson". It replaces Tabachir. On 3 and 4 Oct 2026, `minhajna.dz`, `minhajna.com.dz`, `minhajna.com` and `minhajna.org` were free, and no app on Google Play Algeria or the App Store used the name |
+| Naming rule | Loosened: a name no longer has to be distinctive, it is no longer checked on GitHub, and the echo rules cover only exact official names and the apps that teachers use in Algeria |
+| Code host | The repository is `founderscoffee/minhajna`, renamed on 4 Oct 2026. The GitHub name `minhajna` belongs to a person, so there is no organisation of the product's name to reserve |
+
 **Open**
-- **Protecting the name.** Two steps, since the trademark is not registered:
-  - reserve the GitHub organisation `tabachir` so nobody else takes it;
-  - register `tabachir.dz` and `tabachir.com.dz`, under the registry's conditions.
+- **Protecting the name.** Two steps, since the name is not registered:
+  - register `minhajna.dz` and `minhajna.com.dz`, under the registry's conditions;
+  - check that the name is free on Facebook before 0019 is decided, and reserve the page.
 - **The association** (29 Sep). Counsel confirms the form, and the rules for an association that receives donations and grants (§9.8).
 - **Questions for counsel.** There is no budget for counsel yet, so the project will look for free help, for example university law clinics or incubators. The questions:
   - how the Ministry, its directorates and its schools share the controller's role in the national system (§1.15);
@@ -571,7 +582,7 @@ The code and the reference data live in separate repositories, because they have
 *Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. They take effect when those decisions are accepted.*
 
 This section sets out:
-- what Tabachir is for;
+- what Minhajna is for;
 - who uses it;
 - how the daily workflow runs;
 - what version 1 covers.
@@ -595,14 +606,14 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 
 ### 2.2 The goal and the end state
 
-- **The goal** (principle 6). The Algerian state adopts Tabachir as the official digital record of teaching, and the Ministry runs it on government servers as one national system (29 Sep).
-- **The end state: Tabachir replaces the paper procedures completely.** It is not a supplement to them.
-  - The Ministry publishes its plans through Tabachir.
+- **The goal** (principle 6). The Algerian state adopts Minhajna as the official digital record of teaching, and the Ministry runs it on government servers as one national system (29 Sep).
+- **The end state: Minhajna replaces the paper procedures completely.** It is not a supplement to them.
+  - The Ministry publishes its plans through Minhajna.
   - The system gives every class its lesson for every session.
   - Teachers confirm what was taught instead of writing it.
   - The texts book, the journal, roll call and marks become the official record, which the teacher signs each week (§5.5, 29 Sep). The distributions and the lesson notes are made from the plan.
   - Marks go to the state's system through the national interoperability system (§5.9).
-- **Paper goes when the law says so.** Official texts require the paper books. They give way once a ministerial text makes the digital record official, and compulsory from the national launch (§1.15). Until then, Tabachir removes the copying and prints what the paper rules still require. After that, paper stays only as the fallback (§5.5).
+- **Paper goes when the law says so.** Official texts require the paper books. They give way once a ministerial text makes the digital record official, and compulsory from the national launch (§1.15). Until then, Minhajna removes the copying and prints what the paper rules still require. After that, paper stays only as the fallback (§5.5).
 - **The path** (§1.15). It has three parts:
   - teachers first, in teacher mode, until the Ministry's system opens, because the state adopts what teachers already use;
   - a design built for the national system from the first release (§5.1);
@@ -636,7 +647,7 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 4. **History is only ever added to.** A new plan, timetable or assignment never rewrites a recorded session.
 5. **A missing entry is never an absence** (§1.15, charter point 3).
 
-### 2.4 Who uses Tabachir
+### 2.4 Who uses Minhajna
 
 | Participant | What they do and get | When |
 |---|---|---|
@@ -645,13 +656,13 @@ It complies with Section 1. Later sections design each part: the teacher app, th
 | **Director and deputies**, the censeur (ناظر) among them | • **Reader mode:** opens what teachers share, with no account<br>• **The timetable package:** imports the school timetable (FET or Excel) and sends each teacher their part<br>• **The school's space, in the national system:** the signed weeks, and an operational view of workload, sessions awaiting confirmation and classes behind the plan. It updates a few times a day, stays inside the school, and only the school key opens it. The teacher sees the same view (§7.6)<br>• **Exam thresholds** for the school's term and mock exams, first on its dashboard (§7.10) | Reader mode in the pilot; the package at launch; the school's space in the national system |
 | **Inspector** | Progress statements before a visit. In the national system, a grant from the authority opens the lesson records of the named courses and weeks, between its dates, and the teacher sees it (§5.10) | Pilot; the national system |
 | **Directorate** | In the national system, totals only, above the minimum group sizes: the threshold of its own unified and mock exams, first on its dashboard (§7.10); what the system owes teachers, such as cover provided, vacant posts and sessions lost to closures; and the curriculum report. Never a figure for one school or one teacher (§5.10) | The national system |
-| **Ministry and IGP** | • Publishes plans through Tabachir (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Tabachir by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10)<br>• Sets the threshold of national exams, such as the BEM and the BAC, through its committee with inspectors (§7.10) | When the Ministry joins. The national system after adoption |
-| **Students and parents** | Nothing in Tabachir (29 Sep). Parents see marks, and absences where the school chooses, in the state's awlyaa space, fed through the national interoperability system (§5.9) | — |
+| **Ministry and IGP** | • Publishes plans through Minhajna (upload or form)<br>• The IGP sees insight reports first (§1.6)<br>• Adopts Minhajna by a ministerial text, and runs the national system on government servers (§5.2)<br>• Sees totals only, above the minimum group sizes (§5.10)<br>• Sets the threshold of national exams, such as the BEM and the BAC, through its committee with inspectors (§7.10) | When the Ministry joins. The national system after adoption |
+| **Students and parents** | Nothing in Minhajna (29 Sep). Parents see marks, and absences where the school chooses, in the state's awlyaa space, fed through the national interoperability system (§5.9) | — |
 | **The project's curators and teacher-reviewers** | Turn plan PDFs into plan packs, with help from AI and a two-person review, until the Ministry does it itself | From now |
 
 ### 2.5 Version 1
 
-Version 1 is tested in a pilot from January to March 2027 and launched in September 2027, in teacher mode. The national system's launch date is set once the Ministry adopts Tabachir (29 Sep).
+Version 1 is tested in a pilot from January to March 2027 and launched in September 2027, in teacher mode. The national system's launch date is set once the Ministry adopts Minhajna (29 Sep).
 
 | Area | Version 1 |
 |---|---|
@@ -667,7 +678,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | School layer | • Reader mode in the pilot<br>• The timetable package at launch<br>• The school's space only in the national system, after adoption (§1.15) |
 | Not in version 1 | • The national system: school spaces, legal signatures, the interoperability connector and the totals, built for the national launch (§5.1)<br>• The insights observatory (2027/28)<br>• An iPhone app<br>• AI in the teacher app |
 
-### 2.6 What Tabachir never does
+### 2.6 What Minhajna never does
 
 - **Ask anyone to assign lessons to sessions by hand,** or record a lesson as taught without the teacher's confirmation.
 - **Track teachers.** No attendance, absence reasons, clock times, "started" events, sign-in events, location or biometric data, and no personal phone required. The phone's fingerprint prompt never leaves the phone (§6.4).
@@ -702,19 +713,19 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 
 | Decision | Choice |
 |---|---|
-| Goal | The Ministry runs Tabachir on government servers, as one national system |
+| Goal | The Ministry runs Minhajna on government servers, as one national system |
 | End state | The texts book, the journal, roll call and marks become the official record, signed each week and always correctable. Compulsory from the national launch |
 | The path | Teacher mode only until the Ministry's system opens. The first ask is the full digital record |
 | The director's view | The school's space in the national system: confirmation status stays inside the school, opened only by the school key, updated a few times a day |
-| Students and parents | No features in Tabachir. The state's awlyaa space serves them |
-| The national launch | No date yet. It is set once the Ministry adopts Tabachir |
+| Students and parents | No features in Minhajna. The state's awlyaa space serves them |
+| The national launch | No date yet. It is set once the Ministry adopts Minhajna |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
 
 | Decision | Choice |
 |---|---|
 | Exam thresholds | In the national system, each exam's threshold at the level that sets it: the school, the directorate or the Ministry. Teachers see what the director sees |
-| What Tabachir never does | Its figures never feed personnel decisions, and inform exam scope only under charter point 7 |
+| What Minhajna never does | Its figures never feed personnel decisions, and inform exam scope only under charter point 7 |
 
 **Open**
 - **The pilot slice.** Which grades, subjects and schools. It is chosen after the field check, by December 2026.
@@ -1028,7 +1039,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 | Languages | Arabic at least; French and English as their translations are ready | Arabic, French and English |
 | Measured | • Seconds per session: median and 90th percentile<br>• Minutes per week, against paper<br>• The share of sessions confirmed in one tap<br>• Term exports completed | Published before launch |
 
-The national system adds joining with a QR code, the weekly signature, the school's space and marks sent to the state's system, once the Ministry adopts Tabachir (§5.1). Its date is set then.
+The national system adds joining with a QR code, the weekly signature, the school's space and marks sent to the state's system, once the Ministry adopts Minhajna (§5.1). Its date is set then.
 
 ### 3.12 Decisions and open points
 
@@ -1101,7 +1112,7 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 
 *Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
 
-This section specifies how Tabachir knows the lesson for each session:
+This section specifies how Minhajna knows the lesson for each session:
 - the plan packs, which hold the official plans as data;
 - the pipeline that makes them, and who runs it each year;
 - the calendar;
@@ -1122,7 +1133,7 @@ It carries out steps 1 and 2 of the core workflow (§2.3) and feeds the teacher 
   - Communiqués are published as images.
   - No file carries a licence.
 - **2026/27 has no new edition.** None had been published by 26 September 2026. The 3AP and 4AP plans no longer match those grades' timetables (Decision 16).
-- **So Tabachir holds the plans as data itself,** as plan packs, until the IGP publishes them through Tabachir (§2.3, step 1).
+- **So Minhajna holds the plans as data itself,** as plan packs, until the IGP publishes them through Minhajna (§2.3, step 1).
 
 ### 4.2 Plan packs
 
@@ -1159,7 +1170,7 @@ A plan pack holds one official plan as data. There is one pack for each level, g
 
 | Status | Meaning |
 |---|---|
-| Official | Published by the issuing authority itself, through Tabachir |
+| Official | Published by the issuing authority itself, through Minhajna |
 | In force | Keyed by the project, and an official text confirms that this edition applies this year |
 | Latest found | The newest edition found, keyed and checked |
 | Stale | A later decision changed the subject's hours or content. For example, the 2022 3AP pack still has rows for subjects removed in 2025/26 |
@@ -1184,7 +1195,7 @@ A plan pack holds one official plan as data. There is one pack for each level, g
   - when the meaning is not clear, the app asks the teacher before the move, and never guesses. For example, the teacher gave an item two sessions, and the new release splits it in two. The answer goes into the teacher's own layer.
 - A variant is never labelled official.
 
-**Where each pack comes from is always shown.** Until the IGP publishes a pack itself, the app says so, for example: "Based on the September 2022 national edition, keyed by Tabachir's curators. Check with your inspector." (principle 6).
+**Where each pack comes from is always shown.** Until the IGP publishes a pack itself, the app says so, for example: "Based on the September 2022 national edition, keyed by Minhajna's curators. Check with your inspector." (principle 6).
 
 **Without a pack,** the teacher can type their own list of items, and it works like a pack. They can offer it to the data repository, where it is reviewed as a community pack (§1.7).
 
@@ -1419,13 +1430,13 @@ The same repository, review and yearly cycle hold the other data the app needs (
 
 ## 5. Data, formats and foundations
 
-*Redesign proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Tabachir on government servers, and in decision 0017, for exam scope. It takes effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+*Redesign proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Minhajna on government servers, and in decision 0017, for exam scope. It takes effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
 
 This section specifies:
 - how the apps and the server fit together, and who runs the server;
-- the data Tabachir keeps, and where each kind of record may go;
+- the data Minhajna keeps, and where each kind of record may go;
 - the history, signing, sync and retention rules;
-- the files Tabachir reads and writes;
+- the files Minhajna reads and writes;
 - the foundations that make the records official when the Ministry adopts them.
 
 Section 6 covers keys, encryption, security and the other non-functional requirements.
@@ -1433,7 +1444,7 @@ Section 6 covers keys, encryption, security and the other non-functional require
 ### 5.1 Built for the national system from day one
 
 - **The target is one national system, run by the Ministry** on government servers (29 Sep). The teacher app comes first, and every part of it is built for that system from the first release. Later means a later deployment, not a later architecture.
-- **The design is the teachers' protection** (29 Sep). No agreement or ministerial text is required before the Ministry hosts Tabachir. So everything that protects teachers must hold whoever runs the servers: what the server can read and compute is limited by the design itself (§5.2, §6.5).
+- **The design is the teachers' protection** (29 Sep). No agreement or ministerial text is required before the Ministry hosts Minhajna. So everything that protects teachers must hold whoever runs the servers: what the server can read and compute is limited by the design itself (§5.2, §6.5).
 - **Version 1 builds these foundations,** even where no screen uses them yet:
   - stable identities for every record (§5.3);
   - a history that is only ever added to, and shows any tampering (§5.5);
@@ -1450,8 +1461,8 @@ Section 6 covers keys, encryption, security and the other non-functional require
   - the connector to the national interoperability system (§5.9);
   - the totals above the school (§5.10);
   - sign-in with a security key, for teachers without a smartphone (§6.6).
-- **Being ready does not make a record official.** That starts only when the Ministry adopts Tabachir by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, official and compulsory from the national launch, covering the texts book, the journal, roll call and marks (29 Sep). The ask includes the charter's protections, as a request, not a condition (29 Sep).
-- **Until the Ministry's system opens, Tabachir runs in teacher mode only** (29 Sep). The project runs no school or directorate deployments before then.
+- **Being ready does not make a record official.** That starts only when the Ministry adopts Minhajna by a ministerial text (§1.15). The founder's first ask to the Ministry is that text: the full digital record, official and compulsory from the national launch, covering the texts book, the journal, roll call and marks (29 Sep). The ask includes the charter's protections, as a request, not a condition (29 Sep).
+- **Until the Ministry's system opens, Minhajna runs in teacher mode only** (29 Sep). The project runs no school or directorate deployments before then.
 
 ### 5.2 Architecture
 
@@ -1476,9 +1487,9 @@ Section 6 covers keys, encryption, security and the other non-functional require
 **One package, two operators**
 - **Until teachers have moved to the Ministry's system, the project runs the server package** in Algeria, free for teachers (29 Sep).
 - **After adoption, the Ministry runs it** on government servers: one national system, with a space for each directorate and each school (29 Sep).
-- **The Ministry's app is the project's release,** with the Ministry's name and icon as settings, built reproducibly so that anyone can check it against the published code (29 Sep). The Ministry runs its deployment under its own name; only the project's builds are called Tabachir (29 Sep, §1.9). The project's own app can always connect to the national system too. If a check finds that the Ministry's build weakens the charter, the project publishes the finding at once (§1.9, 30 Sep).
+- **The Ministry's app is the project's release,** with the Ministry's name and icon as settings, built reproducibly so that anyone can check it against the published code (29 Sep). The Ministry runs its deployment under its own name; only the project's builds are called Minhajna (29 Sep, §1.9). The project's own app can always connect to the national system too. If a check finds that the Ministry's build weakens the charter, the project publishes the finding at once (§1.9, 30 Sep).
 - **The Ministry needs nothing from the project to run it.** It installs the releases the project publishes, on servers with no internet access. There is no project key, licence server or call home.
-- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process, where releases, the principles and the charter are still decided. The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days (29 Sep, §6.7).
+- **After adoption, the Ministry's own staff maintain Minhajna** (29 Sep), as maintainers in the project's public process, where releases, the principles and the charter are still decided. The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days (29 Sep, §6.7).
 - **Teachers move from the project's server to the Ministry's** one by one, when they join their school's space, with their consent (§5.8). The project's server closes once they have moved (29 Sep).
 
 **Rules that hold whoever runs the server**
@@ -1604,11 +1615,11 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Backup.** An encrypted backup file that the teacher keeps on a PC, an SD card or a USB key. The phone's cloud backup never receives pupil data (§1.5).
 - **A lost phone** is recovered from sync or from a backup, with the teacher's recovery key. In a school space, the school can also issue a new QR code. The lost phone is removed and receives nothing new. Section 6 designs the keys.
 
-### 5.9 Files Tabachir reads and writes
+### 5.9 Files Minhajna reads and writes
 
 | File | In or out | What it holds | Rules |
 |---|---|---|---|
-| **The Tabachir archive** (the open format) | Both | Everything: records, history and pinned releases | Documented and versioned. Every older version can be imported. Free, at any time (principle 7) |
+| **The Minhajna archive** (the open format) | Both | Everything: records, history and pinned releases | Documented and versioned. Every older version can be imported. Free, at any time (principle 7) |
 | CSV | Out | Marks, roll call and the lesson log | For spreadsheets |
 | PDF and DOCX | Out | The documents (§3.8) | Made on the device |
 | The official class list (Excel) | In | Pupils | Only the columns in §5.6 |
@@ -1623,7 +1634,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 - **Out:** marks, in place of the workbook and ostad round trip (29 Sep); and pupils' absences, where the school chooses (29 Sep).
 - **The connector cannot read what it carries.** Marks and absences are encrypted on the teacher's or the school's device for the receiving state system alone.
 - **The files stay** as the fallback, and for teacher mode.
-- **Parents use the state's awlyaa space** (29 Sep). Marks, and absences where the school chooses, reach parents there. Tabachir builds no features for students or parents.
+- **Parents use the state's awlyaa space** (29 Sep). Marks, and absences where the school chooses, reach parents there. Minhajna builds no features for students or parents.
 - **A data catalogue** is generated from the data model, with each record's layer and classification, as Decree 25-320 requires of public bodies.
 
 **Every file that comes in is untrusted**
@@ -1704,7 +1715,7 @@ These five technical risks are tested early, before the pilot depends on them:
 | Minimum data | Pupils: registration number, name, sex, class and group, and movements. Absences: justified or unjustified, with no cause. No parents' details |
 | Retention | A yearly archive. Each year's pupil records are offered for erasure once the following school year ends. In institution mode, the institution's rules |
 | Sync (changed by 0015) | Optional and end-to-end encrypted, sending only new changes. Differing changes are both kept, and the teacher chooses. Direct transfer and an encrypted backup file |
-| Files | The open Tabachir archive; allowlisted imports; the workbook edited in place; signed statements and packages |
+| Files | The open Minhajna archive; allowlisted imports; the workbook edited in place; signed statements and packages |
 | Early checks | The five checks in §5.13, before the pilot |
 | Section 5 | Settled on 27 Sep 2026 |
 
@@ -1722,8 +1733,8 @@ These five technical risks are tested early, before the pilot depends on them:
 | Moving to the Ministry | Teacher by teacher, on joining the school space, with consent. The project's server then closes |
 | Before adoption | Teacher mode only. No school or directorate deployments until the Ministry's system opens |
 | The Ministry's app | The project's release, with the Ministry's name and icon as settings, built reproducibly. The project's own app can always connect. A build that weakens the charter is made public at once |
-| After adoption | The Ministry's staff maintain Tabachir, as maintainers in the project's public process |
-| Parents | Served by the state's awlyaa space. No student or parent features in Tabachir |
+| After adoption | The Ministry's staff maintain Minhajna, as maintainers in the project's public process |
+| Parents | Served by the state's awlyaa space. No student or parent features in Minhajna |
 | Record layers | A sixth layer, totals, for figures above the school (§5.4) |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
@@ -1902,7 +1913,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 
 The speed and size figures are targets. The pilot confirms them on budget phones.
 
-**The launch gate** (proposed). Tabachir is compulsory from the national launch (29 Sep), so the national system must be proven before that day. The mandate starts only once the national system has passed:
+**The launch gate** (proposed). Minhajna is compulsory from the national launch (29 Sep), so the national system must be proven before that day. The mandate starts only once the national system has passed:
 - a load test at national scale, including the term-end peak;
 - a trial term end with real schools;
 - the independent security review (§6.5);
@@ -1964,7 +1975,7 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 
 *Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. They take effect when those decisions are accepted.*
 
-This section designs how schools and education authorities use Tabachir:
+This section designs how schools and education authorities use Minhajna:
 - reader mode and the coordinator's merge, which need no accounts;
 - the timetable package;
 - the school's space in the national system, the only form of institution mode (§1.15);
@@ -1979,9 +1990,9 @@ The rules in §1.15 and the data-use charter bind all of it. Section 8 covers th
 |---|---|---|---|
 | 1. Reader mode and the coordinator's merge | Directors, coordinators and inspectors open what teachers share | The pilot, from January 2027 | Nothing beyond teacher mode: no accounts and no copy on a server |
 | 2. The timetable package | The director or the censeur sends each teacher their part of the school timetable | Launch, September 2027 | Counsel confirms that sending staff data as files needs no further formality |
-| 3. The school's space | In the national system: the signed weeks, the master timetable, cover, handovers, the operational dashboard and exam thresholds | Once the Ministry adopts Tabachir (29 Sep) | What the national system needs before the mandate (§7.12) |
+| 3. The school's space | In the national system: the signed weeks, the master timetable, cover, handovers, the operational dashboard and exam thresholds | Once the Ministry adopts Minhajna (29 Sep) | What the national system needs before the mandate (§7.12) |
 
-Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are part of teacher mode (29 Sep).
+Before adoption, no school runs Minhajna as an institution. Steps 1 and 2 are part of teacher mode (29 Sep).
 
 ### 7.2 Reader mode
 
@@ -2005,7 +2016,7 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
   - from FET, which most CEMs and lycées probably use (an estimate: no survey exists);
   - from an Excel or CSV template;
   - by hand, with live conflict checks.
-- Tabachir never builds a timetable automatically. FET already does that (research 12).
+- Minhajna never builds a timetable automatically. FET already does that (research 12).
 - **Checks:** clashes of teachers, classes and rooms; each class's hours against the official grid; A/B weeks.
 - **Printouts:** class, teacher and room grids, with the official header, the A/B week, and signature boxes for the director and the censeur, plus the inspector in primary.
 
@@ -2021,7 +2032,7 @@ Before adoption, no school runs Tabachir as an institution. Steps 1 and 2 are pa
 - **Recorded sessions are never rewritten** (§4.6).
 
 **Limits**
-- Assignments and weekly hours come from the state's system or from FET. Tabachir never manages them (§2.6).
+- Assignments and weekly hours come from the state's system or from FET. Minhajna never manages them (§2.6).
 - The package holds staff data, such as names and loads, but no pupil data.
 
 ### 7.5 The school's space
@@ -2088,7 +2099,7 @@ The director's view of the school's space (§2.4). It updates with each sync bat
   - letting pupils go, if it is the day's last session.
 - **A daily cover sheet** for the supervisors, printed or sent.
 - **The cover log** counts the cover each person gave, so it can be shared fairly. The app suggests; the director decides.
-- **Make-up sessions** are new sessions linked to the ones they replace, so progress stays right. Whether a missed session affects pay is decided in the official channel, never in Tabachir (charter point 2).
+- **Make-up sessions** are new sessions linked to the ones they replace, so progress stays right. Whether a missed session affects pay is decided in the official channel, never in Minhajna (charter point 2).
 
 ### 7.8 Who can see and do what in the school's space
 
@@ -2105,7 +2116,7 @@ The director's view of the school's space (§2.4). It updates with each sync bat
 - **The censeur (ناظر)** is the director's pedagogical deputy, and holds the school key like the other deputies (research 08).
 - **Timetable preparers** (3 Oct). Staff who help prepare the master timetable without being the director or a deputy, such as an education counsellor, a supervisor or a teacher, hold a timetable role. Its key opens only the timetables and the assignments they are built from (§6.5). The school key stays with the director and the deputies.
 - **Inspectors' access** is granted by the authority, never by the director. A grant names the courses and weeks, is limited in time and is visible to the teacher (charter point 5, §6.5). It opens their lesson records only, never pupil records or the confirmation status as it syncs (30 Sep).
-- **Never in Tabachir:** evaluating teachers, transferring them between schools, approving overtime or pay, or connecting to amatti or ostad outside the national interoperability system (§2.6).
+- **Never in Minhajna:** evaluating teachers, transferring them between schools, approving overtime or pay, or connecting to amatti or ostad outside the national interoperability system (§2.6).
 
 ### 7.9 Directorates and the Ministry: totals only
 
@@ -2196,7 +2207,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 |---|---|
 | January–March 2027 (pilot) | Reader mode and the coordinator's merge, with the pilot's directors, coordinators and an inspector |
 | September 2027 (launch) | The timetable package |
-| After adoption | School spaces in the national system, a trial term end, then the mandate. The date is set once the Ministry adopts Tabachir |
+| After adoption | School spaces in the national system, a trial term end, then the mandate. The date is set once the Ministry adopts Minhajna |
 
 ### 7.14 Decisions and open points
 
@@ -2224,7 +2235,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 
 | Decision | Choice |
 |---|---|
-| School mode | Replaced by the school's space in the national system, after adoption. Before then, no school runs Tabachir as an institution |
+| School mode | Replaced by the school's space in the national system, after adoption. Before then, no school runs Minhajna as an institution |
 | What enters the school's space | Each session's confirmation status as it syncs, and the signed weeks with roll call and marks. Never the working record before signing, the days sessions were confirmed, private notes or reasons |
 | Who reads it | The teacher and the school. An inspector during a grant reads only the lesson records it names. Nobody who runs the servers |
 | Participation | Compulsory from the national launch. Voluntary during the trial term end before it |
@@ -2257,9 +2268,9 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 
 *Changes proposed on 29 Sep 2026 in decisions 0015, 0016 and 0017, for the national system run by the Ministry, with nothing sold and exam scope set at each exam's own level. They take effect when those decisions are accepted.*
 
-This section designs how Tabachir works with the state towards the goal in principle 6:
+This section designs how Minhajna works with the state towards the goal in principle 6:
 - what the state already runs, and the rules for working alongside it;
-- what Tabachir offers the Ministry, the IGP and INRE;
+- what Minhajna offers the Ministry, the IGP and INRE;
 - the insights observatory, with the numbers §1.6 leaves to this section;
 - the state track, the first ask, and what national adoption takes.
 
@@ -2280,30 +2291,30 @@ This section designs how Tabachir works with the state towards the goal in princ
   - There is no public API, developer programme or approval route. Every integration found is between state bodies.
   - Since 6 September 2026, every education proposal goes to the Council of Ministers.
   - The only structured door for outside innovators is INRE's Tarbya-Up Challenge.
-- **So Tabachir complements the state and never duplicates it** (§2.6). It covers the lesson record, which no state system covers. It meets the rest through files, and in the national system through the national interoperability system (§5.9).
+- **So Minhajna complements the state and never duplicates it** (§2.6). It covers the lesson record, which no state system covers. It meets the rest through files, and in the national system through the national interoperability system (§5.9).
 
 ### 8.2 Rules for working with the state
 
-- **Complement, don't race.** Tabachir keeps the teacher's capture and pacing. It hands the state what it needs in open formats, and never rebuilds what the state runs.
+- **Complement, don't race.** Minhajna keeps the teacher's capture and pacing. It hands the state what it needs in open formats, and never rebuilds what the state runs.
 - **Files only, until there is an agreement** (§2.6).
   - No connectors, scraping or automation of ostad or amatti, and never teachers' passwords.
   - Data moves only as files that users download or upload.
   - An automated link needs the Ministry's agreement, the ANPDP's authorisation for interconnection (Loi 18-07 Art. 19) and the national interoperability system (Decree 25-320). In the national system, that link is the connector (§5.9).
-- **Outputs, never a tracker.** Tabachir is never described as a way of "tracking teachers". Until adoption, it is the teacher's class logbook, which prepares the official texts book and the term export. In the national system, it is the official record, which the teacher signs each week. The Ministry runs the servers but cannot read named records, and nothing on them tells time (§5.2).
+- **Outputs, never a tracker.** Minhajna is never described as a way of "tracking teachers". Until adoption, it is the teacher's class logbook, which prepares the official texts book and the term export. In the national system, it is the official record, which the teacher signs each week. The Ministry runs the servers but cannot read named records, and nothing on them tells time (§5.2).
 - **Every agreement is public,** and no principle is waived (§1.8). The state may also fork the code: a changed version it runs for teachers must offer them its source (§1.3).
 - **Watch and respond** (research 10):
 
-| If the state ships | Tabachir |
+| If the state ships | Minhajna |
 |---|---|
 | A digital texts book | Adds an export into it, drops the print features it replaces, and keeps the teacher's capture and pacing |
 | A timetable screen or export | Adds an importer |
 | An inspector module | Aligns the progress statement with its fields |
 | A list of approved tools, or a ban | Complies, and offers its code and `NETWORK.md` for audit |
 
-### 8.3 What Tabachir offers the state
+### 8.3 What Minhajna offers the state
 
 1. **Four open formats** (§5.11): the plan pack, the session log and progress statement, the timetable package, and the insights payload.
-2. **The plan-pack pipeline** (§4.3). The IGP can publish its plans through Tabachir, by uploading the PDF or filling in the form, and its packs carry the status "official". Once the IGP publishes its own plans this way, the question of their copyright is settled.
+2. **The plan-pack pipeline** (§4.3). The IGP can publish its plans through Minhajna, by uploading the PDF or filling in the form, and its packs carry the status "official". Once the IGP publishes its own plans this way, the question of their copyright is settled.
 3. **The national system** (Section 5): the full digital record, official and compulsory from the national launch, run by the Ministry on government servers, with the protections built into its design. This is the first ask (§1.15, 29 Sep). Paper then stays only as the fallback. Abroad, Ghana declared electronic lesson plans legal, and Russia and Portugal ban paper duplicates (research 11).
 4. **A curriculum-pacing observatory** for the IGP and the curriculum designers, until the national system's totals exist (§8.4).
 5. **A national progress figure:** the inspectors' sample before adoption, then the national system's totals, which the sample checks (§8.5).
@@ -2353,7 +2364,7 @@ It never holds the date of a session, a reason a session was not held, pupil dat
 
 ### 8.5 A national progress figure, checked by a sample
 
-- **Before adoption,** if the state wants a national figure for programme coverage, Tabachir offers a protocol rather than teachers' data. Inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year.
+- **Before adoption,** if the state wants a national figure for programme coverage, Minhajna offers a protocol rather than teachers' data. Inspectors compare pupils' exercise books with the texts book in a random sample of classes, twice a year.
 - **In the national system,** the figure comes from totals of signed weeks, formed only on announced days (§5.10). The same sample checks them, and the figures behind every exam's threshold (charter point 7, §7.10).
 - **The sample's results are published** with the figures they check, as totals only, never for one class or one teacher.
 - **A year without the sample** (30 Sep). The figures are still used, and published as unchecked. Refusing them would push the Ministry back to collections that name each school.
@@ -2368,7 +2379,7 @@ It never holds the date of a session, a reason a session was not held, pupil dat
 | January–March 2027 | • A director and an inspector in the pilot, in reader mode<br>• The security design published | The pilot's success criteria |
 | September 2027 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry, with the pilot's results and the national system's design (§1.15)<br>• A Tarbya-Up entry, once its call and terms are known<br>• The association in place (§9.8) | The pilot's results, published |
 | 2027/28 | • The observatory's method published, then its first collection | The method published at least a month before collection (§8.4) |
-| Once the Ministry adopts Tabachir | • The ministerial text, and the Council of Ministers' decision<br>• The national system on government servers, then a trial term end<br>• Teachers move to it, and the project's server closes (§5.2)<br>• The mandate from the national launch, whose date is set at adoption | What the national system needs (§7.12), and the launch gate (§6.8) |
+| Once the Ministry adopts Minhajna | • The ministerial text, and the Council of Ministers' decision<br>• The national system on government servers, then a trial term end<br>• Teachers move to it, and the project's server closes (§5.2)<br>• The mandate from the national launch, whose date is set at adoption | What the national system needs (§7.12), and the launch gate (§6.8) |
 
 Before adoption, the track seeks no official acceptance of printed pages, and runs no school or directorate deployments (§1.15, 29 Sep).
 
@@ -2380,14 +2391,14 @@ Before adoption, the track seeks no official acceptance of printed pages, and ru
 
 ### 8.7 National adoption
 
-National adoption is the first ask (§1.15, 29 Sep). The national launch has no date yet: it is set once the Ministry adopts Tabachir, and the work is planned back from it (29 Sep). Adoption takes:
+National adoption is the first ask (§1.15, 29 Sep). The national launch has no date yet: it is set once the Ministry adopts Minhajna, and the work is planned back from it (29 Sep). Adoption takes:
 - **Decisions.** A Council of Ministers decision, and a ministerial text giving the digital record official status, alongside or instead of Decisions 155 and 831, and making it compulsory from the national launch.
 - **State plans and data exchange.** HCN review of the sector plan (Decree 23-314), and data exchanged only through the national interoperability system (Decree 25-320).
 - **Hosting** on state infrastructure: the Ministry's data centre or the national data centre, with no internet access, and no outbound calls except through the interoperability connector (§5.2, §5.9, §6.7).
 - **The ANPDP,** consulted, or its authorisation for a national system.
 - **Records fit to be official:** signed exports and a history that cannot be altered (§1.15), with legal signatures under Law 15-04 (§5.5).
-- **Tabachir's role:** the code, the deployment guide, the administration manual and the training material, free. The project sells nothing, and signs no support contract (§1.10).
-- **After adoption, the Ministry's own staff maintain Tabachir** (29 Sep), as maintainers in the project's public process. A change to the principles or the charter then needs the teacher council's consent (§1.8, 30 Sep). The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days (§5.2, §6.7).
+- **Minhajna's role:** the code, the deployment guide, the administration manual and the training material, free. The project sells nothing, and signs no support contract (§1.10).
+- **After adoption, the Ministry's own staff maintain Minhajna** (29 Sep), as maintainers in the project's public process. A change to the principles or the charter then needs the teacher council's consent (§1.8, 30 Sep). The Ministry deploys each release within an agreed window, and security fixes for critical flaws within 7 days (§5.2, §6.7).
 - **The design protects teachers** (§1.15). The ask includes the charter's protections, with the three safeguards on exam scope (charter point 7), as a request, not a condition. Whatever the text says, nobody who runs the servers can read named records, and above the school there are only totals (§5.2, §6.5).
 - **The Ministry's app** is the project's release, with the Ministry's name and icon as settings, built reproducibly. The Ministry's deployment runs under its own name, and the project's own app can always connect to it (§1.9, 29 Sep). If its build ever weakens the charter, the project publishes the finding at once (30 Sep).
 - **Teachers are consulted first:** the staff technical committees and the representative unions, with the results published and every objection answered in public before the mandate starts (30 Sep), and the charter presented to every school's teachers' council (§1.15).
@@ -2417,8 +2428,8 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 | The offer | The four formats, the pipeline for the IGP, the observatory, a protocol for a national figure, the national system, and code with support. No accepted printouts, and no aggregator for directorates |
 | Observatory | Collects in teacher mode from 2027/28, and is retired once the national system's totals exist |
 | The state track | Teacher mode only until the Ministry's system opens: no accepted printouts, school trials or directorate deployments. The first ask goes with the pilot's results, in September 2027 |
-| National adoption | The first ask: a ministerial text makes the full digital record official, and compulsory from the national launch. The charter's protections are asked for, not required, and the design protects teachers either way. The launch date is set once the Ministry adopts Tabachir |
-| After adoption | The Ministry's own staff maintain Tabachir in the project's public process. The Ministry's app is the project's release under the Ministry's name, and a build that weakens the charter is made public at once. The project's server closes once teachers have moved |
+| National adoption | The first ask: a ministerial text makes the full digital record official, and compulsory from the national launch. The charter's protections are asked for, not required, and the design protects teachers either way. The launch date is set once the Ministry adopts Minhajna |
+| After adoption | The Ministry's own staff maintain Minhajna in the project's public process. The Ministry's app is the project's release under the Ministry's name, and a build that weakens the charter is made public at once. The project's server closes once teachers have moved |
 | Consultation | Every objection from the staff committees and the unions gets a public answer before the mandate starts |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
@@ -2447,14 +2458,14 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 
 ## 9. Funding and sustainability
 
-*Rewrite proposed on 29 Sep 2026 in decision 0016: Tabachir is free, and the project sells nothing. Decision 0015 also makes sync free. The changes take effect when those decisions are accepted.*
+*Rewrite proposed on 29 Sep 2026 in decision 0016: Minhajna is free, and the project sells nothing. Decision 0015 also makes sync free. The changes take effect when those decisions are accepted.*
 
 This section turns the money rules (§1.10) into a plan:
 - what everyone gets, and what nobody pays;
-- how the project is funded until the Ministry adopts Tabachir;
+- how the project is funded until the Ministry adopts Minhajna;
 - what it costs;
 - the legal entity;
-- how teachers find Tabachir.
+- how teachers find Minhajna.
 
 Costs are estimates. The pilot tests them.
 
@@ -2463,7 +2474,7 @@ Costs are estimates. The pilot tests them.
 | Who | Their part | Never |
 |---|---|---|
 | **Teachers** | Use everything free: every feature, sync and backup, every export and print layout. They may donate, which unlocks nothing | Pay for anything |
-| **The Ministry, directorates and schools** | Get the software, the deployment guide, the administration manual and the training material, free. After adoption, the Ministry's staff maintain Tabachir (§1.8) | Pay the project, or buy a service from it |
+| **The Ministry, directorates and schools** | Get the software, the deployment guide, the administration manual and the training material, free. After adoption, the Ministry's staff maintain Minhajna (§1.8) | Pay the project, or buy a service from it |
 | **Public grants and prizes** open to any project, never from abroad | Fund the team's time, plan-pack curation, the field check and the security review | Override a principle (§1.2) |
 | **Sponsors** in Algeria that sell nothing in education (§9.5) | Are thanked on the website and in the transparency report | Get data, a say in the roadmap or a place in the app, or give more than a quarter of a year's income |
 
@@ -2487,7 +2498,7 @@ Costs are estimates. The pilot tests them.
 
 - **Everything, free:** the software under the AGPL, the deployment guide, the administration manual and the training material, so the Ministry can do the work itself (§1.10). Nothing goes through public procurement, because nothing is sold.
 - **Everything the Ministry's team needs is documented,** from building a release to restoring a backup (decision 0016).
-- **No deployments by the project.** Before adoption, it runs none for a school or an authority. After adoption, the Ministry runs the national system, and its staff maintain Tabachir (§1.8, §1.15).
+- **No deployments by the project.** Before adoption, it runs none for a school or an authority. After adoption, the Ministry runs the national system, and its staff maintain Minhajna (§1.8, §1.15).
 
 ### 9.5 Grants, prizes, donations and sponsors
 
@@ -2538,9 +2549,9 @@ Costs are estimates. The pilot tests them.
 - **Why an association.** With nothing sold, the project needs no commercial register entry, and the e-commerce rules of Loi 18-05 no longer apply. Counsel checks the rules for an association that receives donations and grants.
 - **When.** If the ANPDP declaration for the pilot cannot be filed by the founder personally (§6.10), the association is needed before January 2027. Donations start once it exists and has an account.
 
-### 9.9 How teachers find Tabachir
+### 9.9 How teachers find Minhajna
 
-Teachers find Tabachir where they already are (§1.1), never through inspectors or schools.
+Teachers find Minhajna where they already are (§1.1), never through inspectors or schools.
 - **The teacher group on Facebook:** the public beta, a monthly progress post and support (§1.11).
 - **YouTube tutorials in Arabic:** one short video per task, such as setting up in 10 minutes, the term export or printing the journal. Each is timed to its season.
 - **A content website,** because content brings far more installs than tools do. It offers:
@@ -2548,7 +2559,7 @@ Teachers find Tabachir where they already are (§1.1), never through inspectors 
   - plain guides to the official rules: formulas, circulars and the calendar;
   - a public view of the plan packs;
   - the official downloads (§1.9).
-- **Word of mouth in the staffroom.** Handover packages and shared statements carry Tabachir from one colleague to the next.
+- **Word of mouth in the staffroom.** Handover packages and shared statements carry Minhajna from one colleague to the next.
 - **The season.** Launch in September, and promote the term export before the windows in mid-December, March and May.
 - **Every store review gets a reply** (§1.11).
 
@@ -2578,9 +2589,9 @@ Teachers find Tabachir where they already are (§1.1), never through inspectors 
 
 | Decision | Choice |
 |---|---|
-| The model | Nothing is sold. Teachers, the Ministry, directorates and schools pay nothing, and the project takes no payment for Tabachir or for help with it |
+| The model | Nothing is sold. Teachers, the Ministry, directorates and schools pay nothing, and the project takes no payment for Minhajna or for help with it |
 | Sync | Free for every teacher, with no price or subscription |
-| The state | The software, the deployment guide, the administration manual and the training material, free. After adoption, the Ministry's staff maintain Tabachir |
+| The state | The software, the deployment guide, the administration manual and the training material, free. After adoption, the Ministry's staff maintain Minhajna |
 | Funding | Public grants and prizes open to any project, teachers' donations, and sponsors with no access to data. No money from abroad. Every source disclosed |
 | Sponsors | None that sell to schools, teachers, pupils or parents, and no party, union or religious body. None gives more than a quarter of a year's income |
 | Spending | Curation first, then the security review and hosting. Volunteers give support |
@@ -2618,7 +2629,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 | **September 2027:** launch | • Google Play, the website and F-Droid<br>• Code contributions open to all (§1.13, stage 3) | The September release for 2027/28 | • The four formats proposed to the IGP and INRE, with the pilot's results<br>• The first ask to the Ministry (§8.6)<br>• A Tarbya-Up entry | • The first transparency report (§1.11)<br>• The teacher council (§1.8) | — |
 | **2027/28** | More teachers. The observatory, in teacher mode, with its method published a month before collection (§8.4) | The yearly cycle | No school or directorate deployments before adoption (§1.15) | Counsel confirms that lesson-level data needs no written authorisation (§8.4) | The method published at least a month before collection |
 | **2028/29 onwards** | A second country only if one is decided (§1.14) | — | Teacher mode until the Ministry's system opens (§1.15) | — | — |
-| **Once the Ministry adopts Tabachir** | • The national system built, on a plan worked back from its launch date (§5.1, §8.7)<br>• The Ministry's staff join as maintainers (§1.8)<br>• Teachers move over, and the project's server closes (§5.2) | — | • The ministerial text (§8.7)<br>• Teachers' committees and unions consulted, and the charter presented to every teachers' council (§1.15)<br>• A trial term end, then the mandate from the national launch | What the national system needs, which is the Ministry's to meet (§7.12) | The launch gate (§6.8) |
+| **Once the Ministry adopts Minhajna** | • The national system built, on a plan worked back from its launch date (§5.1, §8.7)<br>• The Ministry's staff join as maintainers (§1.8)<br>• Teachers move over, and the project's server closes (§5.2) | — | • The ministerial text (§8.7)<br>• Teachers' committees and unions consulted, and the charter presented to every teachers' council (§1.15)<br>• A trial term end, then the mandate from the national launch | What the national system needs, which is the Ministry's to meet (§7.12) | The launch gate (§6.8) |
 
 ### 10.2 The field check
 
@@ -2633,7 +2644,7 @@ Two tracks run side by side: the product for teachers and schools, and the state
 - **The pilot slice:** grades, subjects and schools (§2.7).
 - **The weekly signature:** whether signing each course's week in one step fits the teacher's routine (§3.3).
 - **The plan model:** the time anchors and the stage picker, and whether "weeks behind the plan" means something to teachers (§4.11).
-- **Trust:** whether teachers read Tabachir as surveillance, and what would push them to over-report or under-report.
+- **Trust:** whether teachers read Minhajna as surveillance, and what would push them to over-report or under-report.
 - **Files:** the class list, the grade workbook's type and columns, blank workbook templates and anonymised FET files (§3.12, §5.14, §7.4).
 - **Documents:** the lesson-note template, what Tamazight teachers keep, and the roll-call counting rules (§3.12).
 - **The April 2026 progress collection:** what it asked, and how schools answered it.
@@ -2675,7 +2686,7 @@ Counsel's other questions are in each section's open points.
 - **Trust:** privacy incidents, and security fixes shipped on time.
 - **Content:** packs published, by status. Plan errors fixed, and how fast. Calendar fixes made within 24 hours.
 - **Money:** income by source, and costs (§9.5, §9.6).
-- **The goal** (§1.15): a working contact at the IGP or INRE, the formats proposed, the first ask made, the independent security review passed, and the Ministry's decision to adopt Tabachir. Also: directors and inspectors who check statements in reader mode.
+- **The goal** (§1.15): a working contact at the IGP or INRE, the formats proposed, the first ask made, the independent security review passed, and the Ministry's decision to adopt Minhajna. Also: directors and inspectors who check statements in reader mode.
 
 **Measured without spying on teachers**
 - **The app sends no usage data** (principle 3, §1.5).
@@ -2684,18 +2695,18 @@ Counsel's other questions are in each section's open points.
 
 ### 10.4 When to stop and change course
 
-- **After the field check.** If teachers read Tabachir as surveillance, the design changes before the pilot.
-- **After the pilot.** If ordinary sessions take far longer than 5 seconds, or teachers keep paper and Tabachir side by side with no time saved, the flow is reworked before launch. Parallel paper and digital records were the worst case abroad (research 11).
+- **After the field check.** If teachers read Minhajna as surveillance, the design changes before the pilot.
+- **After the pilot.** If ordinary sessions take far longer than 5 seconds, or teachers keep paper and Minhajna side by side with no time saved, the flow is reworked before launch. Parallel paper and digital records were the worst case abroad (research 11).
 - **Before the mandate.** If the national system fails the launch gate, the mandate waits until it passes (§6.8).
 - **In the national system.** If the Ministry's use breaks the charter, the project reports the breach in public, where the law allows: at once if the Ministry's build weakens the charter (§1.9, 30 Sep), and in every case in the transparency report (§1.11). The design still keeps named records and times out of the servers' reach (§5.2).
-- **If the state ships its own texts book,** Tabachir follows §8.2 rather than competing.
+- **If the state ships its own texts book,** Minhajna follows §8.2 rather than competing.
 
 ### 10.5 Risks
 
 | Risk | Likelihood | Impact | Response |
 |---|---|---|---|
 | Plan packs cost more to keep up than the team can give, every September | High | High | Curation gets money first (§9.7). Status flags, free entry without a pack (§4.2), and the IGP taking over the pipeline (§8.3) |
-| Teachers see Tabachir as surveillance, or it is used against them | Medium | High | The charter, record layers, no clock times, "awaiting confirmation" only on screen, neutrality (§1.11, §5.4, §7.6). In the national system, no server can read named records, and above the school there are only totals (§5.2). The stop conditions (§10.4) |
+| Teachers see Minhajna as surveillance, or it is used against them | Medium | High | The charter, record layers, no clock times, "awaiting confirmation" only on screen, neutrality (§1.11, §5.4, §7.6). In the national system, no server can read named records, and above the school there are only totals (§5.2). The stop conditions (§10.4) |
 | Few installs: no Algerian teacher tool has passed about 10,000 | High | High | The content website and tutorials, free features, offline use, the term export as the pull, and word of mouth through handovers (§9.9) |
 | The state ships a digital texts book or an inspector space within 12–24 months | Medium | Medium | Offer it the formats and the national system's design (§8.3). Otherwise complement it: export into it, and keep the teacher's capture and pacing (§8.2) |
 | Legal questions stay unanswered, with no budget for counsel | High | High | Protect data as if the strictest reading applied (§6.1). Free legal help. The national system's legal steps are the Ministry's to meet before the mandate (§7.12) |
@@ -2708,11 +2719,11 @@ Counsel's other questions are in each section's open points.
 | A lost phone exposes pupil data | Medium | High | Encryption, the app lock, backups and the recovery sheet (§6.4, §6.5) |
 | A breach of the server, whoever runs it | Low | High | End-to-end encryption: nobody who runs a server holds a key, so there is nothing readable to steal (§6.5). The breach runbook (§6.7) |
 | The Google Play account is lost or the app removed | Low | High | The website and F-Droid as official sources (§1.9). Accounts held by the organisation (§1.8) |
-| Too much depends on the founder | High | High | Everything public, the continuity pledge (§1.12), and more maintainers (§1.8). After adoption, the Ministry's staff maintain Tabachir too (§1.8) |
+| Too much depends on the founder | High | High | Everything public, the continuity pledge (§1.12), and more maintainers (§1.8). After adoption, the Ministry's staff maintain Minhajna too (§1.8) |
 | Money runs out before adoption | Medium | High | Grants, prizes and donations from Algeria, sponsors with no stake in education and none above a quarter of the income, low hosting costs and clear priorities (§1.10, §9.7). The daily work never depends on the project's servers (§1.12) |
 | The 6 September 2026 rule slows the first ask | High | Medium | Teacher mode and reader mode need no approval (§7.2). Patience on the state track |
 | Self-reported figures mislead, now that they can shape an exam: a class gains by reporting less (research 11) | Medium | High | Only signed progress counts above the school, taken on dates announced in advance, published after the exam and checked against the inspectors' sample, or marked unchecked in a year without it (charter point 7, §7.10). The observatory's figures never inform exam scope. The data-quality audit (§8.4, §8.5) |
-| The Ministry does not adopt Tabachir | High | High | Teacher mode stands on its own. The formats, the pipeline and the observatory serve the state anyway (§8.3) |
+| The Ministry does not adopt Minhajna | High | High | Teacher mode stands on its own. The formats, the pipeline and the observatory serve the state anyway (§8.3) |
 | A compulsory mandate meets resistance or a boycott, as digital platforms have in Algeria and Morocco (research 13) | High | High | Teachers' committees and unions consulted first, with the results published and every objection answered in public before the mandate starts, and the charter presented to every teachers' council (§1.15). The protections built into the design: corrections always possible, no clock times and no personal phone required (§5.2, §5.5, §6.6). Neutrality, and no count of strikes (§1.11, §7.9) |
 | The national system fails at its first term end | Medium | High | Device first: every task works offline, and a record counts from the day it was signed on the device (§5.5). The launch gate, with its load test and trial term end (§6.8) |
 | The Ministry's app is modified in a way that weakens the protections | Low | High | Reproducible builds with published checksums, which the web app also shows. Teachers are entitled to the source of any modified version, and the project's own app can always connect. A build that weakens the charter is made public at once (§1.9, §5.2) |

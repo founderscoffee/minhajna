@@ -23,7 +23,7 @@ These rules put the PRD's principles into code. A pull request that breaks one i
 - **Dates, never clock times.** Records and their history keep the day and the order of each change, never the time of day ([PRD §5.5](../prd/PRD.md#55-history-corrections-and-signatures)).
 - **The minimum data.** Adding a pupil field changes a data flow, so it needs a decision record ([PRD §5.6](../prd/PRD.md#56-the-minimum-data)).
 - **No pupil data in logs, notifications, crash reports or error messages.**
-- **Every file that comes in is untrusted.** It is opened in isolation and checked against its format. Unknown fields are dropped, and macros are never run ([PRD §5.9](../prd/PRD.md#59-files-tabachir-reads-and-writes)).
+- **Every file that comes in is untrusted.** It is opened in isolation and checked against its format. Unknown fields are dropped, and macros are never run ([PRD §5.9](../prd/PRD.md#59-files-minhajna-reads-and-writes)).
 - **Deletion is real.** Deleted content is erased. The history keeps only the fact that something was deleted, and the day ([PRD §5.5](../prd/PRD.md#55-history-corrections-and-signatures)).
 
 ## Secrets
@@ -95,7 +95,7 @@ When real pupil data or a secret reaches a public space:
 | | Licences |
 |---|---|
 | Allowed | MIT, ISC, 0BSD, Zlib, BSD-2-Clause, BSD-3-Clause, Apache-2.0, MPL-2.0, LGPL-2.1-or-later, LGPL-3.0-or-later, GPL-3.0-or-later, AGPL-3.0-or-later. Also OFL-1.1 for fonts, and CC0-1.0, CC-BY-4.0 and CC-BY-SA-4.0 for data |
-| A maintainer decides | Licences limited to version 3, such as GPL-3.0-only or AGPL-3.0-only, which would tie the whole app to that version ([PRD §5.9](../prd/PRD.md#59-files-tabachir-reads-and-writes)). Also any licence not listed here |
+| A maintainer decides | Licences limited to version 3, such as GPL-3.0-only or AGPL-3.0-only, which would tie the whole app to that version ([PRD §5.9](../prd/PRD.md#59-files-minhajna-reads-and-writes)). Also any licence not listed here |
 | Refused | GPL-2.0-only, which cannot be combined with AGPL-3.0; non-commercial licences; "source-available" licences, such as SSPL or BUSL; anything proprietary |
 
 ## Licences in every file
@@ -104,7 +104,7 @@ The repositories follow the [REUSE specification](https://reuse.software/) ([PRD
 - **Every source file starts with** its copyright and licence, using the year the file was created:
 
   ```ts
-  // SPDX-FileCopyrightText: 2026 The Tabachir contributors
+  // SPDX-FileCopyrightText: 2026 The Minhajna contributors
   // SPDX-License-Identifier: AGPL-3.0-or-later
   ```
 

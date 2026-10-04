@@ -1,6 +1,6 @@
 # Code of conduct
 
-Tabachir brings together teachers, directors, inspectors, developers and everyone else who wants to help Algeria's schools. This code sets how we treat each other in the project's spaces. It is adapted from the Contributor Covenant ([below](#attribution)), with rules of our own on pupils' data and on keeping the project's spaces about the product ([PRD §1.11](docs/prd/PRD.md#111-community-transparency-and-building-in-public)). The [README](README.md) summarises it in Arabic.
+Minhajna brings together teachers, directors, inspectors, developers and everyone else who wants to help Algeria's schools. This code sets how we treat each other in the project's spaces. It is adapted from the Contributor Covenant ([below](#attribution)), with rules of our own on pupils' data and on keeping the project's spaces about the product ([PRD §1.11](docs/prd/PRD.md#111-community-transparency-and-building-in-public)). The [README](README.md) summarises it in Arabic.
 
 ## Our pledge
 

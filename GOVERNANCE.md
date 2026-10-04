@@ -1,8 +1,8 @@
 # Governance
 
-How Tabachir is run: the roles, who decides, how the principles and the charter change, and the teacher council's part. The rules come from [PRD §1.8](docs/prd/PRD.md#18-governance-and-decisions).
+How Minhajna is run: the roles, who decides, how the principles and the charter change, and the teacher council's part. The rules come from [PRD §1.8](docs/prd/PRD.md#18-governance-and-decisions).
 
-Tabachir is open source and sells nothing. Its goal is national adoption: the Ministry running Tabachir on government servers as the official digital record of teaching (principle 6). So the project is run in public, the Ministry can take it over without the project, and teachers keep the last word on the rules that protect them.
+Minhajna is open source and sells nothing. Its goal is national adoption: the Ministry running Minhajna on government servers as the official digital record of teaching (principle 6). So the project is run in public, the Ministry can take it over without the project, and teachers keep the last word on the rules that protect them.
 
 ## Roles
 
@@ -21,7 +21,7 @@ Until a legal entity exists, the founder holds the copyright in their own work a
 
 - **Until the launch** in September 2027, the founder leads, as lead maintainer, and decides in public after hearing contributors.
 - **From the launch,** the lead maintainer still decides, in public, after hearing contributors and the teacher council. When the lead maintainer goes against the council's advice, the decision record says why.
-- **After the Ministry adopts Tabachir,** its own staff maintain it, as maintainers in the project's public process. Releases, the principles and the charter are still decided in public, and a change to the principles or the charter also needs the teacher council's consent ([below](#changing-a-principle-or-the-charter)).
+- **After the Ministry adopts Minhajna,** its own staff maintain it, as maintainers in the project's public process. Releases, the principles and the charter are still decided in public, and a change to the principles or the charter also needs the teacher council's consent ([below](#changing-a-principle-or-the-charter)).
 
 Day-to-day changes follow the [workflow](docs/contributing/workflow.md): issues, pull requests and review by a maintainer other than the author.
 
@@ -55,7 +55,7 @@ A decision about a principle, a licence, a data flow, the insights layer, money 
   - It takes no money from abroad.
   - It refuses sponsors that sell to schools, teachers, pupils or parents, and any party, union or religious body.
   - No sponsor gives more than a quarter of the project's income in any year.
-- **The Ministry runs Tabachir itself** in the national system. The project is only the publisher of the software, never the controller, and before adoption it runs no deployment for a school or an authority ([PRD §1.15](docs/prd/PRD.md#115-institution-mode)).
+- **The Ministry runs Minhajna itself** in the national system. The project is only the publisher of the software, never the controller, and before adoption it runs no deployment for a school or an authority ([PRD §1.15](docs/prd/PRD.md#115-institution-mode)).
 - **A transparency report** every September, from the launch, lists money in and out by source, partnerships and sponsors, and every request for data from an authority, where the law allows ([PRD §1.11](docs/prd/PRD.md#111-community-transparency-and-building-in-public)).
 
 ## Accounts and keys

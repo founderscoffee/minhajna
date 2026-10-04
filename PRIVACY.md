@@ -1,6 +1,6 @@
 # Privacy
 
-What the Tabachir project holds about people, why, and what it never holds. This file covers the project itself: its repositories, its teachers' group and website, and later its own services. The records of the national system are the Ministry's, which runs it as their controller, and are not covered here ([PRD §1.15](docs/prd/PRD.md#115-institution-mode)).
+What the Minhajna project holds about people, why, and what it never holds. This file covers the project itself: its repositories, its teachers' group and website, and later its own services. The records of the national system are the Ministry's, which runs it as their controller, and are not covered here ([PRD §1.15](docs/prd/PRD.md#115-institution-mode)).
 
 ## What the project never holds
 
@@ -44,4 +44,4 @@ The project is in planning, and there is no app yet.
 
 You can see, correct and delete what the project holds about you. Corrections are made within 10 days ([PRD §6.2](docs/prd/PRD.md#62-compliance-before-each-launch)).
 
-For now, ask in a [GitHub issue](https://github.com/founderscoffee/tabachir/issues), without personal details, and a maintainer answers there. If you took part in the field check, you can also ask the person who contacted you. The project will add an address of its own for these questions when it has one.
+For now, ask in a [GitHub issue](https://github.com/founderscoffee/minhajna/issues), without personal details, and a maintainer answers there. If you took part in the field check, you can also ask the person who contacted you. The project will add an address of its own for these questions when it has one.

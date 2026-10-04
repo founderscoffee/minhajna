@@ -1,19 +1,21 @@
-# Tabachir · طباشير
+# Minhajna · منهاجنا
+
+من التدرّج إلى الحصّة · From the yearly plan to every lesson
 
 **العربية** · [English](#english)
 
-**طباشير** تطبيق مجاني ومفتوح المصدر لأساتذة الجزائر، يجمع دفتر النصوص والكراس اليومي ودفتر المناداة ودفتر التنقيط، ويربط بينها عبر الحصة. يقترح لكل قسم درس كل حصة من التدرج الرسمي، فيؤكّد الأستاذ بلمسة واحدة ما أنجزه بدل أن يكتبه، وتتبع ذلك الوثائق. يعمل على الهاتف دون حاجة إلى الإنترنت، ويطبع ما يطلبه المدير والمفتش.
+**«منهاجنا»** تطبيق مجاني ومفتوح المصدر لأساتذة الجزائر، يجمع دفتر النصوص والكراس اليومي ودفتر المناداة ودفتر التنقيط، ويربط بينها عبر الحصة. يقترح لكل قسم درس كل حصة من التدرج الرسمي، فيؤكّد الأستاذ بلمسة واحدة ما أنجزه بدل أن يكتبه، وتتبع ذلك الوثائق. يعمل على الهاتف دون حاجة إلى الإنترنت، ويطبع ما يطلبه المدير والمفتش.
 
-**الهدف:** أن تتبنّى وزارة التربية الوطنية طباشير سجلًّا رسميًا رقميًا للتدريس، وتشغّله على خوادمها منظومةً وطنية واحدة، والحماية مبنيّة في تصميمه: لا يملك من يشغّل الخوادم مفتاحًا لأي سجل يحمل اسمًا. وإلى أن تتبنّاه، يبقى أداة في يد الأستاذ وحده.
+**الهدف:** أن تتبنّى وزارة التربية الوطنية تطبيق «منهاجنا» سجلًّا رسميًا رقميًا للتدريس، وتشغّله على خوادمها منظومةً وطنية واحدة، والحماية مبنيّة في تصميمه: لا يملك من يشغّل الخوادم مفتاحًا لأي سجل يحمل اسمًا. وإلى أن تتبنّاه، يبقى أداة في يد الأستاذ وحده.
 
-> **المشروع في مرحلة التخطيط، ولا يوجد تطبيق بعد.** أي تطبيق يحمل اسم «طباشير» اليوم ليس تطبيقنا.
+> **المشروع في مرحلة التخطيط، ولا يوجد تطبيق بعد.** وكان اسمه «طباشير» إلى غاية أكتوبر 2026. أي تطبيق يحمل أحد الاسمين اليوم ليس تطبيقنا.
 
 ### مبادئنا
 
 1. **العلنية هي الأصل:** الكود والوثائق والقرارات وخارطة الطريق كلها علنية منذ السطر الأول.
 2. **معطيات التلاميذ لا تصل إلى المشروع أبدًا.** تبقى على أجهزة الأستاذ، وفي المنظومة الوطنية تُحفظ في فضاء المؤسسة مشفّرة، والمزامنة والنسخ الاحتياطي مشفّران من طرف إلى طرف.
 3. **لا إشهار ولا متتبعات، ولا بيع للمعطيات ولا مشاركتها، أبدًا.**
-4. **مجاني، ولا يُباع أبدًا:** كل ما يفعله طباشير مجاني للأساتذة وللدولة، والمشروع لا يبيع شيئًا.
+4. **مجاني، ولا يُباع أبدًا:** كل ما يفعله «منهاجنا» مجاني للأساتذة وللدولة، والمشروع لا يبيع شيئًا.
 5. **الكود علني، وسجلات الأساتذة خاصة:** فوق المؤسسة لا تظهر إلا مجاميع تبلغ الحدّ الأدنى المعلَن لحجم المجموعات.
 6. **مبنيّ ليصبح السجل الرسمي، لا من تلقاء نفسه:** لا يصير رسميًا إلا بنصّ مكتوب من السلطة المختصة، وإلى ذلك الحين هو أداة في يد الأستاذ.
 7. **الأستاذ يملك سجلات عمله،** ويصدّرها كاملة ومجانًا في أي وقت، وملاحظاته الخاصة لا تغادر أجهزته.
@@ -21,7 +23,7 @@
 
 ### ميثاق استعمال البيانات
 
-يحمي الميثاق الأساتذة الذين تُحفظ سجلاتهم في طباشير. يُطلب من الوزارة في نصّها، ويُعرض على أساتذة كل مؤسسة قبل الإطلاق الوطني، والتصميم يفرضه حيث يستطيع، أيًّا كان من يشغّل الخوادم. نصّه الكامل بالإنجليزية في [CHARTER.md](CHARTER.md). بنوده العشرة باختصار:
+يحمي الميثاق الأساتذة الذين تُحفظ سجلاتهم في تطبيق «منهاجنا». يُطلب من الوزارة في نصّها، ويُعرض على أساتذة كل مؤسسة قبل الإطلاق الوطني، والتصميم يفرضه حيث يستطيع، أيًّا كان من يشغّل الخوادم. نصّه الكامل بالإنجليزية في [CHARTER.md](CHARTER.md). بنوده العشرة باختصار:
 
 1. **الغرض:** تخدم السجلات تخطيط الأستاذ، وتنسيق مجلس التعليم، والمتابعة التي تخوّلها النصوص الرسمية للمديرين والمفتشين. وفوق المؤسسة، لا تخدم الأرقام المستخرجة منها إلا ما يسمح به البند السابع. ولا شيء غير ذلك.
 2. **لا استعمال في المسار المهني:** لا تُستعمل القيود في الأجر ولا الترقية ولا التقييم ولا المنح ولا التأديب ولا النقل، ولا ترتيب للأساتذة ولا قوائم ملوّنة.
@@ -44,7 +46,7 @@
 
 ### المساهمة الآن
 
-- تُستقبل الملاحظات والاقتراحات وتصحيحات التدرجات والنماذج عبر [Issues](https://github.com/founderscoffee/tabachir/issues).
+- تُستقبل الملاحظات والاقتراحات وتصحيحات التدرجات والنماذج عبر [Issues](https://github.com/founderscoffee/minhajna/issues).
 - مساهمات الكود بدعوة فقط إلى غاية إطلاق التطبيق المقرر في سبتمبر 2027. التفاصيل في [CONTRIBUTING.md](CONTRIBUTING.md).
 - كل قرار مهمّ يُعرض للنقاش قبل اعتماده، ويُجاب عن كل تعليق علنًا.
 
@@ -59,24 +61,24 @@
 
 - الكود: AGPL-3.0-or-later.
 - الوثائق والمحتوى: CC BY-SA 4.0.
-- اسم «طباشير» وشعاره غير مشمولين بهذه التراخيص ([TRADEMARKS.md](TRADEMARKS.md)).
+- اسم «منهاجنا» وشعاره غير مشمولين بهذه التراخيص ([TRADEMARKS.md](TRADEMARKS.md)).
 
 ---
 
 ## English
 
-**Tabachir** is a free, open-source app for teachers in Algeria. It joins the texts book (دفتر النصوص), the daily journal (الكراس اليومي), the roll-call book and the marks book through the session. It proposes each class's lesson for every session from the official plan, the teacher confirms what was taught with one tap instead of writing it, and the documents follow. It works offline on the phone and prints what the director and the inspector ask for.
+**Minhajna** ("our curriculum") is a free, open-source app for teachers in Algeria. It joins the texts book (دفتر النصوص), the daily journal (الكراس اليومي), the roll-call book and the marks book through the session. It proposes each class's lesson for every session from the official plan, the teacher confirms what was taught with one tap instead of writing it, and the documents follow. It works offline on the phone and prints what the director and the inspector ask for.
 
-**The goal:** the Ministry of National Education adopts Tabachir as the official digital record of teaching, and runs it on government servers as one national system, with the protections built into its design: nobody who runs a server holds a key to a named record. Until then, it is the teacher's own tool.
+**The goal:** the Ministry of National Education adopts Minhajna as the official digital record of teaching, and runs it on government servers as one national system, with the protections built into its design: nobody who runs a server holds a key to a named record. Until then, it is the teacher's own tool.
 
-> **The project is in planning; there is no app yet.** Any app called "Tabachir" today is not ours.
+> **The project is in planning; there is no app yet.** It was called Tabachir until October 2026. Any app called "Minhajna" or "Tabachir" today is not ours.
 
 ### Principles
 
 1. **Open by default:** code, documents, decisions and roadmap are all public from the first line.
 2. **Pupil data never reaches the project.** It stays on the teacher's devices and, in the national system, in the school's space, encrypted. Sync and backup are end-to-end encrypted.
 3. **No ads, no trackers, and no sale or sharing of data. Ever.**
-4. **Free, and never for sale:** everything Tabachir does is free, for teachers and for the state, and the project sells nothing.
+4. **Free, and never for sale:** everything Minhajna does is free, for teachers and for the state, and the project sells nothing.
 5. **Open code is not open data:** above the school, only totals that meet the published minimum group sizes are shown.
 6. **Built to become the official record, never by default:** it becomes official only through a written text from the competent authority. Until then, it is the teacher's tool.
 7. **Teachers own their working records,** and can export all of them, for free, at any time. Private notes never leave their devices.
@@ -84,11 +86,11 @@
 
 ### The data-use charter
 
-Ten points protect the teachers whose records are kept in Tabachir: no personnel use, no surveillance, corrections instead of locks, teachers seeing what their director sees, and only totals above the school. The charter is asked of the Ministry, presented to every school's teachers before the national launch, and enforced by the design wherever it can be. Read [CHARTER.md](CHARTER.md).
+Ten points protect the teachers whose records are kept in Minhajna: no personnel use, no surveillance, corrections instead of locks, teachers seeing what their director sees, and only totals above the school. The charter is asked of the Ministry, presented to every school's teachers before the national launch, and enforced by the design wherever it can be. Read [CHARTER.md](CHARTER.md).
 
 ### Contributing now
 
-- Share feedback, suggestions, corrections to annual plans, and templates through [Issues](https://github.com/founderscoffee/tabachir/issues).
+- Share feedback, suggestions, corrections to annual plans, and templates through [Issues](https://github.com/founderscoffee/minhajna/issues).
 - **Never post pupils' names, marks or absences, or images of them**, anywhere in the project. Use made-up names.
 - Code contributions are by invitation until the launch, planned for September 2027. See [CONTRIBUTING.md](CONTRIBUTING.md).
 - Every important decision is open for comments before it is made, and every comment gets a public answer.
@@ -104,4 +106,4 @@ Ten points protect the teachers whose records are kept in Tabachir: no personnel
 
 - Code: AGPL-3.0-or-later.
 - Documents and content: CC BY-SA 4.0.
-- The name "Tabachir" and its logo are not covered by these licences ([TRADEMARKS.md](TRADEMARKS.md)).
+- The name "Minhajna" and its logo are not covered by these licences ([TRADEMARKS.md](TRADEMARKS.md)).

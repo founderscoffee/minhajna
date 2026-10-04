@@ -1,6 +1,6 @@
 # Versions
 
-Tabachir has several parts that change on different schedules. Each has its own version, and this guide says what makes each one change.
+Minhajna has several parts that change on different schedules. Each has its own version, and this guide says what makes each one change.
 
 | What | Scheme | Example |
 |---|---|---|
@@ -46,11 +46,11 @@ The apps follow [Semantic Versioning 2.0.0](https://semver.org/), read for an ap
 
 ## File formats
 
-The formats are the Tabachir archive, the progress statement, the handover package, the timetable package, the plan pack, the reference-data release and the insights payload ([PRD §5.9](../prd/PRD.md#59-files-tabachir-reads-and-writes), [§5.11](../prd/PRD.md#511-formats-offered-to-the-state)).
+The formats are the Minhajna archive, the progress statement, the handover package, the timetable package, the plan pack, the reference-data release and the insights payload ([PRD §5.9](../prd/PRD.md#59-files-minhajna-reads-and-writes), [§5.11](../prd/PRD.md#511-formats-offered-to-the-state)).
 
 - **Every file states its format and version.**
 - **A minor version only adds** content that an older reader can safely leave out. **Anything else needs a major version:** removing or renaming a field, changing what a field means, or changing how the file is signed or encrypted.
-- **Older files always open.** Every app reads every earlier version of every format, for good ([PRD §5.9](../prd/PRD.md#59-files-tabachir-reads-and-writes)). The tests keep a sample file of every released version.
+- **Older files always open.** Every app reads every earlier version of every format, for good ([PRD §5.9](../prd/PRD.md#59-files-minhajna-reads-and-writes)). The tests keep a sample file of every released version.
 - **Newer files:**
   - a file with a newer major version is not opened, and the app asks the teacher to update;
   - a file with a newer minor version is imported, and the app says that some details were left out.

@@ -1,6 +1,6 @@
 # The data-use charter
 
-This charter protects the teachers whose records are kept in Tabachir. It binds the project, and in the national system, where the Ministry runs Tabachir on government servers, it is asked of the Ministry ([PRD §1.15](docs/prd/PRD.md#115-institution-mode)).
+This charter protects the teachers whose records are kept in Minhajna. It binds the project, and in the national system, where the Ministry runs Minhajna on government servers, it is asked of the Ministry ([PRD §1.15](docs/prd/PRD.md#115-institution-mode)).
 
 - **Asked for, and built in.** The charter is asked for in the Ministry's text, but not required. The design enforces it wherever it can, so its protections hold whoever runs the servers ([below](#built-into-the-design)).
 - **Presented to teachers.** It goes to every school's teachers' council before the national launch.
@@ -42,7 +42,7 @@ No legal text is needed before the protections apply. They are built into what t
 ## Changing the charter
 
 - **Like a principle.** A change needs a public proposal, at least 30 days of comments and a recorded decision ([PRD §1.2](docs/prd/PRD.md#12-principles)). Teachers hear about it in Arabic, and every comment gets an answer in the record.
-- **After the Ministry adopts Tabachir,** a change also needs the teacher council's consent: more than half of all its members must vote for it. The Ministry's maintainers can propose a change, but never decide one alone ([GOVERNANCE.md](GOVERNANCE.md)).
+- **After the Ministry adopts Minhajna,** a change also needs the teacher council's consent: more than half of all its members must vote for it. The Ministry's maintainers can propose a change, but never decide one alone ([GOVERNANCE.md](GOVERNANCE.md)).
 
 ## Where it comes from
 

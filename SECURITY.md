@@ -2,7 +2,7 @@
 
 ## Reporting a problem
 
-- **Report it privately,** through GitHub's [private vulnerability reporting](https://github.com/founderscoffee/tabachir/security/advisories/new).
+- **Report it privately,** through GitHub's [private vulnerability reporting](https://github.com/founderscoffee/minhajna/security/advisories/new).
 - **Never report it in public:** not in an issue, a pull request, a discussion or the teacher group.
 - **Include:**
   - what is affected: the app or the server, its version, and the device or browser;
@@ -24,7 +24,7 @@
 - Anything that could expose pupil data or teachers' records, or let someone read, change or forge them.
 - An official build or a signed file that doesn't match its source, its checksum or its signature.
 
-For now, this repository holds documents only, and there is no app yet. An app that calls itself Tabachir today is not ours ([README](README.md)).
+For now, this repository holds documents only, and there is no app yet. An app that calls itself Minhajna or Tabachir today is not ours ([README](README.md)).
 
 ## Supported versions
 
