@@ -1,8 +1,8 @@
 # 0017. How far classes got may inform the scope of every exam, at the level that sets it
 
-- **Date:** 2026-09-29, amended 2026-09-30
-- **Status:** Proposed
-- **Decided by:** the lead maintainer, after at least 30 days of comments, because this changes the charter
+- **Date:** 2026-09-29, amended 2026-09-30, accepted 2026-10-04
+- **Status:** Accepted
+- **Decided by:** the lead maintainer, before the 30 days of comments that a change to the charter calls for had passed. No comments had come in.
 
 ## Context
 
