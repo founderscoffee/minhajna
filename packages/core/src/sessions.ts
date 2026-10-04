@@ -1,0 +1,155 @@
+// SPDX-FileCopyrightText: 2026 The Minhajna contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// Each class's dated sessions come from the timetable version in force, the
+// calendar and the A/B weeks (PRD §4.6). A session is identified by its date
+// and its slot, never by a clock time (PRD §3.3).
+//
+// The past never moves: a later timetable applies only from the day it was
+// recorded (state.ts), and a recorded session keeps its place even if a
+// later timetable no longer has its slot (PRD §2.3, rule 4; §4.6).
+
+import type { Context } from './context.ts';
+import { compareDays, eachDay, isWithin, maxDay, minDay, weekday, type Day } from './day.ts';
+import { compareSlots, slotKey, type Slot, type TimetableVersion } from './records.ts';
+import { current, type RecordedTimetable } from './state.ts';
+
+/** Why a session cannot be taught as usual. */
+export type CalendarMark =
+  /** A holiday inside a teaching week. The session is lost to the calendar. */
+  | 'holiday'
+  /** A closure or suspension. The session is lost to the calendar. */
+  | 'closure'
+  /** The exam takes the session's place. */
+  | 'exam'
+  /**
+   * The teacher's own calendar, such as a training day or a seminar. The
+   * class is still there, so its roll call stays. Private (PRD §4.5).
+   */
+  | 'teacher';
+
+export interface Session {
+  readonly key: string;
+  readonly courseId: string;
+  readonly classId: string;
+  readonly groupId: string;
+  readonly day: Day;
+  readonly slot: Slot;
+  /** From the timetable, or from the record once the session is recorded. */
+  readonly sessionType: string;
+  readonly activity?: string;
+  readonly calendar: CalendarMark | null;
+  /** The calendar entry behind the mark. */
+  readonly calendarEntry: string | null;
+  /** False for a recorded session that the timetable no longer has. */
+  readonly scheduled: boolean;
+}
+
+export function sessionKey(courseId: string, day: Day, slot: Slot, groupId: string): string {
+  return `${courseId}/${day}/${slotKey(slot)}/${groupId}`;
+}
+
+function compareIds(a: string, b: string): number {
+  if (a === b) return 0;
+  return a < b ? -1 : 1;
+}
+
+export function compareSessions(a: Session, b: Session): number {
+  return (
+    compareDays(a.day, b.day) ||
+    compareSlots(a.slot, b.slot) ||
+    compareIds(a.courseId, b.courseId) ||
+    compareIds(a.groupId, b.groupId)
+  );
+}
+
+/** The timetable version in force on `day`, from versions in the order they apply. */
+export function versionOn(timetables: readonly RecordedTimetable[], day: Day): TimetableVersion | null {
+  let found: TimetableVersion | null = null;
+  for (const timetable of timetables) if (compareDays(timetable.from, day) <= 0) found = timetable.version;
+  return found;
+}
+
+/**
+ * The teacher's sessions from `from` to `to`, in order. With `courseIds`,
+ * only those courses' sessions.
+ */
+export function sessionsBetween(
+  context: Context,
+  from: Day,
+  to: Day,
+  courseIds?: ReadonlySet<string>,
+): Session[] {
+  const { ref, state, calendar } = context;
+  const sessions = new Map<string, Session>();
+  const first = maxDay(from, ref.year.from);
+  const last = minDay(to, ref.year.to);
+
+  for (const day of compareDays(first, last) <= 0 ? eachDay(first, last) : []) {
+    const version = versionOn(state.timetables, day);
+    if (version === null) continue;
+    for (const entry of version.entries) {
+      if (entry.weekday !== weekday(day)) continue;
+      if (courseIds !== undefined && !courseIds.has(entry.courseId)) continue;
+      const course = state.courses.get(entry.courseId);
+      const schoolClass = course && state.classes.get(course.classId);
+      const school = schoolClass && state.schools.get(schoolClass.schoolId);
+      if (course === undefined || schoolClass === undefined || school === undefined) continue;
+      const week = calendar.weekOf(day, school);
+      if (week === null) continue;
+      if (entry.weeks !== 'every' && entry.weeks !== week.parity) continue;
+      const info = calendar.info(day, school, schoolClass);
+      const blocking = !info.schoolDay
+        ? (info.entries.find((e) => e.effect === 'no-school' && e.layer !== 'teacher') ?? null)
+        : (info.closure ?? info.exam ?? info.teacher);
+      const mark: CalendarMark | null = !info.schoolDay
+        ? 'holiday'
+        : info.closure !== null
+          ? 'closure'
+          : info.exam !== null
+            ? 'exam'
+            : info.teacher !== null
+              ? 'teacher'
+              : null;
+      const key = sessionKey(course.id, day, entry.slot, entry.groupId);
+      sessions.set(key, {
+        key,
+        courseId: course.id,
+        classId: schoolClass.id,
+        groupId: entry.groupId,
+        day,
+        slot: entry.slot,
+        sessionType: entry.sessionType,
+        ...(entry.activity !== undefined && { activity: entry.activity }),
+        calendar: mark,
+        calendarEntry: blocking?.id ?? null,
+        scheduled: true,
+      });
+    }
+  }
+
+  for (const [key, versions] of state.sessions) {
+    const record = current(versions);
+    if (record === null || !isWithin(record.session.day, from, to)) continue;
+    if (courseIds !== undefined && !courseIds.has(record.session.courseId)) continue;
+    const course = state.courses.get(record.session.courseId);
+    if (course === undefined) continue;
+    const scheduled = sessions.get(key);
+    sessions.set(key, {
+      ...(scheduled ?? {
+        key,
+        courseId: course.id,
+        classId: course.classId,
+        groupId: record.session.groupId,
+        day: record.session.day,
+        slot: record.session.slot,
+        calendar: null,
+        calendarEntry: null,
+        scheduled: false,
+      }),
+      sessionType: record.sessionType,
+    });
+  }
+
+  return [...sessions.values()].sort(compareSessions);
+}
