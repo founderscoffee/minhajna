@@ -1,8 +1,8 @@
 # 0019. The product is called Minhajna (منهاجنا)
 
-- **Date:** 2026-10-04
-- **Status:** Proposed
-- **Decided by:** the lead maintainer
+- **Date:** 2026-10-04, accepted the same day
+- **Status:** Accepted
+- **Decided by:** the lead maintainer, before the 7 days of comments had passed. No comments had come in.
 
 ## Context
 
@@ -50,7 +50,7 @@ Details: [PRD §1.9](../prd/PRD.md#19-official-builds-releases-the-name-and-secu
 - **Neither the name nor the app suggests that it comes from the Ministry.** The app becomes the official record only through a competent authority's written decision (principle 6).
 - **Protecting the name:**
   - register `minhajna.dz` and `minhajna.com.dz`;
-  - check that the name is free on Facebook before this record is decided, and reserve the page.
+  - check that the name is free on Facebook, and reserve the page.
 - **The risks of confusion are accepted:**
   - with the official curriculum documents, so the line under the name says what the app does;
   - with Lebanon's reform, a ministry programme abroad, not a teacher app in Algeria;

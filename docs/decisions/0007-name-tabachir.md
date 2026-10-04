@@ -1,7 +1,7 @@
 # 0007. The product is called Tabachir (طباشير)
 
 - **Date:** 2026-09-26
-- **Status:** Accepted
+- **Status:** Superseded by [0019](0019-name-minhajna.md)
 - **Decided by:** the founder
 
 ## Context

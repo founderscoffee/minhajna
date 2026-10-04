@@ -10,9 +10,9 @@ To propose one, copy [the template](template.md) and follow the [workflow](../co
 | [0002](0002-licences.md) | Licences: AGPL-3.0-or-later for code, CC BY-SA 4.0 for documents and content | 2026-09-26 | Accepted |
 | [0003](0003-contributor-terms-dco.md) | Contributor terms: DCO sign-off, no CLA | 2026-09-26 | Accepted |
 | [0004](0004-copyright-and-trademark-holder.md) | The founder holds the copyright and the trademark until a legal entity exists | 2026-09-26 | Accepted |
-| [0005](0005-code-host.md) | The code lives in a GitHub organisation | 2026-09-26 | Accepted |
+| [0005](0005-code-host.md) | The code lives in a GitHub organisation | 2026-09-26 | Superseded in part by 0019 |
 | [0006](0006-money-services-not-features.md) | Charge for services, never for features | 2026-09-26 | Superseded by 0016 |
-| [0007](0007-name-tabachir.md) | The product is called Tabachir (طباشير) | 2026-09-26 | Accepted |
+| [0007](0007-name-tabachir.md) | The product is called Tabachir (طباشير) | 2026-09-26 | Superseded by 0019 |
 | [0008](0008-algeria-first-flexible-for-other-countries.md) | Algeria first, flexible for other countries | 2026-09-27 | Accepted |
 | [0009](0009-goal-state-adoption-official-record.md) | The goal: state adoption as the official record | 2026-09-27 | Accepted |
 | [0010](0010-institution-mode-and-charter.md) | Institution mode and the data-use charter | 2026-09-27 | Superseded in part by 0015 |
@@ -24,4 +24,4 @@ To propose one, copy [the template](template.md) and follow the [workflow](../co
 | [0016](0016-non-commercial.md) | A non-commercial project: nothing is sold, and the Ministry maintains Tabachir after adoption | 2026-09-29 | Accepted |
 | [0017](0017-exam-scope-at-each-level.md) | How far classes got may inform the scope of every exam, at the level that sets it | 2026-09-29 | Accepted |
 | [0018](0018-charter-purpose-and-figures.md) | Charter point 1 leaves figures above the school to point 7 | 2026-09-30 | Accepted |
-| [0019](0019-name-minhajna.md) | The product is called Minhajna (منهاجنا) | 2026-10-04 | Proposed |
+| [0019](0019-name-minhajna.md) | The product is called Minhajna (منهاجنا) | 2026-10-04 | Accepted |

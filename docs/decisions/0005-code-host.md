@@ -1,7 +1,7 @@
 # 0005. The code lives in a GitHub organisation
 
 - **Date:** 2026-09-26
-- **Status:** Accepted
+- **Status:** Superseded in part by [0019](0019-name-minhajna.md)
 - **Decided by:** the founder
 
 ## Context
