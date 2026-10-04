@@ -23,4 +23,4 @@ To propose one, copy [the template](template.md) and follow the [workflow](../co
 | [0015](0015-national-system-protections-by-design.md) | The national system, with protections built into its design | 2026-09-29 | Accepted |
 | [0016](0016-non-commercial.md) | A non-commercial project: nothing is sold, and the Ministry maintains Tabachir after adoption | 2026-09-29 | Accepted |
 | [0017](0017-exam-scope-at-each-level.md) | How far classes got may inform the scope of every exam, at the level that sets it | 2026-09-29 | Accepted |
-| [0018](0018-charter-purpose-and-figures.md) | Charter point 1 leaves figures above the school to point 7 | 2026-09-30 | Proposed |
+| [0018](0018-charter-purpose-and-figures.md) | Charter point 1 leaves figures above the school to point 7 | 2026-09-30 | Accepted |

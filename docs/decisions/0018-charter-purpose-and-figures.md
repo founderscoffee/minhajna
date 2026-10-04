@@ -1,8 +1,8 @@
 # 0018. Charter point 1 leaves figures above the school to point 7
 
-- **Date:** 2026-09-30, amended the same day
-- **Status:** Proposed
-- **Decided by:** the lead maintainer, after at least 30 days of comments, because this changes the charter
+- **Date:** 2026-09-30, amended the same day, accepted 2026-10-04
+- **Status:** Accepted
+- **Decided by:** the lead maintainer, before the 30 days of comments that a change to the charter calls for had passed. No comments had come in.
 
 ## Context
 
