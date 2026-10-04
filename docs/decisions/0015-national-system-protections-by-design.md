@@ -1,8 +1,8 @@
 # 0015. The national system, with protections built into its design
 
-- **Date:** 2026-09-29, amended 2026-09-30 and 2026-10-04
-- **Status:** Proposed
-- **Decided by:** the lead maintainer
+- **Date:** 2026-09-29, amended 2026-09-30 and 2026-10-04, accepted 2026-10-04
+- **Status:** Accepted
+- **Decided by:** the lead maintainer, before the 7 days of comments had passed. No comments had come in.
 
 ## Context
 

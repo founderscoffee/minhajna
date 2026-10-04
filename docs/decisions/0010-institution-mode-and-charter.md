@@ -1,7 +1,7 @@
 # 0010. Institution mode and the data-use charter
 
 - **Date:** 2026-09-27
-- **Status:** Accepted
+- **Status:** Superseded in part by [0015](0015-national-system-protections-by-design.md)
 - **Decided by:** the founder
 
 ## Context
