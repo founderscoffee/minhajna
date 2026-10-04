@@ -22,3 +22,4 @@ To propose one, copy [the template](template.md) and follow the [workflow](../co
 | [0014](0014-business-model-and-sync-pricing.md) | The business model and how sync is priced | 2026-09-27 | Superseded by 0015 and 0016 |
 | [0015](0015-national-system-protections-by-design.md) | The national system, with protections built into its design | 2026-09-29 | Accepted |
 | [0016](0016-non-commercial.md) | A non-commercial project: nothing is sold, and the Ministry maintains Tabachir after adoption | 2026-09-29 | Accepted |
+| [0017](0017-exam-scope-at-each-level.md) | How far classes got may inform the scope of every exam, at the level that sets it | 2026-09-29 | Accepted |
