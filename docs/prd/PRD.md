@@ -16,8 +16,27 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 | 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
 | 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
 | 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015, 0016 and 0017) |
-| 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite proposed on 29 Sep 2026 (decision 0016) |
+| 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite proposed on 29 Sep 2026 (decisions 0015 and 0016) |
 | 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015, 0016 and 0017) |
+
+## Which requirements govern
+
+Four proposed decisions change this PRD: 0015 to 0018. Each section's note names the ones it carries out, and its decisions table gives their choices under "Proposed".
+
+- **Plans aim at this PRD as written** (3 Oct), including the parts that carry out the four proposals. A plan marks each item that rests on a proposal, and says what would change if that proposal were rejected or amended.
+- **A proposal takes effect when its record is accepted** ([workflow](../contributing/workflow.md#decision-records)). Until then, the records and decided rows it would change still stand as the project's decisions. So a plan builds nothing that only they need, such as paid sync or school and directorate deployments, and treats nothing that rests on a proposal as final.
+- **The decisions tables show which rows a proposal changes.** A decided row that a proposal changes is marked "(changed by 00NN)", and a row decided after a proposal that works out its details is marked "(takes effect with 00NN)". A row that a proposal only adds to is not marked. When a proposal is accepted, its tables become decided ones, and the marks stay as history.
+- **Dates in the text,** such as "(29 Sep)", say when a choice was made, not whether it is decided or proposed. The tables say which.
+- **Two decided rows change steps that accepted records planned,** both in §1.17: `CHARTER.md` is in English, where 0010 planned Arabic and English, and the name is not registered, where 0004, 0007 and 0008 planned to register it. The rows name those records, whose decisions stand.
+
+| Proposal | Its pull request | What it changes | Carried out in |
+|---|---|---|---|
+| 0015: the national system, with protections built into its design | [founderscoffee/tabachir#4](https://github.com/founderscoffee/tabachir/pull/4) | Replaces record 0012, and the sync price in record 0014. Changes part of record 0010: institution mode becomes one national system run by the Ministry, the project only publishes the software, and the charter is asked of the Ministry rather than bound into an agreement | §1 to §10 |
+| 0016: a project that sells nothing | [founderscoffee/tabachir#5](https://github.com/founderscoffee/tabachir/pull/5) | Replaces record 0006, and what 0015 leaves of record 0014. Principle 4 becomes "Free, and never for sale". After adoption, a change to the principles or the charter needs the teacher council's consent | §1, §8, §9 and §10 |
+| 0017: exam scope at each exam's own level | [founderscoffee/tabachir#6](https://github.com/founderscoffee/tabachir/pull/6) | Charter point 7, which said aggregates are never used for exam thresholds: how far classes got may inform an exam's scope at the level that sets it, under three safeguards. Personnel use stays banned, and the opt-in insights keep their ban | §1, §2, §3, §5, §7, §8 and §10 |
+| 0018: charter point 1 and figures above the school | [founderscoffee/tabachir#10](https://github.com/founderscoffee/tabachir/pull/10) | Charter point 1 gains a sentence: "Above the school, figures drawn from them serve only what point 7 allows." The rest of the point is unchanged | §1 |
+
+The repository files on this branch, such as `CHARTER.md`, `GOVERNANCE.md` and the README, are written the same way, as if the four proposals were accepted. Their links to the records point to `docs/decisions/`, where each record is kept once it is decided. Until then, the table above links to its pull request.
 
 ---
 
@@ -463,11 +482,11 @@ The code and the reference data live in separate repositories, because they have
 | Contributor terms | DCO; no CLA and no relicensing |
 | Copyright and trademark | Held by the founder until a legal entity exists |
 | Code host | A GitHub organisation: the repository is `founderscoffee/tabachir`, which is public |
-| Money | Charge for services, never for features; the term export is free |
+| Money (changed by 0016) | Charge for services, never for features; the term export is free |
 | Name | **Tabachir** (طباشير), chosen from about 60 candidates. On 26 Sep 2026 the GitHub name `tabachir` was free, `tabachir.dz` and `tabachir.com.dz` were free in the registry, and no app on Google Play Algeria used the name. `tabachir.com` is taken |
 | Countries | Algeria first: until the end of the 2027/28 school year, the project builds only for Algerian teachers. Country specifics are data, not code, so other countries can use Tabachir later (§1.14) |
 | Goal | The state adopts Tabachir as the official digital record of teaching. Principle 6 now reads: built to become the official record, never by default |
-| Institution mode | The school or authority is the controller; the project is only the publisher or a processor. Gates and the data-use charter bind every deployment (§1.15) |
+| Institution mode (changed by 0015) | The school or authority is the controller; the project is only the publisher or a processor. Gates and the data-use charter bind every deployment (§1.15) |
 | Insight figures | The IGP sees each report first and has 30 days to comment. Figures are never used for exam thresholds or personnel decisions (§1.6) |
 | Section 1 | Settled on 27 Sep 2026. From now on, changing a principle follows §1.2 |
 
@@ -475,8 +494,8 @@ The code and the reference data live in separate repositories, because they have
 
 | Decision | Choice |
 |---|---|
-| Languages | `CHARTER.md`, `CODE_OF_CONDUCT.md` and `CHANGELOG.md` are in English. The README summarises them in Arabic, and teachers read the release notes in Arabic in the app |
-| The name | Not registered as a trademark. Protected by use, the official sources and the published checksums |
+| Languages | `CHARTER.md`, `CODE_OF_CONDUCT.md` and `CHANGELOG.md` are in English. The README summarises them in Arabic, and teachers read the release notes in Arabic in the app. 0010 had planned `CHARTER.md` in Arabic and English |
+| The name | Not registered as a trademark. Protected by use, the official sources and the published checksums. 0004, 0007 and 0008 had planned to register it |
 
 **Decided on 30 Sep 2026**
 
@@ -490,8 +509,9 @@ The code and the reference data live in separate repositories, because they have
 |---|---|
 | Repository files | `CHARTER.md`, `GOVERNANCE.md`, `CODE_OF_CONDUCT.md`, `PRIVACY.md` and `TRADEMARKS.md` are published in stage 1. The README summarises the charter and the code of conduct in Arabic (§1.13, §1.16) |
 | After launch | The lead maintainer still decides, in public, after hearing contributors and the teacher council, and invites new maintainers in public |
-| The council's consent | After adoption, a change to the principles or the charter needs the votes of more than half of all the council's members |
+| The council's consent (takes effect with 0016) | After adoption, a change to the principles or the charter needs the votes of more than half of all the council's members |
 | Reports | Until the project has an address of its own, conduct problems are reported through GitHub's tool for reporting content to maintainers, or to the admins of the teachers' Facebook group, and privacy questions go in an issue, without personal details |
+| Which requirements govern | Plans aim at this PRD as written, and mark what rests on a proposal. A proposal takes effect when its record is accepted |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
 
@@ -664,15 +684,15 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 
 | Decision | Choice |
 |---|---|
-| End state | Full replacement of the paper procedures, once a ministerial text allows it |
+| End state (changed by 0015) | Full replacement of the paper procedures, once a ministerial text allows it |
 | Core workflow | The plan goes in (Ministry upload or form) → each class gets dated lessons → the teacher confirms with one tap → the documents follow |
 | Levels | Primary, CEM and lycée |
 | Version 1 | The lesson log and the register, with the documents listed in §2.5 |
 | Roll call | Replaces the paper roll-call book, as the teacher's own record |
 | Assessment | The official formula; components chosen by the teacher; appreciations suggested, then confirmed |
 | Notifications | A weekly digest by default; a daily preview only if the teacher turns it on |
-| The director's view | An operational dashboard in school mode, inside the school |
-| Students and parents | Designed for now, built later, and only in institution mode |
+| The director's view (changed by 0015) | An operational dashboard in school mode, inside the school |
+| Students and parents (changed by 0015) | Designed for now, built later, and only in institution mode |
 | Devices and languages | Android and web; Arabic, French and English |
 | AI | For curators only |
 | Dates | Pilot January–March 2027; launch September 2027 |
@@ -1026,7 +1046,7 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 | Term export | The workbook's unlocked cells, an ostad-ready view, printed sheets and a check before signing. Never passwords |
 | Documents | Those in §2.5, plus the grade book and the weekly timetable. Each has template profiles and a blank version |
 | Notifications | The weekly digest; a daily preview if the teacher turns it on; quiet hours |
-| Pilot | The slice in §3.11, measured against paper |
+| Pilot (changed by 0015) | The slice in §3.11, measured against paper |
 | Section 3 | Settled on 27 Sep 2026 |
 
 **Decided on 28 Sep 2026**
@@ -1678,12 +1698,12 @@ These five technical risks are tested early, before the pilot depends on them:
 | Decision | Choice |
 |---|---|
 | Foundations | Built into version 1: stable IDs, a history that is only added to and shows tampering, record layers, the permission model, logs, retention rules and open formats |
-| Architecture | An Android app and a web app sharing one TypeScript core. A NestJS server in Algeria that relays encrypted sync data, mirrors the reference data, hosts the pack editor and receives reports. Notifications on the device, documents made on the device |
-| Record layers | Private, pupil records, lesson record, shared statement and official snapshot, each with the routes in §5.4 |
+| Architecture (changed by 0015) | An Android app and a web app sharing one TypeScript core. A NestJS server in Algeria that relays encrypted sync data, mirrors the reference data, hosts the pack editor and receives reports. Notifications on the device, documents made on the device |
+| Record layers (changed by 0015) | Private, pupil records, lesson record, shared statement and official snapshot, each with the routes in §5.4 |
 | History | Only added to, chained, with dates but no clock times. Roll-call and mark corrections ask for a reason. Deletion erases the content |
 | Minimum data | Pupils: registration number, name, sex, class and group, and movements. Absences: justified or unjustified, with no cause. No parents' details |
 | Retention | A yearly archive. Each year's pupil records are offered for erasure once the following school year ends. In institution mode, the institution's rules |
-| Sync | Optional and end-to-end encrypted, sending only new changes. Differing changes are both kept, and the teacher chooses. Direct transfer and an encrypted backup file |
+| Sync (changed by 0015) | Optional and end-to-end encrypted, sending only new changes. Differing changes are both kept, and the teacher chooses. Direct transfer and an encrypted backup file |
 | Files | The open Tabachir archive; allowlisted imports; the workbook edited in place; signed statements and packages |
 | Early checks | The five checks in §5.13, before the pilot |
 | Section 5 | Settled on 27 Sep 2026 |
@@ -1912,10 +1932,10 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 | Hosting | Everything that touches personal data stays in Algeria, with no foreign sub-processor |
 | Sync gates | Sync opens only once its design is published and reviewed, the declaration is filed and hosting is in place. Otherwise the pilot uses direct transfer and backup files |
 | Device | An encrypted database, the app lock and the automatic lock. No pupil data in notifications. Screenshots blocked on screens with pupil data unless the teacher allows them. Minimal permissions |
-| Keys | Held by the teacher, one per device, with a recovery sheet. The project cannot recover data, so backups are easy and reminded |
+| Keys (changed by 0015) | Held by the teacher, one per device, with a recovery sheet. The project cannot recover data, so backups are easy and reminded |
 | Web app | A fixed bundle with no outside scripts, updated only when the teacher accepts. A visible checksum |
 | Server | The minimum data, logs kept apart and short, the breach runbook and the transparency report |
-| Non-functional | The targets in §6.8, confirmed in the pilot |
+| Non-functional (changed by 0015) | The targets in §6.8, confirmed in the pilot |
 | Section 6 | Settled on 27 Sep 2026 |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
@@ -2184,21 +2204,21 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 
 | Decision | Choice |
 |---|---|
-| Three steps | Reader mode and the coordinator's merge in the pilot; the timetable package at launch; school mode after the gates |
+| Three steps (changed by 0015) | Reader mode and the coordinator's merge in the pilot; the timetable package at launch; school mode after the gates |
 | Reader mode | No accounts and no server copy. Signatures checked. A spot-check sheet for inspectors |
 | Timetable package | From FET, a template or by hand; no solver. Each teacher gets only their part. Versions with effective dates |
-| School mode | The school is the controller. Lesson records, progress, timetables and cover enter its space; pupil records, private notes and reasons never do |
+| School mode (changed by 0015) | The school is the controller. Lesson records, progress, timetables and cover enter its space; pupil records, private notes and reasons never do |
 | Dashboard | Workload, sessions awaiting confirmation per class, and classes behind the plan. "Awaiting confirmation" lives only on the screen: never printed, exported, totalled or kept. Nothing is ranked |
 | Cover | Starts from the sessions that need it, with no reason and no count of absences. Supervision by default. Make-up sessions linked; pay stays in the official channel |
-| Participation | Voluntary in pilots. A class not shared shows as "not shared". No personal phone needed |
-| Directorates | Figures on what the system owes teachers, with at least 5 teachers and 3 schools per figure. Never named teachers, except for inspectors in their scope |
+| Participation (changed by 0015) | Voluntary in pilots. A class not shared shows as "not shared". No personal phone needed |
+| Directorates (changed by 0015) | Figures on what the system owes teachers, with at least 5 teachers and 3 schools per figure. Never named teachers, except for inspectors in their scope |
 | Section 7 | Settled on 27 Sep 2026 |
 
 **Decided on 3 Oct 2026**
 
 | Decision | Choice |
 |---|---|
-| Timetable preparers | Staff who help prepare the master timetable without being the director or a deputy hold a timetable role, whose key opens only the timetables and the assignments they are built from. The school key stays with the director and the deputies, the censeur (ناظر) among them (§5.10, §6.5, §7.8) |
+| Timetable preparers (takes effect with 0015) | Staff who help prepare the master timetable without being the director or a deputy hold a timetable role, whose key opens only the timetables and the assignments they are built from. The school key stays with the director and the deputies, the censeur (ناظر) among them (§5.10, §6.5, §7.8) |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
 
@@ -2381,13 +2401,13 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 | Decision | Choice |
 |---|---|
 | Relationship | Complement the state and never duplicate it. Files only until there is an agreement. Watch what the state ships, and respond |
-| The offer | The four formats, the pipeline for the IGP, accepted printouts, the observatory, the aggregator, a protocol for a national figure, and code with support |
+| The offer (changed by 0015 and 0016) | The four formats, the pipeline for the IGP, accepted printouts, the observatory, the aggregator, a protocol for a national figure, and code with support |
 | Observatory | Opt-in and lesson-level: sessions per item, merges and skips, how far classes got by term end, and closures from the public calendar. No dates, reasons or institution-mode data |
 | Minimum sizes | At least 10 teachers and 3 schools for a wilaya or national figure, with suppression of cells that would reveal a hidden one |
 | Peer comparison | Worked out on the teacher's device from the published figures |
 | Use of figures | Never for exam scope, rankings or personnel decisions. The IGP sees each report first, with 30 days to comment |
-| National figure | An inspectors' sampling protocol, not teachers' data |
-| National adoption | The charter binds it. Otherwise the state may fork under another name |
+| National figure (changed by 0015 and 0017) | An inspectors' sampling protocol, not teachers' data |
+| National adoption (changed by 0015) | The charter binds it. Otherwise the state may fork under another name |
 | Section 8 | Settled on 27 Sep 2026 |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
@@ -2427,7 +2447,7 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 
 ## 9. Funding and sustainability
 
-*Rewrite proposed on 29 Sep 2026 in decision 0016: Tabachir is free, and the project sells nothing. It takes effect when that decision is accepted.*
+*Rewrite proposed on 29 Sep 2026 in decision 0016: Tabachir is free, and the project sells nothing. Decision 0015 also makes sync free. The changes take effect when those decisions are accepted.*
 
 This section turns the money rules (§1.10) into a plan:
 - what everyone gets, and what nobody pays;
@@ -2538,15 +2558,21 @@ Teachers find Tabachir where they already are (§1.1), never through inspectors 
 
 | Decision | Choice |
 |---|---|
-| Teachers | Every feature is free. Sync is the only paid teacher service |
-| Sync | Free in the pilot. Then one payment per school year, per account. The pilot tests 500, 1,000 and 1,500 DA a year |
-| Lapsed payment | Sync stops. Nothing is locked, and exporting stays free |
-| Google Play | No prices or payment links in the Google Play build. Teachers subscribe on the website |
-| Institutions | Paid deployment, training and support, with a public price list. The state buys through public procurement |
-| Other income | A supporter pass, grants and sponsors, under §1.10 |
-| Spending | Curation first, then the security review, hosting and support |
+| Teachers (changed by 0015 and 0016) | Every feature is free. Sync is the only paid teacher service |
+| Sync (changed by 0015 and 0016) | Free in the pilot. Then one payment per school year, per account. The pilot tests 500, 1,000 and 1,500 DA a year |
+| Lapsed payment (changed by 0015 and 0016) | Sync stops. Nothing is locked, and exporting stays free |
+| Google Play (changed by 0015 and 0016) | No prices or payment links in the Google Play build. Teachers subscribe on the website |
+| Institutions (changed by 0015 and 0016) | Paid deployment, training and support, with a public price list. The state buys through public procurement |
+| Other income (changed by 0016) | A supporter pass, grants and sponsors, under §1.10 |
+| Spending (changed by 0016) | Curation first, then the security review, hosting and support |
 | Distribution | The Facebook group, YouTube tutorials and a content website. Never through inspectors or schools |
 | Section 9 | Settled on 27 Sep 2026 |
+
+**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+
+| Decision | Choice |
+|---|---|
+| Sync | Free for teachers |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
 
@@ -2699,12 +2725,12 @@ The risk register is reviewed each term, in public (principle 8).
 
 | Decision | Choice |
 |---|---|
-| Roadmap | The periods and gates in §10.1 |
-| Field check | The groups and questions in §10.2, with counsel's questions in that order |
-| Pilot success | The targets in §10.3 |
+| Roadmap (changed by 0015 and 0016) | The periods and gates in §10.1 |
+| Field check (changed by 0015 and 0016) | The groups and questions in §10.2, with counsel's questions in that order |
+| Pilot success (changed by 0015) | The targets in §10.3 |
 | Measurement | The app sends no usage data. Pilot timings are shared only if the teacher agrees. After launch, only what the project sees anyway, plus opt-in surveys and insights |
-| Stop conditions | As in §10.4, including ending support for a deployment that breaks the charter |
-| Risks | The register in §10.5, reviewed each term in public |
+| Stop conditions (changed by 0015) | As in §10.4, including ending support for a deployment that breaks the charter |
+| Risks (changed by 0015, 0016 and 0017) | The register in §10.5, reviewed each term in public |
 | Section 10 | Settled on 27 Sep 2026 |
 
 **Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**

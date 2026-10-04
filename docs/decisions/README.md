@@ -2,7 +2,7 @@
 
 Every decision about a principle, a licence, a data flow, the insights layer, money or a partnership gets a short public record here: context, options, decision, date ([PRD §1.8](../prd/PRD.md#18-governance-and-decisions)).
 
-To propose one, copy [the template](template.md) and follow the [workflow](../contributing/workflow.md#decision-records). A record's status is `Proposed`, `Accepted`, `Rejected` or `Superseded by 00NN`.
+To propose one, copy [the template](template.md) and follow the [workflow](../contributing/workflow.md#decision-records). A record's status is `Proposed`, `Accepted`, `Rejected`, `Superseded by 00NN` or `Superseded in part by 00NN`.
 
 | # | Decision | Date | Status |
 |---|---|---|---|
