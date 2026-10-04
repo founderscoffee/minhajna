@@ -1,6 +1,6 @@
 # Minhajna: Product Requirements Document
 
-*Minhajna (منهاجنا) is the product's name, proposed on 4 Oct 2026 in decision 0019. Until then it was called Tabachir (طباشير). Repository: [github.com/founderscoffee/minhajna](https://github.com/founderscoffee/minhajna). Started 26 Sep 2026.*
+*Minhajna (منهاجنا) is the product's name, chosen on 4 Oct 2026 in decision 0019. Until then it was called Tabachir (طباشير). Repository: [github.com/founderscoffee/minhajna](https://github.com/founderscoffee/minhajna). Started 26 Sep 2026.*
 
 This PRD is written one section at a time, and we settle each section before starting the next. Each section records decisions and ends with a list of what is still open.
 
@@ -8,43 +8,39 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 | § | Section | Status |
 |---|---|---|
-| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes proposed on 29 and 30 Sep and 4 Oct 2026 (decisions 0015, 0016, 0017, 0018 and 0019) |
-| 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
-| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
-| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decision 0015) |
-| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decisions 0015 and 0017) |
-| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign proposed on 29 Sep 2026 (decision 0015) |
-| 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015 and 0017) |
-| 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015, 0016 and 0017) |
-| 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite proposed on 29 Sep 2026 (decisions 0015 and 0016) |
-| 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes proposed on 29 Sep 2026 (decisions 0015, 0016 and 0017) |
+| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016, 0017, 0018 and 0019) |
+| 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
+| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
+| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decision 0015) |
+| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign accepted on 4 Oct 2026 (decisions 0015 and 0017) |
+| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign accepted on 4 Oct 2026 (decision 0015) |
+| 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
+| 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016 and 0017) |
+| 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite accepted on 4 Oct 2026 (decisions 0015 and 0016) |
+| 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016 and 0017) |
 
-## Which requirements govern
+## The decisions that changed this PRD
 
-Five proposed decisions change this PRD: 0015 to 0019. Each section's note names the ones it carries out, and its decisions table gives their choices under "Proposed".
+Five decisions changed this PRD after its sections were settled: 0015 to 0019, accepted on 4 Oct 2026. Each section's note names the ones it carries out, and its decisions table gives their choices.
 
-- **Plans aim at this PRD as written** (3 Oct), including the parts that carry out the five proposals. A plan marks each item that rests on a proposal, and says what would change if that proposal were rejected or amended.
-- **A proposal takes effect when its record is accepted** ([workflow](../contributing/workflow.md#decision-records)). Until then, the records and decided rows it would change still stand as the project's decisions. So a plan builds nothing that only they need, such as paid sync or school and directorate deployments, and treats nothing that rests on a proposal as final.
-- **The decisions tables show which rows a proposal changes.** A decided row that a proposal changes is marked "(changed by 00NN)", and a row decided after a proposal that works out its details is marked "(takes effect with 00NN)". A row that a proposal only adds to is not marked. When a proposal is accepted, its tables become decided ones, and the marks stay as history.
-- **The new name is used throughout,** decided rows included, except in the two rows that 0019 changes: the name and the code host in §1.17.
-- **Dates in the text,** such as "(29 Sep)", say when a choice was made, not whether it is decided or proposed. The tables say which.
-- **Two decided rows change steps that accepted records planned,** both in §1.17: `CHARTER.md` is in English, where 0010 planned Arabic and English, and the name is not registered, where 0004, 0007 and 0008 planned to register it. The rows name those records, whose decisions stand, though 0019 would replace 0007.
+- **The decisions tables show which rows they changed.** A row decided earlier that one of them changed is marked "(changed by 00NN)", and a row that works out one of them in detail is marked "(takes effect with 00NN)". A row that one of them only adds to is not marked. The marks stay as history.
+- **The new name is used throughout,** decided rows included, except in the two rows that 0019 changed: the name and the code host in §1.17.
+- **Dates in the text,** such as "(29 Sep)", say when a choice was made. The tables say when it was decided.
+- **Two decided rows change steps that earlier records planned,** both in §1.17: `CHARTER.md` is in English, where 0010 planned Arabic and English, and the name is not registered, where 0004, 0007 and 0008 planned to register it. The rows name those records.
 
-| Proposal | Its pull request | What it changes | Carried out in |
-|---|---|---|---|
-| 0015: the national system, with protections built into its design | [founderscoffee/minhajna#4](https://github.com/founderscoffee/minhajna/pull/4) | Replaces record 0012, and the sync price in record 0014. Changes part of record 0010: institution mode becomes one national system run by the Ministry, the project only publishes the software, and the charter is asked of the Ministry rather than bound into an agreement | §1 to §10 |
-| 0016: a project that sells nothing | [founderscoffee/minhajna#5](https://github.com/founderscoffee/minhajna/pull/5) | Replaces record 0006, and what 0015 leaves of record 0014. Principle 4 becomes "Free, and never for sale". After adoption, a change to the principles or the charter needs the teacher council's consent | §1, §8, §9 and §10 |
-| 0017: exam scope at each exam's own level | [founderscoffee/minhajna#6](https://github.com/founderscoffee/minhajna/pull/6) | Charter point 7, which said aggregates are never used for exam thresholds: how far classes got may inform an exam's scope at the level that sets it, under three safeguards. Personnel use stays banned, and the opt-in insights keep their ban | §1, §2, §3, §5, §7, §8 and §10 |
-| 0018: charter point 1 and figures above the school | [founderscoffee/minhajna#10](https://github.com/founderscoffee/minhajna/pull/10) | Charter point 1 gains a sentence: "Above the school, figures drawn from them serve only what point 7 allows." The rest of the point is unchanged | §1 |
-| 0019: the name Minhajna | [founderscoffee/minhajna#11](https://github.com/founderscoffee/minhajna/pull/11) | Replaces record 0007: the product is called Minhajna (منهاجنا) rather than Tabachir, and the naming rule is loosened. Changes part of record 0005: the repository's name | §1.9 and §1.17, and the name throughout |
-
-The repository files on this branch, such as `CHARTER.md`, `GOVERNANCE.md` and the README, are written the same way, as if the five proposals were accepted. Their links to the records point to `docs/decisions/`, where each record is kept once it is decided. Until then, the table above links to its pull request.
+| Decision | What it changes | Carried out in |
+|---|---|---|
+| [0015](../decisions/0015-national-system-protections-by-design.md): the national system, with protections built into its design | Replaces record 0012, and the sync price in record 0014. Changes part of record 0010: institution mode becomes one national system run by the Ministry, the project only publishes the software, and the charter is asked of the Ministry rather than bound into an agreement | §1 to §10 |
+| [0016](../decisions/0016-non-commercial.md): a project that sells nothing | Replaces record 0006, and what 0015 left of record 0014. Principle 4 becomes "Free, and never for sale". After adoption, a change to the principles or the charter needs the teacher council's consent | §1, §8, §9 and §10 |
+| [0017](../decisions/0017-exam-scope-at-each-level.md): exam scope at each exam's own level | Charter point 7, which said aggregates are never used for exam thresholds: how far classes got may inform an exam's scope at the level that sets it, under three safeguards. Personnel use stays banned, and the opt-in insights keep their ban | §1, §2, §3, §5, §7, §8 and §10 |
+| [0018](../decisions/0018-charter-purpose-and-figures.md): charter point 1 and figures above the school | Charter point 1 gains a sentence: "Above the school, figures drawn from them serve only what point 7 allows." The rest of the point is unchanged | §1 |
+| [0019](../decisions/0019-name-minhajna.md): the name Minhajna | Replaces record 0007: the product is called Minhajna (منهاجنا) rather than Tabachir, and the naming rule is loosened. Changes part of record 0005: the repository's name | §1.9 and §1.17, and the name throughout |
 
 ---
 
 ## 1. Open-source strategy and governing guidelines
 
-*Changes proposed on 29 and 30 Sep 2026 in decisions 0015, 0016, 0017 and 0018, for the project's goal: national adoption, with the Ministry running Minhajna on government servers, nothing sold, and exam scope set at each exam's own level. On 4 Oct 2026, decision 0019 proposed renaming the product Minhajna. The changes take effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+*Changes proposed on 29 and 30 Sep 2026 in decisions 0015, 0016, 0017 and 0018, for the project's goal: national adoption, with the Ministry running Minhajna on government servers, nothing sold, and exam scope set at each exam's own level. Decision 0019 renamed the product Minhajna. All five were accepted on 4 Oct 2026. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
 
 The whole system is open source from its first line of code: the apps, the servers, the tools and the documents. This section sets the rules that govern the project:
 - what is open, and under which licence;
@@ -516,7 +512,7 @@ The code and the reference data live in separate repositories, because they have
 | Reports | Until the project has an address of its own, conduct problems are reported through GitHub's tool for reporting content to maintainers, or to the admins of the teachers' Facebook group, and privacy questions go in an issue, without personal details |
 | Which requirements govern | Plans aim at this PRD as written, and mark what rests on a proposal. A proposal takes effect when its record is accepted |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -530,7 +526,7 @@ The code and the reference data live in separate repositories, because they have
 | After adoption | The Ministry's staff maintain Minhajna, as maintainers in the project's public process |
 | Insights | Opt-in, in teacher mode, from 2027/28 until the national totals exist |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
+**Decided on 4 Oct 2026 (decision 0016, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -540,20 +536,20 @@ The code and the reference data live in separate repositories, because they have
 | After adoption | The Ministry maintains Minhajna with its own staff (§1.8). A change to the principles or the charter then needs the teacher council's consent |
 | Legal entity | An association, which counsel confirms |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
 | Charter point 7 | How far classes got may inform the scope of an exam only at the level that sets it: the school's own records, the directorate's totals, or wilaya and national totals. The figures are taken on a date announced in advance, which moves only with the exam, published after the exam and checked against the inspectors' sample, or marked unchecked in a year without it. Never for personnel decisions |
 | Insight figures | Keep their ban: never used for exam scope (§1.6) |
 
-**Proposed on 30 Sep 2026 (decision 0018)**
+**Decided on 4 Oct 2026 (decision 0018, proposed on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
 | Charter point 1 | Adds "Above the school, figures drawn from them serve only what point 7 allows." Nothing else in the charter changes |
 
-**Proposed on 4 Oct 2026 (decision 0019)**
+**Decided on 4 Oct 2026 (decision 0019)**
 
 | Decision | Choice |
 |---|---|
@@ -564,7 +560,7 @@ The code and the reference data live in separate repositories, because they have
 **Open**
 - **Protecting the name.** Two steps, since the name is not registered:
   - register `minhajna.dz` and `minhajna.com.dz`, under the registry's conditions;
-  - check that the name is free on Facebook before 0019 is decided, and reserve the page.
+  - check that the name is free on Facebook, and reserve the page.
 - **The association** (29 Sep). Counsel confirms the form, and the rules for an association that receives donations and grants (§9.8).
 - **Questions for counsel.** There is no budget for counsel yet, so the project will look for free help, for example university law clinics or incubators. The questions:
   - how the Ministry, its directorates and its schools share the controller's role in the national system (§1.15);
@@ -579,7 +575,7 @@ The code and the reference data live in separate repositories, because they have
 
 ## 2. Goal, users and scope
 
-*Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. They take effect when those decisions are accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. Those decisions were accepted on 4 Oct 2026.*
 
 This section sets out:
 - what Minhajna is for;
@@ -709,7 +705,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | Dates | Pilot January–March 2027; launch September 2027 |
 | Section 2 | Settled on 27 Sep 2026 |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -720,7 +716,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 | Students and parents | No features in Minhajna. The state's awlyaa space serves them |
 | The national launch | No date yet. It is set once the Ministry adopts Minhajna |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -737,7 +733,7 @@ Version 1 is tested in a pilot from January to March 2027 and launched in Septem
 
 ## 3. The teacher app
 
-*Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. They take effect when those decisions are accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. Those decisions were accepted on 4 Oct 2026.*
 
 This section specifies what the teacher does and gets. Three later sections cover the parts it relies on:
 - Section 4, the lesson engine that proposes each session's lesson;
@@ -1079,7 +1075,7 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 |---|---|
 | Seating plan | Roll call by list or by seating plan, from the pilot. The plan stays on the teacher's devices, in the private layer, and prints on one page |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -1091,7 +1087,7 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 | Sync | Free for teachers |
 | The pilot | No longer measures pages that directors countersign: before adoption, the project seeks no official acceptance of printed pages |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -1110,7 +1106,7 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 
 ## 4. The lesson engine and plan packs
 
-*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. They take effect when that decision is accepted.*
+*Changes proposed on 29 Sep 2026 in decision 0015, for the national system run by the Ministry. That decision was accepted on 4 Oct 2026.*
 
 This section specifies how Minhajna knows the lesson for each session:
 - the plan packs, which hold the official plans as data;
@@ -1408,7 +1404,7 @@ The same repository, review and yearly cycle hold the other data the app needs (
 |---|---|
 | Layers across releases | When a class moves to a new release, the migration entries carry every layer's operations, on the device. What they cannot carry clearly, the teacher decides before the move |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -1430,7 +1426,7 @@ The same repository, review and yearly cycle hold the other data the app needs (
 
 ## 5. Data, formats and foundations
 
-*Redesign proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Minhajna on government servers, and in decision 0017, for exam scope. It takes effect when those decisions are accepted. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
+*Redesign proposed on 29 Sep 2026 in decision 0015, for the project's goal: national adoption, with the Ministry running Minhajna on government servers, and in decision 0017, for exam scope. Those decisions were accepted on 4 Oct 2026. The founder's choices of 29 Sep 2026 are marked "(29 Sep)".*
 
 This section specifies:
 - how the apps and the server fit together, and who runs the server;
@@ -1719,7 +1715,7 @@ These five technical risks are tested early, before the pilot depends on them:
 | Early checks | The five checks in §5.13, before the pilot |
 | Section 5 | Settled on 27 Sep 2026 |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -1737,7 +1733,7 @@ These five technical risks are tested early, before the pilot depends on them:
 | Parents | Served by the state's awlyaa space. No student or parent features in Minhajna |
 | Record layers | A sixth layer, totals, for figures above the school (§5.4) |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -1757,7 +1753,7 @@ These five technical risks are tested early, before the pilot depends on them:
 
 ## 6. Privacy, security and non-functional requirements
 
-*Redesign proposed on 29 Sep 2026 in decision 0015, with Section 5, for the national system run by the Ministry on government servers. It takes effect when that decision is accepted.*
+*Redesign proposed on 29 Sep 2026 in decision 0015, with Section 5, for the national system run by the Ministry on government servers. That decision was accepted on 4 Oct 2026.*
 
 This section:
 - turns the privacy principles (§1.2, §1.5) into requirements;
@@ -1949,7 +1945,7 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 | Non-functional (changed by 0015) | The targets in §6.8, confirmed in the pilot |
 | Section 6 | Settled on 27 Sep 2026 |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -1973,7 +1969,7 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 
 ## 7. The school layer and institution mode
 
-*Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. They take effect when those decisions are accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015 and 0017, for the national system run by the Ministry and its exam thresholds. Those decisions were accepted on 4 Oct 2026.*
 
 This section designs how schools and education authorities use Minhajna:
 - reader mode and the coordinator's merge, which need no accounts;
@@ -2231,7 +2227,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 |---|---|
 | Timetable preparers (takes effect with 0015) | Staff who help prepare the master timetable without being the director or a deputy hold a timetable role, whose key opens only the timetables and the assignments they are built from. The school key stays with the director and the deputies, the censeur (ناظر) among them (§5.10, §6.5, §7.8) |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2244,7 +2240,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 | Totals of how far classes got | Formed only on announced days, with no weekly or monthly series, for exam figures and the curriculum report alike |
 | Consultation | Every objection from the staff committees and the unions gets a public answer before the mandate starts |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2266,7 +2262,7 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 
 ## 8. The state layer
 
-*Changes proposed on 29 Sep 2026 in decisions 0015, 0016 and 0017, for the national system run by the Ministry, with nothing sold and exam scope set at each exam's own level. They take effect when those decisions are accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015, 0016 and 0017, for the national system run by the Ministry, with nothing sold and exam scope set at each exam's own level. Those decisions were accepted on 4 Oct 2026.*
 
 This section designs how Minhajna works with the state towards the goal in principle 6:
 - what the state already runs, and the rules for working alongside it;
@@ -2421,7 +2417,7 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 | National adoption (changed by 0015) | The charter binds it. Otherwise the state may fork under another name |
 | Section 8 | Settled on 27 Sep 2026 |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2432,14 +2428,14 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 | After adoption | The Ministry's own staff maintain Minhajna in the project's public process. The Ministry's app is the project's release under the Ministry's name, and a build that weakens the charter is made public at once. The project's server closes once teachers have moved |
 | Consultation | Every objection from the staff committees and the unions gets a public answer before the mandate starts |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
+**Decided on 4 Oct 2026 (decision 0016, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
 | The offer | The code, the deployment guide, the administration manual and the training material, free. The project sells nothing, and signs no support contract |
 | After adoption | A change to the principles or the charter needs the teacher council's consent. The Ministry's maintainers can propose one, never decide it alone |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2458,7 +2454,7 @@ National adoption is the first ask (§1.15, 29 Sep). The national launch has no 
 
 ## 9. Funding and sustainability
 
-*Rewrite proposed on 29 Sep 2026 in decision 0016: Minhajna is free, and the project sells nothing. Decision 0015 also makes sync free. The changes take effect when those decisions are accepted.*
+*Rewrite proposed on 29 Sep 2026 in decision 0016: Minhajna is free, and the project sells nothing. Decision 0015 also makes sync free. Those decisions were accepted on 4 Oct 2026.*
 
 This section turns the money rules (§1.10) into a plan:
 - what everyone gets, and what nobody pays;
@@ -2579,13 +2575,13 @@ Teachers find Minhajna where they already are (§1.1), never through inspectors 
 | Distribution | The Facebook group, YouTube tutorials and a content website. Never through inspectors or schools |
 | Section 9 | Settled on 27 Sep 2026 |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
 | Sync | Free for teachers |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
+**Decided on 4 Oct 2026 (decision 0016, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2606,7 +2602,7 @@ Teachers find Minhajna where they already are (§1.1), never through inspectors 
 
 ## 10. Roadmap, metrics and risks
 
-*Changes proposed on 29 Sep 2026 in decisions 0015, 0016 and 0017, for the national system run by the Ministry, with nothing sold and exam scope set at each exam's own level. They take effect when those decisions are accepted.*
+*Changes proposed on 29 Sep 2026 in decisions 0015, 0016 and 0017, for the national system run by the Ministry, with nothing sold and exam scope set at each exam's own level. Those decisions were accepted on 4 Oct 2026.*
 
 This section brings the plan together:
 - the roadmap and its gates;
@@ -2744,7 +2740,7 @@ The risk register is reviewed each term, in public (principle 8).
 | Risks (changed by 0015, 0016 and 0017) | The register in §10.5, reviewed each term in public |
 | Section 10 | Settled on 27 Sep 2026 |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0015)**
+**Decided on 4 Oct 2026 (decision 0015, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2755,7 +2751,7 @@ The risk register is reviewed each term, in public (principle 8).
 | Stop conditions | The mandate waits until the national system passes the launch gate. A charter breach in the national system is reported in public, at once if the Ministry's build weakens the charter |
 | Risks | Four added: no adoption, resistance to the mandate, the first term end, and a modified app |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0016)**
+**Decided on 4 Oct 2026 (decision 0016, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
@@ -2763,7 +2759,7 @@ The risk register is reviewed each term, in public (principle 8).
 | Legal entity | An association, set up during the field check if the pilot's declaration needs it (§9.8) |
 | Field check | Counsel's questions add the association's form, and the rules on donations and grants, including what counts as money from abroad |
 
-**Proposed on 29 Sep 2026, amended on 30 Sep (decision 0017)**
+**Decided on 4 Oct 2026 (decision 0017, proposed on 29 Sep and amended on 30 Sep)**
 
 | Decision | Choice |
 |---|---|
