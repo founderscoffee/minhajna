@@ -1,8 +1,8 @@
 # 0016. A non-commercial project: nothing is sold, and the Ministry maintains Tabachir after adoption
 
-- **Date:** 2026-09-29, amended 2026-09-30
-- **Status:** Proposed
-- **Decided by:** the lead maintainer, after at least 30 days of comments, because this changes principle 4 and the process for changing a principle
+- **Date:** 2026-09-29, amended 2026-09-30, accepted 2026-10-04
+- **Status:** Accepted
+- **Decided by:** the lead maintainer, before the 30 days of comments that a change to a principle calls for had passed. No comments had come in.
 
 ## Context
 
