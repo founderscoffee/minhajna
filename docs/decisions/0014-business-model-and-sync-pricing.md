@@ -1,7 +1,7 @@
 # 0014. The business model and how sync is priced
 
 - **Date:** 2026-09-27
-- **Status:** Accepted
+- **Status:** Superseded by [0015](0015-national-system-protections-by-design.md) and [0016](0016-non-commercial.md)
 - **Decided by:** the founder
 
 ## Context
