@@ -21,11 +21,17 @@ It is the first part of the field-check prototype: setup, Today and roll call ([
 
 ## Running the tests
 
-The core needs Node.js 22.18 or later, which runs TypeScript directly. It has no dependencies.
+The core needs Node.js 22.18 or later, which runs TypeScript directly. It has no runtime dependencies. TypeScript itself is a development dependency of the repository, for the type check only.
 
 ```bash
 npm test
 ```
+
+```bash
+npm run typecheck
+```
+
+The type check covers `src/`. The tests are run, not type-checked, since that needs Node.js's own type definitions.
 
 The test data is made up ([engineering rules](../../docs/contributing/engineering.md#test-data)). The two plan packs in the tests are invented, with the status `example`, and are never published as reference data.
 
