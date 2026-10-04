@@ -2,6 +2,10 @@
 
 من التدرّج إلى الحصّة · From the yearly plan to every lesson
 
+> **اسم جديد مقترح للمشروع:** «منهاجنا»، وعنوان المستودع يحمله منذ الآن ([المقترح 0019](https://github.com/founderscoffee/minhajna/pull/11)).
+>
+> **A new name is proposed for the project:** Minhajna (منهاجنا). The repository's address already uses it ([decision 0019](https://github.com/founderscoffee/minhajna/pull/11)).
+
 **العربية** · [English](#english)
 
 **«منهاجنا»** تطبيق مجاني ومفتوح المصدر لأساتذة الجزائر، يجمع دفتر النصوص والكراس اليومي ودفتر المناداة ودفتر التنقيط، ويربط بينها عبر الحصة. يقترح لكل قسم درس كل حصة من التدرج الرسمي، فيؤكّد الأستاذ بلمسة واحدة ما أنجزه بدل أن يكتبه، وتتبع ذلك الوثائق. يعمل على الهاتف دون حاجة إلى الإنترنت، ويطبع ما يطلبه المدير والمفتش.
