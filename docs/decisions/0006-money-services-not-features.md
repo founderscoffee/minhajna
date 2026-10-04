@@ -1,7 +1,7 @@
 # 0006. Charge for services, never for features
 
 - **Date:** 2026-09-26
-- **Status:** Accepted
+- **Status:** Superseded by [0016](0016-non-commercial.md)
 - **Decided by:** the founder
 
 ## Context
