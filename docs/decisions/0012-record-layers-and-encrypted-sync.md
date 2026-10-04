@@ -1,7 +1,7 @@
 # 0012. Record layers and end-to-end encrypted sync
 
 - **Date:** 2026-09-27
-- **Status:** Accepted
+- **Status:** Superseded by [0015](0015-national-system-protections-by-design.md)
 - **Decided by:** the founder
 
 ## Context
