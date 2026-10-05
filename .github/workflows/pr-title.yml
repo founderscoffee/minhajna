@@ -1,0 +1,100 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# The pull request's title against the commit format, since it becomes the
+# commit subject on main (docs/contributing/commits.md).
+
+name: Pull request title
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  title:
+    name: Commit format
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check the title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          # The types from docs/contributing/commits.md#types.
+          TYPES: feat fix perf refactor style test docs build ci chore revert
+          # The current list of scopes that docs/contributing/commits.md#scopes
+          # refers to. Add a scope here when a new area of the product needs one.
+          SCOPES: >-
+            setup today roll-call marks export documents digest sharing
+            reader timetable school-mode
+            core engine calendar history layers formats
+            sync backup crypto network insights
+            android web server
+            i18n a11y deps release
+            prd decisions design contributing readme
+          # Count characters, not bytes, in titles such as "… in §4.2".
+          LC_ALL: C.UTF-8
+        run: |
+          if [[ "$PR_TITLE" == *[[:cntrl:]]* ]]; then
+            echo "::error title=Pull request title::The title contains a control character."
+            exit 1
+          fi
+          printf 'Title: %s\n' "$PR_TITLE"
+
+          read -r -a types <<< "$TYPES"
+          read -r -a scopes <<< "$SCOPES"
+          listed() {
+            local word=$1 item
+            shift
+            for item in "$@"; do
+              if [[ "$item" == "$word" ]]; then
+                return 0
+              fi
+            done
+            return 1
+          }
+
+          problems=()
+          format='^([a-z]+)(\(([a-z0-9-]+)\))?(!)?: (.*)$'
+          if [[ "$PR_TITLE" =~ $format ]]; then
+            type=${BASH_REMATCH[1]}
+            scope=${BASH_REMATCH[3]}
+            summary=${BASH_REMATCH[5]}
+            if ! listed "$type" "${types[@]}"; then
+              problems+=("Use one of these types: ${types[*]}.")
+            fi
+            if [[ -n "$scope" ]] && ! listed "$scope" "${scopes[@]}"; then
+              problems+=("Use one of these scopes, or none: ${scopes[*]}.")
+            fi
+            if [[ -z "$summary" || "$summary" == [[:space:]]* ]]; then
+              problems+=("Put one space after the colon, then the summary.")
+            elif [[ "$summary" == [[:upper:]]* ]]; then
+              problems+=("Start the summary in lower case.")
+            fi
+            if [[ "$summary" == *. ]]; then
+              problems+=("End the summary without a full stop.")
+            fi
+          else
+            problems+=('Write the title as "<type>(<scope>): <summary>", or "<type>: <summary>" without a scope.')
+          fi
+          if (( ${#PR_TITLE} > 72 )); then
+            problems+=("Shorten the title to 72 characters at most. It has ${#PR_TITLE}.")
+          fi
+
+          if (( ${#problems[@]} > 0 )); then
+            for problem in "${problems[@]}"; do
+              echo "::error title=Pull request title::$problem"
+            done
+            echo "See docs/contributing/commits.md."
+            exit 1
+          fi
+          echo "The title follows the commit format."
