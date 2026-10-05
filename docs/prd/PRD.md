@@ -10,11 +10,11 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 |---|---|---|
 | 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016, 0017, 0018 and 0019) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
-| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
-| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decision 0015) |
-| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign accepted on 4 Oct 2026 (decisions 0015 and 0017) |
-| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign accepted on 4 Oct 2026 (decision 0015) |
-| 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
+| 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017). Points clarified on 5 Oct 2026 |
+| 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decision 0015). Points clarified on 5 Oct 2026 |
+| 5 | [Data, formats and foundations](#5-data-formats-and-foundations) | Settled on 27 Sep 2026. Redesign accepted on 4 Oct 2026 (decisions 0015 and 0017). Points clarified on 5 Oct 2026 |
+| 6 | [Privacy, security and non-functional requirements](#6-privacy-security-and-non-functional-requirements) | Settled on 27 Sep 2026. Redesign accepted on 4 Oct 2026 (decision 0015). Points clarified on 5 Oct 2026 |
+| 7 | [The school layer and institution mode](#7-the-school-layer-and-institution-mode) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017). Points clarified on 5 Oct 2026 |
 | 8 | [The state layer](#8-the-state-layer) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016 and 0017) |
 | 9 | [Funding and sustainability](#9-funding-and-sustainability) | Settled on 27 Sep 2026. Rewrite accepted on 4 Oct 2026 (decisions 0015 and 0016) |
 | 10 | [Roadmap, metrics and risks](#10-roadmap-metrics-and-risks) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016 and 0017) |
@@ -816,7 +816,7 @@ The goal is a usable app in about 10 minutes, without importing anything.
 - the proposed lesson: its plan item and stage;
 - what carried over from last time.
 
-Special days are marked on it: holidays, seminars, councils, exam weeks, and cover for another teacher's class.
+Special days are marked on it: holidays, seminars, councils, exam weeks, and cover for another teacher's class. A class council goes on the journal's page for seminars, training and meetings, and an invigilation duty in the journal, like cover (§3.8, §7.7). Neither goes in the texts book, and the app keeps no count of them.
 
 **Confirming a session**
 
@@ -829,17 +829,17 @@ Special days are marked on it: holidays, seminars, councils, exam weeks, and cov
 | Re-taught | 2 | An item taught again |
 | Not held | 2 | That the session did not take place |
 
-- **Reasons are optional and private.** A skipped item or a session not held can carry a reason that stays on the device: closure, exam, holiday, event, teacher absent, class absent, few pupils present, or other. No reason names collective action; the teacher uses "other" (§1.11).
+- **Reasons are optional and private.** A skipped item or a session not held can carry a reason that stays on the teacher's own devices (§5.4): closure, exam, holiday, event, teacher absent, class absent, few pupils present, or other. No reason names collective action; the teacher uses "other" (§1.11).
 - **A whole day or a whole week** can be confirmed at once, marking only the exceptions.
 - **Session types** follow Algerian practice: درس، إدماج، أعمال موجهة، معالجة، استقبال, and فراغ for a free slot, plus tests and exams.
-- **Sessions outside the timetable** can be logged too, for one of the teacher's classes: support, catch-up, review or supervised study. With no timetable slot, the teacher enters the date and the time, as on paper; the app never records when they tapped. These sessions do not move the plan, and they fill the texts book's page for supervised or additional lessons (§3.8).
+- **Sessions outside the timetable** can be logged too, for one of the teacher's classes: support, catch-up, review or supervised study. With no timetable slot, the teacher enters the date and the time, as on paper; the app never records when they tapped. These sessions do not move the plan, and they fill the texts book's page for supervised or additional lessons (§3.8). They are not the make-up sessions of the catch-up ladder, which the teacher schedules with the administration, which count as plan sessions and which go on the subject's pages (§4.7).
 - **Every session can also record:**
   - homework, with its due date;
   - any test given;
   - free text, and content that wasn't in the plan.
 - **Two layers of note:**
   - a factual line that can go into the texts-book entry and into shared statements;
-  - a private note that never leaves the device.
+  - a private note that never leaves the teacher's own devices (§5.4).
 
   The app warns against writing pupils' health or discipline details in either.
 - **No clock times.** A session is identified by its date and timetable slot. Printed times come from the timetable, never from when the teacher tapped.
@@ -867,9 +867,10 @@ Roll call replaces the paper roll-call book (دفتر المناداة) as the t
 - **Everyone is present by default.** The teacher marks only the exceptions:
   - absent, marked justified or unjustified. The cause is never typed (§5.6);
   - late, which can happen several times a day, carries the date and doesn't count as an absence.
-- **A list or a seating plan** (3 Oct). The teacher marks the exceptions on the class list, or on a seating plan of the class or group, arranged once by placing each pupil on a seat. Tapping a seat marks the same exceptions as the list, and both record the same roll call. The seating plan stays on the teacher's devices, in the private layer (§5.4), and prints on one A4 page, for example for a substitute. It is erased with that year's pupil records (§5.7).
+- **A list or a seating plan** (3 Oct). The teacher marks the exceptions on the class list, or on a seating plan of the class or of one of its timetable groups, arranged once by placing each pupil on a seat. Tapping a seat marks the same exceptions as the list, and both record the same roll call. The seating plan stays on the teacher's devices, in the private layer (§5.4), and prints on one A4 page, for example for a substitute. It is erased with that year's pupil records (§5.7).
 - **When.** In class or after the lesson, because circular 460 Art. 48 limits phones in class.
 - **Paper fallback.** A printable blank sheet, entered later. It also serves a substitute or a day without the phone.
+- **A roll call not yet saved.** Since everyone is present by default, Today lists the sessions whose roll call was never saved, until the teacher saves or dismisses each one, for example once a paper sheet is entered. Nothing about them is sent or printed.
 - **Corrections.** Past days can be corrected, and an audit trail keeps every change, because roll calls carry legal weight.
 
 **Counting**, following the roll-call templates (brief §13.4)
@@ -981,7 +982,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 - **Paper and ink.** Safe in black and white, with binding margins. One PDF that a print shop can use.
 - **Settings.** Subject order, one- or two-sided printing, and which pages to print. Teachers pay for their own printing, about 5 DA a page, so layouts waste no paper.
 - **Fonts.** Fonts are embedded (Amiri, Noto Naskh Arabic). DOCX files name the Microsoft fonts that official documents use.
-- **Dates.** Gregorian dd/mm/yyyy with Western digits, the Algerian month names (جانفي … أوت), and the school year as "2026-2027". The Hijri date is optional.
+- **Dates.** Gregorian dd/mm/yyyy with Western digits, the Algerian month names (جانفي … أوت), and the school year as "2026-2027". The Hijri date is optional. The texts book's pages, on screen and in print, keep the paper book's form instead (2026/09/21), as teachers know it.
 - **Mixed directions.** Arabic headers over a French or English body must render correctly.
 - **Tamazight.** Latin script at least.
 
@@ -998,6 +999,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 
 **Other notifications**
 - **A daily preview**, only if the teacher turns it on.
+- **The year-end prompts** to export and to erase (§5.7), and **the reminder after 30 days with no sync and no backup** (§6.5). Both are on by default, and the teacher can turn each one off.
 - **Quiet hours.** No notification between 20:00 and 07:00, or from Thursday 20:00 to Sunday 07:00. Teachers who work on Saturdays can adjust this.
 
 ### 3.10 Sharing, handover and devices
@@ -1006,8 +1008,8 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
   - One per class, as a print, a PDF or a QR code (§5.9).
   - Its fields follow the state's April 2026 request:
     - the last domain or sequence completed;
-    - the last learning resource;
-    - weeks of delay;
+    - the last main-plan resource taught, finished or in progress;
+    - weeks of delay, counted after the buffers (§4.7);
     - sessions not held, shown only as calendar causes or "other". The reasons stay on the teacher's devices (§5.4);
     - the plan pack and its release.
   - It carries no pupil data.
@@ -1024,7 +1026,7 @@ Each document can be printed, saved as PDF or DOCX, and printed blank with its h
 
   Section 5 designs both.
 - **Staffroom PCs** (national system). The teacher signs in with their phone, or with a security key the school issues, and nothing stays behind when the session ends (§6.6).
-- **Export.** A full export of everything, free, at any time (principle 7).
+- **Export.** A full export of everything, free, at any time (principle 7), except the teacher card's personal fields and the drawn signature, which never leave the device (§3.2).
 
 ### 3.11 Pilot and launch
 
@@ -1092,6 +1094,15 @@ The national system adds joining with a QR code, the weekly signature, the schoo
 | Decision | Choice |
 |---|---|
 | Exam thresholds | In the national system, each exam's date and where the teacher's classes stand, as the director sees them. A school exam's cut is optional. When the subject's teachers use it, they sign it, and the earliest proposed cut applies. Monthly tests have nothing to sign |
+
+**Decided on 5 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Dates in the texts book | The book's pages, on screen and in print, keep the paper book's form (2026/09/21). Every other screen and document uses dd/mm/yyyy |
+| Catch-up | Lessons outside the timetable never move the plan and fill the page for supervised or additional lessons. The make-up sessions of the catch-up ladder count as plan sessions and go on the subject's pages |
+| A roll call not yet saved | Listed on the teacher's Today until it is saved or dismissed. Nothing is sent or printed |
+| Reminders | The year-end prompts and the 30-day reminder are on by default, and the teacher can turn each one off |
 
 **Open.** The field check, the pilot or the year's texts will settle these:
 - **Primary continuous assessment.** Whether it is by activity (circular 1711) or by learning domain (the 2024–2026 grade books) in 2026/27.
@@ -1252,7 +1263,7 @@ A plan pack holds one official plan as data. There is one pack for each level, g
 
 **What an entry can do to the sessions** (research 12):
 - cancel them: a holiday or a closure;
-- replace them: an exam week;
+- replace them: an exam week. The plan pauses, and the sessions it replaces are neither held nor lost, since the September check already leaves the exam windows out (§4.7);
 - add them: support, remediation, or revision during the holidays;
 - change their times: Ramadan;
 - set or reset the A/B week;
@@ -1275,7 +1286,7 @@ So the calendar takes updates the same day, received with the reference data (§
 
 - **Slots point to bell times.** A timetable entry names a slot, not a clock time. Bell times come from templates for each level, shift and kind of day, so Ramadan changes the times without touching the timetable.
 - **Week patterns.** An entry runs every week, in A weeks or in B weeks. The calendar stores each teaching week's parity. By default it alternates and skips holidays, and it can be reset each term.
-- **Versions.** A new timetable applies from its effective date, and a one-off change touches only its own date.
+- **Versions.** A new timetable applies from its effective date, and a one-off change touches only its own date. The teacher can record a one-off change in their own week, such as a swap with a colleague, even when the school sends the timetable. The school's version stays as sent (§7.4).
 - **Primary activity slots.** A primary slot can carry its activity type, such as "reading, session 3", which week packs use.
 - **Teacher blocks,** such as the pedagogical half-day, hours in another school, duties and reductions, take time out of the week without belonging to any class.
 - **Generation.** Each class's dated sessions come from the timetable version in force, the calendar and the bell times.
@@ -1301,11 +1312,11 @@ plan pack → course (class × subject × school year) → timetable version →
 - **It is always the class's next unfinished item,** starting at the first stage not yet covered.
   - Week packs match the slot's activity type within the weekly model. A plan week's maths lessons spread over that week's maths slots, in order.
   - Budget and hybrid packs take the next item in order.
-- **TD, remediation and support slots have their own queues.** They never advance the main plan. They are real slots: circular 465 put the TD guide into use and ordered remediation in 3AP and 5AP.
+- **TD, remediation and support slots have their own queues.** They never advance the main plan. They are real slots: circular 465 put the TD guide into use and ordered remediation in 3AP and 5AP. Each queue is counted apart: the September check, the buffers and the delay count main-plan sessions only, and TD, remediation and support show their own counts.
 - **Tests and exams come from the calendar** and the teacher's test schedule, never from the pack.
 - **Where the plan says the class should be** is worked out separately, only as a reference:
   - for week packs, from the teaching week;
-  - for budget packs, from the budgets that fit into the sessions scheduled so far.
+  - for budget packs, from the budgets that fit into the main-plan sessions scheduled so far, today's included.
 
 **Progress**
 - **Stages, not percentages.** "Last stage reached" keeps the item at the head of the queue. Its remaining stages move to the next ordinary session of the same class and subject, not to a TD, remediation or exam session. The journal and the texts-book entry read "تابع: <title>", with the stages still to cover.
@@ -1325,7 +1336,7 @@ plan pack → course (class × subject × school year) → timetable version →
 1. **Compress** the item in progress. The teacher does this; the app does nothing.
 2. **Use the pack's buffers.**
 3. **Merge items, or leave out optional ones,** from the pack's proposals. The teacher confirms each one.
-4. **Add sessions,** which the teacher schedules.
+4. **Add make-up sessions,** which the teacher schedules with the administration. They count as plan sessions and go on the subject's pages, unlike the lessons outside the timetable (§3.3).
 5. **Re-pace the rest of the term.** The app builds a new distribution for the teacher to review and print. In primary, the director approves it (Decision 839 Art. 12).
 
 **Never:**
@@ -1410,6 +1421,13 @@ The same repository, review and yearly cycle hold the other data the app needs (
 |---|---|
 | Official snapshot | A session becomes part of the official record once the teacher signs its week, in the national system |
 | Plan feedback | In the national system, the curriculum report's totals, which replace the opt-in insights once they exist |
+
+**Decided on 5 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Counting the queues | Each queue is counted apart: the September check, the buffers and the delay count main-plan sessions only |
+| One-off changes | The teacher can record one in their own week, even when the school sends the timetable. The school's version stays as sent |
 
 **Open**
 - **The copyright status of the IGP's plans** (§1.17). Until counsel answers, packs hold structure and links only.
@@ -1587,7 +1605,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 | Records | Default |
 |---|---|
 | Lesson records | Kept until the teacher deletes them. For comparison, schools keep the texts book in their archive for at least 3 years after the school year (Decision 155 of 1991, Art. 13, and the Ministry's 1999 schedule of school documents) |
-| Pupil records | Once the following school year ends, the app offers to erase that year's pupil records and seating plans, keeping the lesson records |
+| Pupil records | Once the following school year ends, the app offers to erase that year's pupil records and seating plans, keeping the lesson records. A closed year imported from an archive follows the same rule, counted from its own school year |
 | Private notes | Kept until the teacher deletes them |
 | Logs | Kept as long as the records they describe |
 
@@ -1615,7 +1633,7 @@ Every record belongs to a layer, and the layer travels with it. Every sync, expo
 
 | File | In or out | What it holds | Rules |
 |---|---|---|---|
-| **The Minhajna archive** (the open format) | Both | Everything: records, history and pinned releases | Documented and versioned. Every older version can be imported. Free, at any time (principle 7) |
+| **The Minhajna archive** (the open format) | Both | Everything: records, history and pinned releases, except the teacher card's personal fields and the drawn signature (§3.2) | Documented and versioned. Every older version can be imported. Free, at any time (principle 7) |
 | CSV | Out | Marks, roll call and the lesson log | For spreadsheets |
 | PDF and DOCX | Out | The documents (§3.8) | Made on the device |
 | The official class list (Excel) | In | Pupils | Only the columns in §5.6 |
@@ -1740,6 +1758,12 @@ These five technical risks are tested early, before the pilot depends on them:
 | Totals above the school | Formed only on days announced at the start of the year: each term's end and each exam's own date, which moves only with the exam. Signed weeks only. No weekly or monthly series |
 | Exam scope | At each exam's own level, under charter point 7. Each signed cut is kept with the figures it came from, and both are published after the exam |
 
+**Decided on 5 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| The archive and the recovery sheet | Everything except the teacher card's personal fields and the drawn signature, which never leave the device |
+
 **Open**
 - **Legal retention periods** for teachers' own records once the year ends. Counsel answers.
 - **The 2026/27 class-list file:** its columns, and whether it has names in Latin letters. The field check finds out.
@@ -1786,7 +1810,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 | **The national system** | The Ministry's own:<br>• its ANPDP declaration or authorisation, and its data-protection officer<br>• its Decree 26-07 security and data-protection unit<br>• the data catalogue and classification (Decree 25-320), and access to the interoperability system<br>• the HCN's review of the sector plan, and the Council of Ministers' decision (§8.7)<br>• the launch gate in §6.8 |
 
 - **Sync opens only when its gates are met.** If they are not met by January 2027, the pilot runs without sync, using direct transfer and backup files (§5.8).
-- **Teachers' rights.** Teachers can see, correct and delete what the project holds about them. Corrections are made within 10 days.
+- **Teachers' rights.** Teachers can see, correct and delete what the project holds about them. Corrections and deletions are made within 10 days, and a deleted sync account stops at once.
 
 ### 6.3 Threats the design must resist
 
@@ -1843,15 +1867,15 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
 - **Private notes are encrypted for the teacher's own devices only,** never for the school.
 - **Grants end.** After a grant's end date, the inspector's device receives no new keys and deletes what it holds. What an inspector has already read cannot be unread, so a grant names only the courses and the weeks it needs.
 - **Each device has its own key.**
-  - The teacher adds a device by scanning a QR code on a device that is already set up.
+  - The teacher adds a device from one that is already set up: the new device shows a one-time QR code, and the device already set up, usually the phone, scans it and approves with the fingerprint or a PIN, as on a staffroom PC (§6.6). A PC needs no camera.
   - A lost device can be removed, so it receives nothing new.
 - **Recovery.**
-  - **The recovery sheet.** When sync or backup is set up, the app gives the teacher a recovery key to print or write down. It restores everything on a new device.
+  - **The recovery sheet.** When sync or backup is set up, the app gives the teacher a recovery key to print or write down. It restores everything on a new device, except the teacher card's personal fields and the drawn signature, which are typed and drawn again (§3.2).
   - **In a school space,** a lost phone doesn't lose the class. The school's copy stays, and the school issues a new QR code.
   - **The school key** is held by several of the school's staff. Its recovery is split between the school and its directorate, so neither can open the school's records alone.
 - **Nobody but the teacher can recover the teacher's private notes.** That is the price of end-to-end encryption. So:
   - making a backup takes two taps;
-  - the app reminds the teacher when there has been no sync and no backup for 30 days.
+  - the app reminds the teacher when there has been no sync and no backup for 30 days, unless the teacher turns the reminder off (§3.9).
 - **What the server sees:** memberships, encrypted data in fixed batches (§5.8), and their sizes. No names or times of activity appear in what it stores or logs. Classes and subjects appear only as assignment codes, and in the totals above the school (§5.10).
 - **No account needs a real name or a password.** In teacher mode, sync uses a login. In a school space, the teacher is known by their key and their assignment (§5.8).
 - **Reviewed before launch.** The design is published (§1.9), and an independent reviewer checks it before sync opens, and again before the national launch.
@@ -1872,7 +1896,7 @@ The national system adds the Ministry's own steps (§6.2), and what it needs bef
   - encrypted records: the teachers' own sync (§5.8);
   - in the national system only: the school and directorate spaces, the memberships that link device keys to assignments, and the totals above the school (§5.8, §5.10);
   - pack-editor accounts;
-  - the problem reports teachers chose to send.
+  - the problem reports teachers chose to send, until the problem is fixed and for 12 months at most. A teacher can delete theirs sooner.
 - **Built to run on government servers:**
   - it installs and updates from the published release, with no internet access;
   - it makes no outbound calls, except through its connector to the national interoperability system (§5.9): no content networks, web fonts, analytics or error trackers;
@@ -1955,6 +1979,14 @@ Morocco's national register shows the cost of skipping this: its top complaint i
 | The server | One package for the project and the Ministry. Installs with no internet access and makes no outbound calls, except through the connector to the national interoperability system |
 | The launch gate | The national system passes a national load test, a trial term end, the security review and a restore before the mandate starts |
 
+**Decided on 5 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Adding a device | The new device shows a one-time QR code, and a device already set up scans it and approves with the fingerprint or a PIN |
+| Deletion | Within 10 days, like corrections. A deleted sync account stops at once |
+| Problem reports | Kept until the problem is fixed, 12 months at most. A teacher can delete theirs sooner |
+
 **Open**
 - **Traffic analysis.** Whether fixed sync batches cost too much battery or data on budget phones. Tested before sync opens.
 - **Security keys on school PCs.** Whether current Chrome and Edge, on Windows 10 and 11, can unlock a teacher's keys with one. Tested before the national launch.
@@ -2022,7 +2054,8 @@ Before adoption, no school runs Minhajna as an institution. Steps 1 and 2 are pa
 - A teacher who drew their own week sees the differences before accepting the school's version.
 
 **Changing it**
-- **A change is a new version,** with an effective date, by default the next Sunday. A one-off change touches only its own date.
+- **A change is a new version,** with an effective date, by default the next Sunday. A one-off change touches only its own date, and a teacher can also record one in their own week (§4.6).
+- **A teacher's proposal** goes to those who can change the timetable: the director and deputies, and the timetable preparers (§7.8). Accepting it makes a new version.
 - **The effect is previewed** before publishing. Only the teachers affected are notified, in plain words, for example: "From Sunday 11 October, your Monday slot 3 moves from class 2م1 to 2م3."
 - **Receipt.** A teacher can confirm receipt, which replaces signing the paper notice if the school wants.
 - **Recorded sessions are never rewritten** (§4.6).
@@ -2070,7 +2103,7 @@ Before adoption, no school runs Minhajna as an institution. Steps 1 and 2 are pa
 
 The director's view of the school's space (§2.4). It updates with each sync batch, a few times a day (§5.8), and shows:
 - **exam thresholds, first:** each subject's term and mock exams, where each class stood on the announced day, and the setters' signatures (§7.10);
-- **workload:** each teacher's weekly hours from the timetable, and the cover they gave, against their statutory load from the imported assignments;
+- **workload:** each teacher's weekly hours from the timetable, and the cover they gave. They are never set against a statutory load, so no one's unused hours appear (§3.12);
 - **sessions awaiting confirmation,** for each class;
 - **classes behind the plan:** each class's position, weeks ahead or behind, the buffer used, and sessions lost to calendar causes and to other causes, in separate columns.
 
@@ -2251,6 +2284,12 @@ Before the mandate starts (§1.15). These are the Ministry's to meet; the projec
 | A school's cut | Optional. Without one, the paper is set as today, and nothing counts which schools went without |
 | A year without the sample | The figures are still used, and published as unchecked |
 | Dashboards | The threshold first, for the school, the directorate and the Ministry. Teachers see what the director sees |
+
+**Decided on 5 Oct 2026**
+
+| Decision | Choice |
+|---|---|
+| Timetable proposals | A teacher's proposal goes to the director and deputies and the timetable preparers. Accepting it makes a new version |
 
 **Open.** Counsel answers most of these:
 - **How the Ministry, the directorates and the schools share the controller's role** (§1.15).
