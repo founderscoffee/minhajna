@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# The sign-off on every commit, under the Developer Certificate of Origin
+# (docs/contributing/commits.md#sign-off, decision 0003).
+
+name: DCO
+
+on:
+  pull_request:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  sign-off:
+    name: Sign-off
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the history
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # A commit passes when one of its Signed-off-by trailers gives a name and
+      # the author's email address, in any letter case. Merge commits are
+      # skipped: they add no work of their own, and squashing drops them.
+      - name: Check every commit for its author's sign-off
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          shopt -s nocasematch
+          commits=$(git rev-list --no-merges --reverse "origin/$BASE_REF..$HEAD_SHA")
+          total=0
+          missing=0
+          for commit in $commits; do
+            total=$((total + 1))
+            email=$(git show --no-patch --format='%ae' "$commit")
+            signed=false
+            while IFS= read -r signoff; do
+              if [[ "$signoff" == ?*" <$email>" ]]; then
+                signed=true
+              fi
+            done < <(git show --no-patch --format='%(trailers:key=Signed-off-by,valueonly,unfold)' "$commit")
+            if [[ "$signed" == true ]]; then
+              echo "signed off:  $(git show --no-patch --format='%h %s' "$commit")"
+            else
+              echo "no sign-off: $(git show --no-patch --format='%h %s' "$commit")"
+              echo "  expected:  $(git show --no-patch --format='Signed-off-by: %an <%ae>' "$commit")"
+              missing=$((missing + 1))
+            fi
+          done
+          if (( missing > 0 )); then
+            echo "::error title=Sign-off missing::$missing of $total commits have no Signed-off-by line with their author's email address."
+            echo "To sign off every commit of the branch, then update the pull request:"
+            echo "  git rebase --signoff upstream/$BASE_REF"
+            echo "  git push --force-with-lease"
+            echo "See docs/contributing/commits.md#sign-off."
+            exit 1
+          fi
+          echo "All $total commits are signed off by their authors."
