@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# The copyright and licence of every file, under the REUSE specification
+# (docs/contributing/engineering.md#licences-in-every-file).
+
+name: REUSE
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  lint:
+    name: Licence of every file
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The FSFE's image of the REUSE tool, pinned by digest. It runs as the
+      # runner's user, so Git trusts the checkout, and it gets the checkout
+      # read-only and no network, which the lint never needs.
+      - name: Lint with the REUSE tool
+        env:
+          REUSE_IMAGE: docker.io/fsfe/reuse:6.2.0@sha256:85462a75c0f8efda09ddd190b92816b70e7662577c8427429e11e1b9f25a992e
+        run: |
+          docker run --rm --network none \
+            --user "$(id -u):$(id -g)" \
+            --volume "$GITHUB_WORKSPACE:/data:ro" \
+            "$REUSE_IMAGE" lint
