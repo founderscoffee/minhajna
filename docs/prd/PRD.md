@@ -854,7 +854,7 @@ Special days are marked on it: holidays, seminars, councils, exam weeks, and cov
 **Exam thresholds** (national system, 29 and 30 Sep)
 - **For each of the teacher's classes,** the app lists the coming exams with a common paper: the school's term and mock exams, the directorate's exams and the national exams. For each, it shows the day its figures are taken, and where the class stands (§7.10).
 - **The same charts as the director:** the school's chart for the subject and level, and the directorate's totals, exactly as the director and the directorate see them (charter point 5).
-- **Setting a school exam's cut.** It is optional: the school's teachers of the subject set one when they wish, and otherwise set the paper as they do today (30 Sep). Each signs the proposed cut, proposes another, or chooses no cut. A proposal applies once every setter has signed, the earliest when they differ, so no class is examined on what it did not reach. If a setter has not signed by the exam, or chose no cut, the director decides. Before the exam, only the setters and the director see a proposed cut (§7.10, 5 Oct).
+- **Setting a school exam's cut.** It is optional: the school's teachers of the subject set one when they wish, and otherwise set the paper as they do today (30 Sep). Each signs the proposed cut, proposes another, or chooses no cut. A proposal applies once every setter has signed, the earliest when they differ, so no class is examined on what it did not reach. If a setter has not signed by the signing deadline, which the school's calendar announces with the figures day, or chose no cut, the director decides. Before the exam, only the setters and the director see a proposed cut (§7.10, 5 Oct).
 - **Other cuts** appear once the exam is over and the cut is published.
 - **Monthly tests,** the common test (الفرض المشترك) included, stay the teacher's own, with nothing to sign.
 
@@ -2195,7 +2195,7 @@ An exam's threshold is the last lesson it may cover. Every exam with a common pa
 **The system shows, people decide**
 - **On the announced day,** the chart shows the share of classes that completed each lesson, and marks the last lesson taught in common.
 - **The setters choose the cut and sign it.** The system never sets a cut by itself.
-- **When a school's cut applies:** once every setter has signed it. If a setter has not signed by the exam, or chose no cut, the director decides. Until then any setter can still choose no cut (5 Oct).
+- **When a school's cut applies:** once every setter has signed it. The school's calendar announces a signing deadline together with the figures day, and moves it with them if the exam moves, so teachers know it well ahead. If a setter has not signed by the deadline, or chose no cut, the director decides. Until then any setter can still choose no cut (5 Oct).
 - **When the setters disagree:** at a school, the earliest proposed cut applies, so no class is examined on what it did not reach. In a committee, the majority decides, so one member cannot narrow an exam alone.
 - **Kept and published.** The system keeps each signed cut with the figures it came from, and publishes both after the exam, so no unpublished figure from it can be used.
 
