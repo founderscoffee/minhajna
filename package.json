@@ -1,0 +1,20 @@
+{
+  "name": "minhajna",
+  "private": true,
+  "description": "Minhajna: a free, open-source app for teachers' records",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "test": "npm test --workspaces",
+    "typecheck": "npm run typecheck --workspaces"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

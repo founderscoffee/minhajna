@@ -1,7 +1,13 @@
 version = 1
 
-# Documents and content are CC BY-SA 4.0; code will be AGPL-3.0-or-later (PRD §1.3).
+# Documents and content are CC BY-SA 4.0; code is AGPL-3.0-or-later (PRD §1.3).
 [[annotations]]
-path = ["*.md", "docs/**"]
+path = ["*.md", "docs/**", "packages/*/README.md"]
 SPDX-FileCopyrightText = "2026 The Minhajna contributors"
 SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Code files that cannot hold a comment.
+[[annotations]]
+path = ["package.json", "package-lock.json", "tsconfig.base.json", "packages/*/package.json", "packages/*/tsconfig.json"]
+SPDX-FileCopyrightText = "2026 The Minhajna contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
