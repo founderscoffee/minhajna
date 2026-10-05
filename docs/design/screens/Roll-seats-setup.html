@@ -1,0 +1,206 @@
+<!doctype html>
+<!-- Screen Roll-seats-setup of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Setting up the seating plan</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>
+body{margin:0;background:#FAF7F1}
+.seg.k3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chips .chip{min-height:48px}
+.cm{display:flex;align-items:center;gap:8px;min-height:64px;padding:6px 0}
+.cm+.cm{border-top:1px solid var(--line)}
+.cm .x{flex:1;min-width:0;display:flex;flex-direction:column}
+.cm.col{flex-direction:column;align-items:stretch;gap:6px;padding:8px 0 10px}
+.cm .chips{gap:6px}
+.cm .chips .chip{padding:0 12px}
+.cm .step{gap:2px}
+.cm .step button{width:44px;height:48px}
+.cm output{min-width:28px;font-size:19px}
+.room{display:flex;flex-direction:column;gap:5px;padding:10px 8px 12px;background:#FFFEFB;border:1px solid #E6E0D5;border-radius:16px}
+.front{align-self:center;width:62%;height:24px;margin-bottom:6px;border-radius:6px;background:#1F2E29;color:#F6F3EA;display:grid;place-items:center;font-size:12.5px;line-height:1}
+.srow{display:flex;gap:3px}
+.seat{flex:1 1 0;min-width:0;height:50px;border:1.5px solid #CFC7B8;border-radius:10px;background:#FFFEFB;padding:3px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font:500 12px/1.25 "Noto Naskh Arabic",serif;color:#1D2225;text-align:center;cursor:pointer;overflow:hidden}
+.seat small{font:500 10.5px/1 "Noto Sans",sans-serif;color:#4B5358}
+.seat span{display:block;max-width:100%;overflow-wrap:anywhere}
+.seat.gap{margin-inline-start:10px}
+.seat.em{border-style:dashed;background:#FAF7F1;color:#5F676C}
+.seat.off{border-style:dashed;background-color:#EFEEEA;background-image:repeating-linear-gradient(135deg,transparent 0 5px,rgba(95,103,108,.18) 5px 7px);color:#4B5358;font-size:11px}
+.seat.tg{border-color:#1F2E29}
+.seat.pk{border-style:solid;border-color:#1F2E29;box-shadow:0 0 0 2px #FFFEFB,0 0 0 4px #1F2E29}
+.hint{font-size:12.5px;line-height:1.55;color:#4B5358;text-align:center}
+.tray{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,48px);gap:6px;overflow-x:auto;padding-bottom:4px}
+.tray .chip{min-height:48px;white-space:nowrap;padding:0 12px}
+.tray .chip small{font:500 11px/1 "Noto Sans",sans-serif;opacity:.75}
+</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 1240px;">
+  <div class="bar">
+    <a class="ib" href="Roll-seats.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>مخطط الجلوس · 4م2</b><small>أول استعمال: شكل القاعة، ثم المقاعد</small></div>
+  </div>
+
+  <div class="scroll" style="display: flex; flex-direction: column; gap: 10px; padding: 2px 12px 12px;">
+    <div class="sub">يُرسم المخطط مرة واحدة، ثم تُعلَّم المناداة بلمسة على المقعد.</div>
+
+    <div class="fl">
+      <div class="seg k3" role="group" aria-label="المخطط">
+        <button type="button" class="on" aria-pressed="true">القسم كله</button><button type="button" class="" aria-pressed="false">الفوج 1</button><button type="button" class="" aria-pressed="false">الفوج 2</button>
+      </div>
+      <div class="c">36 تلميذاً · لحصص القسم كله</div>
+    </div>
+
+    <div class="card" style="padding: 2px 14px; gap: 0px;">
+      <div class="cm">
+        <div class="x"><span class="t">الصفوف</span><span class="c">من السبورة إلى آخر القاعة</span></div>
+        <div class="step">
+          <button type="button" aria-label="صف أقل"><svg class="i" viewBox="0 0 24 24"><path d="M6 12h12"></path></svg></button>
+          <output aria-live="polite">6</output>
+          <button type="button" aria-label="صف أكثر"><svg class="i" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"></path></svg></button>
+        </div>
+      </div>
+      <div class="cm">
+        <div class="x"><span class="t">المقاعد في كل صف</span><span class="c">دون الممرات</span></div>
+        <div class="step">
+          <button type="button" aria-label="مقعد أقل في الصف"><svg class="i" viewBox="0 0 24 24"><path d="M6 12h12"></path></svg></button>
+          <output aria-live="polite">6</output>
+          <button type="button" aria-label="مقعد أكثر في الصف"><svg class="i" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"></path></svg></button>
+        </div>
+      </div>
+      <div class="cm col">
+        <span class="t">الممرات</span>
+        <div class="chips" role="group" aria-label="الممرات">
+          <button class="chip on" type="button" aria-pressed="true">كل مقعدين</button><button class="chip" type="button" aria-pressed="false">كل 3 مقاعد</button><button class="chip" type="button" aria-pressed="false">دون ممرات</button>
+        </div>
+      </div>
+    </div>
+    <div class="c">36 مقعداً · فارغ منها 18. يتّسع المخطط لقسم من 57 تلميذاً وأكثر: 10 صفوف من 6 مقاعد مثلاً.</div>
+
+    <div class="room" role="group" aria-label="مخطط جلوس 4م2 · القسم كله">
+      <div class="front">السبورة</div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="الصف 1، المقعد 1، جبار نور الهدى"><small>7</small><span>نور الهدى</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 1، المقعد 2، بن عيسى آية"><small>2</small><span>آية</span></button>
+          
+            <button class="seat gap" type="button" aria-label="الصف 1، المقعد 3، قاسمي لينة"><small>24</small><span>لينة</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 1، المقعد 4، سعيدي رتاج"><small>13</small><span>رتاج</span></button>
+          
+            <button class="seat gap" type="button" aria-label="الصف 1، المقعد 5، ناصري هديل"><small>31</small><span>هديل</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 1، المقعد 6، عثماني شيماء"><small>19</small><span>شيماء</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="الصف 2، المقعد 1، بوخالفة ياسمين"><small>4</small><span>ياسمين</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 2، المقعد 2، شريفي أسيل"><small>15</small><span>أسيل</span></button>
+          
+            <button class="seat gap" type="button" aria-label="الصف 2، المقعد 3، خالدي ملاك"><small>9</small><span>ملاك</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 2، المقعد 4، مرادي مروة"><small>28</small><span>مروة</span></button>
+          
+            <button class="seat gap" type="button" aria-label="الصف 2، المقعد 5، يحياوي نسرين"><small>35</small><span>نسرين</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 2، المقعد 6، رحماني إكرام"><small>11</small><span>إكرام</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="الصف 3، المقعد 1، فرحات أمير"><small>22</small><span>أمير</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 3، المقعد 2، أمزيان ريان"><small>1</small><span>ريان</span></button>
+          
+            <button class="seat gap" type="button" aria-label="الصف 3، المقعد 3، هاشمي ريم"><small>33</small><span>ريم</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 3، المقعد 4، حمادي عبد الرحمن"><small>8</small><span>عبد الرحمن</span></button>
+          
+            <button class="seat gap" type="button" aria-label="الصف 3، المقعد 5، طالبي دعاء"><small>17</small><span>دعاء</span></button>
+          
+            <button class="seat" type="button" aria-label="الصف 3، المقعد 6، لعريبي معاذ"><small>26</small><span>معاذ</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat em tg" type="button" aria-label="الصف 4، المقعد 1، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 4، المقعد 2، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat gap em tg" type="button" aria-label="الصف 4، المقعد 3، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 4، المقعد 4، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat gap em tg" type="button" aria-label="الصف 4، المقعد 5، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 4، المقعد 6، فارغ"><small></small><span>فارغ</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat em tg" type="button" aria-label="الصف 5، المقعد 1، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 5، المقعد 2، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat gap em tg" type="button" aria-label="الصف 5، المقعد 3، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 5، المقعد 4، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat gap em tg" type="button" aria-label="الصف 5، المقعد 5، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 5، المقعد 6، فارغ"><small></small><span>فارغ</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat em tg" type="button" aria-label="الصف 6، المقعد 1، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 6، المقعد 2، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat gap em tg" type="button" aria-label="الصف 6، المقعد 3، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 6، المقعد 4، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat gap em tg" type="button" aria-label="الصف 6، المقعد 5، فارغ"><small></small><span>فارغ</span></button>
+          
+            <button class="seat em tg" type="button" aria-label="الصف 6، المقعد 6، فارغ"><small></small><span>فارغ</span></button>
+          
+        </div>
+      
+    </div>
+    <div class="hint">اختير «بوعلام زكرياء»: لمسة على مقعد، أو على الاسم نفسه للتراجع.</div>
+    
+
+    <div class="fl">
+      <div class="lab">دون مقعد بعد: 18</div>
+      
+        <div class="tray" role="group" aria-label="تلاميذ دون مقعد">
+          <button class="chip" type="button" aria-pressed="false"><small>3</small>بوجمعة سلمى</button><button class="chip on" type="button" aria-pressed="true"><small>5</small>بوعلام زكرياء</button><button class="chip" type="button" aria-pressed="false"><small>6</small>تواتي إسحاق</button><button class="chip" type="button" aria-pressed="false"><small>10</small>داودي أيوب</button><button class="chip" type="button" aria-pressed="false"><small>12</small>زروقي محمد أمين</button><button class="chip" type="button" aria-pressed="false"><small>14</small>سليماني يوسف</button><button class="chip" type="button" aria-pressed="false"><small>16</small>صالحي إسلام</button><button class="chip" type="button" aria-pressed="false"><small>18</small>عباسي مهدي</button><button class="chip" type="button" aria-pressed="false"><small>20</small>عمراني وسيم</button><button class="chip" type="button" aria-pressed="false"><small>21</small>غربي هبة الرحمن</button><button class="chip" type="button" aria-pressed="false"><small>23</small>قادري عبد الله</button><button class="chip" type="button" aria-pressed="false"><small>25</small>كرومي سارة</button><button class="chip" type="button" aria-pressed="false"><small>27</small>مباركي إيناس</button><button class="chip" type="button" aria-pressed="false"><small>29</small>مسعودي رامي</button><button class="chip" type="button" aria-pressed="false"><small>30</small>منصوري عبد الرؤوف</button><button class="chip" type="button" aria-pressed="false"><small>32</small>نوري بلال</button><button class="chip" type="button" aria-pressed="false"><small>34</small>واعلي ياسر</button><button class="chip" type="button" aria-pressed="false"><small>36</small>يوسفي آدم</button>
+        </div>
+      
+    </div>
+    <div class="btns">
+      <button class="btn line" type="button">ملء بترتيب القائمة</button>
+      <button class="btn line" type="button">إفراغ المقاعد</button>
+    </div>
+
+    <div class="warn"><svg class="i s" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5"></path></svg><span>المخطط خاص: يبقى على أجهزتك وحدها، ولا يدخل أي بيان ولا حزمة تسليم ولا فضاء المؤسسة. ويُطبع بالأسماء وحدها، على صفحة A4 واحدة.</span></div>
+  </div>
+
+  <div class="foot" style="border-top: 1px solid rgb(230, 224, 213);">
+    <a class="btn primary" href="Roll-seats.html">حفظ المخطط</a>
+    <div class="c" style="text-align: center;">يُفتح هذا الإعداد عند أول استعمال لمخطط الجلوس، ثم من «ترتيب المقاعد» في أي وقت.</div>
+  </div></div></div></div>
+
+
+
+</body></html>

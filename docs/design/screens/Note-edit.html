@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- Screen Note-edit of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Lesson note: editing a paragraph</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>
+body{margin:0;background:#FAF7F1}
+textarea.inp.on{height:168px;border-color:var(--board);box-shadow:0 0 0 1px var(--board)}
+.lh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.edbar{flex:none;display:flex;gap:8px;padding:8px 16px;background:var(--paper);border-top:1px solid var(--line)}
+.edbar .btn.primary{flex:1;width:auto}
+.kbd{flex:none;display:flex;flex-direction:column;gap:8px;padding:0 3px 10px;background:#D8D3CA}
+.kbd .sgs{display:flex;align-items:center;height:40px;font:500 15px/1 "Noto Naskh Arabic",serif;color:var(--ink)}
+.kbd .sgs span{flex:1;text-align:center}
+.kbd .sgs span+span{border-inline-start:1px solid #B9B3A8}
+.kbd .kr{display:flex;gap:4px}
+.kbd .kr span{flex:1 1 0;min-width:0;height:42px;display:grid;place-items:center;background:var(--sheet);border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.28);font:500 18px/1 "Noto Naskh Arabic",serif;color:var(--ink)}
+.kbd .kr span.w{flex:1.6 1 0;background:#BDB7AC;font:600 13px/1 "Noto Sans",sans-serif}
+.kbd .kr span.sp{flex:5 1 0;font:500 13px/1 "Noto Naskh Arabic",serif;color:var(--ink2)}
+.kbd .kr span.go{background:var(--board);color:var(--chalk)}
+</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 800px;">
+  <div class="bar">
+    <a class="ib" href="Note.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>المذكرة 9 · تعديل فقرة</b><small>4م3 · اليوم 14سا – 15سا</small></div>
+  </div>
+
+  <div class="form" style="gap: 12px;">
+    <div class="fl">
+      <div class="lh">
+        <label class="lab" for="para">بناء التعلمات · 40 د</label>
+        <span class="tag">من المخطط</span>
+      </div>
+      <textarea class="inp on" id="para" rows="6">قراءة نموذجية ثم قراءات فردية.
+أسئلة الفهم ص 17، الفكرة العامة، القيمة التربوية.
+أثري لغتي.</textarea>
+      <div class="c">النص من المخطط، ويُعدَّل هنا كما يُراد. ولا يتغيّر المخطط.</div>
+    </div>
+    <button class="btn soft" type="button"><svg class="i s" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"></path></svg>إعادة نص المخطط</button>
+  </div>
+
+  <div class="edbar">
+    <a class="btn primary" href="Note.html">حفظ الفقرة</a>
+    <a class="btn line" href="Note.html">إلغاء</a>
+  </div>
+
+  <div class="kbd" aria-hidden="true">
+    <div class="sgs"><span>القراءة</span><span>الفهم</span><span>التربوية</span></div>
+    <div class="kr"><span>ض</span><span>ص</span><span>ث</span><span>ق</span><span>ف</span><span>غ</span><span>ع</span><span>ه</span><span>خ</span><span>ح</span><span>ج</span></div>
+    <div class="kr"><span>ش</span><span>س</span><span>ي</span><span>ب</span><span>ل</span><span>ا</span><span>ت</span><span>ن</span><span>م</span><span>ك</span><span>ط</span></div>
+    <div class="kr"><span>ذ</span><span>ء</span><span>ؤ</span><span>ر</span><span>ى</span><span>ة</span><span>و</span><span>ز</span><span>ظ</span><span>د</span><span class="w"><svg class="i s" viewBox="0 0 24 24"><path d="M9 5h11v14H9l-6-7z"></path><path d="M12 9.5l5 5M17 9.5l-5 5"></path></svg></span></div>
+    <div class="kr" dir="ltr"><span class="w">123؟</span><span>،</span><span class="sp">العربية</span><span>.</span><span class="w go"><svg class="i s" viewBox="0 0 24 24"><path d="M20 6v6H6M10 8l-4 4 4 4"></path></svg></span></div>
+  </div></div></div></div>
+
+
+
+</body></html>

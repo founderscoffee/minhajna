@@ -1,0 +1,126 @@
+<!doctype html>
+<!-- Screen Setup-4d-Joint of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Adding a joint class</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#FAF7F1}.chips{gap:6px}.chips .chip{padding:0 12px}.lvl{font:700 13px/1 "Noto Naskh Arabic",serif;border-radius:8px;padding:6px 8px 8px;color:#fff;flex:none}.l1{background:#6A5A3A}.l2{background:#2E6B45}.l3{background:#2F5D86}.l4{background:#5B4842}.l5{background:#1F2E29}.pl{padding:0;gap:0;overflow:hidden}.rc .x{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35}.rc .x .c{font-size:12px}.lvb{display:flex;flex:none;border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--sheet)}.lvb button{width:48px;height:48px;border:0;background:none;padding:0;font:700 15px/1 "Noto Sans",sans-serif;color:var(--ink2);cursor:pointer}.lvb button+button{border-inline-start:1.5px solid var(--rule)}.lvb button.on{background:var(--board);color:var(--chalk)}.more{padding:8px 12px;font-size:13px;color:var(--ink2)}.pk{display:flex;flex-direction:column;gap:6px}.pk .hd{display:flex;align-items:center;gap:8px}.pk .hd .t{flex:1;font-weight:700}.pk .lat{font-size:13px}.kept{min-height:0;font-size:13.5px;line-height:1.55}.kept svg{flex:none}.rowlink{min-height:48px}.prev{flex-direction:row;align-items:center;gap:8px}.prev .x{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.4}</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 1580px;">
+  <div class="bar">
+    <a class="ib" href="Setup-4-Classes.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>قسم مشترك</b><small>ابتدائي · مستويان أو ثلاثة في قسم واحد</small></div>
+  </div>
+
+  <div class="form" style="gap: 14px;">
+    <div class="fl">
+      <div class="lab">مستويات القسم</div>
+      <div class="chips" role="group" aria-label="مستويات القسم">
+        <button class="chip" type="button" aria-pressed="false">1 ابتدائي</button><button class="chip" type="button" aria-pressed="false">2 ابتدائي</button><button class="chip" type="button" aria-pressed="false">3 ابتدائي</button><button class="chip on" type="button" aria-pressed="true">4 ابتدائي</button><button class="chip on" type="button" aria-pressed="true">5 ابتدائي</button>
+      </div>
+      <div class="sub">مستويان أو ثلاثة.</div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">التلاميذ حسب المستوى</div>
+      <div class="kept"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>من القائمة الرسمية: 19 تلميذاً، ومستوى كل تلميذ من سنته فيها. ويُنقر المستوى لمن ليست سنته في الملف، أو لتصحيحه.</span></div>
+      <div class="card pl">
+        
+          <div class="rc">
+            <span class="n">1</span>
+            <span class="x"><span class="t">بلعيد سارة</span><span class="c">من الملف</span></span>
+            <div class="lvb" role="group" aria-label="مستوى بلعيد سارة">
+              <button type="button" class="on" aria-pressed="true">4</button><button type="button" class="" aria-pressed="false">5</button>
+            </div>
+          </div>
+        
+          <div class="rc">
+            <span class="n">2</span>
+            <span class="x"><span class="t">بوشامة إسحاق</span><span class="c">من الملف</span></span>
+            <div class="lvb" role="group" aria-label="مستوى بوشامة إسحاق">
+              <button type="button" class="" aria-pressed="false">4</button><button type="button" class="on" aria-pressed="true">5</button>
+            </div>
+          </div>
+        
+          <div class="rc">
+            <span class="n">3</span>
+            <span class="x"><span class="t">جلاب نور الهدى</span><span class="c">من الملف</span></span>
+            <div class="lvb" role="group" aria-label="مستوى جلاب نور الهدى">
+              <button type="button" class="" aria-pressed="false">4</button><button type="button" class="on" aria-pressed="true">5</button>
+            </div>
+          </div>
+        
+          <div class="rc">
+            <span class="n">4</span>
+            <span class="x"><span class="t">حمادي أيوب</span><span class="c">من الملف</span></span>
+            <div class="lvb" role="group" aria-label="مستوى حمادي أيوب">
+              <button type="button" class="on" aria-pressed="true">4</button><button type="button" class="" aria-pressed="false">5</button>
+            </div>
+          </div>
+        
+          <div class="rc">
+            <span class="n">5</span>
+            <span class="x"><span class="t">خليفي عبد الرحمن</span><span class="c">من الملف</span></span>
+            <div class="lvb" role="group" aria-label="مستوى خليفي عبد الرحمن">
+              <button type="button" class="" aria-pressed="false">4</button><button type="button" class="on" aria-pressed="true">5</button>
+            </div>
+          </div>
+        
+          <div class="rc">
+            <span class="n">6</span>
+            <span class="x"><span class="t">دراجي ملاك</span><span class="c">من الملف</span></span>
+            <div class="lvb" role="group" aria-label="مستوى دراجي ملاك">
+              <button type="button" class="on" aria-pressed="true">4</button><button type="button" class="" aria-pressed="false">5</button>
+            </div>
+          </div>
+        
+        <div class="more">و13 تلميذاً آخر، بالطريقة نفسها</div>
+      </div>
+      <div class="c" style="color: rgb(29, 34, 37);">4 ابتدائي: 9 تلاميذ · 5 ابتدائي: 10 تلاميذ</div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">حزمة المخطط لكل مستوى</div>
+      <div class="chips" role="group" aria-label="المادة">
+        <button class="chip on" type="button" aria-pressed="true">اللغة العربية</button><button class="chip" type="button" aria-pressed="false">الرياضيات</button>
+      </div>
+      
+        <div class="card pk">
+          <div class="hd"><span class="lvl l4">4</span><span class="t">4 ابتدائي · اللغة العربية</span><span class="badge">مخطط متقادم</span></div>
+          <div class="c">لم يعد مخطط السنة الرابعة يوافق استعمال زمنها (القرار 16)، فلا يُقترح منه شيء. وتُكتب كل حصة كتابة حرة.</div>
+          
+          
+            <a class="rowlink" href="Plan-free.html"><span class="t">دون حزمة: كتابة العناصر</span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+          
+        </div>
+      
+        <div class="card pk">
+          <div class="hd"><span class="lvl l5">5</span><span class="t">5 ابتدائي · اللغة العربية</span><span class="badge">أحدث طبعة متوفرة</span></div>
+          <div class="c">الإصدار 2026.1 · موقّع من مشروع «منهاجنا» · من حزم الفحص الميداني</div>
+          
+            <div class="c">مبني على الطبعة الوطنية لسبتمبر 2022، أدخله محرّرو «منهاجنا». يُستحسن التحقق مع المفتش.</div>
+            <div class="kept"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>مثبّت للخامسة، ويبقى عليه حتى يُختار غيره.</span></div>
+          
+          
+        </div>
+      
+      <div class="sub">لكل مستوى مخططه وتقويمه، والمناداة واحدة للقسم كله.</div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">بطاقة القسم في قائمة الأقسام</div>
+      <div class="card prev">
+        <span class="lvl l4">4</span><span class="lvl l5">5</span>
+        <span class="x"><span class="t">قسم مشترك · 19 تلميذاً</span><span class="c">4 ابتدائي (9) و5 ابتدائي (10)</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <a class="btn primary" href="Setup-4-Classes.html">إضافة القسم المشترك</a>
+  </div></div></div></div>
+
+
+
+</body></html>

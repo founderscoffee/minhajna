@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- Screen Calendar-receive of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Receiving a calendar entry</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#FAF7F1}.src{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.src .btn{min-height:52px;border:1.5px solid var(--rule);background:var(--sheet)}.src .btn.on{background:var(--board);border-color:var(--board);color:var(--chalk)}.fc{flex-direction:row;align-items:center;gap:12px}.fc .x,.hd .x{flex:1;min-width:0;display:flex;flex-direction:column}.fc .t{font-size:14px;overflow-wrap:anywhere}.hd{display:flex;align-items:center;gap:10px}.kvs{border:1px solid var(--line);border-radius:12px;overflow:hidden}.kv{display:flex;flex-direction:column;padding:6px 12px}.kv+.kv{border-top:1px solid var(--line)}.kv .k{font-size:12.5px;line-height:1.5;color:var(--ink2)}.kv .v{font-size:14px;line-height:1.55}.kept{align-items:flex-start;min-height:0;font-size:13.5px;line-height:1.55}.kept svg{flex:none;margin-top:3px}.kept.info{color:var(--ink2)}</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 1200px;">
+  <div class="bar">
+    <a class="ib" href="Calendar.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>استلام إدخال للرزنامة</b><small>من المؤسسة أو من زميل</small></div>
+  </div>
+
+  <div class="form" style="gap: 12px;">
+    <div class="src" role="group" aria-label="طريقة الاستلام">
+      <button class="btn on" type="button" aria-pressed="true"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h3v3"></path></svg>مسح رمز QR</button>
+      <button class="btn" type="button" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 00-2 2v13a2 2 0 002 2h10a2 2 0 002-2V8.5z"></path><path d="M14 3.5v5h5"></path></svg>فتح ملف</button>
+    </div>
+    <div class="c">رمز تعرضه الإدارة على ورقة الإعلان، أو زميل على هاتفه. يُقرأ دون شبكة، ويحمل الإدخال كله.</div>
+
+    
+
+    
+      <div class="card focus" style="gap: 8px;">
+        <div class="hd"><svg class="i" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"></rect><path d="M3.5 10h17M8 3v4M16 3v4M9.5 13.5l5 5M14.5 13.5l-5 5"></path></svg><span class="x"><span class="t" style="font-weight: 700;">غلق المؤسسة</span><span class="c">قبل الإضافة: معاينة</span></span><span class="badge ok">مُعلن</span></div>
+        <div class="kvs">
+          <div class="kv"><span class="k">النوع</span><span class="v">غلق المؤسسة · اليوم كله</span></div>
+          <div class="kv"><span class="k">التاريخ</span><span class="v">الإثنين 05/10/2026</span></div>
+          <div class="kv"><span class="k">المؤسسة والولاية</span><span class="v">متوسطة النجاح · [الولاية]</span></div>
+          <div class="kv"><span class="k">المصدر</span><span class="v">إعلان مدير المؤسسة، الأحد 04/10/2026</span></div>
+          <div class="kv"><span class="k">اليقين</span><span class="v">مُعلن</span></div>
+          <div class="kv"><span class="k">أرسله</span><span class="v">إدارة متوسطة النجاح، برمز على ورقة الإعلان</span></div>
+        </div>
+      </div>
+
+      <div class="fl" style="gap: 2px;">
+        <div class="lab">ما فُحص</div>
+        <div class="kept"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>إدخال رزنامة بصيغة «منهاجنا»، لا يحمل غير الإدخال</span></div>
+        <div class="kept"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>لمؤسستي: متوسطة النجاح، في [الولاية]</span></div>
+        <div class="kept"><svg class="i s" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>لم يتغيّر منذ أُرسل</span></div>
+        <div class="kept info"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 7.5v.5"></path></svg><span>ليس من تحديث موقّع من جهة رسمية: يُضاف بمعاينتي، بمصدره كما كتبه المرسل.</span></div>
+      </div>
+
+      <div class="priv">
+        <div class="lab">ما يتغيّر إن أُضيف</div>
+        <div class="t" style="font-size: 14px;">تُلغى 3 حصص يوم الإثنين 5 أكتوبر: 4م1 08سا · 4م2 10سا · 4م3 13سا. كلها دروس، فلا تمسّ الأعمال الموجهة. تنتقل الموارد إلى الحصص التالية دون أن يسقط منها شيء، وتُحسب منفصلة: حصص ضاعت بسبب الرزنامة.</div>
+        <div class="c">الاحتياط الباقي قبل الاختبارات: 4م1 لا شيء، ولا تأخر · 4م2 5 حصص · 4م3 حصتان.</div>
+      </div>
+    
+
+    
+
+    
+
+    <div class="warn"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 7.5v.5"></path></svg><span>لا يُضاف شيء دون معاينة. وإن وصل الإدخال نفسه لاحقاً مع تحديث الرزنامة، لا يتكرر.</span></div>
+  </div>
+
+  <div class="foot">
+    
+      <button class="btn primary" type="button">إضافة إلى الرزنامة</button>
+      <button class="btn line" type="button">تجاهل</button>
+    
+    
+  </div></div></div></div>
+
+
+
+</body></html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<!-- Screen Roll-seats of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Taking the roll on a seating plan</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>
+body{margin:0;background:#FAF7F1}
+.seg a{min-height:44px;display:grid;place-items:center;padding:0 8px;font:600 14px/1.2 "Noto Naskh Arabic",serif;color:var(--ink2);text-decoration:none}
+.seg a+a{border-inline-start:1.5px solid var(--rule)}
+.seg a.on{background:var(--board);color:var(--chalk)}
+.room{display:flex;flex-direction:column;gap:5px;padding:10px 8px 12px;background:#FFFEFB;border:1px solid #E6E0D5;border-radius:16px}
+.front{align-self:center;width:62%;height:24px;margin-bottom:6px;border-radius:6px;background:#1F2E29;color:#F6F3EA;display:grid;place-items:center;font-size:12.5px;line-height:1}
+.srow{display:flex;gap:3px}
+.seat{flex:1 1 0;min-width:0;height:58px;border:1.5px solid #CFC7B8;border-radius:10px;background:#FFFEFB;padding:3px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font:500 12px/1.25 "Noto Naskh Arabic",serif;color:#1D2225;text-align:center;cursor:pointer}
+.seat small{font:500 10.5px/1 "Noto Sans",sans-serif;color:#4B5358}
+.seat span{display:block;max-width:100%;overflow-wrap:anywhere}
+.seat.gap{margin-inline-start:10px}
+.seat.ab{background:#1F2E29;border-color:#1F2E29;color:#F6F3EA}
+.seat.ab small{color:rgba(246,243,234,.75)}
+.seat.lt{background:#F2D98A;border-color:#CDB05A}
+.seat.mv{border-style:dashed}
+.seat.pk{border-style:solid;border-color:#1F2E29;box-shadow:0 0 0 2px #FFFEFB,0 0 0 4px #1F2E29}
+.hint{font-size:12.5px;line-height:1.55;color:#4B5358;text-align:center}
+.pv{display:flex;justify-content:center;padding:14px 0;border-radius:14px;background:#ECE6DA}
+.a4{width:150px;height:212px;flex:none;background:#FFFEFB;border:1px solid #CFC7B8;border-radius:3px;padding:8px 6px;display:flex;flex-direction:column;gap:4px;box-shadow:0 2px 8px rgba(60,40,10,.12)}
+.a4 .ln{height:4px;border-radius:2px;background:#D9D3C7}
+.a4 .bd{align-self:center;width:60%;height:6px;border-radius:2px;background:#1F2E29;margin:3px 0 2px}
+.mr{display:flex;gap:2px}
+.mr i{flex:1 1 0;height:20px;border:1px solid #BDB5A6;border-radius:2px;background-color:#FFFEFB;background-image:linear-gradient(#A39E93,#A39E93);background-size:60% 2px;background-repeat:no-repeat;background-position:50% 65%}
+.mr i.gap{margin-inline-start:5px}
+</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 880px;">
+  <div class="bar">
+    <a class="ib" href="Main.html" aria-label="إغلاق"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+    <div class="ttl"><b>المناداة · 4م2</b><small>الأحد 4 أكتوبر · 08سا – 09سا</small></div>
+    
+    <button class="ib" type="button" aria-label="طباعة مخطط الجلوس"><svg class="i" viewBox="0 0 24 24"><path d="M7 9V3.5h10V9"></path><rect x="3.5" y="9" width="17" height="8" rx="2"></rect><path d="M7 14.5h10v6H7z"></path></svg></button>
+  </div>
+
+  <div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 8px; padding: 0px 12px 8px;">
+    
+      <nav class="seg" aria-label="طريقة المناداة"><a href="Roll.html">القائمة</a><a class="on" href="Roll-seats.html" aria-current="page">مخطط الجلوس</a></nav>
+    
+    <div class="stats">
+      <div class="stat"><b>35</b><span>حضور</span></div>
+      <div class="stat"><b>1</b><span>غياب</span></div>
+      <div class="stat"><b>1</b><span>تأخر، لا يُحسب غياباً</span></div>
+    </div>
+  </div>
+
+  <div class="scroll" style="display: flex; flex-direction: column; gap: 8px; padding: 2px 12px 12px;">
+    <div class="room" role="group" aria-label="مخطط جلوس 4م2">
+      <div class="front">السبورة</div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="جبار نور الهدى، حضور"><small>7</small><span>نور الهدى</span></button>
+          
+            <button class="seat" type="button" aria-label="بن عيسى آية، حضور"><small>2</small><span>آية</span></button>
+          
+            <button class="seat gap" type="button" aria-label="قاسمي لينة، حضور"><small>24</small><span>لينة</span></button>
+          
+            <button class="seat" type="button" aria-label="سعيدي رتاج، حضور"><small>13</small><span>رتاج</span></button>
+          
+            <button class="seat gap" type="button" aria-label="ناصري هديل، حضور"><small>31</small><span>هديل</span></button>
+          
+            <button class="seat" type="button" aria-label="عثماني شيماء، حضور"><small>19</small><span>شيماء</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat ab" type="button" aria-label="بوخالفة ياسمين، غياب"><small>4</small><span>ياسمين</span></button>
+          
+            <button class="seat" type="button" aria-label="شريفي أسيل، حضور"><small>15</small><span>أسيل</span></button>
+          
+            <button class="seat gap" type="button" aria-label="خالدي ملاك، حضور"><small>9</small><span>ملاك</span></button>
+          
+            <button class="seat" type="button" aria-label="مرادي مروة، حضور"><small>28</small><span>مروة</span></button>
+          
+            <button class="seat gap" type="button" aria-label="يحياوي نسرين، حضور"><small>35</small><span>نسرين</span></button>
+          
+            <button class="seat" type="button" aria-label="رحماني إكرام، حضور"><small>11</small><span>إكرام</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="فرحات أمير، حضور"><small>22</small><span>أمير</span></button>
+          
+            <button class="seat" type="button" aria-label="أمزيان ريان، حضور"><small>1</small><span>ريان</span></button>
+          
+            <button class="seat gap" type="button" aria-label="هاشمي ريم، حضور"><small>33</small><span>ريم</span></button>
+          
+            <button class="seat lt" type="button" aria-label="حمادي عبد الرحمن، تأخر"><small>8</small><span>عبد الرحمن</span></button>
+          
+            <button class="seat gap" type="button" aria-label="طالبي دعاء، حضور"><small>17</small><span>دعاء</span></button>
+          
+            <button class="seat" type="button" aria-label="لعريبي معاذ، حضور"><small>26</small><span>معاذ</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="بوعلام زكرياء، حضور"><small>5</small><span>زكرياء</span></button>
+          
+            <button class="seat" type="button" aria-label="منصوري عبد الرؤوف، حضور"><small>30</small><span>عبد الرؤوف</span></button>
+          
+            <button class="seat gap" type="button" aria-label="زروقي محمد أمين، حضور"><small>12</small><span>محمد أمين</span></button>
+          
+            <button class="seat" type="button" aria-label="غربي هبة الرحمن، حضور"><small>21</small><span>هبة الرحمن</span></button>
+          
+            <button class="seat gap" type="button" aria-label="بوجمعة سلمى، حضور"><small>3</small><span>سلمى</span></button>
+          
+            <button class="seat" type="button" aria-label="يوسفي آدم، حضور"><small>36</small><span>آدم</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="سليماني يوسف، حضور"><small>14</small><span>يوسف</span></button>
+          
+            <button class="seat" type="button" aria-label="مباركي إيناس، حضور"><small>27</small><span>إيناس</span></button>
+          
+            <button class="seat gap" type="button" aria-label="تواتي إسحاق، حضور"><small>6</small><span>إسحاق</span></button>
+          
+            <button class="seat" type="button" aria-label="كرومي سارة، حضور"><small>25</small><span>سارة</span></button>
+          
+            <button class="seat gap" type="button" aria-label="نوري بلال، حضور"><small>32</small><span>بلال</span></button>
+          
+            <button class="seat" type="button" aria-label="داودي أيوب، حضور"><small>10</small><span>أيوب</span></button>
+          
+        </div>
+      
+        <div class="srow">
+          
+            <button class="seat" type="button" aria-label="عمراني وسيم، حضور"><small>20</small><span>وسيم</span></button>
+          
+            <button class="seat" type="button" aria-label="واعلي ياسر، حضور"><small>34</small><span>ياسر</span></button>
+          
+            <button class="seat gap" type="button" aria-label="صالحي إسلام، حضور"><small>16</small><span>إسلام</span></button>
+          
+            <button class="seat" type="button" aria-label="مسعودي رامي، حضور"><small>29</small><span>رامي</span></button>
+          
+            <button class="seat gap" type="button" aria-label="عباسي مهدي، حضور"><small>18</small><span>مهدي</span></button>
+          
+            <button class="seat" type="button" aria-label="قادري عبد الله، حضور"><small>23</small><span>عبد الله</span></button>
+          
+        </div>
+      
+    </div>
+    <div class="hint">لمسة على المقعد: غياب. الثانية: تأخر. الثالثة: حضور من جديد.</div>
+    
+    
+    
+    <div class="warn"><svg class="i s" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8.5 10.5V8a3.5 3.5 0 017 0v2.5"></path></svg><span>المخطط خاص: يبقى على أجهزتك وحدها، ولا يدخل أي بيان ولا حزمة تسليم ولا فضاء المؤسسة. ويعرض التطبيق مسحه مع بيانات تلاميذ السنة.</span></div>
+  </div>
+
+  <div class="foot" style="border-top: 1px solid rgb(230, 224, 213);">
+    
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <a class="btn primary" href="Main.html">حفظ المناداة</a>
+        <button class="btn line" type="button"><svg class="i s" viewBox="0 0 24 24"><path d="M8 4v16M4 8l4-4 4 4M16 20V4M12 16l4 4 4-4"></path></svg>ترتيب المقاعد</button>
+      </div>
+    
+    
+  </div>
+
+  </div></div></div>
+
+
+
+</body></html>

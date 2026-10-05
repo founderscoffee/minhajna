@@ -1,0 +1,303 @@
+/* Minhajna: the canvas's shared styles (tb.css), with every colour taken from the tokens. */
+.app{
+  position:relative; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--paper); color:var(--ink);
+  font:400 15px/1.6 "Noto Naskh Arabic","Noto Sans",serif;
+}
+.app *{box-sizing:border-box}
+.app[dir=ltr]{font-family:"Noto Sans",sans-serif; font-size:14.5px}
+.app.fr{--subject:var(--fr)}
+.app.en{--subject:var(--en)}
+.lat{font-family:"Noto Sans",sans-serif}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+svg.s{width:18px;height:18px}
+[dir=rtl] svg.flip{transform:scaleX(-1)}
+
+/* Bars and buttons */
+.bar{height:56px;flex:none;display:flex;align-items:center;gap:2px;padding:0 4px}
+.ttl{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.ttl b{font-size:16px}
+.ttl small{font-size:13px;color:var(--ink2)}
+.ib{width:48px;height:48px;flex:none;border:0;background:none;border-radius:24px;display:grid;place-items:center;color:var(--ink);padding:0;cursor:pointer;text-decoration:none}
+.btn{min-height:48px;border-radius:14px;border:0;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px/1.2 "Noto Naskh Arabic","Noto Sans",serif;cursor:pointer;text-decoration:none;color:var(--ink);background:none}
+.app[dir=ltr] .btn{font-family:"Noto Sans",sans-serif;font-size:14.5px}
+.btn.primary{min-height:56px;width:100%;background:var(--board);color:var(--chalk);font-size:16.5px}
+.btn.soft{background:var(--soft)}
+.btn.line{border:1.5px solid var(--rule);background:var(--sheet)}
+.btns{display:flex;gap:8px}
+.btns>*{flex:1}
+.nav{height:64px;flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);background:var(--sheet)}
+.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12.5px;line-height:1.3;color:var(--ink2);text-decoration:none}
+.nav a.on{color:var(--ink);font-weight:700}
+.pill{width:56px;height:30px;border-radius:15px;display:grid;place-items:center}
+.nav a.on .pill{background:var(--pill-on)}
+
+/* Today */
+.hello{padding:14px 20px 2px;display:flex;flex-direction:column;gap:2px}
+.day{display:flex;align-items:baseline;gap:10px}
+.day b{font:700 36px/1.2 "Aref Ruqaa",serif}
+.day span{font-size:16px;color:var(--ink2)}
+.fact{display:flex;align-items:center;gap:6px;font-size:14px;line-height:1.5;color:var(--ink2)}
+.list{flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;padding:10px 12px 12px;overflow:hidden}
+.card{background:var(--sheet);border:1px solid var(--line);border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.card.focus{border-color:var(--rule);box-shadow:var(--shadow-focus-card)}
+.card.mini{gap:4px}
+.meta{display:flex;align-items:center;gap:8px;min-height:30px;font-size:14px;color:var(--ink2)}
+.cls{font:700 15px/1 "Noto Naskh Arabic",serif;color:var(--on-subject);background:var(--subject);border-radius:8px;padding:6px 9px 8px}
+.slot{font-weight:600;color:var(--ink)}
+.dot{width:4px;height:4px;border-radius:2px;background:var(--sep-dot);flex:none}
+.t{font-size:15px;line-height:1.5}
+.c{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.prop{border:1.5px dashed var(--pencil-edge);border-radius:12px;padding:4px 12px 6px;color:var(--pencil);line-height:26px}
+.tag{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;line-height:1.7;color:var(--pencil)}
+.due{display:flex;align-items:center;gap:10px;background:var(--due);border-radius:12px;padding:4px;padding-inline-start:12px;font-size:14px;line-height:1.45}
+.due .t{flex:1;font-size:14px}
+.okdot{width:32px;height:32px;border-radius:16px;background:var(--board);color:var(--chalk);display:grid;place-items:center;flex:none}
+.snack{position:absolute;left:12px;right:12px;bottom:76px;min-height:52px;display:flex;align-items:center;gap:8px;padding:4px;padding-inline-start:16px;border-radius:14px;background:var(--board);color:var(--chalk);font-size:14.5px;box-shadow:var(--shadow-snack)}
+.snack span{flex:1}
+.snack .btn{color:var(--hi)}
+
+/* The book page */
+.book{--cols:78px minmax(0,1fr) 40px;flex:1;min-height:0;position:relative;display:flex;flex-direction:column;background:var(--sheet);border:1.5px solid var(--book-edge);border-radius:12px;overflow:hidden;margin:0 10px}
+.app.fr .book{border-color:var(--fr-edge)}
+.book.oL{margin-left:30px}
+.book.oR{margin-right:30px}
+.vtab{position:absolute;width:26px;height:120px;background:var(--subject);color:var(--on-subject);display:grid;place-items:center;writing-mode:vertical-rl;font:700 15px/1 "Aref Ruqaa",serif;z-index:2}
+.vtab.L{left:0;border-radius:0 10px 10px 0}
+.vtab.R{right:0;border-radius:10px 0 0 10px}
+.vtab.lat{font:700 11.5px/1 "Noto Sans",sans-serif;letter-spacing:1.5px;transform:rotate(180deg)}
+.pno{position:absolute;top:64px;width:26px;height:26px;border:1.3px solid var(--page-ring);border-radius:50%;display:grid;place-items:center;font:600 10.5px/1 "Noto Sans",sans-serif;color:var(--page-ink);background:var(--paper);z-index:2}
+.pno.L{left:2px}
+.pno.R{right:2px}
+.chead{flex:none;display:grid;grid-template-columns:var(--cols);min-height:52px;border-bottom:1.5px solid var(--book-edge)}
+.chead>div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;font:700 14px/1.25 "Aref Ruqaa",serif;color:var(--head-ink)}
+.app.fr .chead{border-bottom-color:var(--fr-edge)}
+.app.fr .chead>div{font:500 13px/1.2 "Noto Sans",sans-serif;color:var(--fr-head)}
+.app.fr .chead>div.sm{font-size:9.5px;font-stretch:75%}
+.chead>div+div,.ent>div+div{border-inline-start:1px solid var(--grid)}
+.ent,.blank,.hw .top{background-image:radial-gradient(circle at 1.5px 26.5px,var(--dots) .9px,transparent 1.3px);background-size:5px 28px}
+.ent{display:grid;grid-template-columns:var(--cols);border-bottom:1px solid var(--grid)}
+.ent>div{line-height:28px;padding:0 8px}
+.ent .d{padding:0 2px;text-align:center;font:500 12px/28px "Noto Sans",sans-serif;font-variant-numeric:tabular-nums}
+.ent .d i{display:block;font:500 13px/28px "Noto Naskh Arabic",serif;font-style:normal}
+.app.fr .ent .d i{font:500 12px/28px "Noto Sans",sans-serif}
+.ent .x{font-size:15px}
+.app.fr .ent .x{font-size:13.5px}
+.ent .sg{display:flex;justify-content:center;padding:3px 0 0}
+.ent.alt,.act.alt{background-color:var(--alt-day)}
+.ent.pr{border-bottom:0}
+.ent.pr .x,.ent.pr .d{color:var(--pencil)}
+.seq{font-weight:700;text-decoration:underline;text-underline-offset:6px}
+.blank{flex:1;min-height:56px}
+.act{flex:none;padding:10px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--grid)}
+.cont{flex:none;display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;font-size:13px;color:var(--ink2)}
+.pager{height:60px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 6px}
+.pager .btn{font-size:14px}
+
+/* The homework page */
+.side{flex:none;padding:6px 10px;font-size:12px;line-height:1.5;text-align:center;color:var(--ink2);border-bottom:1px solid var(--grid)}
+.hwh{flex:none;display:grid;grid-template-columns:88px minmax(0,1fr);border-bottom:1px solid var(--grid)}
+.hwh.two{grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1.5px solid var(--book-edge)}
+.hwh>div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px 4px;font:700 14px/1.3 "Aref Ruqaa",serif;color:var(--head-ink)}
+.hwh>div+div,.hw .top>div+div,.met+.met{border-inline-start:1px solid var(--grid)}
+.hwh small{font:600 11.5px/1.4 "Noto Naskh Arabic",serif;color:var(--ink2)}
+.hw{flex:none;border-bottom:1px solid var(--grid)}
+.hw .top{display:grid;grid-template-columns:88px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.hw .top>div{line-height:28px;padding:0 8px}
+.hw .top .d{padding:0 2px;text-align:center;font:500 12px/28px "Noto Sans",sans-serif}
+.today{display:inline-block;font:600 11.5px/1.6 "Noto Naskh Arabic",serif;background:var(--board);color:var(--chalk);border-radius:6px;padding:0 6px}
+.mets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.hw.alt{background-color:var(--alt-day)}
+.met{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px 10px}
+.step{display:flex;align-items:center;gap:6px}
+.step button{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--rule);background:var(--sheet);color:var(--ink);display:grid;place-items:center;padding:0;cursor:pointer}
+.step output{min-width:30px;text-align:center;font:600 22px/1 "Noto Sans",sans-serif}
+.pc{font-size:13px;line-height:1.4;color:var(--ink2)}
+.pc b{font:700 15px/1 "Noto Sans",sans-serif;color:var(--ink)}
+
+/* Sheets and forms */
+.scrim{position:absolute;inset:0;background:var(--scrim)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--sheet);border-radius:22px 22px 0 0;padding:6px 16px 18px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sheet)}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--rule);align-self:center;margin:4px 0 4px}
+.h3{font-size:17px;font-weight:700;line-height:1.4}
+.sub{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.opt{min-height:52px;width:100%;display:flex;align-items:center;gap:12px;padding:6px 12px;border-radius:14px;border:1.5px solid var(--line);background:var(--sheet);text-align:start;font:inherit;color:var(--ink);cursor:pointer}
+.opt .t{flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border-radius:22px;border:1.5px solid var(--rule);background:var(--sheet);font:500 14px/1.3 "Noto Naskh Arabic","Noto Sans",serif;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--board);border-color:var(--board);color:var(--chalk)}
+.form{flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding:4px 16px 16px;overflow:hidden}
+.fl{display:flex;flex-direction:column;gap:6px}
+.lab{font-size:13.5px;font-weight:600;line-height:1.5;color:var(--ink2)}
+.inp{min-height:48px;width:100%;border:1.5px solid var(--rule);border-radius:12px;background:var(--sheet);padding:10px 12px;font:inherit;line-height:1.6;color:var(--ink)}
+textarea.inp{min-height:80px;resize:none}
+.priv{background:var(--private);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.warn{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.chk{display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px}
+.chk input{width:22px;height:22px;margin:0;accent-color:var(--board)}
+
+/* The teacher's drawn signature */
+.pad{position:relative;height:190px;border:1.5px dashed var(--pencil-edge);border-radius:14px;background:var(--sheet);display:grid;place-items:center}
+.pad .base{position:absolute;left:28px;right:28px;bottom:50px;border-bottom:1.5px solid var(--line)}
+svg.sig{fill:none;stroke:var(--signature);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.radio{min-height:56px;width:100%;display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:14px;border:1.5px solid var(--line);background:var(--sheet);cursor:pointer}
+.radio.on{border-color:var(--board);box-shadow:inset 0 0 0 1px var(--board)}
+.radio input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--board)}
+.radio .t{flex:1;line-height:1.45}
+.mpage{border:1.5px solid var(--book-edge);border-radius:10px;overflow:hidden;background:var(--sheet)}
+.mrow{display:grid;grid-template-columns:74px minmax(0,1fr) 88px;min-height:44px;font-size:13px;line-height:1.5}
+.mrow+.mrow{border-top:1px solid var(--grid)}
+.mrow>div{padding:6px;display:flex;flex-direction:column;justify-content:center}
+.mrow>div+div{border-inline-start:1px solid var(--grid)}
+.mrow .d{align-items:center;font:500 11.5px/1.5 "Noto Sans",sans-serif}
+.mrow .d i{font:500 12px/1.5 "Noto Naskh Arabic",serif;font-style:normal}
+.mrow.h>div{align-items:center;font:700 13px/1.2 "Aref Ruqaa",serif;color:var(--head-ink)}
+
+/* Getting started */
+.hero{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:64px 24px 40px;border-radius:0 0 28px 28px;background-color:var(--board);background-image:radial-gradient(var(--chalk-dust) 1px,transparent 1.2px);background-size:7px 7px;color:var(--chalk);text-align:center}
+.brand{font:700 60px/1.15 "Aref Ruqaa",serif}
+svg.chalk{fill:none;stroke:var(--chalk);stroke-width:3;stroke-linecap:round;opacity:.75}
+.tagline{margin-top:10px;font-size:17px;line-height:1.7}
+.h2{font-size:22px;font-weight:700;line-height:1.35}
+.steps{flex:none;display:flex;gap:4px;padding:0 16px 10px}
+.steps i{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.steps i.on{background:var(--board)}
+.foot{flex:none;display:flex;flex-direction:column;gap:6px;padding:10px 16px 16px;background:var(--paper)}
+.facts{display:flex;flex-direction:column;gap:2px}
+.fact2{min-height:44px;display:flex;align-items:center;gap:12px;font-size:15px}
+.fact2 svg{color:var(--board)}
+.rowlink{min-height:56px;display:flex;align-items:center;gap:12px;padding:8px 12px;border:1px solid var(--line);border-radius:14px;background:var(--sheet);color:var(--ink);text-decoration:none}
+.rowlink .t{flex:1}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;line-height:1.6;padding:0 8px;border-radius:10px;background:var(--pill-on);color:var(--ink2);white-space:nowrap}
+.badge.ok{background:var(--ok);color:var(--ok-ink)}
+.wk{display:grid;grid-template-columns:44px repeat(5,minmax(0,1fr));gap:3px;font-size:11.5px;text-align:center}
+.wk>span{min-height:26px;display:grid;place-items:center;border-radius:6px;background:var(--sheet);color:var(--ink2)}
+.wk>span.h{background:none;font-weight:700;color:var(--ink)}
+.wk>span.s{background:none;font:500 10.5px/1 "Noto Sans",sans-serif}
+.wk>span.k{background:var(--ar);color:var(--on-subject);font-weight:700}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.kept{display:flex;align-items:center;gap:8px;min-height:36px;font-size:14px}
+.kept.no{color:var(--ink2);text-decoration:line-through}
+
+/* Classes and roll call */
+.top{flex:none;padding:14px 20px 8px;display:flex;flex-direction:column;gap:2px}
+.top b{font:700 36px/1.2 "Aref Ruqaa",serif}
+.top span{font-size:14px;color:var(--ink2)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.stat{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:6px 10px 8px;display:flex;flex-direction:column;line-height:1.35}
+.stat b{font:700 19px/1.5 "Noto Sans",sans-serif}
+.stat span{font-size:12.5px;color:var(--ink2)}
+.scroll{flex:1;min-height:0;overflow-y:auto}
+.sec{display:flex;align-items:center;gap:8px;padding:12px 16px 6px;font-size:13.5px;font-weight:600;line-height:1.5;color:var(--ink2)}
+.sec span{flex:1}
+.rc{display:flex;align-items:center;gap:8px;min-height:56px;padding:4px 12px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
+.rc .n{width:24px;flex:none;text-align:center;font:500 12.5px/1 "Noto Sans",sans-serif;color:var(--ink2)}
+.rc .t{flex:1;min-width:0}
+.rc.on{background-color:var(--alt-day)}
+.tog{width:64px;height:48px;flex:none;border-radius:12px;border:1.5px solid var(--rule);background:var(--sheet);padding:0;font:600 13.5px/1 "Noto Naskh Arabic",serif;color:var(--ink2);cursor:pointer}
+.tog.ab.on{background:var(--board);border-color:var(--board);color:var(--chalk)}
+.tog.lt.on{background:var(--hi);border-color:var(--late-edge);color:var(--ink)}
+.seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--sheet)}
+.seg button{min-height:48px;border:0;background:none;padding:0 8px;font:600 14px/1.2 "Noto Naskh Arabic",serif;color:var(--ink2);cursor:pointer}
+.seg button+button{border-inline-start:1.5px solid var(--rule)}
+.seg button.on{background:var(--board);color:var(--chalk)}
+.sp{--c:112px repeat(8,minmax(0,1fr)) 26px 26px 26px;flex:1;min-height:0;display:flex;flex-direction:column;background:var(--sheet);border:1.5px solid var(--book-edge);border-radius:10px;overflow:hidden}
+.sp .r{flex:none;display:grid;grid-template-columns:var(--c);border-bottom:1px solid var(--grid);font:700 15px/28px "Noto Sans",sans-serif;text-align:center;color:var(--ink);text-decoration:none}
+.sp .r>div+div{border-inline-start:1px solid var(--grid)}
+.sp .nm{padding:0 6px;text-align:start;font:500 12.5px/28px "Noto Naskh Arabic",serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp .nm small{display:inline-block;width:18px;font:500 10.5px/1 "Noto Sans",sans-serif;color:var(--ink2)}
+.sp .r.h{border-bottom:1.5px solid var(--book-edge)}
+.sp .r.h>div{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3px 0;font:600 11.5px/1.35 "Noto Sans",sans-serif}
+.sp .r.h i{font:500 11px/1.35 "Noto Naskh Arabic",serif;font-style:normal;color:var(--ink2)}
+.sp .tot{background-color:var(--due);font-size:12px}
+.sp a.r{background-color:var(--link-row)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.legend b{font:700 14px/1 "Noto Sans",sans-serif;color:var(--ink)}
+.log{display:flex;flex-direction:column;gap:2px;font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.sw{position:relative;width:44px;height:26px;flex:none;border-radius:13px;background:var(--rule)}
+.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.sw.on{background:var(--board)}
+.sw.on::after{inset-inline-start:21px}
+
+/* Focus: an addition to the canvas, which draws none (PRD §6.8) */
+.app :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.hero :focus-visible,.snack :focus-visible,.sb :focus-visible{outline-color:var(--focus-on-board)}
+
+/* The book page's ticks */
+svg.done circle{fill:var(--board);stroke:none}
+svg.done path{stroke:var(--chalk);stroke-width:2.2}
+
+/* Web screens: the sidebar, the main area and the detail pane (from the web boards) */
+.web{flex-direction:row}
+.sb{width:232px;flex:none;display:flex;flex-direction:column;gap:4px;padding:18px 14px 16px;background:var(--board);color:var(--chalk)}
+.sb .brand{font-size:40px;color:var(--chalk);padding:0 10px}
+.sb .who{display:flex;flex-direction:column;font-size:13px;line-height:1.5;color:var(--chalk-75);padding:0 10px 14px}
+.sb .who b{font-size:14px;color:var(--chalk)}
+.sb a{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:12px;color:var(--chalk-82);text-decoration:none;font-size:15px}
+.sb a.on{background:var(--chalk-14);color:var(--chalk);font-weight:700}
+.sb .sy{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding:0 10px;font-size:12.5px;line-height:1.6;color:var(--chalk-75)}
+.sb .sy .btn{min-height:44px;color:var(--chalk);border:1.5px solid var(--chalk-35);font-size:14px}
+.mn{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;padding:18px 20px 16px}
+.hd{display:flex;align-items:center;gap:8px}
+.hd .x{flex:1;min-width:0;display:flex;flex-direction:column}
+.hd b{font:700 26px/1.25 "Aref Ruqaa",serif}
+.dt{width:340px;flex:none;display:flex;flex-direction:column;gap:10px;padding:18px 18px 16px;background:var(--sheet);border-inline-start:1px solid var(--line)}
+.tb{display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.th,.rw{display:grid;grid-template-columns:var(--c);align-items:center}
+.th{min-height:44px;background:var(--well);font-size:12.5px;font-weight:700;line-height:1.35;color:var(--ink2)}
+.th>span,.rw>span{padding:3px 8px}
+.rw{min-height:35px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.4}
+.rw.sel{background:var(--due)}
+.n{text-align:center;font-family:"Noto Sans",sans-serif}
+.th .n{font-family:inherit}
+.kv{display:flex;flex-direction:column;gap:2px;background:var(--well);border-radius:12px;padding:8px 12px}
+.kv>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px;font-size:13.5px;line-height:1.6}
+.kv>div>span:first-child{color:var(--ink2)}
+
+/* Notices: a step to take before going on (from D-Keys, E-Migrate, Digest-signed) */
+.notice{display:flex;flex-direction:column;gap:8px;background:var(--notice);border:1.5px dashed var(--notice-edge);border-radius:12px;padding:8px 12px;font-size:13.5px;line-height:1.55;color:var(--ink)}
+.badge.wn{background:var(--notice-strong);color:var(--notice-ink)}
+.thr{display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 14px;border:1px solid var(--late-edge);background:var(--threshold-card);border-radius:14px;color:var(--ink);text-decoration:none}
+.btn.danger{min-height:56px;width:100%;background:var(--danger);color:var(--on-subject);font-size:16.5px}
+
+/* Steps of a process (from the threshold and term-send boards) */
+.st{display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:4px 12px}
+.st .s{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:13.5px;line-height:1.5}
+.st .s+.s{border-top:1px solid var(--grid)}
+.st .s .x{flex:1;display:flex;flex-direction:column}
+.st .dot{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;margin-top:1px;background:var(--track);color:var(--ink2)}
+.st .dot svg{width:14px;height:14px}
+.st .s.ok .dot{background:var(--board);color:var(--chalk)}
+.st .s.wait .dot{background:var(--notice);border:1.5px dashed var(--notice-edge);box-sizing:border-box}
+
+/* Chart keys (from M-Threshold, M-Totals, N-Threshold) */
+.lg{display:flex;flex-wrap:wrap;align-items:center;gap:2px 16px;font-size:12px;line-height:1.7;color:var(--ink2)}
+.lg>span{display:inline-flex;align-items:center;gap:6px}
+.l1{width:18px;border-top:2.5px solid var(--board)}
+.l2{width:18px;border-top:2px dashed var(--pencil)}
+.l3{width:18px;border-top:2px dotted var(--hatch)}
+.l4{width:0;height:14px;border-inline-start:3px solid var(--threshold)}
+.l4.soon{border-inline-start-style:dashed}
+.mc{display:inline-block;width:96px;height:16px;box-sizing:border-box;text-align:center;font:600 11.5px/14px "Noto Naskh Arabic",serif;background:var(--hi);border:1px solid var(--threshold);border-radius:6px;color:var(--ink)}
+.mc.soon{border-style:dashed}
+.w3{display:inline-block;width:14px;height:10px;border-radius:2px;background:repeating-linear-gradient(135deg,var(--hatch) 0 1.5px,var(--hatch-ground) 1.5px 4px);border:1px dashed var(--book-edge);box-sizing:border-box}
+.bn{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:8px;font-size:12.5px}
+.bn.b0{background:var(--hatch-ground);color:var(--ink2)}
+.bn.b1{background:var(--band-1);color:var(--ok-ink)}
+.bn.b2{background:var(--band-2);color:var(--board)}
+.trk{position:relative;height:16px;border-radius:8px;background:var(--track)}
+.trk .bd{position:absolute;top:0;bottom:0;inset-inline-start:0;border-radius:8px;background:var(--band-2)}
+
+/* Maps (React Flow, web only; from D-Exchange, D-Keys, Ops-Console) */
+.rf{position:relative;flex:none;background-color:var(--sheet);background-image:radial-gradient(var(--map-dots) 1.1px,transparent 1.3px);background-size:18px 18px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.nd{display:flex;align-items:center;gap:8px;padding:6px 12px;border:1.5px solid var(--rule);border-radius:10px;background:var(--sheet);font:400 12.5px/1.45 "Noto Naskh Arabic",serif;color:var(--ink);text-align:start;box-shadow:var(--shadow-node)}
+.nd b{font-size:13.5px;font-weight:700}
+.nd.sel{border-color:var(--board);box-shadow:0 0 0 1.5px var(--board)}
+.nd.dark{background:var(--board);border-color:var(--board);color:var(--chalk)}
+.nd.dark.sel{box-shadow:0 0 0 3px var(--hi)}
+.nd.nk{border-style:dashed;background:var(--well);color:var(--ink2)}
+.nd.gone{border-style:dashed;background:var(--node-gone);color:var(--pencil)}
+.el{display:inline-block;padding:2px 7px;border-radius:6px;background:var(--sheet);border:1px solid var(--line);font:500 12px/16px "Noto Naskh Arabic",serif;color:var(--ink2);white-space:nowrap}
+.el.on{border-color:var(--board);color:var(--ink);font-weight:700}
+.el.off{text-decoration:line-through;color:var(--pencil)}
+.rfa{font:500 10px/1 "Noto Sans",sans-serif;color:var(--map-label);background:var(--map-label-ground);padding:2px 4px;border-radius:3px}

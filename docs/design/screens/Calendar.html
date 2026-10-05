@@ -1,0 +1,185 @@
+<!doctype html>
+<!-- Screen Calendar of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>The calendar</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#FAF7F1}.chips{gap:6px}.chips .chip{min-height:48px;padding:0 12px}.wl{width:100%;font:inherit;text-align:start;cursor:pointer}.wl .x,.sr .x{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.4}.wl .c{font-size:12.5px}.wl .ch{font-size:14px;font-weight:700;color:var(--board)}.mo{display:grid;grid-template-columns:28px repeat(7,minmax(0,1fr));gap:3px;text-align:center}.mo .h{font-size:12px;font-weight:700;color:var(--ink2);line-height:24px}.mo span{position:relative;min-height:36px;display:grid;place-items:center;border-radius:8px;font:500 13.5px/1 "Noto Sans",sans-serif;color:var(--ink)}.mo .o{color:#ADA597}.mo .we{background:#EFEEEA;color:var(--ink2)}.mo .td{background:var(--board);color:var(--chalk);font-weight:700}.mo .ev::after{content:"";position:absolute;bottom:4px;width:6px;height:6px;border-radius:3px;background:var(--ar)}.mo .ab{font:700 13px/1 "Noto Naskh Arabic",serif;color:var(--ink2);border:1px dashed var(--rule)}.mo .ab.now{border:1.5px solid var(--board);color:var(--ink)}.gl{padding:10px 14px 4px;font-size:13.5px;font-weight:600;line-height:1.5;color:var(--ink2)}.gl.bt{border-top:1px solid var(--line)}.ev2{display:flex;flex-direction:column;gap:6px;padding:10px 14px;border-top:1px solid var(--line)}.evb{display:flex;flex-direction:column;gap:3px;width:100%;min-height:48px;border:0;background:none;padding:0;font:inherit;color:inherit;text-align:start;cursor:pointer}.evb .top2{display:flex;align-items:center;gap:8px}.evb .top2 b{flex:1;font-size:14px;line-height:1.5}.evb .t{font-size:15px;font-weight:600}.evb .src{font-size:12.5px;line-height:1.5;color:var(--ink2)}.bd{display:flex;flex-wrap:wrap;gap:6px;padding-top:2px}.grp{padding:0;gap:0;overflow:hidden}.sr{display:flex;align-items:center;gap:10px;min-height:54px;padding:4px 14px;color:inherit;text-decoration:none}.sr+.sr{border-top:1px solid var(--line)}.sr .t{line-height:1.4}.sr .c{font-size:12.5px;line-height:1.4}.hd3{display:flex;align-items:flex-start;gap:4px}.hd3>div{flex:1;min-width:0}.kvs{border:1px solid var(--line);border-radius:12px;overflow:hidden}.kv{display:flex;flex-direction:column;padding:6px 12px}.kv+.kv{border-top:1px solid var(--line)}.kv .k{font-size:12.5px;line-height:1.5;color:var(--ink2)}.kv .v{font-size:14px;line-height:1.55}.kept{align-items:flex-start;min-height:0;font-size:13.5px;line-height:1.55}.kept svg{flex:none;margin-top:3px}.snack span{line-height:1.45}</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 2760px;">
+  <div class="bar">
+    <a class="ib" href="Settings.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>الرزنامة</b><small><span class="lat">2026-2027</span> · [الولاية] · آخر تحديث: الجمعة 2 أكتوبر</small></div>
+  </div>
+
+  <div class="form" style="gap: 10px;">
+    <button class="rowlink wl" type="button" aria-label="ولايتي ومنطقتي: تغيير">
+      <svg class="i" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.3"></circle></svg>
+      <span class="x"><span class="t">ولايتي: [الولاية]</span><span class="c">المنطقة: [المنطقة] · كُتبت مع المؤسسة في الإعداد، وتُغيَّر هنا</span></span>
+      <span class="ch">تغيير</span>
+    </button>
+
+    <div class="chips" role="group" aria-label="الطبقات">
+      <button class="chip on" type="button" aria-pressed="true">الكل</button><button class="chip" type="button" aria-pressed="false">وطنية</button><button class="chip" type="button" aria-pressed="false">المنطقة أو الولاية</button><button class="chip" type="button" aria-pressed="false">المؤسسة</button><button class="chip" type="button" aria-pressed="false">خاصة بي</button>
+    </div>
+    <div class="warn"><svg class="i s" viewBox="0 0 24 24"><path d="M12 3.5l7 3v5c0 4.3-3 7.6-7 9-4-1.4-7-4.7-7-9v-5z"></path><path d="M8.8 12.2l2.2 2.2 4.2-4.4"></path></svg><span>التحديث الوطني، الجمعة 2 أكتوبر: موقّع من مشروع «منهاجنا»، ومعه ما يخصّ [الولاية]. وما وصل من المؤسسة أو أضفتُه بنفسي يحمل ذلك.</span></div>
+
+    <div class="card" style="gap: 6px;">
+      <div style="display: flex; align-items: baseline; gap: 8px;"><b style="flex: 1 1 0%; font-size: 16px;">أكتوبر 2026</b><span class="c">ربيع الثاني – جمادى الأولى 1448</span></div>
+      <div class="mo">
+        <span class="h">أ/ب</span><span class="h">ح</span><span class="h">ن</span><span class="h">ث</span><span class="h">ر</span><span class="h">خ</span><span class="h">ج</span><span class="h">س</span>
+        <span class="ab">ب</span><span class="o">27</span><span class="o">28</span><span class="o">29</span><span class="o ev">30</span><span class="">1</span><span class="we">2</span><span class="we">3</span><span class="ab now">أ</span><span class="td">4</span><span class="">5</span><span class="">6</span><span class="">7</span><span class="">8</span><span class="we">9</span><span class="we">10</span><span class="ab">ب</span><span class="">11</span><span class="">12</span><span class="">13</span><span class="ev">14</span><span class="">15</span><span class="we">16</span><span class="we">17</span><span class="ab">أ</span><span class="">18</span><span class="">19</span><span class="">20</span><span class="">21</span><span class="">22</span><span class="we">23</span><span class="we">24</span><span class="ab">ب</span><span class="">25</span><span class="">26</span><span class="">27</span><span class="">28</span><span class="">29</span><span class="we">30</span><span class="we">31</span>
+      </div>
+      <div class="legend"><span><i style="display: inline-block; width: 7px; height: 7px; border-radius: 4px; background: rgb(91, 72, 66); margin-inline-end: 6px;"></i>ندوة: الأربعاء 14، المساء</span><span><i style="display: inline-block; width: 7px; height: 7px; border-radius: 4px; background: rgb(91, 72, 66); margin-inline-end: 6px;"></i>تعليق الدراسة: الأربعاء 30 سبتمبر، المساء</span><span>العمود الأول: حرف الأسبوع، أ أو ب</span><span>الجمعة والسبت مظللان</span></div>
+    </div>
+
+    <div class="card" style="padding: 0px; gap: 0px; overflow: hidden;">
+      
+        <div class="gl">الأخيرة</div>
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>الأربعاء 30 سبتمبر، المساء</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">تعليق الدراسة: نشرية جوية خاصة</span>
+            <span class="c">كل مؤسسات [الولاية] · لا تمسّ حصص أقسامي</span>
+            <span class="src">المصدر: بيان مديرية التربية لولاية [الولاية]، 30/09/2026</span>
+            <span class="bd"><span class="badge">الولاية</span><span class="badge ok">مُعلن</span></span>
+          </button>
+          
+          
+        </div>
+      
+        <div class="gl bt">القادم</div>
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>الأربعاء 14 أكتوبر، المساء</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">ندوة مادة اللغة العربية</span>
+            <span class="c">متوسطة الأمل · لا تمسّ حصص أقسامي</span>
+            <span class="src">المصدر: استدعاء مفتش المادة</span>
+            <span class="bd"><span class="badge">خاص بي</span><span class="badge ok">مُعلن</span><span class="badge">أضفتُه</span></span>
+          </button>
+          
+          
+        </div>
+      
+        
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>الأحد 1 نوفمبر</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">عيد الثورة التحريرية</span>
+            <span class="c">عطلة وطنية · 3 حصص لا تُعقد</span>
+            <span class="src">المصدر: قائمة الأعياد الوطنية الرسمية</span>
+            <span class="bd"><span class="badge">وطني</span><span class="badge ok">مُعلن</span></span>
+          </button>
+          
+          
+        </div>
+      
+        
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>29 نوفمبر – 3 ديسمبر</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">اختبارات الفصل الأول</span>
+            <span class="c">تحلّ محل الحصص، ويتوقف المخطط</span>
+            <span class="src">المصدر: تقدير، حتى يصدر بيان الوزارة</span>
+            <span class="bd"><span class="badge">وطني</span><span class="badge">تقديري</span></span>
+          </button>
+          
+          
+            <div class="btns"><a class="btn line" href="Today-exams.html" style="font-size: 14px;">صفحة اليوم في أسبوع الاختبارات</a></div>
+          
+        </div>
+      
+        
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>الثلاثاء 15 ديسمبر، المساء</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">مجلس القسم 4م2 للفصل الأول</span>
+            <span class="c">14سا · لا يمسّ الحصص</span>
+            <span class="src">المصدر: إعلان مدير المؤسسة</span>
+            <span class="bd"><span class="badge">المؤسسة</span><span class="badge ok">مُعلن</span><span class="badge">من المؤسسة، برمز QR</span></span>
+          </button>
+          
+          
+            <div class="btns"><a class="btn line" href="Today-council.html" style="font-size: 14px;">صفحة اليوم يوم المجلس</a></div>
+          
+        </div>
+      
+        
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>من الخميس 17 ديسمبر</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">عطلة الشتاء</span>
+            <span class="c">إلى الأحد 3 جانفي</span>
+            <span class="src">المصدر: تقدير، حتى يصدر بيان الوزارة</span>
+            <span class="bd"><span class="badge">وطني</span><span class="badge">تقديري</span></span>
+          </button>
+          
+          
+        </div>
+      
+        
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>حوالي الإثنين 8 فيفري</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">رمضان: مواقيت أخرى</span>
+            <span class="c">تُعلن المواقيت قبل أيام، والحصة المختصرة تُحسب حصة</span>
+            <span class="src">المصدر: التقويم الهجري، والمواقيت ببيان من الوزارة</span>
+            <span class="bd"><span class="badge">وطني</span><span class="badge">متوقع، بيوم زيادة أو نقصان</span></span>
+          </button>
+          
+          
+            <div class="btns"><a class="btn line" href="Calendar-ramadan.html" style="font-size: 14px;">مثال: بعد إعلان المواقيت</a></div>
+          
+        </div>
+      
+        
+        <div class="ev2">
+          <button class="evb" type="button">
+            <span class="top2"><b>الثلاثاء 9 أو الأربعاء 10 مارس</b><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+            <span class="t">عيد الفطر</span>
+            <span class="c">يُؤكَّد بنقرة عند إعلان رؤية الهلال</span>
+            <span class="src">المصدر: التقويم الهجري، ويُثبَّت بإعلان رؤية الهلال</span>
+            <span class="bd"><span class="badge">وطني</span><span class="badge">متوقع</span></span>
+          </button>
+          
+            <div class="btns"><button class="btn line" type="button" style="font-size: 14px;">ثبت: الثلاثاء 9</button><button class="btn line" type="button" style="font-size: 14px;">الأربعاء 10</button></div>
+          
+          
+        </div>
+      
+      
+    </div>
+
+    <div class="card grp">
+      <a class="sr" href="Calendar-ab.html"><span class="x"><span class="t">الأسبوع أ/ب · هذا الأسبوع: أ</span><span class="c">يتناوب أسبوعاً بأسبوع، وتُتخطّى العطل. ولا خانة في أسبوعي تتبعه الآن</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+      <a class="sr" href="Calendar-receive.html"><span class="x"><span class="t">استلام إدخال من المؤسسة أو زميل</span><span class="c">غلق أو حدث، برمز QR أو ملف، ثم إضافة أو تجاهل</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+      <a class="sr" href="Import-update.html"><span class="x"><span class="t">استيراد تحديث دون شبكة</span><span class="c">الرزنامة أو المخططات، موقّعة، من ملف أو رمز QR</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+      <a class="sr" href="Settings-lengths.html"><span class="x"><span class="t">مدة الحصص</span><span class="c">العادية ورمضان لكل مستوى، بمصدرها وتواريخها</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    </div>
+
+    <div class="c">كل إدخال يحمل مصدره ودرجة يقينه، ويُفتح بنقرة. وتصل التصحيحات مع تحديثات الرزنامة، أو بملف أو رمز QR من المؤسسة أو من زميل.</div>
+
+    <div class="lab" style="padding-top: 4px;">أمثلة: الرزنامة في حالات أخرى</div>
+    <div class="card grp">
+      <a class="sr" href="Calendar-update-today.html"><span class="x"><span class="t">تحديث يصل في اليوم نفسه</span><span class="c">تعليق الدراسة يومين في [الولاية]: ما تغيّر، والاحتياط</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+      <a class="sr" href="Calendar-groups.html"><span class="x"><span class="t">أفواج بالتناوب</span><span class="c">أيام كل فوج، والمناداة بالفوج، والعنصر الذي يُدرَّس مرتين</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+      <a class="sr" href="Calendar-moved.html"><span class="x"><span class="t">تغيّر موعد الاختبارات</span><span class="c">اختبارات الفصل الثاني تتقدّم أسبوعين، ومخطط كل قسم بعدها</span></span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <a class="btn primary" href="Calendar-add.html">إضافة إلى الرزنامة</a>
+  </div>
+
+  
+
+  
+
+  
+
+  </div></div></div>
+
+
+
+</body></html>
