@@ -1,0 +1,305 @@
+<!doctype html>
+<!-- Screen Capture of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Capture during the session</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>
+body{margin:0;background:#FAF7F1}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 12px 14px}
+.tile{position:relative;min-height:68px;border:1.5px solid var(--line);border-radius:14px;background:var(--sheet);padding:6px 8px;text-align:start;font:500 13.5px/1.45 "Noto Naskh Arabic",serif;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;justify-content:center}
+.tile .n{position:absolute;top:5px;inset-inline-end:8px;font:500 11px/1 "Noto Sans",sans-serif;color:var(--pencil)}
+.tile.on{border-color:var(--board);background:#EEF1EC}
+.tile .val{font:700 12.5px/1.5 "Noto Naskh Arabic","Noto Sans",serif;color:var(--board)}
+</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 800px;">
+  <div class="bar">
+    <a class="ib" href="Marks.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>تقويم أثناء الحصة · 4م2</b><small>حصة اليوم · 08سا – 09سا</small></div>
+  </div>
+
+  <div style="flex: 0 0 auto; display: flex; flex-direction: column; gap: 8px; padding: 0px 12px 10px; border-bottom: 1px solid rgb(230, 224, 213);">
+    <div class="chips">
+      
+        <button class="chip on" type="button" aria-pressed="true">المشاركة</button>
+      
+        <button class="chip" type="button" aria-pressed="false">الواجب</button>
+      
+        <button class="chip" type="button" aria-pressed="false">الكراس</button>
+      
+        <button class="chip" type="button" aria-pressed="false">السلوك</button>
+      
+    </div>
+    <div class="sub">نقرة لكل مشاركة، وتُجمع في نقطة التقويم آخر الفصل.</div>
+  </div>
+
+  <div class="scroll">
+    <div class="tiles">
+      
+        <button class="tile on" type="button">
+          <span class="n">1</span>
+          <span>أمزيان</span>
+          <span style="color: rgb(75, 83, 88);">ريان</span>
+          <span class="val">+1</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">2</span>
+          <span>بن عيسى</span>
+          <span style="color: rgb(75, 83, 88);">آية</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">3</span>
+          <span>بوجمعة</span>
+          <span style="color: rgb(75, 83, 88);">سلمى</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">4</span>
+          <span>بوخالفة</span>
+          <span style="color: rgb(75, 83, 88);">ياسمين</span>
+          
+        </button>
+      
+        <button class="tile on" type="button">
+          <span class="n">5</span>
+          <span>بوعلام</span>
+          <span style="color: rgb(75, 83, 88);">زكرياء</span>
+          <span class="val">+2</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">6</span>
+          <span>تواتي</span>
+          <span style="color: rgb(75, 83, 88);">إسحاق</span>
+          
+        </button>
+      
+        <button class="tile on" type="button">
+          <span class="n">7</span>
+          <span>جبار</span>
+          <span style="color: rgb(75, 83, 88);">نور الهدى</span>
+          <span class="val">+1</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">8</span>
+          <span>حمادي</span>
+          <span style="color: rgb(75, 83, 88);">عبد الرحمن</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">9</span>
+          <span>خالدي</span>
+          <span style="color: rgb(75, 83, 88);">ملاك</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">10</span>
+          <span>داودي</span>
+          <span style="color: rgb(75, 83, 88);">أيوب</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">11</span>
+          <span>رحماني</span>
+          <span style="color: rgb(75, 83, 88);">إكرام</span>
+          
+        </button>
+      
+        <button class="tile on" type="button">
+          <span class="n">12</span>
+          <span>زروقي</span>
+          <span style="color: rgb(75, 83, 88);">محمد أمين</span>
+          <span class="val">+1</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">13</span>
+          <span>سعيدي</span>
+          <span style="color: rgb(75, 83, 88);">رتاج</span>
+          
+        </button>
+      
+        <button class="tile on" type="button">
+          <span class="n">14</span>
+          <span>سليماني</span>
+          <span style="color: rgb(75, 83, 88);">يوسف</span>
+          <span class="val">+1</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">15</span>
+          <span>شريفي</span>
+          <span style="color: rgb(75, 83, 88);">أسيل</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">16</span>
+          <span>صالحي</span>
+          <span style="color: rgb(75, 83, 88);">إسلام</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">17</span>
+          <span>طالبي</span>
+          <span style="color: rgb(75, 83, 88);">دعاء</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">18</span>
+          <span>عباسي</span>
+          <span style="color: rgb(75, 83, 88);">مهدي</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">19</span>
+          <span>عثماني</span>
+          <span style="color: rgb(75, 83, 88);">شيماء</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">20</span>
+          <span>عمراني</span>
+          <span style="color: rgb(75, 83, 88);">وسيم</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">21</span>
+          <span>غربي</span>
+          <span style="color: rgb(75, 83, 88);">هبة الرحمن</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">22</span>
+          <span>فرحات</span>
+          <span style="color: rgb(75, 83, 88);">أمير</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">23</span>
+          <span>قادري</span>
+          <span style="color: rgb(75, 83, 88);">عبد الله</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">24</span>
+          <span>قاسمي</span>
+          <span style="color: rgb(75, 83, 88);">لينة</span>
+          
+        </button>
+      
+        <button class="tile on" type="button">
+          <span class="n">25</span>
+          <span>كرومي</span>
+          <span style="color: rgb(75, 83, 88);">سارة</span>
+          <span class="val">+3</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">26</span>
+          <span>لعريبي</span>
+          <span style="color: rgb(75, 83, 88);">معاذ</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">27</span>
+          <span>مباركي</span>
+          <span style="color: rgb(75, 83, 88);">إيناس</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">28</span>
+          <span>مرادي</span>
+          <span style="color: rgb(75, 83, 88);">مروة</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">29</span>
+          <span>مسعودي</span>
+          <span style="color: rgb(75, 83, 88);">رامي</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">30</span>
+          <span>منصوري</span>
+          <span style="color: rgb(75, 83, 88);">عبد الرؤوف</span>
+          
+        </button>
+      
+        <button class="tile on" type="button">
+          <span class="n">31</span>
+          <span>ناصري</span>
+          <span style="color: rgb(75, 83, 88);">هديل</span>
+          <span class="val">+2</span>
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">32</span>
+          <span>نوري</span>
+          <span style="color: rgb(75, 83, 88);">بلال</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">33</span>
+          <span>هاشمي</span>
+          <span style="color: rgb(75, 83, 88);">ريم</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">34</span>
+          <span>واعلي</span>
+          <span style="color: rgb(75, 83, 88);">ياسر</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">35</span>
+          <span>يحياوي</span>
+          <span style="color: rgb(75, 83, 88);">نسرين</span>
+          
+        </button>
+      
+        <button class="tile" type="button">
+          <span class="n">36</span>
+          <span>يوسفي</span>
+          <span style="color: rgb(75, 83, 88);">آدم</span>
+          
+        </button>
+      
+    </div>
+  </div>
+
+  <div class="foot" style="border-top: 1px solid rgb(230, 224, 213);">
+    <div class="btns">
+      <button class="btn line" type="button">تراجع</button>
+      <a class="btn primary" href="Marks.html" style="min-height: 48px;">تم</a>
+    </div>
+  </div></div></div></div>
+
+
+
+</body></html>

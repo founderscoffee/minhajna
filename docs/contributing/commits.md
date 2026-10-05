@@ -70,7 +70,7 @@ The scope names the part of the product that changes, not the file. It is option
 | Data leaving the device | `sync`, `backup`, `crypto`, `network`, `insights` |
 | Platforms | `android`, `web`, `server` |
 | Across the product | `i18n`, `a11y`, `deps`, `release` |
-| Documents | `prd`, `decisions`, `contributing` |
+| Documents | `prd`, `decisions`, `design`, `contributing` |
 
 Changes in the "data leaving the device" scopes are privacy-sensitive. So are changes to `export`, and to anything that reads or writes the school's official files ([workflow.md](workflow.md#review)).
 

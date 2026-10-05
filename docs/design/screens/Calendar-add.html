@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- Screen Calendar-add of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>Adding a calendar entry</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#FAF7F1}.radio{min-height:52px;padding:6px 12px}.radio .t b{display:block;font-size:14.5px;font-weight:600}.radio .t .c{display:block;font-size:12.5px}.seg3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--sheet)}.seg3 button{min-height:48px;border:0;background:none;padding:0 4px;font:600 13.5px/1.25 "Noto Naskh Arabic",serif;color:var(--ink2);cursor:pointer}.seg3 button+button{border-inline-start:1.5px solid var(--rule)}.seg3 button.on{background:var(--board);color:var(--chalk)}.chips{gap:6px}.chips .chip{min-height:48px;padding:0 12px}</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 1320px;">
+  <div class="bar">
+    <a class="ib" href="Calendar.html" aria-label="رجوع"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    <div class="ttl"><b>إضافة إلى الرزنامة</b><small>تُطبَّق على كل الأقسام المعنية</small></div>
+  </div>
+
+  <div class="form" style="gap: 10px;">
+    <div class="lab">النوع</div>
+    
+      <label class="radio on"><input type="radio" name="kind" checked=""><span class="t"><b>غلق المؤسسة</b><span class="c">تُلغى حصص ذلك اليوم أو الفترة · طبقة المؤسسة</span></span></label>
+    
+      <label class="radio"><input type="radio" name="kind"><span class="t"><b>غلق على مستوى الولاية</b><span class="c">تُلغى الحصص في كل مؤسساتي بالولاية · طبقة الولاية</span></span></label>
+    
+      <label class="radio"><input type="radio" name="kind"><span class="t"><b>ندوة أو يوم تكوين</b><span class="c">في الطبقة الخاصة بي</span></span></label>
+    
+      <label class="radio"><input type="radio" name="kind"><span class="t"><b>مهمة</b><span class="c">حراسة، أو لجنة، أو مرافقة · في الطبقة الخاصة بي</span></span></label>
+    
+      <label class="radio"><input type="radio" name="kind"><span class="t"><b>يوم تعويض أو دعم أو مراجعة</b><span class="c">تُضاف فيه حصص · الأقسام والأوقات في الخطوة التالية</span></span></label>
+    
+      <label class="radio"><input type="radio" name="kind"><span class="t"><b>حدث في المؤسسة</b><span class="c">مجلس، أو يوم مفتوح، أو غيرهما</span></span></label>
+    
+      <label class="radio"><input type="radio" name="kind"><span class="t"><b>ضبط الأسبوع أ/ب</b><span class="c">من أسبوع أختاره: هذا الأسبوع أ · بإعلان المؤسسة أو بنفسي</span></span></label>
+    
+
+    
+      <div class="fl"><div class="lab">التاريخ</div><div class="chips">
+        <button class="chip on" type="button" aria-pressed="true">غداً، الإثنين 5 أكتوبر</button><button class="chip" type="button" aria-pressed="false">تاريخ آخر</button>
+      </div></div>
+      <div class="seg3" role="group" aria-label="الفترة">
+        <button type="button" class="on" aria-pressed="true">اليوم كله</button><button type="button" class="" aria-pressed="false">الصبيحة</button><button type="button" class="" aria-pressed="false">المساء</button>
+      </div>
+      <div class="fl"><label class="lab" for="src">المصدر</label><input class="inp" id="src" value="إعلان مدير المؤسسة"></div>
+      <div class="fl">
+        <div class="lab" id="cf">اليقين</div>
+        <div class="seg" role="group" aria-labelledby="cf">
+          <button type="button" class="on" aria-pressed="true">مُعلن</button><button type="button" class="" aria-pressed="false">متوقع</button>
+        </div>
+        <div class="c">يظهر «مُعلن» بجانبه، مع مصدره.</div>
+      </div>
+    
+
+    <div class="priv">
+      <div class="lab">ما يتغيّر</div>
+      <div class="t" style="font-size: 14px;">تُلغى 3 حصص يوم الإثنين 5 أكتوبر: 4م1 08سا · 4م2 10سا · 4م3 13سا. كلها دروس، فلا تمسّ الأعمال الموجهة. تنتقل الموارد إلى الحصص التالية دون أن يسقط منها شيء، وتُحسب منفصلة: حصص ضاعت بسبب الرزنامة.</div>
+      <div class="c">الاحتياط الباقي قبل الاختبارات: 4م1 لا شيء، ولا تأخر · 4م2 5 حصص · 4م3 حصتان.</div>
+    </div>
+    
+      <div class="c">يُعدَّل كل إدخال أضفتُه أو يُحذف من الرزنامة، ويُحفظ سجل تغييراته.</div>
+    
+    
+    
+      <a class="rowlink" href="Exam-window.html" style="min-height: 48px;"><span class="t">مثال: غلق ثانٍ، الثلاثاء 6 أكتوبر</span><svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></a>
+    
+  </div>
+
+  <div class="foot">
+    <a class="btn primary" href="Calendar.html">إضافة</a>
+  </div></div></div></div>
+
+
+
+</body></html>

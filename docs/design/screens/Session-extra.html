@@ -1,0 +1,223 @@
+<!doctype html>
+<!-- Screen Session-extra of the Minhajna design canvas, exported as static HTML. All names and entries are made up. -->
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<title>A session outside the timetable</title>
+
+<link rel="stylesheet" href="tb.css">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Sans:wdth,wght@75..100,400..700&amp;display=swap" rel="stylesheet"><style>
+body{margin:0;background:#FAF7F1}
+.chips{gap:6px}.chips .chip{padding:0 12px}
+.mh{display:flex;align-items:center;gap:4px}
+.mh b{flex:1;text-align:center;font-size:15.5px}
+.mo{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;text-align:center}
+.mo .h{font-size:12px;font-weight:700;color:var(--ink2);line-height:24px}
+.mo .d{min-height:48px;display:grid;place-items:center;border:0;border-radius:10px;background:none;padding:0;font:500 14px/1 "Noto Sans",sans-serif;color:var(--ink)}
+.mo button.d{cursor:pointer}
+.mo .d.we{background:#EFEEEA}
+.mo .d.o{color:#ADA597}
+.mo .d.td{box-shadow:inset 0 0 0 1.5px var(--board);font-weight:700}
+.mo .d.on{background:var(--board);color:var(--chalk);font-weight:700}
+.dsel{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;padding:2px 4px 0}
+.tm2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.sx .mrow{grid-template-columns:34px minmax(0,1fr) 58px 74px 80px}
+.sx .mrow>div{align-items:center;text-align:center}
+.sx .mrow.pr>div{color:var(--pencil)}
+.rowlink .x{flex:1;min-width:0;display:flex;flex-direction:column}
+</style></head>
+<body>
+<div id="dc-root"><div class="sc-host"><div class="app" dir="rtl" lang="ar" style="width: 360px; height: 1640px;">
+  <div class="bar">
+    <a class="ib" href="Main.html" aria-label="إغلاق"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
+    <div class="ttl"><b>حصة خارج استعمال الزمن</b><small>دعم، تدارك، مراجعة، دراسة محروسة</small></div>
+  </div>
+
+  <div class="form">
+    <div class="sub">حصة لقسم من أقسامي، في وقت ليس في استعمال الزمن. تُكتب في صفحة الحصص الإضافية من دفتر النصوص.</div>
+
+    <div class="fl">
+      <div class="lab">القسم</div>
+      <div class="chips" role="group" aria-label="القسم">
+        <button class="chip" type="button" aria-pressed="false">4م1</button><button class="chip on" type="button" aria-pressed="true">4م2</button><button class="chip" type="button" aria-pressed="false">4م3</button>
+      </div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">نوع الحصة</div>
+      <div class="chips" role="group" aria-label="نوع الحصة">
+        <button class="chip on" type="button" aria-pressed="true">دعم</button><button class="chip" type="button" aria-pressed="false">تدارك</button><button class="chip" type="button" aria-pressed="false">مراجعة</button><button class="chip" type="button" aria-pressed="false">دراسة محروسة</button>
+      </div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">التاريخ</div>
+      <div class="card" style="gap: 6px; padding: 6px 10px 10px;">
+        <div class="mh">
+          <button class="ib" type="button" aria-label="الشهر السابق"><svg class="i flip" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></button>
+          <b>أكتوبر 2026</b>
+          <button class="ib" type="button" aria-label="الشهر التالي"><svg class="i flip" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+        </div>
+        <div class="mo">
+          <span class="h">ح</span><span class="h">ن</span><span class="h">ث</span><span class="h">ر</span><span class="h">خ</span><span class="h">ج</span><span class="h">س</span>
+          
+            
+            <span class="d o" aria-disabled="true">27</span>
+          
+            
+            <span class="d o" aria-disabled="true">28</span>
+          
+            
+            <span class="d o" aria-disabled="true">29</span>
+          
+            
+            <span class="d o" aria-disabled="true">30</span>
+          
+            <button class="d on" type="button" aria-pressed="true" aria-label="الخميس 01/10/2026">1</button>
+            
+          
+            <button class="d we" type="button" aria-pressed="false" aria-label="الجمعة 02/10/2026">2</button>
+            
+          
+            <button class="d we" type="button" aria-pressed="false" aria-label="السبت 03/10/2026">3</button>
+            
+          
+            <button class="d td" type="button" aria-pressed="false" aria-label="الأحد 04/10/2026">4</button>
+            
+          
+            
+            <span class="d o" aria-disabled="true">5</span>
+          
+            
+            <span class="d o" aria-disabled="true">6</span>
+          
+            
+            <span class="d o" aria-disabled="true">7</span>
+          
+            
+            <span class="d o" aria-disabled="true">8</span>
+          
+            
+            <span class="d o" aria-disabled="true">9</span>
+          
+            
+            <span class="d o" aria-disabled="true">10</span>
+          
+            
+            <span class="d o" aria-disabled="true">11</span>
+          
+            
+            <span class="d o" aria-disabled="true">12</span>
+          
+            
+            <span class="d o" aria-disabled="true">13</span>
+          
+            
+            <span class="d o" aria-disabled="true">14</span>
+          
+            
+            <span class="d o" aria-disabled="true">15</span>
+          
+            
+            <span class="d o" aria-disabled="true">16</span>
+          
+            
+            <span class="d o" aria-disabled="true">17</span>
+          
+            
+            <span class="d o" aria-disabled="true">18</span>
+          
+            
+            <span class="d o" aria-disabled="true">19</span>
+          
+            
+            <span class="d o" aria-disabled="true">20</span>
+          
+            
+            <span class="d o" aria-disabled="true">21</span>
+          
+            
+            <span class="d o" aria-disabled="true">22</span>
+          
+            
+            <span class="d o" aria-disabled="true">23</span>
+          
+            
+            <span class="d o" aria-disabled="true">24</span>
+          
+            
+            <span class="d o" aria-disabled="true">25</span>
+          
+            
+            <span class="d o" aria-disabled="true">26</span>
+          
+            
+            <span class="d o" aria-disabled="true">27</span>
+          
+            
+            <span class="d o" aria-disabled="true">28</span>
+          
+            
+            <span class="d o" aria-disabled="true">29</span>
+          
+            
+            <span class="d o" aria-disabled="true">30</span>
+          
+            
+            <span class="d o" aria-disabled="true">31</span>
+          
+        </div>
+        <div class="dsel"><svg class="i s" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg><span>الخميس 01/10/2026</span></div>
+        <div class="c" style="padding: 0px 4px;">تُسجَّل الحصة بعد إجرائها، فلا يُختار يوم بعد اليوم.</div>
+      </div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">الوقت، كما في الدفتر الورقي</div>
+      <div class="tm2">
+        <div class="fl"><label class="lab" for="t1">من</label><input class="inp" id="t1" inputmode="numeric" value="15سا"></div>
+        <div class="fl"><label class="lab" for="t2">إلى</label><input class="inp" id="t2" inputmode="numeric" value="16سا"></div>
+      </div>
+      <div class="c">يُكتب الوقت كما يُدخَل. لا يُسجَّل وقت النقر.</div>
+    </div>
+
+    <div class="fl">
+      <label class="lab" for="tp">الموضوع</label>
+      <input class="inp" id="tp" value="تمارين في العدد والمعدود">
+    </div>
+
+    <div class="fl">
+      <label class="lab" for="ft">نص حر (اختياري)</label>
+      <textarea class="inp" id="ft" placeholder="ما يُراد تذكّره عن الحصة"></textarea>
+      <div class="warn"><span>يُرجى عدم كتابة تفاصيل صحية أو تأديبية تخص التلاميذ.</span></div>
+    </div>
+
+    <div class="fl">
+      <div class="lab">هكذا تُكتب في صفحة الحصص الإضافية · دفتر نصوص 4م2</div>
+      <div class="mpage sx" role="table" aria-label="سطر صفحة الحصص الإضافية">
+        <div class="mrow h" role="row"><div role="columnheader">الرقم</div><div role="columnheader">المادة</div><div role="columnheader">النوع</div><div role="columnheader">التاريخ</div><div role="columnheader">التوقيت</div></div>
+        <div class="mrow pr" role="row"><div class="d" role="cell">1</div><div role="cell">اللغة العربية</div><div role="cell">دعم</div><div class="d" role="cell">2026/10/01</div><div role="cell">15سا – 16سا</div></div>
+      </div>
+      <div class="c">يُضاف السطر بعد الحفظ. ولا تحمل الصفحة غير هذه الخانات، ويبقى الموضوع والنص الحر في سجل الحصة.</div>
+    </div>
+
+    <div class="priv">
+      <div class="warn" style="color: rgb(29, 34, 37);"><svg class="i s" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"></path></svg><span>لا تُحرّك المخطط: يبقى 4م2 على موقعه فيه، ولا يتغيّر احتياطه.</span></div>
+      <div class="warn" style="color: rgb(29, 34, 37);"><svg class="i s" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg><span>لا يُسجَّل وقت النقر: يُكتب التاريخ والوقت كما أُدخلا، كما في الدفتر الورقي.</span></div>
+    </div>
+
+    <a class="rowlink" href="Catchup.html">
+      <svg class="i" viewBox="0 0 24 24"><path d="M20 12a8 8 0 11-2.34-5.66M20 4v5h-5"></path></svg>
+      <span class="x"><span class="t">حصة استدراكية تُحرّك المخطط؟</span><span class="c">تُضاف من خيارات الاستدراك، بالاتفاق مع الإدارة، وتُكتب في صفحات المادة.</span></span>
+      <svg class="i s" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+  </div>
+
+  <div class="foot">
+    <button class="btn primary" type="button">حفظ الحصة</button>
+  </div>
+
+  </div></div></div>
+
+
+
+</body></html>

@@ -55,6 +55,7 @@
 بالإنجليزية:
 - [وثيقة متطلبات المنتج (PRD)](docs/prd/PRD.md): المنتج كاملًا في عشرة أقسام، والقسم الأول يضع قواعد هذا المشروع المفتوح المصدر.
 - [سجل القرارات](docs/decisions/).
+- [التصميم](docs/design/): الشاشات ونظام التصميم والشعار، وكل شاشة مربوطة بمتطلبات وثيقة المنتج التي تحققها.
 - [الميثاق](CHARTER.md)، و[الحوكمة](GOVERNANCE.md)، و[الخصوصية](PRIVACY.md)، و[الاسم والشعار](TRADEMARKS.md)، و[قواعد السلوك](CODE_OF_CONDUCT.md)، و[الأمن](SECURITY.md).
 
 ### التراخيص
@@ -100,6 +101,7 @@ Ten points protect the teachers whose records are kept in Minhajna: no personnel
 
 - [Product requirements (PRD)](docs/prd/PRD.md): the whole product, in ten sections. Section 1 sets the rules of this open-source project.
 - [Decision records](docs/decisions/).
+- [Design](docs/design/): the screens, the design system and the logo, with each screen linked to the PRD requirements it meets.
 - [The charter](CHARTER.md), [governance](GOVERNANCE.md), [privacy](PRIVACY.md), [the name and the logo](TRADEMARKS.md), [the code of conduct](CODE_OF_CONDUCT.md) and [security](SECURITY.md).
 
 ### Licences
