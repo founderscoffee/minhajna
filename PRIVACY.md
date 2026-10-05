@@ -25,8 +25,9 @@ The project is in planning, and there is no app yet.
 |---|---|---|
 | Comments sent through the website's form, and how the sender wants to be credited | The form's opening | Used to answer comments on proposals and to take in plans and templates. Answers sum comments up without naming the teacher |
 | Pilot contacts | The pilot | Only what the pilot needs. Kept by the lead maintainer, and deleted whenever the person asks |
-| Problem reports | The pilot | Built by the app with pupils' names replaced, and shown to the teacher before they are sent ([PRD §1.5](docs/prd/PRD.md#15-pupil-data-and-privacy-rules)) |
+| Problem reports | The pilot | Built by the app with pupils' names replaced, and shown to the teacher before they are sent ([PRD §1.5](docs/prd/PRD.md#15-pupil-data-and-privacy-rules)). Kept until the problem is fixed, 12 months at most, and the teacher can delete theirs sooner |
 | Crash reports | The pilot | Off by default. The teacher sees each one before it is sent, and names and marks are removed |
+| Pilot timings | The pilot | Off by default. With the teacher's consent, four figures go once a month: seconds per session, the share confirmed in one tap, minutes a week and whether the term export was done. No identifier, date or class goes with them ([PRD §10.3](docs/prd/PRD.md#103-how-success-is-measured)) |
 | Sync accounts | When sync opens | A login, and encrypted records the project cannot read. The server sees memberships, encrypted batches and their sizes, never names or times of activity |
 | Pack-editor accounts | For curators and subject maintainers | Only what the editor needs to credit their work |
 | Donors' details | Once the association exists | Only what the accounts need. Donations unlock nothing |
@@ -42,6 +43,6 @@ The project is in planning, and there is no app yet.
 
 ## Your rights
 
-You can see, correct and delete what the project holds about you. Corrections are made within 10 days ([PRD §6.2](docs/prd/PRD.md#62-compliance-before-each-launch)).
+You can see, correct and delete what the project holds about you. Corrections and deletions are made within 10 days ([PRD §6.2](docs/prd/PRD.md#62-compliance-before-each-launch)).
 
 For now, ask in a [GitHub issue](https://github.com/founderscoffee/minhajna/issues), without personal details, and a maintainer answers there. If you took part in the field check, you can also ask the person who contacted you. The project will add an address of its own for these questions when it has one.
