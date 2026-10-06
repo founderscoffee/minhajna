@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 The Minhajna contributors
+  SPDX-License-Identifier: CC-BY-SA-4.0
+
+  The approved chalk mim, from docs/design/system/logo (minhajna-icon-foreground.svg),
+  on the 108-unit grid of Android's adaptive icons. The name and the logo stay
+  under TRADEMARKS.md.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#F6F3EA"
+        android:pathData="M65.7 26.8C70.4 26.8 73.4 29.7 73 33.9C72.7 37.8 69.4 40.2 65 40.6C59.4 40.9 53.5 43.2 48.9 45.3C45.8 46.7 44.4 48.4 44.2 51.6C44 62 43.5 71.8 42.5 80.4C42.3 81.4 41.1 81.4 40.9 80.4C38.5 70.8 35.3 61 35.1 50.2C35 42.1 38.1 37.2 44.4 35.8C51 34.4 55.9 31.3 59.6 28.5C61.3 27.3 63.4 26.8 65.7 26.8Z" />
+</vector>

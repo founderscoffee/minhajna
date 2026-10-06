@@ -1,0 +1,51 @@
+// SPDX-FileCopyrightText: Meta Platforms, Inc. and affiliates
+// SPDX-FileCopyrightText: 2026 The Minhajna contributors
+// SPDX-License-Identifier: MIT
+
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+
+react {
+    autolinkLibrariesWithApp()
+}
+
+android {
+    ndkVersion rootProject.ext.ndkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
+
+    namespace "dz.minhajna.preview"
+    defaultConfig {
+        // Provisional, for the field check: the final ID follows the
+        // project's domain, before the first public release.
+        applicationId "dz.minhajna.preview"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "0.0.0"
+    }
+
+    buildTypes {
+        release {
+            // Unsigned, so that two builds compare byte for byte. The
+            // field-check build signs it with a key kept out of the
+            // repository, and F-Droid signs its own build.
+            signingConfig null
+            // The same APK whether or not it is built from a Git checkout.
+            vcsInfo.include = false
+        }
+    }
+
+    dependenciesInfo {
+        // The dependency block Google Play asks for is encrypted for Google
+        // alone, and F-Droid refuses an APK that carries it.
+        includeInApk = false
+        includeInBundle = false
+    }
+}
+
+dependencies {
+    implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:hermes-android")
+}

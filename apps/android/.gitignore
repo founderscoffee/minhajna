@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+node_modules/
+
+# Gradle and Android Studio
+build/
+.gradle/
+.kotlin/
+.cxx/
+.idea/
+*.iml
+*.hprof
+local.properties
+
+# No signing key is ever committed (engineering.md#secrets).
+*.keystore
+*.jks
+
+# Metro
+.metro-health-check*
+*.jsbundle
+
+# Tests
+/coverage
