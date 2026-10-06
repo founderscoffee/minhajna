@@ -1,0 +1,131 @@
+# Technical check 1: the Android build
+
+This is the first of the checks before the pilot ([PRD §5.13](../prd/PRD.md#513-checks-before-the-pilot)). The question is whether the Android app can be built from its source, reproducibly and with no proprietary library. If it can, F-Droid can build it, and anyone can check an official build against the code ([PRD §1.3](../prd/PRD.md#13-licences), [§1.9](../prd/PRD.md#19-official-builds-releases-the-name-and-security)). It is ticket FC-02 of the field-check plan ([#18](https://github.com/founderscoffee/minhajna/issues/18)).
+
+- [The result](#the-result)
+- [The app](#the-app)
+- [What had to change](#what-had-to-change)
+- [Repeating the build](#repeating-the-build)
+- [F-Droid](#f-droid)
+- [Dependencies](#dependencies)
+- [Still open](#still-open)
+
+## The result
+
+| Check | Result |
+|---|---|
+| Two clean builds give the same APK | **Passed.** Two builds from clean checkouts in different folders gave the same APK byte for byte, and so did a third, in a working copy. CI repeats the check on every change to the app |
+| A signed APK can be checked against a rebuild | **Passed.** The signature of a signed APK, copied onto a clean rebuild from another folder, verifies ([below](#checking-a-signed-apk)) |
+| No proprietary library | **Passed.** The build stops if one appears, directly or through another library. It was tried with Google Play services, and with Google's Maps utilities, which pull them in |
+| F-Droid's scanner on the APK | **Passed.** No known non-free code, and no extra signing block |
+| F-Droid's scanner on the source | **46 findings, all in installed npm packages.** Each one has a fix, [below](#f-droid) |
+| The app built with F-Droid's tools | **Open.** It needs a build recipe, with the Hermes compiler built from source ([below](#f-droid)) |
+| No permission | **Passed.** The release APK asks for none, not even the network. CI checks it |
+| Installs and opens on Android 8 | **Passed on an emulator** with Android 8.0 and a 360×800 screen, without Google Play services. It opened in about 0.2 seconds, but on a fast computer. **Open on a budget phone** |
+| `NETWORK.md` | **Unchanged.** The app makes no network call |
+
+## The app
+
+- React Native 0.87.1 with React 19.2.3, the new architecture and the Hermes engine 250829098.0.17, without Expo ([PRD §5.2](../prd/PRD.md#52-architecture)).
+- Android 8 (API 26) and later. It targets Android 16 (API 36), and compiles against API 37 ([PRD §6.8](../prd/PRD.md#68-non-functional-requirements)).
+- One screen shows the name and the tagline in Arabic, right to left, whatever the phone's language. The design's tokens, fonts and components come with [#20](https://github.com/founderscoffee/minhajna/issues/20), and the interface language with [#21](https://github.com/founderscoffee/minhajna/issues/21).
+- The application ID is `dz.minhajna.preview` for now. The final ID follows the project's domain.
+- The release APK carries code for the two processor types of Android phones, `armeabi-v7a` and `arm64-v8a`, and weighs 27.2 MB. Its code is not shrunk yet.
+
+## What had to change
+
+React Native's app template is the starting point. These changes make it follow the [engineering rules](../contributing/engineering.md):
+
+- **No proprietary library.** `android/build.gradle` stops the build when a library from a proprietary group is resolved, anywhere in the build. The groups cover Google Play services, Firebase, Play Core, Google's ads, consent and ML Kit libraries, Play billing and install referrer, Crashlytics, Facebook's SDKs, and Huawei's and Amazon's services.
+- **Release builds** come out unsigned, so that two builds can be compared. They carry no version-control information and no dependency block. Google Play asks for that block, encrypted for Google alone, and F-Droid refuses it.
+- **No permission.**
+  - androidx adds a permission of the app's own, for receivers registered through `ContextCompat.registerReceiver`. Nothing in the app calls it, so the manifest removes the permission.
+  - CI fails if a library starts to call it, since the call would then throw on Android 12 and earlier.
+- **No request to another app.** At start-up, androidx's emoji support asks the phone's font provider for a newer emoji font, which it may download. On most phones that provider is Google Play services. The manifest turns this off, and emoji use the phone's own font.
+- **The same native libraries in any folder.**
+  - Two clean builds first differed only in the two native libraries compiled from source. Each kept the paths it was built from, in its build ID, and one also kept the path of the builder's home folder.
+  - The paths of the checkout, the Gradle cache and the SDK are now mapped to fixed names when compiling, and so is the compile directory.
+- **Installs run no scripts,** and the app has its own lockfile, outside the root workspaces.
+- **Gradle's download is checked** against its published SHA-256, and CI checks the Gradle wrapper.
+- **Licences.**
+  - Files from the template keep Meta's MIT notice, and the Gradle wrapper keeps its Apache-2.0 notice. The edit-text drawable keeps the Android Open Source Project's notice.
+  - The launcher icon is drawn from the logo, under CC-BY-SA-4.0.
+- **Removed from the template:** the debug signing key, the iOS project, the Ruby files, the PNG launcher icons and the linter settings. The linter comes with [#17](https://github.com/founderscoffee/minhajna/issues/17).
+
+## Repeating the build
+
+You need JDK 17, Node.js 22.18 or later, and the Android SDK with platform 37, build tools 37.0.0, NDK 27.1.12297006 and CMake 3.22.1.
+
+```sh
+git clone https://github.com/founderscoffee/minhajna.git
+cd minhajna/apps/android
+npm ci --no-audit
+cd android
+./gradlew assembleRelease
+sha256sum app/build/outputs/apk/release/app-release-unsigned.apk
+```
+
+Build again from a second clone in another folder, and the two checksums match. Any folder works, unless its path has a space.
+
+### Checking a signed APK
+
+A signed APK differs from an unsigned build only by its signature. To check one against the source, rebuild it as above. Then F-Droid's [`apksigcopier`](https://github.com/obfusk/apksigcopier) copies the signature onto your build and checks that it verifies:
+
+```sh
+apksigcopier compare minhajna-signed.apk --unsigned app/build/outputs/apk/release/app-release-unsigned.apk
+```
+
+This works only if the release was signed without moving the files inside the APK. Sign with `apksigner sign --alignment-preserved --v1-signing-enabled false`. Android 8 doesn't need the old v1 scheme. Without `--alignment-preserved`, `apksigner` realigns the files, and the signature no longer fits any rebuild.
+
+## F-Droid
+
+**The APK.** F-Droid's scanner, from fdroidserver 2.4.5 with its latest list of non-free libraries, found no non-free code and no extra signing block. CI runs the same scan on every build.
+
+**The source.** F-Droid scans the source after the dependencies are installed and before the build. The scan found 46 problems and 10 warnings, all in npm packages under `apps/android/node_modules`. None is in the project's own files.
+
+| Found | How many | What it is | The fix in F-Droid's build recipe |
+|---|---|---|---|
+| The Hermes compiler, `hermes-compiler/hermesc` | 3 programs, and 9 Windows libraries as warnings | It turns the app's JavaScript into bytecode during the build | Build it from Hermes's source, at tag `hermes-v250829098.0.17`, into `node_modules/react-native/sdks/hermes/build/bin/`, or point `REACT_NATIVE_OVERRIDE_HERMES_DIR` at the Hermes build. React Native's Gradle plugin looks there before it uses the prebuilt compiler. Then delete the prebuilt files |
+| `react-native/React/I18n/strings/*/fbt_language_pack.bin` | 36 | Translation packs for iOS | Delete them: Android doesn't use them |
+| `fb-dotslash/bin` | 5 | Meta's tool that fetches the debugger's programs | Delete them: the build doesn't use them |
+| `fsevents/fsevents.node` | 1 warning | File watching on macOS | Delete it |
+| Unknown Maven repositories | 2 | React Native's script for publishing itself, and a local folder that older versions of React Native used, in `react-native-safe-area-context` | Ignore them: the build uses neither |
+
+The scanner also removes the Gradle wrapper, as it does for every app, and F-Droid builds with its own Gradle 9.4.1.
+
+Gradle downloads the Android libraries, such as React Native's, Hermes's and androidx. They are open source, and come from Maven Central and Google's Maven repository, which the scanner accepts.
+
+**Still to do:**
+1. Write the build recipe.
+2. Build with `fdroid build` on F-Droid's build server.
+3. Check that the Hermes compiler built from source gives the same bytecode as the prebuilt one. Only then can F-Droid's build match the project's signed APK.
+
+## Dependencies
+
+**npm.** The app installs 664 packages. Nearly all are tools for building and testing. The app itself runs React, React Native and `react-native-safe-area-context`.
+
+The licences are MIT (573), ISC (44), BSD-3-Clause (25), Apache-2.0 (11), BSD-2-Clause (4), 0BSD (1) and CC-BY-4.0 (1). Three more packages offer MIT among other licences. Two need a look:
+- **`argparse` 2.0.1** is under the Python Software Foundation licence (`Python-2.0`), which is not on the allowed list, so a maintainer decides ([engineering rules](../contributing/engineering.md#dependencies)). It reaches React Native's command-line tools through `cosmiconfig` and `js-yaml`.
+- **`exit` 0.1.2**, which Jest uses, declares MIT in an old format that the lockfile doesn't record.
+
+**Known vulnerabilities.** Two advisories have no fixed version yet:
+- [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) in `braces` (high): deeply nested patterns can exhaust the stack.
+- [GHSA-hp3w-g68c-fv3c](https://github.com/advisories/GHSA-hp3w-g68c-fv3c) in `sprintf-js` (moderate): an unbounded precision can tie it up.
+
+Both are in tools that run on the developer's machine, on the project's own files: Metro, React Native's command-line tools and Jest. Neither reaches the APK. The dependency review fails on any known vulnerability, so it will fail on these until a fix ships, or a maintainer allows them.
+
+**Android libraries.** The dependency review reads only npm's lockfile, so the build's own check and F-Droid's scanner watch these. The libraries in the APK are under three licences:
+- Apache-2.0: androidx, Kotlin, OkHttp, Okio, SoLoader and fbjni.
+- MIT: React Native, Hermes, Fresco and Yoga.
+- A BSD licence: Bolts, which Fresco uses. The Bolts project is under MIT now.
+
+React Native includes OkHttp for its network functions. Without the network permission, they cannot reach the network.
+
+## Still open
+
+- **A budget phone.** Time the app's start on a budget 360×800 phone with Android 8. The target is under 2 seconds ([PRD §6.8](../prd/PRD.md#68-non-functional-requirements)).
+- **F-Droid's build:** the recipe and the Hermes compiler, as above.
+- **The same APK on two systems.** CI compares two Linux builds, and the builds above were made on macOS. F-Droid builds on Debian, so the next step is to compare a macOS build with a Linux one.
+- **The size.** Shrinking the code, and one APK for each processor type, would make the install smaller.
+- **The application ID**, once the project's domain is registered.
+- **Maintainer decisions** on the `argparse` licence and the two advisories.
