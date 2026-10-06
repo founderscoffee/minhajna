@@ -161,10 +161,7 @@ export async function verifyHistory(digest: Digest, entries: readonly Entry[]): 
       ids.every((id) => {
         const target = byId.get(id);
         return (
-          target !== undefined &&
-          target.kind !== ERASURE &&
-          target.seq < entry.seq &&
-          target.layer === entry.layer
+          target !== undefined && target.kind !== ERASURE && target.seq < entry.seq && target.layer === entry.layer
         );
       });
     if (!valid) {

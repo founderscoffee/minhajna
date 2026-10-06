@@ -300,7 +300,8 @@ function currentRecords(state: State): RecordEvent[] {
   for (const pupil of state.pupils.values()) records.push({ kind: 'pupil.set', pupil });
   for (const course of state.courses.values()) records.push({ kind: 'course.set', course });
   // A version names the first day it applies, which can be later than the day the teacher gave it.
-  for (const { version, from } of state.timetables) records.push({ kind: 'timetable.set', version: { ...version, from } });
+  for (const { version, from } of state.timetables)
+    records.push({ kind: 'timetable.set', version: { ...version, from } });
   for (const entry of state.calendar) records.push({ kind: 'calendar.set', entry });
   const sessions = [...state.sessions.values()]
     .flatMap((versions) => versions.slice(-1))

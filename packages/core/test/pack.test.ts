@@ -40,7 +40,10 @@ describe('plan packs', () => {
     assert.deepEqual(problemsOf({ ...mathPackSource, status: 'approved' }), [{ path: 'status', problem: 'invalid' }]);
     assert.deepEqual(problemsOf({ ...mathPackSource, format: 2 }), [{ path: 'format', problem: 'invalid' }]);
     assert.deepEqual(
-      problemsOf({ ...mathPackSource, items: [...mathPackSource.items, { id: 'l1', kind: 'lesson', title: 'Again', budget: 1 }] }),
+      problemsOf({
+        ...mathPackSource,
+        items: [...mathPackSource.items, { id: 'l1', kind: 'lesson', title: 'Again', budget: 1 }],
+      }),
       [{ path: 'items[14].id', problem: 'duplicate' }],
     );
     assert.deepEqual(
@@ -48,21 +51,33 @@ describe('plan packs', () => {
       [{ path: 'items[0].budget', problem: 'required' }],
     );
     assert.deepEqual(
-      problemsOf({ ...mathPackSource, items: [{ id: 'x', kind: 'lesson', title: 'Bad', budget: 1, stages: 'none', unit: 'nowhere' }], merges: [] }),
+      problemsOf({
+        ...mathPackSource,
+        items: [{ id: 'x', kind: 'lesson', title: 'Bad', budget: 1, stages: 'none', unit: 'nowhere' }],
+        merges: [],
+      }),
       [
         { path: 'items[0].unit', problem: 'unknown-reference' },
         { path: 'items[0].stages', problem: 'unknown-reference' },
       ],
     );
-    assert.deepEqual(problemsOf({ ...mathPackSource, merges: [['l2', 'u1']] }), [{ path: 'merges[0]', problem: 'unknown-reference' }]);
-    assert.deepEqual(problemsOf({ ...mathPackSource, items: [{ id: 'x', kind: 'chapter', title: 'Bad', budget: 1 }], merges: [] }), [
-      { path: 'items[0].kind', problem: 'invalid' },
+    assert.deepEqual(problemsOf({ ...mathPackSource, merges: [['l2', 'u1']] }), [
+      { path: 'merges[0]', problem: 'unknown-reference' },
     ]);
+    assert.deepEqual(
+      problemsOf({ ...mathPackSource, items: [{ id: 'x', kind: 'chapter', title: 'Bad', budget: 1 }], merges: [] }),
+      [{ path: 'items[0].kind', problem: 'invalid' }],
+    );
     assert.deepEqual(problemsOf('not a pack'), [{ path: '', problem: 'invalid' }]);
   });
 
   it('asks week packs for weeks', () => {
-    const source = { ...mathPackSource, anchor: { kind: 'weeks' }, items: [{ id: 'x', kind: 'lesson', title: 'No week' }], merges: [] };
+    const source = {
+      ...mathPackSource,
+      anchor: { kind: 'weeks' },
+      items: [{ id: 'x', kind: 'lesson', title: 'No week' }],
+      merges: [],
+    };
     assert.deepEqual(problemsOf(source), [{ path: 'items[0].week', problem: 'required' }]);
   });
 

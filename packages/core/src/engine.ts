@@ -13,14 +13,7 @@
 
 import type { Context } from './context.ts';
 import type { Day } from './day.ts';
-import {
-  budgetInSessions,
-  queueItems,
-  stageCount,
-  stageNames,
-  type PackItem,
-  type PlanPack,
-} from './pack.ts';
+import { budgetInSessions, queueItems, stageCount, stageNames, type PackItem, type PlanPack } from './pack.ts';
 import { findLevel, findSessionType, packKey, type Queue } from './reference.ts';
 import {
   wholeGroup,
@@ -75,7 +68,10 @@ export class Progress {
         skipped: state.skipped,
         retaught: state.retaught,
         groups: new Map(
-          [...state.groups].map(([group, progress]) => [group, { stages: new Set(progress.stages), spent: progress.spent }]),
+          [...state.groups].map(([group, progress]) => [
+            group,
+            { stages: new Set(progress.stages), spent: progress.spent },
+          ]),
         ),
       });
     }
@@ -299,7 +295,13 @@ export function courseSetup(context: Context, courseId: string): CourseSetup {
   };
 }
 
-function proposalFor(context: Context, setup: CourseSetup, progress: Progress, session: Session, sessionType: string): Proposal | null {
+function proposalFor(
+  context: Context,
+  setup: CourseSetup,
+  progress: Progress,
+  session: Session,
+  sessionType: string,
+): Proposal | null {
   if (setup.pack === null) return null;
   return propose(setup.pack, progress, {
     queue: findSessionType(context.ref.country, sessionType).queue,
@@ -335,7 +337,12 @@ function coverageFor(
       const pack = setup.pack as PlanPack;
       return [
         { op: 'taught', item: p.item.id, from: p.from, to: p.stages },
-        { op: 'taught', item: other.id, from: progress.firstOpen(other.id, session.groupId), to: stageCount(pack, other) },
+        {
+          op: 'taught',
+          item: other.id,
+          from: progress.firstOpen(other.id, session.groupId),
+          to: stageCount(pack, other),
+        },
       ];
     }
     case 'skipped': {
@@ -437,7 +444,13 @@ export function walkCourse(context: Context, courseId: string, upTo: Day): Cours
     proposals.set(session.key, p);
     return p === null
       ? null
-      : recordOf(session, { outcome: 'done' }, [{ op: 'taught', item: p.item.id, from: p.from, to: p.to }], {}, session.sessionType);
+      : recordOf(
+          session,
+          { outcome: 'done' },
+          [{ op: 'taught', item: p.item.id, from: p.from, to: p.to }],
+          {},
+          session.sessionType,
+        );
   });
   return { setup, proposals, progress };
 }
@@ -470,7 +483,12 @@ function withDetails(record: SessionRecord, details: Details): SessionRecord {
  * without a choice changes only the details it gives: it never records a
  * stage the teacher did not confirm (PRD §2.3, rule 1).
  */
-export function confirmCourse(context: Context, courseId: string, confirmations: readonly Confirmation[], upTo: Day): SessionRecord[] {
+export function confirmCourse(
+  context: Context,
+  courseId: string,
+  confirmations: readonly Confirmation[],
+  upTo: Day,
+): SessionRecord[] {
   const setup = courseSetup(context, courseId);
   const wanted = new Map(confirmations.map((confirmation) => [confirmation.sessionKey, confirmation]));
   const records: SessionRecord[] = [];
@@ -481,7 +499,13 @@ export function confirmCourse(context: Context, courseId: string, confirmations:
       const p = proposal();
       return p === null
         ? null
-        : recordOf(session, { outcome: 'done' }, [{ op: 'taught', item: p.item.id, from: p.from, to: p.to }], {}, session.sessionType);
+        : recordOf(
+            session,
+            { outcome: 'done' },
+            [{ op: 'taught', item: p.item.id, from: p.from, to: p.to }],
+            {},
+            session.sessionType,
+          );
     }
     const details = confirmation.details ?? {};
     const recorded = current(context.state.sessions.get(session.key));
@@ -492,7 +516,13 @@ export function confirmCourse(context: Context, courseId: string, confirmations:
       const choice = confirmation.choice ?? { outcome: 'done' };
       const sessionType = details.sessionType ?? session.sessionType;
       const p = proposalFor(context, setup, progress, session, sessionType);
-      record = recordOf(session, choice, coverageFor(context, setup, progress, session, p, choice, sessionType), details, sessionType);
+      record = recordOf(
+        session,
+        choice,
+        coverageFor(context, setup, progress, session, p, choice, sessionType),
+        details,
+        sessionType,
+      );
     }
     records.push(record);
     wanted.delete(session.key);

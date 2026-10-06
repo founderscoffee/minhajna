@@ -93,13 +93,66 @@ function entry(fields: Omit<CalendarEntry, 'source' | 'confidence'>): CalendarEn
 }
 
 export const calendar: readonly CalendarEntry[] = [
-  entry({ id: 'autumn', layer: 'national', from: d('2026-10-29'), to: d('2026-11-07'), effect: 'no-school', name: { en: 'Autumn holidays' } }),
-  entry({ id: 'storm', layer: 'zone', zone: '16', from: d('2026-11-18'), to: d('2026-11-18'), effect: 'closure', name: { en: 'Weather closure' } }),
-  entry({ id: 'storm-elsewhere', layer: 'zone', zone: '31', from: d('2026-11-22'), to: d('2026-11-22'), effect: 'closure', name: { en: 'Weather closure' } }),
-  entry({ id: 'exams-1', layer: 'national', from: d('2026-12-06'), to: d('2026-12-10'), effect: 'exam', levels: ['cem'], term: 1, name: { en: 'Term 1 exams' } }),
-  entry({ id: 'winter', layer: 'national', from: d('2026-12-18'), to: d('2027-01-02'), effect: 'no-school', name: { en: 'Winter holidays' } }),
-  entry({ id: 'term-2-weeks', layer: 'national', from: d('2027-01-03'), to: d('2027-01-03'), effect: 'week-a', name: { en: 'Term 2 starts on an A week' } }),
-  entry({ id: 'spring', layer: 'national', from: d('2027-03-19'), to: d('2027-04-03'), effect: 'no-school', name: { en: 'Spring holidays' } }),
+  entry({
+    id: 'autumn',
+    layer: 'national',
+    from: d('2026-10-29'),
+    to: d('2026-11-07'),
+    effect: 'no-school',
+    name: { en: 'Autumn holidays' },
+  }),
+  entry({
+    id: 'storm',
+    layer: 'zone',
+    zone: '16',
+    from: d('2026-11-18'),
+    to: d('2026-11-18'),
+    effect: 'closure',
+    name: { en: 'Weather closure' },
+  }),
+  entry({
+    id: 'storm-elsewhere',
+    layer: 'zone',
+    zone: '31',
+    from: d('2026-11-22'),
+    to: d('2026-11-22'),
+    effect: 'closure',
+    name: { en: 'Weather closure' },
+  }),
+  entry({
+    id: 'exams-1',
+    layer: 'national',
+    from: d('2026-12-06'),
+    to: d('2026-12-10'),
+    effect: 'exam',
+    levels: ['cem'],
+    term: 1,
+    name: { en: 'Term 1 exams' },
+  }),
+  entry({
+    id: 'winter',
+    layer: 'national',
+    from: d('2026-12-18'),
+    to: d('2027-01-02'),
+    effect: 'no-school',
+    name: { en: 'Winter holidays' },
+  }),
+  entry({
+    id: 'term-2-weeks',
+    layer: 'national',
+    from: d('2027-01-03'),
+    to: d('2027-01-03'),
+    effect: 'week-a',
+    name: { en: 'Term 2 starts on an A week' },
+  }),
+  entry({
+    id: 'spring',
+    layer: 'national',
+    from: d('2027-03-19'),
+    to: d('2027-04-03'),
+    effect: 'no-school',
+    name: { en: 'Spring holidays' },
+  }),
 ];
 
 /** A made-up budget pack, shaped like a CEM maths plan. */
@@ -116,14 +169,30 @@ export const mathPackSource = {
   items: [
     { id: 'd1', kind: 'diagnostic', title: 'Diagnostic assessment', budget: 1, buffer: true, term: 1 },
     { id: 'u1', kind: 'unit', title: 'Whole numbers' },
-    { id: 'l1', kind: 'lesson', title: 'Reading and writing whole numbers', unit: 'u1', budget: 2, stages: 'std', term: 1 },
+    {
+      id: 'l1',
+      kind: 'lesson',
+      title: 'Reading and writing whole numbers',
+      unit: 'u1',
+      budget: 2,
+      stages: 'std',
+      term: 1,
+    },
     { id: 'l2', kind: 'lesson', title: 'Comparing and ordering', unit: 'u1', budget: 1, stages: 'std', term: 1 },
     { id: 'l3', kind: 'lesson', title: 'Adding whole numbers', unit: 'u1', budget: 1, term: 1 },
     { id: 'l4', kind: 'lesson', title: 'Subtracting whole numbers', unit: 'u1', budget: 2, term: 1 },
     { id: 't1', kind: 'td', title: 'Number line practice', unit: 'u1', budget: 1 },
     { id: 't2', kind: 'td', title: 'Mental arithmetic', unit: 'u1', budget: 1 },
     { id: 'i1', kind: 'integration', title: 'Planning a class trip', unit: 'u1', budget: 1, term: 1 },
-    { id: 'r1', kind: 'assessment-remediation', title: 'Assessment and remediation', unit: 'u1', budget: 2, buffer: true, term: 1 },
+    {
+      id: 'r1',
+      kind: 'assessment-remediation',
+      title: 'Assessment and remediation',
+      unit: 'u1',
+      budget: 2,
+      buffer: true,
+      term: 1,
+    },
     { id: 'u2', kind: 'unit', title: 'Fractions' },
     { id: 'l5', kind: 'lesson', title: 'Fractions as parts of a whole', unit: 'u2', budget: 2, stages: 'std', term: 1 },
     { id: 'l6', kind: 'lesson', title: 'Equivalent fractions', unit: 'u2', budget: 2, optional: true, term: 2 },
@@ -191,7 +260,12 @@ function pupil(
 
 /** A CEM teacher with one class split into two half-groups for TD. */
 export function cemEvents(): RecordEvent[] {
-  const lesson = (id: string, weekday: TimetableEntry['weekday'], half: 'morning' | 'afternoon', index: number): TimetableEntry => ({
+  const lesson = (
+    id: string,
+    weekday: TimetableEntry['weekday'],
+    half: 'morning' | 'afternoon',
+    index: number,
+  ): TimetableEntry => ({
     id,
     weekday,
     slot: { half, index },
@@ -222,7 +296,9 @@ export function cemEvents(): RecordEvent[] {
       pupil('p01', 'k-1am2', 'أمينة بن علي', 'Amina Benali', 'f', ['g-1']),
       pupil('p02', 'k-1am2', 'محمد الأمين بن علي', 'Mohamed El Amine Benali', 'm', ['g-1']),
       pupil('p03', 'k-1am2', 'إسراء بوزيد', 'Israa Bouzid', 'f', ['g-1']),
-      pupil('p04', 'k-1am2', 'عبد الرحمن بن عبد الله آيت مسعود', 'Abderrahmane Ben Abdellah Ait Messaoud', 'm', ['g-1']),
+      pupil('p04', 'k-1am2', 'عبد الرحمن بن عبد الله آيت مسعود', 'Abderrahmane Ben Abdellah Ait Messaoud', 'm', [
+        'g-1',
+      ]),
       pupil('p05', 'k-1am2', 'رؤى قاسمي', 'Rouaa Kacimi', 'f', ['g-1']),
       pupil('p06', 'k-1am2', 'يوسف شعبان', 'Youcef Chaabane', 'm', ['g-2']),
       pupil('p07', 'k-1am2', 'هبة الله مرابط', 'Hibat Allah Merabet', 'f', ['g-2']),
@@ -250,8 +326,24 @@ export function cemEvents(): RecordEvent[] {
         entries: [
           lesson('e-sun', 0, 'morning', 1),
           lesson('e-mon', 1, 'morning', 2),
-          { id: 'e-tue-1', weekday: 2, slot: { half: 'afternoon', index: 1 }, courseId: 'c-math', groupId: 'g-1', weeks: 'A', sessionType: 'td' },
-          { id: 'e-tue-2', weekday: 2, slot: { half: 'afternoon', index: 1 }, courseId: 'c-math', groupId: 'g-2', weeks: 'B', sessionType: 'td' },
+          {
+            id: 'e-tue-1',
+            weekday: 2,
+            slot: { half: 'afternoon', index: 1 },
+            courseId: 'c-math',
+            groupId: 'g-1',
+            weeks: 'A',
+            sessionType: 'td',
+          },
+          {
+            id: 'e-tue-2',
+            weekday: 2,
+            slot: { half: 'afternoon', index: 1 },
+            courseId: 'c-math',
+            groupId: 'g-2',
+            weeks: 'B',
+            sessionType: 'td',
+          },
           lesson('e-wed', 3, 'morning', 3),
           lesson('e-thu', 4, 'morning', 1),
         ],

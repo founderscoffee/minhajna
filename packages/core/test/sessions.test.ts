@@ -20,7 +20,9 @@ import {
 import { cemEvents, contextOf, d, openBook } from './fixtures.ts';
 
 function describeSessions(sessions: readonly Session[]): string[] {
-  return sessions.map((s) => `${s.day} ${slotKey(s.slot)} ${s.groupId} ${s.sessionType}${s.calendar ? ` ${s.calendar}` : ''}`);
+  return sessions.map(
+    (s) => `${s.day} ${slotKey(s.slot)} ${s.groupId} ${s.sessionType}${s.calendar ? ` ${s.calendar}` : ''}`,
+  );
 }
 
 /** The fixtures' timetable as a new version from `from`, with Monday's lesson in the given morning slot. */
@@ -44,7 +46,13 @@ function proposals(context: Context, from: Day, to: Day): string[] {
 function teacherEntry(fields: Pick<CalendarEntry, 'id' | 'from' | 'to' | 'effect'>): RecordEvent {
   return {
     kind: 'calendar.set',
-    entry: { ...fields, layer: 'teacher', name: { en: 'Made-up training' }, source: 'teacher', confidence: 'announced' },
+    entry: {
+      ...fields,
+      layer: 'teacher',
+      name: { en: 'Made-up training' },
+      source: 'teacher',
+      confidence: 'announced',
+    },
   };
 }
 
@@ -58,7 +66,9 @@ describe('sessions from the timetable and the calendar', () => {
       '2026-09-23 m3 g-all lesson',
       '2026-09-24 m1 g-all lesson',
     ]);
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-09-29'), d('2026-09-29'))), ['2026-09-29 a1 g-2 td']);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-09-29'), d('2026-09-29'))), [
+      '2026-09-29 a1 g-2 td',
+    ]);
   });
 
   it('marks a holiday inside a teaching week, and skips a week of holidays', async () => {
@@ -75,16 +85,26 @@ describe('sessions from the timetable and the calendar', () => {
     // The week of 25 October is the sixth teaching week, a B week. The
     // holiday week does not count, so the week of 8 November, the seventh,
     // is an A week.
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-10-27'), d('2026-10-27'))), ['2026-10-27 a1 g-2 td']);
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-11-10'), d('2026-11-10'))), ['2026-11-10 a1 g-1 td']);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-10-27'), d('2026-10-27'))), [
+      '2026-10-27 a1 g-2 td',
+    ]);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-11-10'), d('2026-11-10'))), [
+      '2026-11-10 a1 g-1 td',
+    ]);
     // Term 2 starts again on an A week.
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2027-01-05'), d('2027-01-05'))), ['2027-01-05 a1 g-1 td']);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2027-01-05'), d('2027-01-05'))), [
+      '2027-01-05 a1 g-1 td',
+    ]);
   });
 
-  it('marks closures in the school\'s zone only, and exam windows', async () => {
+  it("marks closures in the school's zone only, and exam windows", async () => {
     const context = contextOf(await openBook(cemEvents()));
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-11-18'), d('2026-11-18'))), ['2026-11-18 m3 g-all lesson closure']);
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-11-22'), d('2026-11-22'))), ['2026-11-22 m1 g-all lesson']);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-11-18'), d('2026-11-18'))), [
+      '2026-11-18 m3 g-all lesson closure',
+    ]);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-11-22'), d('2026-11-22'))), [
+      '2026-11-22 m1 g-all lesson',
+    ]);
     assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-12-06'), d('2026-12-07'))), [
       '2026-12-06 m1 g-all lesson exam',
       '2026-12-07 m2 g-all lesson exam',
@@ -107,9 +127,14 @@ describe('sessions from the timetable and the calendar', () => {
     );
     assert.equal(sessionsBetween(after, d('2026-10-05'), d('2026-10-05'))[0]?.scheduled, true);
     assert.deepEqual(awaitingBetween(after, d('2026-09-20'), d('2026-10-05')), []);
-    assert.deepEqual(proposals(after, d('2026-10-06'), d('2026-10-08')), proposals(before, d('2026-10-06'), d('2026-10-08')));
+    assert.deepEqual(
+      proposals(after, d('2026-10-06'), d('2026-10-08')),
+      proposals(before, d('2026-10-06'), d('2026-10-08')),
+    );
     assert.equal(rollCallUnits(after, 'k-1am2', d('2026-10-05'), d('2026-10-05')).length, 1);
-    assert.deepEqual(describeSessions(sessionsBetween(after, d('2026-10-12'), d('2026-10-12'))), ['2026-10-12 m4 g-all lesson']);
+    assert.deepEqual(describeSessions(sessionsBetween(after, d('2026-10-12'), d('2026-10-12'))), [
+      '2026-10-12 m4 g-all lesson',
+    ]);
 
     // A version dated ahead applies from its own day.
     await book.record(d('2026-10-06'), timetable('v3', d('2026-10-18'), 2));
@@ -117,7 +142,9 @@ describe('sessions from the timetable and the calendar', () => {
       book.state.timetables.map(({ version, recorded, from }) => `${version.id} ${recorded} ${from}`),
       ['v1 2026-09-13 2026-09-20', 'v2 2026-10-06 2026-10-06', 'v3 2026-10-06 2026-10-18'],
     );
-    assert.deepEqual(describeSessions(sessionsBetween(contextOf(book), d('2026-10-19'), d('2026-10-19'))), ['2026-10-19 m2 g-all lesson']);
+    assert.deepEqual(describeSessions(sessionsBetween(contextOf(book), d('2026-10-19'), d('2026-10-19'))), [
+      '2026-10-19 m2 g-all lesson',
+    ]);
   });
 
   it('keeps a recorded session that a timetable recorded the same day no longer has', async () => {
@@ -137,7 +164,7 @@ describe('sessions from the timetable and the calendar', () => {
     assert.equal(sessionsBetween(context, d('2026-09-20'), d('2026-09-24')).length, 5);
   });
 
-  it('never lets the teacher\'s own calendar change the A/B weeks, and marks only the teacher\'s sessions', async () => {
+  it("never lets the teacher's own calendar change the A/B weeks, and marks only the teacher's sessions", async () => {
     const book = await openBook(cemEvents());
     await book.recordAll(d('2026-10-01'), [
       teacherEntry({ id: 'training', from: d('2026-10-04'), to: d('2026-10-08'), effect: 'no-school' }),
@@ -145,8 +172,12 @@ describe('sessions from the timetable and the calendar', () => {
     ]);
     const context = contextOf(book);
     // The week of 11 October stays a B week, and so does the week of 13 December.
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-10-13'), d('2026-10-13'))), ['2026-10-13 a1 g-2 td']);
-    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-12-15'), d('2026-12-15'))), ['2026-12-15 a1 g-2 td']);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-10-13'), d('2026-10-13'))), [
+      '2026-10-13 a1 g-2 td',
+    ]);
+    assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-12-15'), d('2026-12-15'))), [
+      '2026-12-15 a1 g-2 td',
+    ]);
     assert.deepEqual(describeSessions(sessionsBetween(context, d('2026-10-04'), d('2026-10-06'))), [
       '2026-10-04 m1 g-all lesson teacher',
       '2026-10-05 m2 g-all lesson teacher',

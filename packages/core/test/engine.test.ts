@@ -66,7 +66,7 @@ describe('the engine', () => {
     ]);
   });
 
-  it('shares a merged session\'s time between its items', async () => {
+  it("shares a merged session's time between its items", async () => {
     const book = await openBook(cemEvents());
     await confirm(book, d('2026-09-20'), d('2026-09-24'), { '2026-09-24': { outcome: 'merged', with: 'l3' } });
     const progress = walkCourse(contextOf(book), 'c-math', d('2026-09-24')).progress;
@@ -86,12 +86,16 @@ describe('the engine', () => {
   it('skips an item, and can teach the next one in its place', async () => {
     const book = await openBook(cemEvents());
     await confirm(book, d('2026-09-20'), d('2026-09-24'), { '2026-09-24': { outcome: 'skipped', instead: true } });
-    const thursday = [...book.state.sessions.values()].map((versions) => versions.at(-1)?.value).find((r) => r?.session.day === '2026-09-24');
+    const thursday = [...book.state.sessions.values()]
+      .map((versions) => versions.at(-1)?.value)
+      .find((r) => r?.session.day === '2026-09-24');
     assert.deepEqual(thursday?.coverage, [
       { op: 'skipped', item: 'l2' },
       { op: 'taught', item: 'l3', from: 0, to: 1 },
     ]);
-    assert.deepEqual(proposalsFor(contextOf(book), 'c-math', d('2026-09-27'), d('2026-09-27')), ['2026-09-27 g-all: l4 0-0']);
+    assert.deepEqual(proposalsFor(contextOf(book), 'c-math', d('2026-09-27'), d('2026-09-27')), [
+      '2026-09-27 g-all: l4 0-0',
+    ]);
   });
 
   it('does not move the plan for a session not held, or an item taught again', async () => {
@@ -100,7 +104,9 @@ describe('the engine', () => {
       '2026-09-20': { outcome: 'not-held' },
       '2026-09-21': { outcome: 'retaught', item: 'd1' },
     });
-    assert.deepEqual(proposalsFor(contextOf(book), 'c-math', d('2026-09-23'), d('2026-09-23')), ['2026-09-23 g-all: d1 0-1']);
+    assert.deepEqual(proposalsFor(contextOf(book), 'c-math', d('2026-09-23'), d('2026-09-23')), [
+      '2026-09-23 g-all: d1 0-1',
+    ]);
   });
 
   it('runs TD in its own queue, done for the class once both half-groups have had it', async () => {
@@ -118,7 +124,9 @@ describe('the engine', () => {
     await confirm(book, d('2026-09-27'), d('2026-10-01'));
     const context = contextOf(book);
     assert.deepEqual(
-      proposalsFor(context, 'c-math', d('2026-10-06'), d('2026-10-13')).filter((line) => line.includes('g-1') || line.includes('g-2')),
+      proposalsFor(context, 'c-math', d('2026-10-06'), d('2026-10-13')).filter(
+        (line) => line.includes('g-1') || line.includes('g-2'),
+      ),
       ['2026-10-06 g-1: t2 0-1', '2026-10-13 g-2: t2 0-1'],
     );
     const progress = walkCourse(context, 'c-math', d('2026-10-01')).progress;
@@ -150,7 +158,9 @@ describe('the engine', () => {
     assert.ok(monday);
     await book.recordAll(
       d('2026-09-24'),
-      confirmSessions(contextOf(book), [{ session: monday, choice: { outcome: 'not-held' }, reason: 'Recorded by mistake' }]),
+      confirmSessions(contextOf(book), [
+        { session: monday, choice: { outcome: 'not-held' }, reason: 'Recorded by mistake' },
+      ]),
     );
     const progress = walkCourse(contextOf(book), 'c-math', d('2026-09-24')).progress;
     const l1 = mathPack.items.find((item) => item.id === 'l1');
@@ -182,14 +192,25 @@ describe('the engine', () => {
     const context = contextOf(book);
     const [sunday] = awaitingBetween(context, d('2026-09-20'), d('2026-09-20'));
     assert.ok(sunday);
-    assert.throws(() => confirmSessions(context, [{ session: sunday, choice: { outcome: 'partial', reached: 2 } }]), RangeError);
-    assert.throws(() => confirmSessions(context, [{ session: sunday, choice: { outcome: 'merged', with: 'd1' } }]), RangeError);
-    assert.throws(() => confirmSessions(context, [{ session: sunday, choice: { outcome: 'retaught', item: 'u1' } }]), RangeError);
+    assert.throws(
+      () => confirmSessions(context, [{ session: sunday, choice: { outcome: 'partial', reached: 2 } }]),
+      RangeError,
+    );
+    assert.throws(
+      () => confirmSessions(context, [{ session: sunday, choice: { outcome: 'merged', with: 'd1' } }]),
+      RangeError,
+    );
+    assert.throws(
+      () => confirmSessions(context, [{ session: sunday, choice: { outcome: 'retaught', item: 'u1' } }]),
+      RangeError,
+    );
   });
 
   it('proposes nothing without a pack, and says when the pinned pack is missing', async () => {
     const events = cemEvents().map((event) =>
-      event.kind === 'course.set' ? { ...event, course: { ...event.course, pack: { id: 'dz.cem.1am.math.other', release: '2026.1' } } } : event,
+      event.kind === 'course.set'
+        ? { ...event, course: { ...event.course, pack: { id: 'dz.cem.1am.math.other', release: '2026.1' } } }
+        : event,
     );
     const context = makeContext(reference, (await openBook(events)).state);
     const walk = walkCourse(context, 'c-math', d('2026-09-20'));

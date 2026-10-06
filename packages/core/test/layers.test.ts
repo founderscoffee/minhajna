@@ -24,7 +24,14 @@ import { cemEvents, contextOf, d, openBook } from './fixtures.ts';
 
 const PRIVATE_NOTE = 'A made-up private note that must never leave the device';
 
-const OUTBOUND: readonly OutboundRoute[] = ['seating-plan-printout', 'documents', 'statement', 'handover', 'handover-direct', 'school-space'];
+const OUTBOUND: readonly OutboundRoute[] = [
+  'seating-plan-printout',
+  'documents',
+  'statement',
+  'handover',
+  'handover-direct',
+  'school-space',
+];
 
 describe('record layers', () => {
   it('lets the private layer reach only the teacher, and a seating plan its printout', () => {
@@ -44,9 +51,16 @@ describe('record layers', () => {
   });
 
   it('has no route to insights or totals, which carry only figures formed later', () => {
-    assert.deepEqual(ROUTES.filter((route) => mayTravel('totals', route)), []);
+    assert.deepEqual(
+      ROUTES.filter((route) => mayTravel('totals', route)),
+      [],
+    );
     for (const name of ['insights', 'totals']) {
-      assert.equal(ROUTES.some((route) => route === name), false, name);
+      assert.equal(
+        ROUTES.some((route) => route === name),
+        false,
+        name,
+      );
       for (const layer of LAYERS) assert.equal(mayTravel(layer, name as Route), false, `${layer} to ${name}`);
     }
   });
@@ -57,9 +71,20 @@ describe('record layers', () => {
       layerOf({ kind: 'seating.set', plan: { classId: 'k', groupId: 'g', rows: 1, columns: 1, seats: [] } }),
       'private',
     );
-    const base = { id: 'x', from: d('2026-11-02'), to: d('2026-11-02'), effect: 'marker', name: {}, source: '', confidence: 'announced' } as const;
+    const base = {
+      id: 'x',
+      from: d('2026-11-02'),
+      to: d('2026-11-02'),
+      effect: 'marker',
+      name: {},
+      source: '',
+      confidence: 'announced',
+    } as const;
     assert.equal(layerOf({ kind: 'calendar.set', entry: { ...base, layer: 'teacher' } }), 'private');
-    assert.equal(layerOf({ kind: 'calendar.set', entry: { ...base, layer: 'school', schoolId: 's' } }), 'lesson-record');
+    assert.equal(
+      layerOf({ kind: 'calendar.set', entry: { ...base, layer: 'school', schoolId: 's' } }),
+      'lesson-record',
+    );
   });
 
   it('never lets a private note reach a statement', async () => {
@@ -92,12 +117,34 @@ describe('record layers', () => {
     await book.recordAll(d('2026-09-20'), [
       ...confirmSessions(contextOf(book), [{ session, choice: { outcome: 'not-held' }, privateNote: PRIVATE_NOTE }]),
       takeRollCall(contextOf(book), unit, { absent: [{ pupilId: 'p01', justified: false }], late: ['p02'] }),
-      { kind: 'pupil.moved', pupilId: 'p02', movement: { day: d('2026-09-20'), kind: 'out', reason: 'Transfer', confirmed: true } },
+      {
+        kind: 'pupil.moved',
+        pupilId: 'p02',
+        movement: { day: d('2026-09-20'), kind: 'out', reason: 'Transfer', confirmed: true },
+      },
       {
         kind: 'calendar.set',
-        entry: { id: 'own', layer: 'teacher', from: d('2026-10-04'), to: d('2026-10-04'), effect: 'marker', name: { en: 'Made-up private meeting' }, source: 'teacher', confidence: 'announced' },
+        entry: {
+          id: 'own',
+          layer: 'teacher',
+          from: d('2026-10-04'),
+          to: d('2026-10-04'),
+          effect: 'marker',
+          name: { en: 'Made-up private meeting' },
+          source: 'teacher',
+          confidence: 'announced',
+        },
       },
-      { kind: 'seating.set', plan: { classId: 'k-1am2', groupId: 'g-all', rows: 1, columns: 2, seats: [{ row: 1, column: 1, pupilId: 'p01' }] } },
+      {
+        kind: 'seating.set',
+        plan: {
+          classId: 'k-1am2',
+          groupId: 'g-all',
+          rows: 1,
+          columns: 2,
+          seats: [{ row: 1, column: 1, pupilId: 'p01' }],
+        },
+      },
     ]);
 
     const printout = recordsForRoute(book.state, 'seating-plan-printout');
@@ -110,7 +157,10 @@ describe('record layers', () => {
     const book = await openBook(cemEvents());
     const [sunday, monday, tuesday, wednesday] = awaitingBetween(contextOf(book), d('2026-09-20'), d('2026-09-23'));
     assert.ok(sunday && monday && tuesday && wednesday);
-    await book.recordAll(d('2026-09-20'), confirmSessions(contextOf(book), [{ session: sunday, privateNote: PRIVATE_NOTE }]));
+    await book.recordAll(
+      d('2026-09-20'),
+      confirmSessions(contextOf(book), [{ session: sunday, privateNote: PRIVATE_NOTE }]),
+    );
     await book.recordAll(d('2026-09-21'), confirmSessions(contextOf(book), [{ session: monday }]));
     await book.recordAll(d('2026-09-23'), confirmSessions(contextOf(book), [{ session: wednesday }]));
     // Tuesday is confirmed a month late. Nobody it is sent to can tell.

@@ -21,7 +21,13 @@ import { cemEvents, contextOf, d, mathPackSource, openBook, primaryEvents, refer
 async function confirmAll(book: RecordBook, from: Day, to: Day, choice?: Choice): Promise<void> {
   const context = contextOf(book);
   const sessions = awaitingBetween(context, from, to);
-  await book.recordAll(to, confirmSessions(context, sessions.map((session) => (choice === undefined ? { session } : { session, choice }))));
+  await book.recordAll(
+    to,
+    confirmSessions(
+      context,
+      sessions.map((session) => (choice === undefined ? { session } : { session, choice })),
+    ),
+  );
 }
 
 describe('pacing', () => {
@@ -76,7 +82,15 @@ describe('pacing', () => {
 
   it('takes buffers only from the term being checked', async () => {
     // The same pack, with a made-up term-2 buffer that must not absorb a term-1 delay.
-    const buffer = { id: 'r2', kind: 'assessment-remediation', title: 'Term 2 remediation', unit: 'u2', budget: 3, buffer: true, term: 2 };
+    const buffer = {
+      id: 'r2',
+      kind: 'assessment-remediation',
+      title: 'Term 2 remediation',
+      unit: 'u2',
+      budget: 3,
+      buffer: true,
+      term: 2,
+    };
     const pack = parsePlanPack({ ...mathPackSource, items: [...mathPackSource.items, buffer] });
     assert.ok(pack.ok);
     const withBuffer = { ...reference, packs: new Map([[packKey(pack.value.id, pack.value.release), pack.value]]) };
@@ -88,12 +102,21 @@ describe('pacing', () => {
     assert.equal(result?.delay, 2);
   });
 
-  it('counts sessions lost to the calendar apart, and those lost to the teacher\'s own calendar for the teacher alone', async () => {
+  it("counts sessions lost to the calendar apart, and those lost to the teacher's own calendar for the teacher alone", async () => {
     const book = await openBook(cemEvents());
     assert.deepEqual(pace(contextOf(book), 'c-math', d('2026-11-19'))?.lost, { holiday: 1, closure: 1, teacher: 0 });
     await book.record(d('2026-10-01'), {
       kind: 'calendar.set',
-      entry: { id: 'training', layer: 'teacher', from: d('2026-10-04'), to: d('2026-10-08'), effect: 'no-school', name: { en: 'Made-up training week' }, source: 'teacher', confidence: 'announced' },
+      entry: {
+        id: 'training',
+        layer: 'teacher',
+        from: d('2026-10-04'),
+        to: d('2026-10-08'),
+        effect: 'no-school',
+        name: { en: 'Made-up training week' },
+        source: 'teacher',
+        confidence: 'announced',
+      },
     });
     const result = pace(contextOf(book), 'c-math', d('2026-11-19'));
     assert.deepEqual(result?.lost, { holiday: 1, closure: 1, teacher: 4 });

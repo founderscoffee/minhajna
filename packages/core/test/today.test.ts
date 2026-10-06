@@ -4,11 +4,18 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { awaitingBetween, confirmSessions, current, recordsForRoute, todayView, type OutboundRoute } from '../src/index.ts';
+import {
+  awaitingBetween,
+  confirmSessions,
+  current,
+  recordsForRoute,
+  todayView,
+  type OutboundRoute,
+} from '../src/index.ts';
 import { cemEvents, contextOf, d, openBook, primaryEvents } from './fixtures.ts';
 
 describe('Today', () => {
-  it('lists the day\'s sessions with their proposals', async () => {
+  it("lists the day's sessions with their proposals", async () => {
     const view = todayView(contextOf(await openBook(cemEvents())), d('2026-09-20'));
     assert.equal(view.sessions.length, 1);
     const [first] = view.sessions;
@@ -40,7 +47,14 @@ describe('Today', () => {
     );
     assert.deepEqual(
       events.map((event) => event.kind),
-      ['session.recorded', 'session.recorded', 'session.noted', 'session.recorded', 'session.recorded', 'session.recorded'],
+      [
+        'session.recorded',
+        'session.recorded',
+        'session.noted',
+        'session.recorded',
+        'session.recorded',
+        'session.recorded',
+      ],
     );
     await book.recordAll(d('2026-09-24'), events);
 
@@ -55,12 +69,15 @@ describe('Today', () => {
 
   it('marks holidays and the sessions they replace', async () => {
     const view = todayView(contextOf(await openBook(cemEvents())), d('2026-10-29'));
-    assert.deepEqual(view.marks.map((mark) => mark.id), ['autumn']);
+    assert.deepEqual(
+      view.marks.map((mark) => mark.id),
+      ['autumn'],
+    );
     assert.equal(view.sessions[0]?.status, 'calendar');
     assert.equal(view.sessions[0]?.proposal, null);
   });
 
-  it('shows the teacher\'s own time', async () => {
+  it("shows the teacher's own time", async () => {
     const view = todayView(contextOf(await openBook(primaryEvents())), d('2026-09-22'));
     assert.deepEqual(view.blocks, [{ weekday: 2, half: 'afternoon', label: 'Teacher time' }]);
   });
@@ -72,7 +89,9 @@ describe('Today', () => {
     await book.recordAll(d('2026-09-20'), confirmSessions(contextOf(book), [{ session: sunday }]));
     await book.recordAll(
       d('2026-09-22'),
-      confirmSessions(contextOf(book), [{ session: sunday, choice: { outcome: 'not-held' }, reason: 'Recorded on the wrong day' }]),
+      confirmSessions(contextOf(book), [
+        { session: sunday, choice: { outcome: 'not-held' }, reason: 'Recorded on the wrong day' },
+      ]),
     );
     const versions = book.state.sessions.get(sunday.key);
     assert.equal(versions?.length, 2);
@@ -84,28 +103,45 @@ describe('Today', () => {
     assert.equal(book.state.notes.get(sunday.key)?.reasonText, 'Recorded on the wrong day');
   });
 
-  it('keeps a reason in the teacher\'s own words in the private note, never in the session record', async () => {
+  it("keeps a reason in the teacher's own words in the private note, never in the session record", async () => {
     const book = await openBook(cemEvents());
     const [sunday] = awaitingBetween(contextOf(book), d('2026-09-20'), d('2026-09-20'));
     assert.ok(sunday);
     const events = confirmSessions(contextOf(book), [
-      { session: sunday, choice: { outcome: 'not-held' }, privateReason: 'teacher-absent', reason: 'Made-up: I was ill' },
+      {
+        session: sunday,
+        choice: { outcome: 'not-held' },
+        privateReason: 'teacher-absent',
+        reason: 'Made-up: I was ill',
+      },
     ]);
-    assert.deepEqual(events.map((event) => event.kind), ['session.recorded', 'session.noted']);
+    assert.deepEqual(
+      events.map((event) => event.kind),
+      ['session.recorded', 'session.noted'],
+    );
     assert.doesNotMatch(JSON.stringify(events[0]), /ill/);
     await book.recordAll(d('2026-09-20'), events);
 
     // A correction's reason goes into the note too, which keeps what it said before.
     await book.recordAll(
       d('2026-09-22'),
-      confirmSessions(contextOf(book), [{ session: sunday, choice: { outcome: 'not-held' }, reason: 'Made-up: a note came in' }]),
+      confirmSessions(contextOf(book), [
+        { session: sunday, choice: { outcome: 'not-held' }, reason: 'Made-up: a note came in' },
+      ]),
     );
     assert.deepEqual(book.state.notes.get(sunday.key), {
       sessionKey: sunday.key,
       reason: 'teacher-absent',
       reasonText: 'Made-up: a note came in',
     });
-    const outbound: readonly OutboundRoute[] = ['seating-plan-printout', 'documents', 'statement', 'handover', 'handover-direct', 'school-space'];
+    const outbound: readonly OutboundRoute[] = [
+      'seating-plan-printout',
+      'documents',
+      'statement',
+      'handover',
+      'handover-direct',
+      'school-space',
+    ];
     for (const route of outbound) {
       assert.doesNotMatch(JSON.stringify(recordsForRoute(book.state, route)), /Made-up|teacher-absent/, route);
     }

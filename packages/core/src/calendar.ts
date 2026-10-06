@@ -96,7 +96,11 @@ export class CalendarView {
     const { country, year } = this.#ref;
     const weeks: TeachingWeek[] = [];
     let parity: Parity = 'B';
-    for (let start = startOfWeek(year.from, country.weekStartsOn); compareDays(start, year.to) <= 0; start = addDays(start, 7)) {
+    for (
+      let start = startOfWeek(year.from, country.weekStartsOn);
+      compareDays(start, year.to) <= 0;
+      start = addDays(start, 7)
+    ) {
       const end = addDays(start, 6);
       let teaching = false;
       for (let offset = 0; offset < 7 && !teaching; offset += 1) {

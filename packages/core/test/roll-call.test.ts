@@ -62,7 +62,10 @@ describe('roll call', () => {
     const book = await openBook(cemEvents());
     const [unit] = rollCallUnits(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-20'));
     assert.ok(unit);
-    await book.record(d('2026-09-20'), takeRollCall(contextOf(book), unit, { absent: [{ pupilId: 'p01', justified: false }], late: ['p02'] }));
+    await book.record(
+      d('2026-09-20'),
+      takeRollCall(contextOf(book), unit, { absent: [{ pupilId: 'p01', justified: false }], late: ['p02'] }),
+    );
     const correction = { absent: [{ pupilId: 'p01', justified: true }], late: ['p02'] };
     assert.throws(() => takeRollCall(contextOf(book), unit, correction), /needs a reason/);
     await book.record(d('2026-09-23'), takeRollCall(contextOf(book), unit, correction, 'Justification brought in'));
@@ -76,8 +79,14 @@ describe('roll call', () => {
     const context = contextOf(await openBook(cemEvents()));
     const td = rollCallUnits(context, 'k-1am2', d('2026-09-22'), d('2026-09-22'))[0];
     assert.ok(td);
-    assert.throws(() => takeRollCall(context, td, { absent: [{ pupilId: 'p06', justified: false }], late: [] }), /not on this roll call/);
-    assert.throws(() => takeRollCall(context, td, { absent: [{ pupilId: 'p01', justified: false }], late: ['p01'] }), /twice/);
+    assert.throws(
+      () => takeRollCall(context, td, { absent: [{ pupilId: 'p06', justified: false }], late: [] }),
+      /not on this roll call/,
+    );
+    assert.throws(
+      () => takeRollCall(context, td, { absent: [{ pupilId: 'p01', justified: false }], late: ['p01'] }),
+      /twice/,
+    );
   });
 
   it('counts half-days: a whole day absent counts 2, and lateness is never an absence', async () => {
@@ -116,7 +125,10 @@ describe('roll call', () => {
     assert.equal(strict.units, 6);
     assert.equal(strict.untaken, 1);
     assert.equal(strict.pupils[0]?.possible, 6);
-    const lenient = countRollCalls(context, 'k-5apb', d('2026-09-20'), d('2026-09-24'), { ...DEFAULT_COUNTING, untaken: 'present' });
+    const lenient = countRollCalls(context, 'k-5apb', d('2026-09-20'), d('2026-09-24'), {
+      ...DEFAULT_COUNTING,
+      untaken: 'present',
+    });
     assert.equal(lenient.units, 7);
     assert.equal(lenient.pupils[0]?.possible, 7);
   });
@@ -128,37 +140,65 @@ describe('roll call', () => {
     const context = contextOf(book);
     const [tuesday] = awaitingBetween(context, d('2026-09-22'), d('2026-09-22'));
     assert.ok(tuesday);
-    await book.recordAll(d('2026-09-22'), confirmSessions(context, [{ session: tuesday, choice: { outcome: 'not-held' } }]));
+    await book.recordAll(
+      d('2026-09-22'),
+      confirmSessions(context, [{ session: tuesday, choice: { outcome: 'not-held' } }]),
+    );
     const counts = countRollCalls(contextOf(book), 'k-5apb', d('2026-09-20'), d('2026-09-24'));
     assert.equal(counts.units, 6);
     assert.equal(counts.untaken, 0);
-    const counted = countRollCalls(contextOf(book), 'k-5apb', d('2026-09-20'), d('2026-09-24'), { ...DEFAULT_COUNTING, notHeld: 'counted' });
+    const counted = countRollCalls(contextOf(book), 'k-5apb', d('2026-09-20'), d('2026-09-24'), {
+      ...DEFAULT_COUNTING,
+      notHeld: 'counted',
+    });
     assert.equal(counted.untaken, 1);
   });
 
   it('counts every roll call taken, and lists those the rest of the record leaves out', async () => {
     const book = await openBook(cemEvents());
-    const count = (): ReturnType<typeof countRollCalls> => countRollCalls(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-24'));
+    const count = (): ReturnType<typeof countRollCalls> =>
+      countRollCalls(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-24'));
     const [sunday, monday] = rollCallUnits(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-21'));
     assert.ok(sunday && monday);
 
     // Late news: a closure is added for a day whose roll call was taken.
-    await book.record(d('2026-09-21'), takeRollCall(contextOf(book), monday, { absent: [{ pupilId: 'p01', justified: false }], late: [] }));
+    await book.record(
+      d('2026-09-21'),
+      takeRollCall(contextOf(book), monday, { absent: [{ pupilId: 'p01', justified: false }], late: [] }),
+    );
     await book.record(d('2026-09-23'), {
       kind: 'calendar.set',
-      entry: { id: 'late-closure', layer: 'school', schoolId: 's-cem', from: d('2026-09-21'), to: d('2026-09-21'), effect: 'closure', name: { en: 'Made-up closure' }, source: 'school', confidence: 'announced' },
+      entry: {
+        id: 'late-closure',
+        layer: 'school',
+        schoolId: 's-cem',
+        from: d('2026-09-21'),
+        to: d('2026-09-21'),
+        effect: 'closure',
+        name: { en: 'Made-up closure' },
+        source: 'school',
+        confidence: 'announced',
+      },
     });
     const closed = count();
     assert.deepEqual(closed.conflicts, [monday.key]);
     assert.equal(closed.untaken, 4);
-    assert.deepEqual(closed.pupils.find((pupil) => pupil.pupilId === 'p01')?.absences, [{ day: '2026-09-21', half: 'morning', justified: false }]);
+    assert.deepEqual(closed.pupils.find((pupil) => pupil.pupilId === 'p01')?.absences, [
+      { day: '2026-09-21', half: 'morning', justified: false },
+    ]);
 
     // A session recorded as not held after its roll call was taken.
-    const absent = ['p01', 'p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p08'].map((pupilId) => ({ pupilId, justified: false }));
+    const absent = ['p01', 'p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p08'].map((pupilId) => ({
+      pupilId,
+      justified: false,
+    }));
     await book.record(d('2026-09-20'), takeRollCall(contextOf(book), sunday, { absent, late: [] }));
     const [session] = awaitingBetween(contextOf(book), d('2026-09-20'), d('2026-09-20'));
     assert.ok(session);
-    await book.recordAll(d('2026-09-20'), confirmSessions(contextOf(book), [{ session, choice: { outcome: 'not-held' }, privateReason: 'few-pupils' }]));
+    await book.recordAll(
+      d('2026-09-20'),
+      confirmSessions(contextOf(book), [{ session, choice: { outcome: 'not-held' }, privateReason: 'few-pupils' }]),
+    );
     const notHeld = count();
     assert.deepEqual(notHeld.conflicts, [sunday.key, monday.key]);
     assert.equal(notHeld.units, 2);
@@ -168,22 +208,37 @@ describe('roll call', () => {
   it('counts the roll calls taken before a change of roll-call unit', async () => {
     const book = await openBook(cemEvents());
     for (const unit of rollCallUnits(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-24'))) {
-      await book.record(unit.day, takeRollCall(contextOf(book), unit, { absent: [{ pupilId: 'p01', justified: false }], late: [] }));
+      await book.record(
+        unit.day,
+        takeRollCall(contextOf(book), unit, { absent: [{ pupilId: 'p01', justified: false }], late: [] }),
+      );
     }
     const schoolClass = book.state.classes.get('k-1am2');
     assert.ok(schoolClass);
-    await book.record(d('2026-09-27'), { kind: 'class.set', schoolClass: { ...schoolClass, rollCallUnit: 'half-day' } });
+    await book.record(d('2026-09-27'), {
+      kind: 'class.set',
+      schoolClass: { ...schoolClass, rollCallUnit: 'half-day' },
+    });
     const counts = countRollCalls(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-24'));
     assert.equal(counts.pupils.find((pupil) => pupil.pupilId === 'p01')?.absent, 5);
     assert.equal(counts.conflicts.length, 5);
     assert.equal(counts.untaken, 5);
   });
 
-  it('leaves out units on the teacher\'s own calendar days, unless the rules count them', async () => {
+  it("leaves out units on the teacher's own calendar days, unless the rules count them", async () => {
     const book = await openBook(cemEvents());
     await book.record(d('2026-09-13'), {
       kind: 'calendar.set',
-      entry: { id: 'training', layer: 'teacher', from: d('2026-09-21'), to: d('2026-09-21'), effect: 'no-school', name: { en: 'Made-up training day' }, source: 'teacher', confidence: 'announced' },
+      entry: {
+        id: 'training',
+        layer: 'teacher',
+        from: d('2026-09-21'),
+        to: d('2026-09-21'),
+        effect: 'no-school',
+        name: { en: 'Made-up training day' },
+        source: 'teacher',
+        confidence: 'announced',
+      },
     });
     const units = rollCallUnits(contextOf(book), 'k-1am2', d('2026-09-20'), d('2026-09-24'));
     assert.equal(units.length, 5);
@@ -206,11 +261,14 @@ describe('roll call', () => {
     assert.deepEqual(count().pupils.find((pupil) => pupil.pupilId === 'p03')?.late, ['2026-09-21']);
   });
 
-  it('keeps a pupil who left on the list until the director\'s confirmation is recorded', async () => {
+  it("keeps a pupil who left on the list until the director's confirmation is recorded", async () => {
     const book = await openBook(primaryEvents());
     const [unit] = rollCallUnits(contextOf(book), 'k-5apb', d('2026-10-15'), d('2026-10-15'));
     assert.ok(unit);
-    assert.equal(pupilsFor(contextOf(book), unit).some((pupil) => pupil.id === 'q06'), true);
+    assert.equal(
+      pupilsFor(contextOf(book), unit).some((pupil) => pupil.id === 'q06'),
+      true,
+    );
     const marked = takeRollCall(contextOf(book), unit, { absent: [{ pupilId: 'q06', justified: false }], late: [] });
     assert.equal(marked.kind, 'roll-call.taken');
 
@@ -220,7 +278,10 @@ describe('roll call', () => {
     assert.equal(left.movements.length, 1, 'the confirmation replaces the movement it confirms');
     assert.equal(isEnrolled(left, d('2026-10-13')), true);
     assert.equal(isEnrolled(left, d('2026-10-14')), false);
-    assert.equal(pupilsFor(contextOf(book), unit).some((pupil) => pupil.id === 'q06'), false);
+    assert.equal(
+      pupilsFor(contextOf(book), unit).some((pupil) => pupil.id === 'q06'),
+      false,
+    );
   });
 
   it('keeps movements recorded on their own when the pupil is set again', async () => {
@@ -232,7 +293,10 @@ describe('roll call', () => {
     assert.ok(q01);
     // The name is fixed later, by a pupil record that holds only a later return.
     const back = { day: d('2026-10-27'), kind: 'in', reason: 'Back' } as const;
-    await book.record(d('2026-10-22'), { kind: 'pupil.set', pupil: { ...q01, latinName: 'Selma Haddad', movements: [back] } });
+    await book.record(d('2026-10-22'), {
+      kind: 'pupil.set',
+      pupil: { ...q01, latinName: 'Selma Haddad', movements: [back] },
+    });
     const fixed = book.state.pupils.get('q01');
     assert.ok(fixed);
     assert.equal(fixed.latinName, 'Selma Haddad');

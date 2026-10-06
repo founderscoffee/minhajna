@@ -53,8 +53,7 @@ export function dayNumber(day: Day): number {
   const era = Math.floor(year / 400);
   const yearOfEra = year - era * 400;
   const dayOfYear = Math.floor((153 * (month + (month > 2 ? -3 : 9)) + 2) / 5) + date - 1;
-  const dayOfEra =
-    yearOfEra * 365 + Math.floor(yearOfEra / 4) - Math.floor(yearOfEra / 100) + dayOfYear;
+  const dayOfEra = yearOfEra * 365 + Math.floor(yearOfEra / 4) - Math.floor(yearOfEra / 100) + dayOfYear;
   return era * 146097 + dayOfEra - 719468;
 }
 
@@ -63,14 +62,9 @@ export function fromDayNumber(count: number): Day {
   const era = Math.floor(z / 146097);
   const dayOfEra = z - era * 146097;
   const yearOfEra = Math.floor(
-    (dayOfEra -
-      Math.floor(dayOfEra / 1460) +
-      Math.floor(dayOfEra / 36524) -
-      Math.floor(dayOfEra / 146096)) /
-      365,
+    (dayOfEra - Math.floor(dayOfEra / 1460) + Math.floor(dayOfEra / 36524) - Math.floor(dayOfEra / 146096)) / 365,
   );
-  const dayOfYear =
-    dayOfEra - (365 * yearOfEra + Math.floor(yearOfEra / 4) - Math.floor(yearOfEra / 100));
+  const dayOfYear = dayOfEra - (365 * yearOfEra + Math.floor(yearOfEra / 4) - Math.floor(yearOfEra / 100));
   const mp = Math.floor((5 * dayOfYear + 2) / 153);
   const date = dayOfYear - Math.floor((153 * mp + 2) / 5) + 1;
   const month = mp < 10 ? mp + 3 : mp - 9;
