@@ -24,6 +24,32 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "0.0.0"
+
+        externalNativeBuild {
+            cmake {
+                // The checkout, the Gradle cache and the SDK lie at different
+                // paths on each machine, and the native libraries keep the
+                // paths they were compiled from, in their build IDs too.
+                // Mapped to fixed names, they are the same everywhere. The
+                // compile directory's name holds a hash of those paths, so it
+                // becomes "." too. A path with a space cannot pass through
+                // CMake's flags, so it stays as it is, and that build is not
+                // reproducible.
+                def flags = ["-ffile-compilation-dir=."]
+                [
+                    (rootProject.projectDir.parentFile): "/app",
+                    (gradle.gradleUserHomeDir): "/gradle",
+                    (android.sdkDirectory): "/sdk",
+                ].each { dir, name ->
+                    // On macOS, CMake may write /private/tmp as /tmp.
+                    def paths = [dir.absolutePath, dir.canonicalPath]
+                    paths += paths.findAll { it.startsWith("/private/") }*.substring("/private".length())
+                    paths.unique().findAll { !(it =~ /\s/) }.each { flags << "-ffile-prefix-map=${it}=${name}" }
+                }
+                cFlags(*flags)
+                cppFlags(*flags)
+            }
+        }
     }
 
     buildTypes {
