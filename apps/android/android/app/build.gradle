@@ -27,15 +27,19 @@ android {
 
         externalNativeBuild {
             cmake {
-                // The checkout, the Gradle cache and the SDK lie at different
-                // paths on each machine, and the native libraries keep the
-                // paths they were compiled from, in their build IDs too.
-                // Mapped to fixed names, they are the same everywhere. The
-                // compile directory's name holds a hash of those paths, so it
-                // becomes "." too. A path with a space cannot pass through
-                // CMake's flags, so it stays as it is, and that build is not
-                // reproducible.
-                def flags = ["-ffile-compilation-dir=."]
+                // The native libraries compiled here must come out the same
+                // on any machine, on macOS as on Linux:
+                // - The checkout, the Gradle cache and the SDK lie at
+                //   different paths on each machine, and the code keeps the
+                //   paths of the files it was compiled from. They are mapped
+                //   to fixed names.
+                // - The libraries carry no build ID. It hashes their debug
+                //   information too, where each machine's paths and each
+                //   system's compiler appear.
+                // - no-comment.ld drops the compilers' and the linker's names.
+                // A path with a space cannot pass through CMake's flags, so it
+                // stays as it is, and that build is not reproducible.
+                def compileFlags = []
                 [
                     (rootProject.projectDir.parentFile): "/app",
                     (gradle.gradleUserHomeDir): "/gradle",
@@ -44,10 +48,16 @@ android {
                     // On macOS, CMake may write /private/tmp as /tmp.
                     def paths = [dir.absolutePath, dir.canonicalPath]
                     paths += paths.findAll { it.startsWith("/private/") }*.substring("/private".length())
-                    paths.unique().findAll { !(it =~ /\s/) }.each { flags << "-ffile-prefix-map=${it}=${name}" }
+                    paths.unique().findAll { !(it =~ /\s/) }.each { compileFlags << "-ffile-prefix-map=${it}=${name}" }
                 }
-                cFlags(*flags)
-                cppFlags(*flags)
+                cFlags(*compileFlags)
+                cppFlags(*compileFlags)
+                def linkFlags = ["-Wl,--build-id=none"]
+                def script = file("no-comment.ld").absolutePath.replace("\\", "/")
+                if (!(script =~ /\s/)) {
+                    linkFlags << "-Wl,-T,${script}"
+                }
+                arguments "-DCMAKE_SHARED_LINKER_FLAGS=${linkFlags.join(" ")}"
             }
         }
     }
@@ -60,6 +70,12 @@ android {
             signingConfig null
             // The same APK whether or not it is built from a Git checkout.
             vcsInfo.include = false
+            // React Native's Gradle plugin writes the build machine's IP
+            // address into every build, so that a debug build finds Metro
+            // over Wi-Fi. A release build never looks for Metro, so it keeps
+            // React Native's own default, and the APK neither depends on the
+            // machine that built it nor gives away its address.
+            resValue "string", "react_native_dev_server_ip", "localhost"
         }
     }
 
