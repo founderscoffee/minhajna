@@ -14,7 +14,8 @@ This is the first of the checks before the pilot ([PRD §5.13](../prd/PRD.md#513
 
 | Check | Result |
 |---|---|
-| Two clean builds give the same APK | **Passed.** Two builds from clean checkouts in different folders gave the same APK byte for byte, and so did a third, in a working copy. CI repeats the check on every change to the app |
+| Two clean builds give the same APK | **Passed.** On macOS, two builds from clean checkouts in different folders gave the same APK byte for byte, and so did a third, in a working copy. CI repeats the check on Linux on every change to the app. Its first run caught the build machine's IP address in the APK, which is now left out ([below](#what-had-to-change)) |
+| The same APK on macOS and on Linux | **To confirm.** The code and data of a macOS build and a Linux build already matched. The parts that differed are now left out, and CI's next build will show whether the whole APK matches |
 | A signed APK can be checked against a rebuild | **Passed.** The signature of a signed APK, copied onto a clean rebuild from another folder, verifies ([below](#checking-a-signed-apk)) |
 | No proprietary library | **Passed.** The build stops if one appears, directly or through another library. It was tried with Google Play services, and with Google's Maps utilities, which pull them in |
 | F-Droid's scanner on the APK | **Passed.** No known non-free code, and no extra signing block |
@@ -42,9 +43,10 @@ React Native's app template is the starting point. These changes make it follow 
   - androidx adds a permission of the app's own, for receivers registered through `ContextCompat.registerReceiver`. Nothing in the app calls it, so the manifest removes the permission.
   - CI fails if a library starts to call it, since the call would then throw on Android 12 and earlier.
 - **No request to another app.** At start-up, androidx's emoji support asks the phone's font provider for a newer emoji font, which it may download. On most phones that provider is Google Play services. The manifest turns this off, and emoji use the phone's own font.
-- **The same native libraries in any folder.**
-  - Two clean builds first differed only in the two native libraries compiled from source. Each kept the paths it was built from, in its build ID, and one also kept the path of the builder's home folder.
-  - The paths of the checkout, the Gradle cache and the SDK are now mapped to fixed names when compiling, and so is the compile directory.
+- **The same native libraries on any machine.**
+  - Two clean builds first differed only in the two native libraries compiled from source. The code kept the paths of the files it was compiled from, including the builder's home folder, and their build IDs hashed those paths. The paths of the checkout, the Gradle cache and the SDK are now mapped to fixed names when compiling.
+  - A build on macOS and one on Linux then differed in the same two libraries, and only in their build IDs and in the names of the compilers. The NDK's start-up code carries the name of the compiler that built it, which differs between the NDK for macOS and the NDK for Linux. The libraries now carry no build ID, and `no-comment.ld` drops the names.
+- **The builder's address.** React Native's Gradle plugin writes the build machine's IP address into every build, so that a debug build finds Metro over Wi-Fi. Release builds keep React Native's own default, `localhost`. The APK then neither depends on the machine that built it nor gives its address away.
 - **Installs run no scripts,** and the app has its own lockfile, outside the root workspaces.
 - **Gradle's download is checked** against its published SHA-256, and CI checks the Gradle wrapper.
 - **Licences.**
@@ -125,7 +127,7 @@ React Native includes OkHttp for its network functions. Without the network perm
 
 - **A budget phone.** Time the app's start on a budget 360×800 phone with Android 8. The target is under 2 seconds ([PRD §6.8](../prd/PRD.md#68-non-functional-requirements)).
 - **F-Droid's build:** the recipe and the Hermes compiler, as above.
-- **The same APK on two systems.** CI compares two Linux builds, and the builds above were made on macOS. F-Droid builds on Debian, so the next step is to compare a macOS build with a Linux one.
+- **The same APK on macOS and on Linux.** F-Droid builds on Debian, and anyone checking a release may use either system. The two native libraries' code and data already matched across the systems, and the parts that differed are now left out. A macOS build still has to be compared with CI's next Linux build.
 - **The size.** Shrinking the code, and one APK for each processor type, would make the install smaller.
 - **The application ID**, once the project's domain is registered.
 - **Maintainer decisions** on the `argparse` licence and the two advisories.
