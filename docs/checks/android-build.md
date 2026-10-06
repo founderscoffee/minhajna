@@ -15,7 +15,7 @@ This is the first of the checks before the pilot ([PRD §5.13](../prd/PRD.md#513
 | Check | Result |
 |---|---|
 | Two clean builds give the same APK | **Passed.** On macOS, two builds from clean checkouts in different folders gave the same APK byte for byte, and so did a third, in a working copy. CI repeats the check on Linux on every change to the app. Its first run caught the build machine's IP address in the APK, which is now left out ([below](#what-had-to-change)) |
-| The same APK on macOS and on Linux | **To confirm.** The code and data of a macOS build and a Linux build already matched. The parts that differed are now left out, and CI's next build will show whether the whole APK matches |
+| The same APK on macOS and on Linux | **Passed.** Two Linux builds in CI and two macOS builds gave the same APK, byte for byte |
 | A signed APK can be checked against a rebuild | **Passed.** The signature of a signed APK, copied onto a clean rebuild from another folder, verifies ([below](#checking-a-signed-apk)) |
 | No proprietary library | **Passed.** The build stops if one appears, directly or through another library. It was tried with Google Play services, and with Google's Maps utilities, which pull them in |
 | F-Droid's scanner on the APK | **Passed.** No known non-free code, and no extra signing block |
@@ -67,7 +67,7 @@ cd android
 sha256sum app/build/outputs/apk/release/app-release-unsigned.apk
 ```
 
-Build again from a second clone in another folder, and the two checksums match. Any folder works, unless its path has a space.
+Build again from a second clone in another folder, on macOS or on Linux, and the two checksums match. Any folder works, unless its path has a space.
 
 ### Checking a signed APK
 
@@ -127,7 +127,6 @@ React Native includes OkHttp for its network functions. Without the network perm
 
 - **A budget phone.** Time the app's start on a budget 360×800 phone with Android 8. The target is under 2 seconds ([PRD §6.8](../prd/PRD.md#68-non-functional-requirements)).
 - **F-Droid's build:** the recipe and the Hermes compiler, as above.
-- **The same APK on macOS and on Linux.** F-Droid builds on Debian, and anyone checking a release may use either system. The two native libraries' code and data already matched across the systems, and the parts that differed are now left out. A macOS build still has to be compared with CI's next Linux build.
 - **The size.** Shrinking the code, and one APK for each processor type, would make the install smaller.
 - **The application ID**, once the project's domain is registered.
 - **Maintainer decisions** on the `argparse` licence and the two advisories.
