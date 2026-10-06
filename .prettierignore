@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Prettier formats the code. It also skips what .gitignore lists.
+
+# Documents keep the layout they were written with.
+*.md
+# The design's exports, as the design canvas produced them.
+docs/
+# npm writes its own lockfile.
+package-lock.json
