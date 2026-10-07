@@ -14,6 +14,7 @@ export * from './id.ts';
 export * from './layers.ts';
 export * from './pacing.ts';
 export * from './pack.ts';
+export type { ParseProblem, ParseProblemKind, ParseResult } from './read.ts';
 export * from './records.ts';
 export * from './reference.ts';
 export * from './roll-call.ts';
