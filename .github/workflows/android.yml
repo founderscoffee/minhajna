@@ -1,0 +1,182 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# The Android app, built twice from clean checkouts at different paths. The
+# two APKs must be the same byte for byte, ask for no permission, and hold
+# no code that F-Droid's scanner knows as non-free (docs/checks/android-build.md).
+
+name: Android
+
+on:
+  pull_request:
+    paths:
+      - apps/android/**
+      - .github/workflows/android.yml
+  push:
+    branches: [main]
+    paths:
+      - apps/android/**
+      - .github/workflows/android.yml
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  # The runner's SDK has the platform and the build tools. The NDK and CMake
+  # are the versions React Native's template asks for.
+  BUILD_TOOLS: "37.0.0"
+  NDK: "27.1.12297006"
+  CMAKE: "3.22.1"
+  # Gradle's published checksum for the 9.4.1 wrapper. It changes with the
+  # wrapper, in the same pull request.
+  GRADLE_WRAPPER_SHA256: 55243ef57851f12b070ad14f7f5bb8302daceeebc5bce5ece5fa6edb23e1145c
+
+jobs:
+  build:
+    name: Build (${{ matrix.copy }} copy)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        # A path that leaks into the APK makes the two copies differ.
+        include:
+          - copy: first
+            path: minhajna
+          - copy: second
+            path: another/copy/of/minhajna
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: ${{ matrix.path }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          # No dependency cache: a cache would be one more service to call
+          # and to trust.
+          package-manager-cache: false
+
+      - name: Install the NDK and CMake
+        run: |
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install \
+            "ndk;$NDK" "cmake;$CMAKE" > /dev/null
+          java -version
+
+      - name: Check the Gradle wrapper
+        working-directory: ${{ matrix.path }}/apps/android/android
+        run: echo "$GRADLE_WRAPPER_SHA256  gradle/wrapper/gradle-wrapper.jar" | sha256sum --check --strict
+
+      # .npmrc stops install scripts. --no-audit keeps npm from sending the
+      # dependency tree to the registry.
+      - name: Install the locked dependencies
+        working-directory: ${{ matrix.path }}/apps/android
+        run: npm ci --no-audit
+
+      - name: Type check
+        working-directory: ${{ matrix.path }}/apps/android
+        run: npm run typecheck
+
+      - name: Test
+        working-directory: ${{ matrix.path }}/apps/android
+        run: npm test
+
+      - name: Build the release APK
+        working-directory: ${{ matrix.path }}/apps/android/android
+        run: ./gradlew --no-daemon assembleRelease
+
+      - name: Check that the APK asks for no permission
+        working-directory: ${{ matrix.path }}/apps/android/android
+        run: |
+          apk=app/build/outputs/apk/release/app-release-unsigned.apk
+          tools="$ANDROID_HOME/build-tools/$BUILD_TOOLS"
+          permissions=$("$tools/aapt2" dump permissions "$apk" | grep -v '^package:' || true)
+          if [[ -n "$permissions" ]]; then
+            echo "::error title=Permissions::The release APK asks for permissions, and the app may ask for none (NETWORK.md):"
+            echo "$permissions"
+            exit 1
+          fi
+          # The manifest removes the permission that ContextCompat.registerReceiver
+          # needs on Android 12 and earlier, so nothing may call it.
+          unzip -q -o "$apk" 'classes*.dex' -d "$RUNNER_TEMP/dex"
+          callers=$("$tools/dexdump" -d "$RUNNER_TEMP"/dex/classes*.dex |
+            awk -v self="'Landroidx/core/content/ContextCompat;'" '
+              /Class descriptor/ { class = $4 }
+              /Landroidx\/core\/content\/ContextCompat;\.registerReceiver/ && class != self { print class }
+            ' | sort -u)
+          if [[ -n "$callers" ]]; then
+            echo "::error title=Receivers::These classes call ContextCompat.registerReceiver, which throws without the permission the manifest removes:"
+            echo "$callers"
+            exit 1
+          fi
+
+      - name: Keep the APK for the comparison
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: apk-${{ matrix.copy }}
+          path: ${{ matrix.path }}/apps/android/android/app/build/outputs/apk/release/app-release-unsigned.apk
+          if-no-files-found: error
+          retention-days: 7
+
+  compare:
+    name: Same APK twice
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions: {}
+    steps:
+      - name: Download the two APKs
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: apk-*
+          path: apks
+
+      - name: Compare them byte for byte
+        run: |
+          first=apks/apk-first/app-release-unsigned.apk
+          second=apks/apk-second/app-release-unsigned.apk
+          sha256sum "$first" "$second"
+          if ! cmp --quiet "$first" "$second"; then
+            echo "::error title=Reproducible build::Two clean builds gave different APKs. The files that differ, by CRC:"
+            diff <(unzip -lv "$first" | awk '{ print $7, $8 }') \
+                 <(unzip -lv "$second" | awk '{ print $7, $8 }') || true
+            exit 1
+          fi
+
+  scan:
+    name: F-Droid scanner
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions: {}
+    steps:
+      - name: Download the APK
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: apk-first
+          path: apk
+
+      - name: Install F-Droid's tools
+        env:
+          FDROIDSERVER_VERSION: "2.4.5"
+        run: |
+          python3 -m venv "$RUNNER_TEMP/fdroid"
+          "$RUNNER_TEMP/fdroid/bin/pip" install --quiet "fdroidserver==$FDROIDSERVER_VERSION"
+
+      # --refresh fetches F-Droid's latest list of non-free libraries.
+      - name: Scan the APK for non-free code
+        run: |
+          export PATH="$ANDROID_HOME/build-tools/$BUILD_TOOLS:$PATH"
+          "$RUNNER_TEMP/fdroid/bin/fdroid" scanner --refresh --exit-code --verbose \
+            apk/app-release-unsigned.apk

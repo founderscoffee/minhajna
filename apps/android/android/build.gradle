@@ -1,0 +1,59 @@
+// SPDX-FileCopyrightText: Meta Platforms, Inc. and affiliates
+// SPDX-FileCopyrightText: 2026 The Minhajna contributors
+// SPDX-License-Identifier: MIT
+
+buildscript {
+    ext {
+        buildToolsVersion = "37.0.0"
+        // Android 8, which reaches about 97.9% of Algerian Android traffic (PRD §6.8).
+        minSdkVersion = 26
+        compileSdkVersion = 37
+        targetSdkVersion = 36
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.2.0"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+
+apply plugin: "com.facebook.react.rootproject"
+
+// No proprietary library, not even through another dependency: anyone, F-Droid
+// included, must be able to build the app from source, and no SDK may send
+// data (engineering.md, PRD §1.3). Resolving one stops the build.
+def proprietaryGroups = [
+    "com.google.android.gms",           // Google Play services
+    "com.google.firebase",
+    "com.google.android.play",          // Play Core: updates, reviews, delivery
+    "com.google.android.datatransport", // Firebase's transport
+    "com.google.android.ads",
+    "com.google.android.ump",           // Google's consent SDK
+    "com.google.mlkit",
+    "com.android.billingclient",
+    "com.android.installreferrer",
+    "com.crashlytics.sdk.android",
+    "io.fabric.sdk.android",
+    "com.facebook.android",             // Facebook's SDKs, not React Native
+    "com.huawei.hms",
+    "com.amazon.device",
+]
+
+allprojects {
+    configurations.configureEach {
+        resolutionStrategy.eachDependency { details ->
+            def group = details.requested.group
+            if (proprietaryGroups.any { group == it || group.startsWith("${it}.") }) {
+                throw new GradleException(
+                    "${details.requested} is a proprietary library, which the app may not use " +
+                    "(docs/contributing/engineering.md#pupil-data-and-privacy).")
+            }
+        }
+    }
+}

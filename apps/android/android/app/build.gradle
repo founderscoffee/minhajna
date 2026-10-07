@@ -1,0 +1,93 @@
+// SPDX-FileCopyrightText: Meta Platforms, Inc. and affiliates
+// SPDX-FileCopyrightText: 2026 The Minhajna contributors
+// SPDX-License-Identifier: MIT
+
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+
+react {
+    autolinkLibrariesWithApp()
+}
+
+android {
+    ndkVersion rootProject.ext.ndkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
+
+    namespace "dz.minhajna.preview"
+    defaultConfig {
+        // Provisional, for the field check: the final ID follows the
+        // project's domain, before the first public release.
+        applicationId "dz.minhajna.preview"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "0.0.0"
+
+        externalNativeBuild {
+            cmake {
+                // The native libraries compiled here must come out the same
+                // on any machine, on macOS as on Linux:
+                // - The checkout, the Gradle cache and the SDK lie at
+                //   different paths on each machine, and the code keeps the
+                //   paths of the files it was compiled from. They are mapped
+                //   to fixed names.
+                // - The libraries carry no build ID. It hashes their debug
+                //   information too, where each machine's paths and each
+                //   system's compiler appear.
+                // - no-comment.ld drops the compilers' and the linker's names.
+                // A path with a space cannot pass through CMake's flags, so it
+                // stays as it is, and that build is not reproducible.
+                def compileFlags = []
+                [
+                    (rootProject.projectDir.parentFile): "/app",
+                    (gradle.gradleUserHomeDir): "/gradle",
+                    (android.sdkDirectory): "/sdk",
+                ].each { dir, name ->
+                    // On macOS, CMake may write /private/tmp as /tmp.
+                    def paths = [dir.absolutePath, dir.canonicalPath]
+                    paths += paths.findAll { it.startsWith("/private/") }*.substring("/private".length())
+                    paths.unique().findAll { !(it =~ /\s/) }.each { compileFlags << "-ffile-prefix-map=${it}=${name}" }
+                }
+                cFlags(*compileFlags)
+                cppFlags(*compileFlags)
+                def linkFlags = ["-Wl,--build-id=none"]
+                def script = file("no-comment.ld").absolutePath.replace("\\", "/")
+                if (!(script =~ /\s/)) {
+                    linkFlags << "-Wl,-T,${script}"
+                }
+                arguments "-DCMAKE_SHARED_LINKER_FLAGS=${linkFlags.join(" ")}"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            // Unsigned, so that two builds compare byte for byte. The
+            // field-check build signs it with a key kept out of the
+            // repository, and F-Droid signs its own build.
+            signingConfig null
+            // The same APK whether or not it is built from a Git checkout.
+            vcsInfo.include = false
+            // React Native's Gradle plugin writes the build machine's IP
+            // address into every build, so that a debug build finds Metro
+            // over Wi-Fi. A release build never looks for Metro, so it keeps
+            // React Native's own default, and the APK neither depends on the
+            // machine that built it nor gives away its address.
+            resValue "string", "react_native_dev_server_ip", "localhost"
+        }
+    }
+
+    dependenciesInfo {
+        // The dependency block Google Play asks for is encrypted for Google
+        // alone, and F-Droid refuses an APK that carries it.
+        includeInApk = false
+        includeInBundle = false
+    }
+}
+
+dependencies {
+    implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:hermes-android")
+}

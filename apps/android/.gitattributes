@@ -1,0 +1,5 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Windows runs batch files with CRLF line endings.
+*.bat text eol=crlf

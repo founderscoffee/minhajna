@@ -11,3 +11,21 @@ SPDX-License-Identifier = "CC-BY-SA-4.0"
 path = ["package.json", "package-lock.json", "tsconfig.base.json", "packages/*/package.json", "packages/*/tsconfig.json"]
 SPDX-FileCopyrightText = "2026 The Minhajna contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+# The Android app's files that cannot hold a comment.
+[[annotations]]
+path = ["apps/android/package.json", "apps/android/package-lock.json", "apps/android/app.json", "apps/android/src/text/*.json"]
+SPDX-FileCopyrightText = "2026 The Minhajna contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+# Unchanged from React Native's app template.
+[[annotations]]
+path = "apps/android/tsconfig.json"
+SPDX-FileCopyrightText = "Meta Platforms, Inc. and affiliates"
+SPDX-License-Identifier = "MIT"
+
+# Gradle's wrapper, as Gradle generates it.
+[[annotations]]
+path = ["apps/android/android/gradle/wrapper/gradle-wrapper.jar", "apps/android/android/gradle/wrapper/gradle-wrapper.properties"]
+SPDX-FileCopyrightText = "2015 the original author or authors"
+SPDX-License-Identifier = "Apache-2.0"
