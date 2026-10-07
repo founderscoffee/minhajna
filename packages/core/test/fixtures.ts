@@ -16,6 +16,7 @@ import {
   type Context,
   type CountryProfile,
   type Day,
+  type Grade,
   type PlanPack,
   type Pupil,
   type RecordEvent,
@@ -27,14 +28,41 @@ import { deps } from './support.ts';
 
 export const d = parseDay;
 
+function grades(...codes: string[]): Grade[] {
+  return codes.map((code) => ({ code, name: { en: code.toUpperCase() } }));
+}
+
 export const country: CountryProfile = {
   code: 'dz',
+  release: '2026.1',
   weekStartsOn: 0,
   workingDays: [0, 1, 2, 3, 4],
   levels: [
-    { code: 'primary', rollCallUnit: 'half-day', sessionMinutes: 45, name: { en: 'Primary' } },
-    { code: 'cem', rollCallUnit: 'session', sessionMinutes: 60, name: { en: 'Middle school' } },
-    { code: 'lycee', rollCallUnit: 'session', sessionMinutes: 60, name: { en: 'Secondary school' } },
+    {
+      code: 'primary',
+      rollCallUnit: 'half-day',
+      sessionMinutes: 45,
+      name: { en: 'Primary' },
+      grades: grades('1ap', '2ap', '3ap', '4ap', '5ap'),
+    },
+    {
+      code: 'cem',
+      rollCallUnit: 'session',
+      sessionMinutes: 60,
+      name: { en: 'Middle school' },
+      grades: grades('1am', '2am', '3am', '4am'),
+    },
+    {
+      code: 'lycee',
+      rollCallUnit: 'session',
+      sessionMinutes: 60,
+      name: { en: 'Secondary school' },
+      grades: grades('1as', '2as', '3as'),
+    },
+  ],
+  subjects: [
+    { code: 'math', name: { en: 'Mathematics' }, levels: ['primary', 'cem', 'lycee'] },
+    { code: 'language', name: { en: 'Language' }, levels: ['primary'] },
   ],
   sessionTypes: [
     { code: 'lesson', queue: 'main', name: { en: 'Lesson' } },
@@ -57,6 +85,7 @@ export const year: SchoolYear = {
     { number: 2, from: d('2027-01-03'), to: d('2027-03-18') },
     { number: 3, from: d('2027-04-04'), to: d('2027-06-10') },
   ],
+  source: 'made up for tests',
 };
 
 function entry(fields: Omit<CalendarEntry, 'source' | 'confidence'>): CalendarEntry {
