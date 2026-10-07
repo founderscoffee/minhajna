@@ -35,7 +35,13 @@ async function sampleLog(store: HistoryStore = new MemoryStore()): Promise<Histo
  * it, or someone who knows the format. Only the rules of an erasure can
  * catch it.
  */
-async function forge(entries: readonly Entry[], layer: Layer, kind: string, body: unknown, id = 'f'.repeat(32)): Promise<Entry> {
+async function forge(
+  entries: readonly Entry[],
+  layer: Layer,
+  kind: string,
+  body: unknown,
+  id = 'f'.repeat(32),
+): Promise<Entry> {
   const salt = '0'.repeat(32);
   const header = {
     id,
@@ -77,7 +83,17 @@ describe('the history', () => {
   it('keeps the day of a change, never its time', async () => {
     const log = await sampleLog();
     for (const entry of log.entries) {
-      assert.deepEqual(Object.keys(entry).sort(), ['content', 'day', 'digest', 'hash', 'id', 'kind', 'layer', 'previous', 'seq']);
+      assert.deepEqual(Object.keys(entry).sort(), [
+        'content',
+        'day',
+        'digest',
+        'hash',
+        'id',
+        'kind',
+        'layer',
+        'previous',
+        'seq',
+      ]);
     }
     // An app bridge can pass any text as the day, so it is checked at run time.
     const clockTime = '2026-10-04T08:15:00Z' as Day;
@@ -179,13 +195,22 @@ describe('the history', () => {
     const log = await sampleLog();
     const entries = [...log.entries];
     const rollCall = entries[1] as Entry;
-    const erasure = async (layer: Layer, body: unknown): Promise<Entry[]> => [...entries, await forge(entries, layer, ERASURE, body)];
+    const erasure = async (layer: Layer, body: unknown): Promise<Entry[]> => [
+      ...entries,
+      await forge(entries, layer, ERASURE, body),
+    ];
     const refused = [{ seq: 3, kind: 'erasure' }];
 
     // It names a list of entries,
-    assert.deepEqual(await verifyHistory(deps.digest, await erasure('pupil-records', { entries: rollCall.id })), refused);
+    assert.deepEqual(
+      await verifyHistory(deps.digest, await erasure('pupil-records', { entries: rollCall.id })),
+      refused,
+    );
     // each of which exists,
-    assert.deepEqual(await verifyHistory(deps.digest, await erasure('pupil-records', { entries: ['0'.repeat(32)] })), refused);
+    assert.deepEqual(
+      await verifyHistory(deps.digest, await erasure('pupil-records', { entries: ['0'.repeat(32)] })),
+      refused,
+    );
     // is in its own layer,
     assert.deepEqual(await verifyHistory(deps.digest, await erasure('private', { entries: [rollCall.id] })), refused);
     // and comes before it.
@@ -213,7 +238,10 @@ describe('the history', () => {
     await book.record(d('2026-09-13'), { kind: 'teacher.set', card: { name: 'Example Teacher', subjects: ['math'] } });
     const [entry] = book.entries as Entry[];
     assert.ok(entry?.content);
-    const edited = { ...entry, content: { ...entry.content, body: { kind: 'teacher.set', card: { name: 'Edited', subjects: [] } } } };
+    const edited = {
+      ...entry,
+      content: { ...entry.content, body: { kind: 'teacher.set', card: { name: 'Edited', subjects: [] } } },
+    };
     const tampered: HistoryStore = {
       load: () => Promise.resolve([edited]),
       append: () => Promise.resolve(),
@@ -253,7 +281,10 @@ describe('erasing records', () => {
     assert.ok(unit);
     const absent = { absent: [{ pupilId: 'p01', justified: false }], late: [] };
     const taken = await book.record(d('2026-09-20'), takeRollCall(contextOf(book), unit, absent));
-    const fix = await book.record(d('2026-09-23'), takeRollCall(contextOf(book), unit, { absent: [], late: [] }, 'Made-up correction'));
+    const fix = await book.record(
+      d('2026-09-23'),
+      takeRollCall(contextOf(book), unit, { absent: [], late: [] }, 'Made-up correction'),
+    );
     // Erasing the correction alone would bring the first version back, with no reason.
     await assert.rejects(book.erase(d('2026-09-24'), [fix.id]), /every version/);
     assert.equal(book.state.rollCalls.get(unit.key)?.length, 2);

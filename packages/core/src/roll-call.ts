@@ -10,7 +10,15 @@
 import type { Context } from './context.ts';
 import { compareDays, isWithin, maxDay, monthRange, type Day } from './day.ts';
 import { findLevel, type RollCallUnitKind } from './reference.ts';
-import { compareHalves, wholeGroup, type Absence, type Half, type Pupil, type RollCall, type SchoolClass } from './records.ts';
+import {
+  compareHalves,
+  wholeGroup,
+  type Absence,
+  type Half,
+  type Pupil,
+  type RollCall,
+  type SchoolClass,
+} from './records.ts';
 import { sessionsBetween, type Session } from './sessions.ts';
 import { current, type RecordEvent } from './state.ts';
 
@@ -68,7 +76,11 @@ export function rollCallUnits(context: Context, classId: string, from: Day, to: 
     const key = `half-day:${classId}/${session.day}/${session.slot.half}`;
     const found = units.get(key);
     if (found !== undefined) found.sessions.push(session);
-    else units.set(key, { unit: { key, classId, groupId: whole, day: session.day, half: session.slot.half }, sessions: [session] });
+    else
+      units.set(key, {
+        unit: { key, classId, groupId: whole, day: session.day, half: session.slot.half },
+        sessions: [session],
+      });
   }
   return [...units.values()].map(({ unit, sessions: covered }) => ({ ...unit, sessions: covered }));
 }
@@ -235,7 +247,8 @@ export function countRollCalls(
   const keys = new Set(generated.map((unit) => unit.key));
   for (const [key, versions] of state.rollCalls) {
     const rollCall = current(versions);
-    if (rollCall === null || keys.has(key) || rollCall.classId !== classId || !isWithin(rollCall.day, start, to)) continue;
+    if (rollCall === null || keys.has(key) || rollCall.classId !== classId || !isWithin(rollCall.day, start, to))
+      continue;
     const { groupId, day, half } = rollCall;
     counted.push({ unit: { key, classId, groupId, day, half, sessions: [] }, rollCall, conflict: true });
   }

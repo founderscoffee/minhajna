@@ -74,12 +74,7 @@ export function versionOn(timetables: readonly RecordedTimetable[], day: Day): T
  * The teacher's sessions from `from` to `to`, in order. With `courseIds`,
  * only those courses' sessions.
  */
-export function sessionsBetween(
-  context: Context,
-  from: Day,
-  to: Day,
-  courseIds?: ReadonlySet<string>,
-): Session[] {
+export function sessionsBetween(context: Context, from: Day, to: Day, courseIds?: ReadonlySet<string>): Session[] {
   const { ref, state, calendar } = context;
   const sessions = new Map<string, Session>();
   const first = maxDay(from, ref.year.from);

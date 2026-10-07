@@ -190,7 +190,11 @@ export function parsePlanPack(input: unknown): ParseResult<PlanPack> {
       if (!isFields(raw)) return reader.fail(path, 'invalid');
       const templateId = reader.requiredText(raw, 'id', path, ITEM_ID);
       const stages = raw['stages'];
-      if (!Array.isArray(stages) || stages.length === 0 || !stages.every((s) => typeof s === 'string' && s.trim() !== '')) {
+      if (
+        !Array.isArray(stages) ||
+        stages.length === 0 ||
+        !stages.every((s) => typeof s === 'string' && s.trim() !== '')
+      ) {
         return reader.fail(`${path}.stages`, 'invalid');
       }
       if (stageTemplates.some((t) => t.id === templateId)) return reader.fail(`${path}.id`, 'duplicate');
@@ -230,7 +234,8 @@ export function parsePlanPack(input: unknown): ParseResult<PlanPack> {
     rawMerges.forEach((raw: unknown, index) => {
       const path = `merges[${index}]`;
       const known = (id: unknown): boolean => items.some((item) => item.id === id && item.kind !== 'unit');
-      if (!Array.isArray(raw) || raw.length < 2 || new Set(raw).size !== raw.length) return reader.fail(path, 'invalid');
+      if (!Array.isArray(raw) || raw.length < 2 || new Set(raw).size !== raw.length)
+        return reader.fail(path, 'invalid');
       if (!raw.every(known)) return reader.fail(path, 'unknown-reference');
       merges.push(raw as string[]);
     });

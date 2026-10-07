@@ -89,7 +89,10 @@ export function pace(context: Context, courseId: string, today: Day): Pace | nul
   const budgets = new Map(items.map((item) => [item.id, budgetInSessions(pack, item, setup.sessionMinutes)]));
   const budgetOf = (item: PackItem): number => budgets.get(item.id) ?? 1;
   const total = items.reduce((sum, item) => sum + budgetOf(item), 0);
-  const position = items.reduce((sum, item) => sum + budgetOf(item) * share(pack, progress, item, whole, budgetOf(item)), 0);
+  const position = items.reduce(
+    (sum, item) => sum + budgetOf(item) * share(pack, progress, item, whole, budgetOf(item)),
+    0,
+  );
 
   let expected = Math.min(total, recorded.length);
   let weeksBehind: number | null = null;

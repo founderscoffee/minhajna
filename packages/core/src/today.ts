@@ -84,7 +84,8 @@ export function todayView(context: Context, day: Day): TodayView {
     sessions: items,
     marks: [...marks.values()],
     blocks: (versionOn(state.timetables, day)?.blocks ?? []).filter((block) => block.weekday === weekday(day)),
-    awaitingEarlier: compareDays(before, ref.year.from) < 0 ? 0 : awaitingBetween(context, ref.year.from, before).length,
+    awaitingEarlier:
+      compareDays(before, ref.year.from) < 0 ? 0 : awaitingBetween(context, ref.year.from, before).length,
   };
 }
 
@@ -136,7 +137,8 @@ export function confirmSessions(context: Context, confirmations: readonly Sessio
 
   recorded.sort(
     (a, b) =>
-      compareDays(a.record.session.day, b.record.session.day) || compareSlots(a.record.session.slot, b.record.session.slot),
+      compareDays(a.record.session.day, b.record.session.day) ||
+      compareSlots(a.record.session.slot, b.record.session.slot),
   );
 
   const events: RecordEvent[] = [];
