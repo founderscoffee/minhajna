@@ -48,6 +48,13 @@ jobs:
       - name: Install the locked dependencies
         run: npm ci --no-audit
 
+      # The linter checks the Android app with the app's own types, so the
+      # app's locked dependencies are installed too. Its .npmrc stops install
+      # scripts as well.
+      - name: Install the app's locked dependencies
+        working-directory: apps/android
+        run: npm ci --no-audit
+
       # The build and the linter run once the project has those scripts.
       - name: Build
         run: npm run build --if-present
