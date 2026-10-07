@@ -1,0 +1,145 @@
+// SPDX-FileCopyrightText: 2026 The Minhajna contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// Algeria's reference data, as the app ships it (data/dz). These tests read
+// the real files; the classes and their timetables are still made up.
+
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { describe, it } from 'node:test';
+
+import {
+  isWithin,
+  makeContext,
+  parseCountryProfile,
+  parseSchoolCalendar,
+  sessionsBetween,
+  type CalendarMark,
+  type Context,
+  type CountryProfile,
+  type RecordEvent,
+  type SchoolCalendar,
+} from '../src/index.ts';
+import { cemEvents, d, openBook, primaryEvents, reference } from './fixtures.ts';
+
+function readData(path: string): unknown {
+  return JSON.parse(readFileSync(new URL(`../../../data/${path}`, import.meta.url), 'utf8'));
+}
+
+function readAlgeria(): { profile: CountryProfile; calendar: SchoolCalendar } {
+  const profile = parseCountryProfile(readData('dz/profile.json'));
+  assert.deepEqual(profile.ok ? [] : profile.problems, []);
+  assert.ok(profile.ok);
+  const calendar = parseSchoolCalendar(readData('dz/calendar-2026-2027.json'), profile.value);
+  assert.deepEqual(calendar.ok ? [] : calendar.problems, []);
+  assert.ok(calendar.ok);
+  return { profile: profile.value, calendar: calendar.value };
+}
+
+/** A made-up teacher's records against the real profile and calendar. */
+async function contextFor(events: readonly RecordEvent[]): Promise<Context> {
+  const { profile, calendar } = readAlgeria();
+  const book = await openBook(events);
+  return makeContext({ ...reference, country: profile, year: calendar.year, calendar: calendar.entries }, book.state);
+}
+
+/** The CEM teacher's class, moved to another grade. */
+function cemEventsIn(grade: string): RecordEvent[] {
+  return cemEvents().map((event): RecordEvent =>
+    event.kind === 'class.set' ? { ...event, schoolClass: { ...event.schoolClass, grade } } : event,
+  );
+}
+
+function marks(context: Context, from: string, to: string): (CalendarMark | null)[] {
+  return sessionsBetween(context, d(from), d(to)).map((session) => session.calendar);
+}
+
+describe("Algeria's reference data", () => {
+  it('reads with no problem', () => {
+    const { profile, calendar } = readAlgeria();
+    assert.deepEqual(
+      profile.levels.map((level) => level.grades.length),
+      [5, 4, 3],
+    );
+    assert.deepEqual([calendar.year.from, calendar.year.to], ['2026-09-21', '2027-07-08']);
+  });
+
+  it("cites an official text for every date but Ramadan's", () => {
+    const { calendar } = readAlgeria();
+    const official = /https:\/\/www\.(education|premier-ministre)\.gov\.dz\/|Law 63-278/;
+    assert.match(calendar.year.source, official);
+    for (const entry of calendar.entries) {
+      // No text dates Ramadan yet.
+      if (entry.id !== 'ramadan') assert.match(entry.source, official, entry.id);
+      // A lunar date, Ramadan's included, stays expected until the moon is sighted.
+      if (entry.confidence === 'expected') assert.match(entry.source, /moon is sighted/, entry.id);
+    }
+    for (const source of [calendar.year.source, ...calendar.entries.map((entry) => entry.source)]) {
+      for (const link of source.match(/https?:\/\/\S+/g) ?? []) {
+        assert.match(link, /^https:\/\/www\.(education|premier-ministre)\.gov\.dz\//);
+      }
+    }
+  });
+
+  it('gives every grade an exam window in each term, within the term', () => {
+    const { profile, calendar } = readAlgeria();
+    for (const grade of profile.levels.flatMap((level) => level.grades)) {
+      for (const term of calendar.year.terms) {
+        const exams = calendar.entries.filter(
+          (entry) =>
+            entry.effect === 'exam' && entry.term === term.number && (entry.grades?.includes(grade.code) ?? true),
+        );
+        assert.notEqual(exams.length, 0, `${grade.code}, term ${term.number}`);
+        for (const exam of exams) {
+          assert.ok(isWithin(exam.from, term.from, term.to) && isWithin(exam.to, term.from, term.to), exam.id);
+        }
+      }
+    }
+  });
+
+  it("dates a made-up class's sessions across the year, and none falls on a holiday", async () => {
+    const { calendar } = readAlgeria();
+    const holidays = calendar.entries.filter((entry) => entry.effect === 'no-school');
+    for (const events of [cemEvents(), primaryEvents()]) {
+      const context = await contextFor(events);
+      const sessions = sessionsBetween(context, calendar.year.from, calendar.year.to);
+      // A holiday week gives no session, and a holiday within a teaching
+      // week, such as Yennayer on a Tuesday, marks its sessions lost.
+      const misplaced = sessions.filter(
+        (session) =>
+          holidays.some((entry) => isWithin(session.day, entry.from, entry.to)) !== (session.calendar === 'holiday'),
+      );
+      assert.deepEqual(
+        misplaced.map((session) => session.key),
+        [],
+      );
+      assert.ok(sessions.some((session) => session.calendar === 'holiday'));
+      assert.ok(sessions.some((session) => session.calendar === null));
+    }
+  });
+
+  it('marks the holidays, the exam windows and Ramadan on the right days', async () => {
+    const cem = await contextFor(cemEvents());
+    // The autumn holidays start on the evening of Tuesday 27 October.
+    assert.deepEqual(marks(cem, '2026-10-27', '2026-10-29'), [null, 'holiday', 'holiday']);
+    assert.deepEqual(marks(cem, '2027-01-12', '2027-01-12'), ['holiday']);
+    assert.deepEqual(marks(cem, '2026-12-06', '2026-12-10'), ['exam', 'exam', 'exam', 'exam', 'exam']);
+    // Term 2's exams: 2, 3 and 4 March, then 7 and 8 March, just before Eid al-Fitr.
+    assert.deepEqual(marks(cem, '2027-03-02', '2027-03-08'), ['exam', 'exam', 'exam', 'exam', 'exam']);
+    assert.deepEqual(marks(cem, '2027-03-09', '2027-03-11'), ['holiday', 'holiday', 'holiday']);
+    // Ramadan shows on its days and changes no session.
+    const school = cem.state.schools.get('s-cem');
+    assert.ok(school !== undefined);
+    assert.ok(cem.calendar.info(d('2027-02-08'), school).entries.some((entry) => entry.id === 'ramadan'));
+    assert.deepEqual(marks(cem, '2027-02-08', '2027-02-11'), [null, null, null, null]);
+  });
+
+  it('gives each grade its own term-3 exams', async () => {
+    const firstYear = await contextFor(cemEvents());
+    const fourthYear = await contextFor(cemEventsIn('4am'));
+    assert.deepEqual(marks(firstYear, '2027-05-09', '2027-05-11'), [null, null, null]);
+    assert.deepEqual(marks(fourthYear, '2027-05-09', '2027-05-11'), ['exam', 'exam', 'exam']);
+    assert.deepEqual(marks(firstYear, '2027-05-23', '2027-05-27'), ['exam', 'exam', 'exam', 'exam', 'exam']);
+    assert.deepEqual(marks(fourthYear, '2027-05-23', '2027-05-27'), [null, null, null, null, null]);
+  });
+});

@@ -1,0 +1,256 @@
+{
+  "format": 1,
+  "country": "dz",
+  "release": "2026.1",
+  "year": {
+    "id": "2026-2027",
+    "from": "2026-09-21",
+    "to": "2027-07-08",
+    "terms": [
+      { "number": 1, "from": "2026-09-21", "to": "2026-12-17" },
+      { "number": 2, "from": "2027-01-03", "to": "2027-03-18" },
+      { "number": 3, "from": "2027-04-04", "to": "2027-07-08" }
+    ],
+    "source": "Pupils' first day: Services of the Prime Minister, statement of 8 August 2026: https://www.premier-ministre.gov.dz/ar/post/%D8%AA%D8%B9%D8%AF%D9%8A%D9%84-%D8%B1%D8%B2%D9%86%D8%A7%D9%85%D8%A9-%D8%A7%D9%84%D8%AF%D8%AE%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%B3%D9%8A-%D9%84%D9%84%D8%B3%D9%86%D8%A9-%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-2026-2027. Holidays and teachers' last day: Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519"
+  },
+  "entries": [
+    {
+      "id": "autumn-holidays",
+      "layer": "national",
+      "from": "2026-10-28",
+      "to": "2026-11-01",
+      "effect": "no-school",
+      "name": { "ar": "عطلة الخريف", "fr": "Vacances d'automne", "en": "Autumn holidays" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "revolution-day",
+      "layer": "national",
+      "from": "2026-11-01",
+      "to": "2026-11-01",
+      "effect": "no-school",
+      "name": { "ar": "عيد الثورة", "fr": "Fête de la Révolution", "en": "Revolution Day" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended",
+      "confidence": "announced"
+    },
+    {
+      "id": "term-1-exams",
+      "layer": "national",
+      "from": "2026-12-06",
+      "to": "2026-12-10",
+      "effect": "exam",
+      "grades": ["1ap", "2ap", "3ap", "4ap", "5ap", "1am", "2am", "3am", "1as", "2as"],
+      "term": 1,
+      "name": { "ar": "اختبارات الفصل الأول", "fr": "Compositions du premier trimestre", "en": "Term 1 exams" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "term-1-exams-4am-3as",
+      "layer": "national",
+      "from": "2026-12-06",
+      "to": "2026-12-10",
+      "effect": "exam",
+      "grades": ["4am", "3as"],
+      "term": 1,
+      "name": { "ar": "اختبارات الفصل الأول", "fr": "Compositions du premier trimestre", "en": "Term 1 exams" },
+      "source": "Projected from the Ministry of National Education's communiqué of 5 October 2026, which gives 4AM and 3AS only their term-3 dates: https://www.education.gov.dz/?p=4519",
+      "confidence": "projected"
+    },
+    {
+      "id": "winter-holidays",
+      "layer": "national",
+      "from": "2026-12-18",
+      "to": "2027-01-02",
+      "effect": "no-school",
+      "name": { "ar": "عطلة الشتاء", "fr": "Vacances d'hiver", "en": "Winter holidays" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "new-year",
+      "layer": "national",
+      "from": "2027-01-01",
+      "to": "2027-01-01",
+      "effect": "no-school",
+      "name": { "ar": "رأس السنة الميلادية", "fr": "Jour de l'An", "en": "New Year's Day" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended",
+      "confidence": "announced"
+    },
+    {
+      "id": "yennayer",
+      "layer": "national",
+      "from": "2027-01-12",
+      "to": "2027-01-12",
+      "effect": "no-school",
+      "name": { "ar": "رأس السنة الأمازيغية", "fr": "Yennayer", "en": "Yennayer, the Amazigh New Year" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended",
+      "confidence": "announced"
+    },
+    {
+      "id": "ramadan",
+      "layer": "national",
+      "from": "2027-02-08",
+      "to": "2027-03-08",
+      "effect": "marker",
+      "name": { "ar": "شهر رمضان", "fr": "Ramadan", "en": "Ramadan" },
+      "source": "Date expected from the Umm al-Qura calendar, confirmed when the moon is sighted",
+      "confidence": "expected"
+    },
+    {
+      "id": "term-2-exams-part-1",
+      "layer": "national",
+      "from": "2027-03-02",
+      "to": "2027-03-04",
+      "effect": "exam",
+      "grades": ["1ap", "2ap", "3ap", "4ap", "5ap", "1am", "2am", "3am", "1as", "2as"],
+      "term": 2,
+      "name": { "ar": "اختبارات الفصل الثاني", "fr": "Compositions du deuxième trimestre", "en": "Term 2 exams" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "term-2-exams-4am-3as-part-1",
+      "layer": "national",
+      "from": "2027-03-02",
+      "to": "2027-03-04",
+      "effect": "exam",
+      "grades": ["4am", "3as"],
+      "term": 2,
+      "name": { "ar": "اختبارات الفصل الثاني", "fr": "Compositions du deuxième trimestre", "en": "Term 2 exams" },
+      "source": "Projected from the Ministry of National Education's communiqué of 5 October 2026, which gives 4AM and 3AS only their term-3 dates: https://www.education.gov.dz/?p=4519",
+      "confidence": "projected"
+    },
+    {
+      "id": "term-2-exams-part-2",
+      "layer": "national",
+      "from": "2027-03-07",
+      "to": "2027-03-08",
+      "effect": "exam",
+      "grades": ["1ap", "2ap", "3ap", "4ap", "5ap", "1am", "2am", "3am", "1as", "2as"],
+      "term": 2,
+      "name": { "ar": "اختبارات الفصل الثاني", "fr": "Compositions du deuxième trimestre", "en": "Term 2 exams" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "term-2-exams-4am-3as-part-2",
+      "layer": "national",
+      "from": "2027-03-07",
+      "to": "2027-03-08",
+      "effect": "exam",
+      "grades": ["4am", "3as"],
+      "term": 2,
+      "name": { "ar": "اختبارات الفصل الثاني", "fr": "Compositions du deuxième trimestre", "en": "Term 2 exams" },
+      "source": "Projected from the Ministry of National Education's communiqué of 5 October 2026, which gives 4AM and 3AS only their term-3 dates: https://www.education.gov.dz/?p=4519",
+      "confidence": "projected"
+    },
+    {
+      "id": "eid-al-fitr",
+      "layer": "national",
+      "from": "2027-03-09",
+      "to": "2027-03-11",
+      "effect": "no-school",
+      "name": { "ar": "عيد الفطر", "fr": "Aïd el-Fitr", "en": "Eid al-Fitr" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended. Date expected from the Umm al-Qura calendar, confirmed when the moon is sighted",
+      "confidence": "expected"
+    },
+    {
+      "id": "spring-holidays",
+      "layer": "national",
+      "from": "2027-03-19",
+      "to": "2027-04-03",
+      "effect": "no-school",
+      "name": { "ar": "عطلة الربيع", "fr": "Vacances de printemps", "en": "Spring holidays" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "labour-day",
+      "layer": "national",
+      "from": "2027-05-01",
+      "to": "2027-05-01",
+      "effect": "no-school",
+      "name": { "ar": "عيد العمال", "fr": "Fête du Travail", "en": "Labour Day" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended",
+      "confidence": "announced"
+    },
+    {
+      "id": "term-3-exams-4am",
+      "layer": "national",
+      "from": "2027-05-09",
+      "to": "2027-05-11",
+      "effect": "exam",
+      "grades": ["4am"],
+      "term": 3,
+      "name": { "ar": "اختبارات الفصل الثالث", "fr": "Compositions du troisième trimestre", "en": "Term 3 exams" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "term-3-exams-3as",
+      "layer": "national",
+      "from": "2027-05-09",
+      "to": "2027-05-13",
+      "effect": "exam",
+      "grades": ["3as"],
+      "term": 3,
+      "name": { "ar": "اختبارات الفصل الثالث", "fr": "Compositions du troisième trimestre", "en": "Term 3 exams" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "eid-al-adha",
+      "layer": "national",
+      "from": "2027-05-16",
+      "to": "2027-05-18",
+      "effect": "no-school",
+      "name": { "ar": "عيد الأضحى", "fr": "Aïd el-Adha", "en": "Eid al-Adha" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended. Date expected from the Umm al-Qura calendar, confirmed when the moon is sighted",
+      "confidence": "expected"
+    },
+    {
+      "id": "term-3-exams",
+      "layer": "national",
+      "from": "2027-05-23",
+      "to": "2027-05-27",
+      "effect": "exam",
+      "grades": ["1ap", "2ap", "3ap", "4ap", "5ap", "1am", "2am", "3am", "1as", "2as"],
+      "term": 3,
+      "name": { "ar": "اختبارات الفصل الثالث", "fr": "Compositions du troisième trimestre", "en": "Term 3 exams" },
+      "source": "Ministry of National Education, communiqué of 5 October 2026, under Decision 41 of 28 September 2026: https://www.education.gov.dz/?p=4519",
+      "confidence": "announced"
+    },
+    {
+      "id": "awal-muharram",
+      "layer": "national",
+      "from": "2027-06-06",
+      "to": "2027-06-06",
+      "effect": "no-school",
+      "name": { "ar": "رأس السنة الهجرية", "fr": "Awal Moharram", "en": "Islamic New Year" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended. Date expected from the Umm al-Qura calendar, confirmed when the moon is sighted",
+      "confidence": "expected"
+    },
+    {
+      "id": "ashura",
+      "layer": "national",
+      "from": "2027-06-15",
+      "to": "2027-06-15",
+      "effect": "no-school",
+      "name": { "ar": "عاشوراء", "fr": "Achoura", "en": "Ashura" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended. Date expected from the Umm al-Qura calendar, confirmed when the moon is sighted",
+      "confidence": "expected"
+    },
+    {
+      "id": "independence-day",
+      "layer": "national",
+      "from": "2027-07-05",
+      "to": "2027-07-05",
+      "effect": "no-school",
+      "name": { "ar": "عيد الاستقلال", "fr": "Fête de l'Indépendance", "en": "Independence Day" },
+      "source": "Law 63-278 of 26 July 1963 on legal holidays, as amended",
+      "confidence": "announced"
+    }
+  ]
+}
