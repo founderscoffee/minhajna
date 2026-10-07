@@ -6,6 +6,7 @@
 // is read as untrusted: it is checked against the format, and fields outside
 // the format are dropped (PRD §5.9).
 
+import { isFields, LANGUAGE, Reader, RELEASE, type ParseResult } from './read.ts';
 import type { Queue } from './reference.ts';
 
 /** The closed list of item kinds (PRD §4.2). */
@@ -104,91 +105,8 @@ export interface PlanPack {
   readonly merges: readonly (readonly string[])[];
 }
 
-export type ParseProblemKind = 'required' | 'invalid' | 'duplicate' | 'unknown-reference';
-
-export interface ParseProblem {
-  readonly path: string;
-  readonly problem: ParseProblemKind;
-}
-
-export type ParseResult<T> =
-  | { readonly ok: true; readonly value: T }
-  | { readonly ok: false; readonly problems: readonly ParseProblem[] };
-
 const PACK_ID = /^[a-z]{2}(\.[a-z0-9-]+){4,5}$/;
-const RELEASE = /^\d{4}\.\d+$/;
 const ITEM_ID = /^[A-Za-z0-9._-]{1,64}$/;
-const LANGUAGE = /^[a-z]{2,3}$/;
-
-type Fields = Readonly<Record<string, unknown>>;
-
-function isFields(value: unknown): value is Fields {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}
-
-function isOneOf<T extends string>(list: readonly T[], value: unknown): value is T {
-  return typeof value === 'string' && (list as readonly string[]).includes(value);
-}
-
-function at(path: string, key: string): string {
-  return path === '' ? key : `${path}.${key}`;
-}
-
-class Reader {
-  readonly problems: ParseProblem[] = [];
-
-  fail(path: string, problem: ParseProblemKind): void {
-    this.problems.push({ path, problem });
-  }
-
-  text(fields: Fields, key: string, path: string, pattern?: RegExp): string | undefined {
-    const value = fields[key];
-    if (value === undefined) return undefined;
-    if (typeof value !== 'string' || value.trim() === '' || (pattern !== undefined && !pattern.test(value))) {
-      this.fail(at(path, key), 'invalid');
-      return undefined;
-    }
-    return value;
-  }
-
-  requiredText(fields: Fields, key: string, path: string, pattern?: RegExp): string {
-    if (fields[key] === undefined) this.fail(at(path, key), 'required');
-    return this.text(fields, key, path, pattern) ?? '';
-  }
-
-  number(fields: Fields, key: string, path: string, integer: boolean): number | undefined {
-    const value = fields[key];
-    if (value === undefined) return undefined;
-    if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0 || (integer && !Number.isInteger(value))) {
-      this.fail(at(path, key), 'invalid');
-      return undefined;
-    }
-    return value;
-  }
-
-  flag(fields: Fields, key: string, path: string): boolean | undefined {
-    const value = fields[key];
-    if (value === undefined) return undefined;
-    if (typeof value !== 'boolean') {
-      this.fail(at(path, key), 'invalid');
-      return undefined;
-    }
-    return value;
-  }
-
-  oneOf<T extends string>(fields: Fields, key: string, path: string, list: readonly T[]): T | undefined {
-    const value = fields[key];
-    if (value === undefined) {
-      this.fail(at(path, key), 'required');
-      return undefined;
-    }
-    if (!isOneOf(list, value)) {
-      this.fail(at(path, key), 'invalid');
-      return undefined;
-    }
-    return value;
-  }
-}
 
 function readAnchor(reader: Reader, value: unknown): TimeAnchor | undefined {
   if (!isFields(value)) {
