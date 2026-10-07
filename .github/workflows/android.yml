@@ -31,9 +31,9 @@ defaults:
 env:
   # The runner's SDK has the platform and the build tools. The NDK and CMake
   # are the versions React Native's template asks for.
-  BUILD_TOOLS: "37.0.0"
-  NDK: "27.1.12297006"
-  CMAKE: "3.22.1"
+  BUILD_TOOLS: '37.0.0'
+  NDK: '27.1.12297006'
+  CMAKE: '3.22.1'
   # Gradle's published checksum for the 9.4.1 wrapper. It changes with the
   # wrapper, in the same pull request.
   GRADLE_WRAPPER_SHA256: 55243ef57851f12b070ad14f7f5bb8302daceeebc5bce5ece5fa6edb23e1145c
@@ -169,7 +169,7 @@ jobs:
 
       - name: Install F-Droid's tools
         env:
-          FDROIDSERVER_VERSION: "2.4.5"
+          FDROIDSERVER_VERSION: '2.4.5'
         run: |
           python3 -m venv "$RUNNER_TEMP/fdroid"
           "$RUNNER_TEMP/fdroid/bin/pip" install --quiet "fdroidserver==$FDROIDSERVER_VERSION"

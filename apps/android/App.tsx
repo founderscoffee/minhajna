@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  initialWindowMetrics,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider, initialWindowMetrics, useSafeAreaInsets } from 'react-native-safe-area-context';
 import text from './src/text/ar.json';
 
 // One screen in Arabic, right to left: enough to prove the build (#18). The
@@ -25,12 +21,7 @@ export default function App() {
 function Welcome() {
   const insets = useSafeAreaInsets();
   return (
-    <View
-      style={[
-        styles.screen,
-        { paddingTop: insets.top, paddingBottom: insets.bottom },
-      ]}
-    >
+    <View style={[styles.screen, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
       <Text style={styles.name} accessibilityRole="header">
         {text.name}
       </Text>
