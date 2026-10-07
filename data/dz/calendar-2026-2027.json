@@ -89,6 +89,16 @@
       "confidence": "announced"
     },
     {
+      "id": "ramadan",
+      "layer": "national",
+      "from": "2027-02-08",
+      "to": "2027-03-08",
+      "effect": "marker",
+      "name": { "ar": "شهر رمضان", "fr": "Ramadan", "en": "Ramadan" },
+      "source": "Date expected from the Umm al-Qura calendar, confirmed when the moon is sighted",
+      "confidence": "expected"
+    },
+    {
       "id": "term-2-exams-part-1",
       "layer": "national",
       "from": "2027-03-02",

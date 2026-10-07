@@ -64,17 +64,20 @@ describe("Algeria's reference data", () => {
     assert.deepEqual([calendar.year.from, calendar.year.to], ['2026-09-21', '2027-07-08']);
   });
 
-  it('cites an official text for every date', () => {
+  it("cites an official text for every date but Ramadan's", () => {
     const { calendar } = readAlgeria();
+    const official = /https:\/\/www\.(education|premier-ministre)\.gov\.dz\/|Law 63-278/;
+    assert.match(calendar.year.source, official);
+    for (const entry of calendar.entries) {
+      // No text dates Ramadan yet.
+      if (entry.id !== 'ramadan') assert.match(entry.source, official, entry.id);
+      // A lunar date, Ramadan's included, stays expected until the moon is sighted.
+      if (entry.confidence === 'expected') assert.match(entry.source, /moon is sighted/, entry.id);
+    }
     for (const source of [calendar.year.source, ...calendar.entries.map((entry) => entry.source)]) {
-      assert.match(source, /https:\/\/www\.(education|premier-ministre)\.gov\.dz\/|Law 63-278/);
       for (const link of source.match(/https?:\/\/\S+/g) ?? []) {
         assert.match(link, /^https:\/\/www\.(education|premier-ministre)\.gov\.dz\//);
       }
-    }
-    // A lunar date stays expected until the moon is sighted.
-    for (const entry of calendar.entries.filter((candidate) => candidate.confidence === 'expected')) {
-      assert.match(entry.source, /moon is sighted/, entry.id);
     }
   });
 
@@ -115,7 +118,7 @@ describe("Algeria's reference data", () => {
     }
   });
 
-  it('marks the holidays and the exam windows on the right days', async () => {
+  it('marks the holidays, the exam windows and Ramadan on the right days', async () => {
     const cem = await contextFor(cemEvents());
     // The autumn holidays start on the evening of Tuesday 27 October.
     assert.deepEqual(marks(cem, '2026-10-27', '2026-10-29'), [null, 'holiday', 'holiday']);
@@ -124,6 +127,11 @@ describe("Algeria's reference data", () => {
     // Term 2's exams: 2, 3 and 4 March, then 7 and 8 March, just before Eid al-Fitr.
     assert.deepEqual(marks(cem, '2027-03-02', '2027-03-08'), ['exam', 'exam', 'exam', 'exam', 'exam']);
     assert.deepEqual(marks(cem, '2027-03-09', '2027-03-11'), ['holiday', 'holiday', 'holiday']);
+    // Ramadan shows on its days and changes no session.
+    const school = cem.state.schools.get('s-cem');
+    assert.ok(school !== undefined);
+    assert.ok(cem.calendar.info(d('2027-02-08'), school).entries.some((entry) => entry.id === 'ramadan'));
+    assert.deepEqual(marks(cem, '2027-02-08', '2027-02-11'), [null, null, null, null]);
   });
 
   it('gives each grade its own term-3 exams', async () => {
