@@ -6,6 +6,7 @@
 
 import js from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
@@ -47,5 +48,19 @@ export default defineConfig(
   {
     files: ['**/*.js'],
     extends: [tseslint.configs.disableTypeChecked],
+  },
+
+  // The apps' tool settings, such as Metro's and Jest's, are CommonJS
+  // modules that Node.js loads.
+  {
+    files: ['apps/*/*.config.js'],
+    languageOptions: { sourceType: 'commonjs', globals: { __dirname: 'readonly' } },
+    rules: { '@typescript-eslint/no-require-imports': 'off' },
+  },
+
+  // React's rules of hooks, for the apps' components.
+  {
+    files: ['apps/**/*.{ts,tsx}'],
+    extends: [reactHooks.configs.flat.recommended],
   },
 );
