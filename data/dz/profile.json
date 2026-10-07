@@ -1,0 +1,226 @@
+{
+  "format": 1,
+  "code": "dz",
+  "release": "2026.1",
+  "weekStartsOn": 0,
+  "workingDays": [0, 1, 2, 3, 4],
+  "levels": [
+    {
+      "code": "primary",
+      "rollCallUnit": "half-day",
+      "sessionMinutes": 45,
+      "name": { "ar": "التعليم الابتدائي", "fr": "Enseignement primaire", "en": "Primary" },
+      "grades": [
+        {
+          "code": "1ap",
+          "name": { "ar": "السنة الأولى ابتدائي", "fr": "1re année primaire", "en": "Year 1 of primary" }
+        },
+        {
+          "code": "2ap",
+          "name": { "ar": "السنة الثانية ابتدائي", "fr": "2e année primaire", "en": "Year 2 of primary" }
+        },
+        {
+          "code": "3ap",
+          "name": { "ar": "السنة الثالثة ابتدائي", "fr": "3e année primaire", "en": "Year 3 of primary" }
+        },
+        {
+          "code": "4ap",
+          "name": { "ar": "السنة الرابعة ابتدائي", "fr": "4e année primaire", "en": "Year 4 of primary" }
+        },
+        {
+          "code": "5ap",
+          "name": { "ar": "السنة الخامسة ابتدائي", "fr": "5e année primaire", "en": "Year 5 of primary" }
+        }
+      ]
+    },
+    {
+      "code": "cem",
+      "rollCallUnit": "session",
+      "sessionMinutes": 60,
+      "name": { "ar": "التعليم المتوسط", "fr": "Enseignement moyen", "en": "Middle school" },
+      "grades": [
+        {
+          "code": "1am",
+          "name": { "ar": "السنة الأولى متوسط", "fr": "1re année moyenne", "en": "Year 1 of middle school" }
+        },
+        {
+          "code": "2am",
+          "name": { "ar": "السنة الثانية متوسط", "fr": "2e année moyenne", "en": "Year 2 of middle school" }
+        },
+        {
+          "code": "3am",
+          "name": { "ar": "السنة الثالثة متوسط", "fr": "3e année moyenne", "en": "Year 3 of middle school" }
+        },
+        {
+          "code": "4am",
+          "name": { "ar": "السنة الرابعة متوسط", "fr": "4e année moyenne", "en": "Year 4 of middle school" }
+        }
+      ]
+    },
+    {
+      "code": "lycee",
+      "rollCallUnit": "session",
+      "sessionMinutes": 60,
+      "name": { "ar": "التعليم الثانوي", "fr": "Enseignement secondaire", "en": "Secondary school" },
+      "grades": [
+        {
+          "code": "1as",
+          "name": { "ar": "السنة الأولى ثانوي", "fr": "1re année secondaire", "en": "Year 1 of secondary school" }
+        },
+        {
+          "code": "2as",
+          "name": { "ar": "السنة الثانية ثانوي", "fr": "2e année secondaire", "en": "Year 2 of secondary school" }
+        },
+        {
+          "code": "3as",
+          "name": { "ar": "السنة الثالثة ثانوي", "fr": "3e année secondaire", "en": "Year 3 of secondary school" }
+        }
+      ]
+    }
+  ],
+  "subjects": [
+    {
+      "code": "arabic",
+      "name": { "ar": "اللغة العربية", "fr": "Langue arabe", "en": "Arabic" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "tamazight",
+      "name": { "ar": "اللغة الأمازيغية", "fr": "Tamazight", "en": "Tamazight" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "french",
+      "name": { "ar": "اللغة الفرنسية", "fr": "Langue française", "en": "French" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "english",
+      "name": { "ar": "اللغة الإنجليزية", "fr": "Langue anglaise", "en": "English" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "math",
+      "name": { "ar": "الرياضيات", "fr": "Mathématiques", "en": "Mathematics" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "science-technology",
+      "name": {
+        "ar": "التربية العلمية والتكنولوجية",
+        "fr": "Éducation scientifique et technologique",
+        "en": "Science and technology"
+      },
+      "levels": ["primary"]
+    },
+    {
+      "code": "natural-sciences",
+      "name": {
+        "ar": "علوم الطبيعة والحياة",
+        "fr": "Sciences de la nature et de la vie",
+        "en": "Natural and life sciences"
+      },
+      "levels": ["cem", "lycee"]
+    },
+    {
+      "code": "physics-technology",
+      "name": {
+        "ar": "العلوم الفيزيائية والتكنولوجيا",
+        "fr": "Sciences physiques et technologie",
+        "en": "Physics and technology"
+      },
+      "levels": ["cem"]
+    },
+    {
+      "code": "physics",
+      "name": { "ar": "العلوم الفيزيائية", "fr": "Sciences physiques", "en": "Physics" },
+      "levels": ["lycee"]
+    },
+    {
+      "code": "technology",
+      "name": { "ar": "التكنولوجيا", "fr": "Technologie", "en": "Technology" },
+      "levels": ["lycee"]
+    },
+    {
+      "code": "islamic",
+      "name": { "ar": "التربية الإسلامية", "fr": "Éducation islamique", "en": "Islamic education" },
+      "levels": ["primary", "cem"]
+    },
+    {
+      "code": "islamic-sciences",
+      "name": { "ar": "العلوم الإسلامية", "fr": "Sciences islamiques", "en": "Islamic sciences" },
+      "levels": ["lycee"]
+    },
+    {
+      "code": "civic",
+      "name": { "ar": "التربية المدنية", "fr": "Éducation civique", "en": "Civic education" },
+      "levels": ["primary", "cem"]
+    },
+    {
+      "code": "history-geography",
+      "name": { "ar": "التاريخ والجغرافيا", "fr": "Histoire et géographie", "en": "History and geography" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "visual-arts",
+      "name": { "ar": "التربية التشكيلية", "fr": "Arts plastiques", "en": "Visual arts" },
+      "levels": ["primary", "cem"]
+    },
+    {
+      "code": "music",
+      "name": { "ar": "التربية الموسيقية", "fr": "Éducation musicale", "en": "Music" },
+      "levels": ["primary", "cem"]
+    },
+    {
+      "code": "pe",
+      "name": { "ar": "التربية البدنية والرياضية", "fr": "Éducation physique et sportive", "en": "Physical education" },
+      "levels": ["primary", "cem", "lycee"]
+    },
+    {
+      "code": "computing",
+      "name": { "ar": "الإعلام الآلي", "fr": "Informatique", "en": "Computing" },
+      "levels": ["cem", "lycee"]
+    },
+    { "code": "philosophy", "name": { "ar": "الفلسفة", "fr": "Philosophie", "en": "Philosophy" }, "levels": ["lycee"] },
+    {
+      "code": "accounting",
+      "name": {
+        "ar": "التسيير المحاسبي والمالي",
+        "fr": "Gestion comptable et financière",
+        "en": "Accounting and finance"
+      },
+      "levels": ["lycee"]
+    },
+    {
+      "code": "economics",
+      "name": { "ar": "الاقتصاد والمناجمنت", "fr": "Économie et management", "en": "Economics and management" },
+      "levels": ["lycee"]
+    },
+    { "code": "law", "name": { "ar": "القانون", "fr": "Droit", "en": "Law" }, "levels": ["lycee"] },
+    {
+      "code": "german",
+      "name": { "ar": "اللغة الألمانية", "fr": "Langue allemande", "en": "German" },
+      "levels": ["lycee"]
+    },
+    {
+      "code": "spanish",
+      "name": { "ar": "اللغة الإسبانية", "fr": "Langue espagnole", "en": "Spanish" },
+      "levels": ["lycee"]
+    },
+    {
+      "code": "italian",
+      "name": { "ar": "اللغة الإيطالية", "fr": "Langue italienne", "en": "Italian" },
+      "levels": ["lycee"]
+    }
+  ],
+  "sessionTypes": [
+    { "code": "lesson", "queue": "main", "name": { "ar": "درس", "fr": "Cours", "en": "Lesson" } },
+    { "code": "integration", "queue": "main", "name": { "ar": "إدماج", "fr": "Intégration", "en": "Integration" } },
+    { "code": "td", "queue": "td", "name": { "ar": "أعمال موجهة", "fr": "Travaux dirigés", "en": "Guided work" } },
+    { "code": "remediation", "queue": "none", "name": { "ar": "معالجة", "fr": "Remédiation", "en": "Remediation" } },
+    { "code": "reception", "queue": "none", "name": { "ar": "استقبال", "fr": "Accueil", "en": "Reception" } },
+    { "code": "free", "queue": "none", "name": { "ar": "فراغ", "fr": "Heure libre", "en": "Free period" } },
+    { "code": "test", "queue": "none", "name": { "ar": "فرض", "fr": "Devoir", "en": "Test" } },
+    { "code": "exam", "queue": "none", "name": { "ar": "اختبار", "fr": "Composition", "en": "Exam" } }
+  ]
+}

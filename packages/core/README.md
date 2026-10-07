@@ -33,7 +33,7 @@ npm run typecheck
 
 The type check covers `src/`. The tests are run, not type-checked, since that needs Node.js's own type definitions.
 
-The test data is made up ([engineering rules](../../docs/contributing/engineering.md#test-data)). The two plan packs in the tests are invented, with the status `example`, and are never published as reference data.
+The test data is made up ([engineering rules](../../docs/contributing/engineering.md#test-data)). The two plan packs in the tests are invented, with the status `example`, and are never published as reference data. Only `data.test.ts` reads real files: Algeria's reference data in [`data/`](../../data/README.md), which it runs made-up classes against.
 
 ## Not here yet
 
