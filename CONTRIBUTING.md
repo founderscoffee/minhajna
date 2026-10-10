@@ -1,5 +1,7 @@
 # Contributing to Minhajna
 
+<!-- djazairdev-template: 1.5.2 -->
+
 ## What we accept now
 
 The project is at stage 1 of its opening plan ([PRD §1.13](docs/prd/PRD.md#113-opening-in-stages)). We accept:
@@ -9,6 +11,8 @@ The project is at stage 1 of its opening plan ([PRD §1.13](docs/prd/PRD.md#113-
 - translations.
 
 Code contributions are by invitation until the launch, planned for September 2027. If you'd like to help with code, open an issue and introduce yourself.
+
+**A first contribution** starts with an issue labelled [good first issue](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22): comment on it to say you're working on it, and follow [Content contributions](#content-contributions) below.
 
 ## Never post real pupil data
 
@@ -39,7 +43,7 @@ Read the [contributor handbook](#the-contributor-handbook) before your first pul
 - **Sign-off.** Sign off every commit under the [Developer Certificate of Origin 1.1](https://developercertificate.org/) with `git commit -s`. The sign-off certifies that you have the right to submit the work under the project's licence. A GitHub no-reply email address is fine.
 - **Copyright.** There is no CLA: you keep the copyright in your contribution.
 - **Commit messages** follow [Conventional Commits](docs/contributing/commits.md), for example `fix(export): leave locked cells untouched in the grade workbook`.
-- **AI-assisted work** is welcome. You answer for it like any other work: you reviewed and tested it, and you have the right to submit it.
+- **AI-assisted work** is welcome, on the terms in [AI-assisted contributions](#ai-assisted-contributions).
 - **Privacy-sensitive changes** get extra review ([PRD §1.7](docs/prd/PRD.md#17-contributions)). These are changes that touch:
   - network calls;
   - encryption;
@@ -47,6 +51,46 @@ Read the [contributor handbook](#the-contributor-handbook) before your first pul
   - insights;
   - the export of marks;
   - anything that reads or writes the school's official files.
+
+### Set up and run the checks
+
+You need Node.js 22.18 or later. The same commands CI runs on every pull request:
+
+```bash
+git clone https://github.com/djazairdev/minhajna
+cd minhajna
+npm ci --no-audit
+(cd apps/android && npm ci --no-audit)
+npm run typecheck
+npm run lint
+npm test
+```
+
+The Android build has its own checks: [docs/checks/android-build.md](docs/checks/android-build.md). Pull requests also check the sign-off, the licence of every file, the title, secrets, and the licences and vulnerabilities of new dependencies ([workflow.md](docs/contributing/workflow.md#pull-requests)).
+
+## AI-assisted contributions
+
+You're welcome to use AI coding tools, on these terms ([PRD §1.7](docs/prd/PRD.md#17-contributions)):
+
+- **You are the author.** Understand every line you submit, and be ready to explain it in review. "The model wrote it" doesn't answer a review comment.
+- **Say so,** in the pull request, and with an `Assisted-by:` or `Co-authored-by:` trailer when a tool wrote a substantial part ([commits.md](docs/contributing/commits.md#ai-assisted-work)). Your sign-off is yours alone.
+- **Run the checks yourself,** and report the results you actually got.
+- **Point your agent at [AGENTS.md](AGENTS.md).** Most coding agents read it on their own, and its rules bind them as they bind you.
+- **No autonomous agents.** A person writes or reviews every issue, pull request and comment; an agent may not open them on its own.
+- **Check what a tool finds** before you report it, and report security problems privately. An unchecked report is closed.
+- **Never give an AI tool pupil data, secrets or an unpublished security report** (principle 2).
+- Maintainers may close a low-effort generated pull request or issue without a detailed review.
+
+## Review
+
+- A maintainer reviews every pull request, as [workflow.md](docs/contributing/workflow.md#review) describes; we may ask for changes, which is normal.
+- **CI on a pull request from a fork waits until a maintainer approves the run.** That's a safety setting, not a judgement on your change.
+- Answer review comments with new commits rather than a force-push, so the conversation stays readable. The squash merge tidies the history.
+- Nothing is closed automatically. If a pull request goes quiet for a long time, we ask before we close it.
+
+## Our pledge
+
+The maintainers reply to every newcomer's pull request within 7 days, even if only to say when we'll review it.
 
 ## The contributor handbook
 

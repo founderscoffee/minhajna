@@ -1,5 +1,9 @@
 # Minhajna · منهاجنا
 
+[![Test](https://github.com/djazairdev/minhajna/actions/workflows/test.yml/badge.svg)](https://github.com/djazairdev/minhajna/actions/workflows/test.yml)
+[![Good first issues](https://img.shields.io/github/issues/djazairdev/minhajna/good%20first%20issue?label=good%20first%20issues&color=7057ff)](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+[![Improvements](https://img.shields.io/github/issues/djazairdev/minhajna/enhancement?label=improvements&color=a2eeef)](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement+sort%3Areactions-%2B1-desc)
+
 من التدرّج إلى الحصّة · From the yearly plan to every lesson
 
 **العربية** · [English](#english)
@@ -23,32 +27,28 @@
 
 ### ميثاق استعمال البيانات
 
-يحمي الميثاق الأساتذة الذين تُحفظ سجلاتهم في تطبيق «منهاجنا». يُطلب من الوزارة في نصّها، ويُعرض على أساتذة كل مؤسسة قبل الإطلاق الوطني، والتصميم يفرضه حيث يستطيع، أيًّا كان من يشغّل الخوادم. نصّه الكامل بالإنجليزية في [CHARTER.md](CHARTER.md). بنوده العشرة باختصار:
+يحمي الميثاق الأساتذة الذين تُحفظ سجلاتهم في تطبيق «منهاجنا»: لا استعمال في المسار المهني، ولا مراقبة، والتصحيح لا القفل، ويرى الأستاذ ما يراه المدير، وفوق المؤسسة مجاميع فقط. يُطلب من الوزارة في نصّها، ويُعرض على أساتذة كل مؤسسة قبل الإطلاق الوطني، والتصميم يفرضه حيث يستطيع. [ملخّص بنوده العشرة بالعربية](docs/ar/charter.md)، ونصّه الكامل بالإنجليزية في [CHARTER.md](CHARTER.md).
 
-1. **الغرض:** تخدم السجلات تخطيط الأستاذ، وتنسيق مجلس التعليم، والمتابعة التي تخوّلها النصوص الرسمية للمديرين والمفتشين. وفوق المؤسسة، لا تخدم الأرقام المستخرجة منها إلا ما يسمح به البند السابع. ولا شيء غير ذلك.
-2. **لا استعمال في المسار المهني:** لا تُستعمل القيود في الأجر ولا الترقية ولا التقييم ولا المنح ولا التأديب ولا النقل، ولا ترتيب للأساتذة ولا قوائم ملوّنة.
-3. **لا مراقبة:** لا تسجيل للساعة ولا لبدء الحصص ولا للموقع. والتسجيل الناقص أو المتأخر، أو الحصة التي تنتظر التأكيد، ليس غيابًا أبدًا، ولا يُطلق تنبيهًا ولا عقوبة، ولا يغادر المؤسسة.
-4. **التصحيح لا القفل:** يمكن للأستاذ دائمًا أن يصحّح، وتبقى النسختان ظاهرتين.
-5. **التناظر:** يرى الأستاذ كل ما يراه المدير عن أقسامه، وكل اطّلاع على سجلاته. والسلطة الوصية هي التي تمنح المفتش حقّ الاطلاع، لمدة محددة، ويراه الأستاذ.
-6. **الخاص يبقى خاصًا:** الملاحظات الخاصة لا تغادر أجهزة الأستاذ.
-7. **فوق المؤسسة مجاميع فقط،** بحدود دنيا وطرق تُنشر مسبقًا، ولا تُستعمل أبدًا في قرارات المسار المهني. ولا يُستأنس بمدى تقدّم الأقسام في تحديد ما يشمله امتحان إلا على مستوى من يضعه: سجلات المؤسسة لامتحاناتها، ومجاميع المديرية لامتحاناتها، والمجاميع الولائية والوطنية للامتحانات الوطنية. تؤخذ الأرقام في تاريخ يُعلن في بداية السنة، ولا يتغيّر إلا إذا تغيّر موعد الامتحان، ويُعلن عندئذ من جديد قبل أسبوعين على الأقل. وتُراجع بعيّنة المفتشين، أو يُصرَّح بأنها غير مراجعة في سنة بلا عيّنة، ثم تُنشر بعد الامتحان مع طريقة استعمالها.
-8. **ساعات الهدوء:** لا إشعارات ليلًا ولا في عطلة نهاية الأسبوع.
-9. **لا يلزم هاتف شخصي:** يبقى الورق وحاسوب المؤسسة بديلين.
-10. **الاستشارة والشفافية:** يُعرض الميثاق على أساتذة المؤسسة قبل بدء العمل بالمنظومة فيها، ويذكر تقرير الشفافية كل طلب بيانات من أي سلطة، حيث يسمح القانون.
+### أول مساهمة لك
 
-### قواعد السلوك
+1. اختر مسألة عليها وسم [good first issue](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+2. علّق عليها لتقول إنك تعمل عليها.
+3. اتبع [CONTRIBUTING.md](CONTRIBUTING.md): اذكر مصدر كل تصحيح أو نموذج، وأين ينطبق (المستوى والمادة والسنة الدراسية).
+4. نردّ على طلبات الدمج من المساهمين الجدد في غضون 7 أيام، وقد تستغرق المراجعة أو الدمج وقتًا أطول.
 
-نصّها الكامل بالإنجليزية في [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). باختصار:
-- الاحترام في كل فضاءات المشروع، ولا تحرّش ولا تجريح شخصي.
-- تبقى فضاءات المشروع للحديث عن المنتج: لا دعاية سياسية أو نقابية، ولا هجوم على أشخاص بأسمائهم، مسؤولين كانوا أو زملاء أو تلاميذ أو أولياء.
-- لا تُنشر أبدًا أسماء التلاميذ أو نقاطهم أو غياباتهم، ولا صور التلاميذ أو الموظفين. تُستعمل أسماء وهمية.
-- يُبلَّغ عن أي مشكلة بعيدًا عن العلن: على GitHub بخاصية الإبلاغ لمشرفي المستودع، وفي مجموعة الأساتذة على فيسبوك بالإبلاغ لمشرفي المجموعة.
+نستقبل الآن الملاحظات والاقتراحات، وتصحيحات التدرجات وغيرها من البيانات المرجعية، ونماذج الطباعة، والترجمات. أما مساهمات الكود فبدعوة فقط إلى غاية إطلاق التطبيق المقرر في سبتمبر 2027.
 
-### المساهمة الآن
+**لا تنشر أبدًا أسماء التلاميذ أو نقاطهم أو غياباتهم أو صورهم،** في أي مكان في المشروع. استعمل أسماء وهمية. [ملخّص قواعد السلوك](docs/ar/conduct.md).
 
-- تُستقبل الملاحظات والاقتراحات وتصحيحات التدرجات والنماذج عبر [Issues](https://github.com/djazairdev/minhajna/issues).
-- مساهمات الكود بدعوة فقط إلى غاية إطلاق التطبيق المقرر في سبتمبر 2027. التفاصيل في [CONTRIBUTING.md](CONTRIBUTING.md).
-- كل قرار مهمّ يُعرض للنقاش قبل اعتماده، ويُجاب عن كل تعليق علنًا.
+### تواصل معنا
+
+- [اطرح سؤالًا](https://github.com/orgs/djazairdev/discussions/categories/q-a)
+- [أبلغ عن خلل](https://github.com/djazairdev/minhajna/issues/new?template=bug.yml)
+- [اقترح تحسينًا](https://github.com/djazairdev/minhajna/issues/new?template=idea.yml)، أو صوّت بـ 👍 على [التحسينات](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement+sort%3Areactions-%2B1-desc) التي تريدها أكثر
+- [اقترح مشروعًا جديدًا](https://github.com/djazairdev/djazair.dev/discussions/categories/ideas) للجزائر
+- تابع djazairdev على [فيسبوك](https://www.facebook.com/djazairdev) و[X](https://x.com/djazairdev)
+
+اكتب بالعربية أو الأمازيغية أو الفرنسية أو الإنجليزية. كل قرار مهمّ يُعرض للنقاش قبل اعتماده، ويُجاب عن كل تعليق علنًا. أبلغ عن المشاكل الأمنية [بعيدًا عن العلن](https://github.com/djazairdev/minhajna/security/policy)، لا في مسألة علنية.
 
 ### الوثائق
 
@@ -89,13 +89,26 @@
 
 Ten points protect the teachers whose records are kept in Minhajna: no personnel use, no surveillance, corrections instead of locks, teachers seeing what their director sees, and only totals above the school. The charter is asked of the Ministry, presented to every school's teachers before the national launch, and enforced by the design wherever it can be. Read [CHARTER.md](CHARTER.md).
 
-### Contributing now
+### Make your first contribution
 
-- Share feedback, suggestions, corrections to annual plans, and templates through [Issues](https://github.com/djazairdev/minhajna/issues).
-- **Never post pupils' names, marks or absences, or images of them**, anywhere in the project. Use made-up names.
-- Code contributions are by invitation until the launch, planned for September 2027. See [CONTRIBUTING.md](CONTRIBUTING.md).
-- Every important decision is open for comments before it is made, and every comment gets a public answer.
-- The [code of conduct](CODE_OF_CONDUCT.md) applies in every project space.
+1. Pick an issue labelled [good first issue](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+2. Comment on it to say you're working on it.
+3. Follow [CONTRIBUTING.md](CONTRIBUTING.md): give the source of each correction or template, and where it applies (the level, subject and school year).
+4. We reply to newcomers' pull requests within 7 days. A review or a merge may take longer.
+
+We accept feedback and suggestions, corrections to annual plans and other reference data, print templates, and translations. Code contributions are by invitation until the launch, planned for September 2027.
+
+**Never post pupils' names, marks or absences, or images of them**, anywhere in the project. Use made-up names. The [code of conduct](CODE_OF_CONDUCT.md) applies in every project space.
+
+### Feedback
+
+- [Ask a question](https://github.com/orgs/djazairdev/discussions/categories/q-a)
+- [Report a bug](https://github.com/djazairdev/minhajna/issues/new?template=bug.yml)
+- [Suggest an improvement](https://github.com/djazairdev/minhajna/issues/new?template=idea.yml), or 👍 the [improvements](https://github.com/djazairdev/minhajna/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement+sort%3Areactions-%2B1-desc) you want most
+- [Propose a new project](https://github.com/djazairdev/djazair.dev/discussions/categories/ideas) for Algeria
+- Follow djazairdev on [Facebook](https://www.facebook.com/djazairdev) and [X](https://x.com/djazairdev) for news
+
+Ask in Arabic, Tamazight, French or English. Every important decision is open for comments before it is made, and every comment gets a public answer. Report security problems [privately](https://github.com/djazairdev/minhajna/security/policy), never in an issue.
 
 ### Documents
 
@@ -109,3 +122,9 @@ Ten points protect the teachers whose records are kept in Minhajna: no personnel
 - Code: AGPL-3.0-or-later.
 - Documents and content: CC BY-SA 4.0.
 - The name "Minhajna" and its logo are not covered by these licences ([TRADEMARKS.md](TRADEMARKS.md)).
+
+---
+
+جزء من [djazairdev](https://github.com/djazairdev): ننمّي مجتمع البرمجيات مفتوحة المصدر في الجزائر بمشاريع مفيدة، ونرحّب بالمساهمات الأولى وبالتعاون. اكتشف مشاريع أخرى في [دليل djazair.dev](https://djazair.dev/en/hub/).
+
+Part of [djazairdev](https://github.com/djazairdev): growing Algeria's open-source community through useful projects, welcoming first contributions and collaboration. Find more projects in the [djazair.dev Hub](https://djazair.dev/en/hub/).

@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2026 The Minhajna contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Line endings are LF in the repository whatever the contributor's system,
+# as .editorconfig asks.
+* text=auto eol=lf
+
+# Windows scripts keep CRLF when checked out.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Never touched as text.
+*.jar binary
+*.png binary
