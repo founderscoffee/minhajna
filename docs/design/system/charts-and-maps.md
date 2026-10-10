@@ -1,13 +1,13 @@
 # Charts and maps
 
-Charts and maps appear only where the PRD calls for them (PRD [§5.2](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#52-architecture)).
+Charts and maps appear only where the PRD calls for them (PRD [§5.2](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#52-architecture)).
 
 ## Charts
 
 - **On the web,** charts are drawn with Apache ECharts:
   - how far classes got;
   - the totals above the school (PRD §5.10);
-  - each exam's threshold (PRD [§7.10](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#710-exam-thresholds)).
+  - each exam's threshold (PRD [§7.10](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#710-exam-thresholds)).
 - **On Android,** the few charts are drawn with react-native-svg, with labels as native text so that Arabic is shaped.
 - **Mirror the axes** in right-to-left layouts, since ECharts has none.
 - **Put a table of the same figures beside every chart,** since ECharts has no keyboard navigation. On the canvas the table opens from a «جدول» segment or sits under the chart.

@@ -1,6 +1,6 @@
 # Minhajna: Product Requirements Document
 
-*Minhajna (منهاجنا) is the product's name, chosen on 4 Oct 2026 in decision 0019. Until then it was called Tabachir (طباشير). Repository: [github.com/founderscoffee/minhajna](https://github.com/founderscoffee/minhajna). Started 26 Sep 2026.*
+*Minhajna (منهاجنا) is the product's name, chosen on 4 Oct 2026 in decision 0019. Until then it was called Tabachir (طباشير). Repository: [github.com/djazairdev/minhajna](https://github.com/djazairdev/minhajna), since 10 Oct 2026 (decision 0020). Started 26 Sep 2026.*
 
 This PRD is written one section at a time, and we settle each section before starting the next. Each section records decisions and ends with a list of what is still open.
 
@@ -8,7 +8,7 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 | § | Section | Status |
 |---|---|---|
-| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016, 0017, 0018 and 0019) |
+| 1 | [Open-source strategy and governing guidelines](#1-open-source-strategy-and-governing-guidelines) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015, 0016, 0017, 0018 and 0019) and 10 Oct 2026 (decision 0020) |
 | 2 | [Goal, users and scope](#2-goal-users-and-scope) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017) |
 | 3 | [The teacher app](#3-the-teacher-app) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decisions 0015 and 0017). Points clarified on 5 Oct 2026 |
 | 4 | [The lesson engine and plan packs](#4-the-lesson-engine-and-plan-packs) | Settled on 27 Sep 2026. Changes accepted on 4 Oct 2026 (decision 0015). Points clarified on 5 Oct 2026 |
@@ -21,10 +21,10 @@ The evidence is in the project's research brief, cited as "brief §n", and in th
 
 ## The decisions that changed this PRD
 
-Five decisions changed this PRD after its sections were settled: 0015 to 0019, accepted on 4 Oct 2026. Each section's note names the ones it carries out, and its decisions table gives their choices.
+Six decisions changed this PRD after its sections were settled: 0015 to 0019, accepted on 4 Oct 2026, and 0020, accepted on 10 Oct 2026. Each section's note names the ones it carries out, and its decisions table gives their choices.
 
 - **The decisions tables show which rows they changed.** A row decided earlier that one of them changed is marked "(changed by 00NN)", and a row that works out one of them in detail is marked "(takes effect with 00NN)". A row that one of them only adds to is not marked. The marks stay as history.
-- **The new name is used throughout,** decided rows included, except in the two rows that 0019 changed: the name and the code host in §1.17.
+- **The new name is used throughout,** decided rows included, except in the two rows that 0019 changed: the name and the code host in §1.17. The same goes for the repository's address and 0020.
 - **Dates in the text,** such as "(29 Sep)", say when a choice was made. The tables say when it was decided.
 - **Two decided rows change steps that earlier records planned,** both in §1.17: `CHARTER.md` is in English, where 0010 planned Arabic and English, and the name is not registered, where 0004, 0007 and 0008 planned to register it. The rows name those records.
 
@@ -35,6 +35,7 @@ Five decisions changed this PRD after its sections were settled: 0015 to 0019, a
 | [0017](../decisions/0017-exam-scope-at-each-level.md): exam scope at each exam's own level | Charter point 7, which said aggregates are never used for exam thresholds: how far classes got may inform an exam's scope at the level that sets it, under three safeguards. Personnel use stays banned, and the opt-in insights keep their ban | §1, §2, §3, §5, §7, §8 and §10 |
 | [0018](../decisions/0018-charter-purpose-and-figures.md): charter point 1 and figures above the school | Charter point 1 gains a sentence: "Above the school, figures drawn from them serve only what point 7 allows." The rest of the point is unchanged | §1 |
 | [0019](../decisions/0019-name-minhajna.md): the name Minhajna | Replaces record 0007: the product is called Minhajna (منهاجنا) rather than Tabachir, and the naming rule is loosened. Changes part of record 0005: the repository's name | §1.9 and §1.17, and the name throughout |
+| [0020](../decisions/0020-code-host-djazairdev.md): the djazairdev organisation | Changes part of records 0005 and 0019: the repository is `djazairdev/minhajna`. Nothing else changes | §1.17 |
 
 ---
 
@@ -265,7 +266,7 @@ The insights layer is opt-in and shares lesson-level data only. A later section 
   - **Not registered** (29 Sep). The name and logo are not registered as trademarks. They are protected only by use, by the official sources above and by the published checksums.
   - **Forks.** The name policy (`TRADEMARKS.md`) lets anyone fork, but under another name and logo, and without suggesting that the fork is the project's app. The Ministry's deployment runs under its own name (§5.2).
   - **Official builds.** Unmodified official builds may be shared as they are.
-- **Naming rule**, for the product and for anything the project later names. Decision 0019 loosened it on 4 Oct. Since the name is not registered, a name no longer has to be distinctive. Since the project's repositories live under `founderscoffee`, it is no longer checked on GitHub. The echo rules now cover only exact official names and the apps that teachers use in Algeria.
+- **Naming rule**, for the product and for anything the project later names. Decision 0019 loosened it on 4 Oct. Since the name is not registered, a name no longer has to be distinctive. Since the project's repositories live under `djazairdev` (decision 0020), it is no longer checked on GitHub. The echo rules now cover only exact official names and the apps that teachers use in Algeria.
   - **Easy to say.** It must be easy to say in Algerian Arabic, French and English, with one fixed Latin spelling.
   - **No official name.** Never the exact name of an official document (دفتر النصوص, كراس القسم, سجل المناداة, المنهاج), a state body or a state platform (ostad, amatti, awlyaa, mowadaf, the "ديوان" offices, Morocco's Massar). A word they share, such as منهاج, is allowed.
   - **No echo of the apps that teachers use in Algeria.**
@@ -480,7 +481,7 @@ The code and the reference data live in separate repositories, because they have
 | Code licence | AGPL-3.0-or-later |
 | Contributor terms | DCO; no CLA and no relicensing |
 | Copyright and trademark | Held by the founder until a legal entity exists |
-| Code host (changed by 0019) | A GitHub organisation: the repository is `founderscoffee/tabachir`, which is public |
+| Code host (changed by 0019 and 0020) | A GitHub organisation: the repository is `founderscoffee/tabachir`, which is public |
 | Money (changed by 0016) | Charge for services, never for features; the term export is free |
 | Name (changed by 0019) | **Tabachir** (طباشير), chosen from about 60 candidates. On 26 Sep 2026 the GitHub name `tabachir` was free, `tabachir.dz` and `tabachir.com.dz` were free in the registry, and no app on Google Play Algeria used the name. `tabachir.com` is taken |
 | Countries | Algeria first: until the end of the 2027/28 school year, the project builds only for Algerian teachers. Country specifics are data, not code, so other countries can use Minhajna later (§1.14) |
@@ -555,7 +556,13 @@ The code and the reference data live in separate repositories, because they have
 |---|---|
 | Name | **Minhajna** (منهاجنا), with the line «من التدرّج إلى الحصّة», "From the yearly plan to every lesson". It replaces Tabachir. On 3 and 4 Oct 2026, `minhajna.dz`, `minhajna.com.dz`, `minhajna.com` and `minhajna.org` were free, and no app on Google Play Algeria or the App Store used the name |
 | Naming rule | Loosened: a name no longer has to be distinctive, it is no longer checked on GitHub, and the echo rules cover only exact official names and the apps that teachers use in Algeria |
-| Code host | The repository is `founderscoffee/minhajna`, renamed on 4 Oct 2026. The GitHub name `minhajna` belongs to a person, so there is no organisation of the product's name to reserve |
+| Code host (changed by 0020) | The repository is `founderscoffee/minhajna`, renamed on 4 Oct 2026. The GitHub name `minhajna` belongs to a person, so there is no organisation of the product's name to reserve |
+
+**Decided on 10 Oct 2026 (decision 0020)**
+
+| Decision | Choice |
+|---|---|
+| Code host | The repository is `djazairdev/minhajna`, in djazairdev, the organisation of open-source projects for Algeria, since 10 Oct 2026. GitHub redirects the old addresses. Principles, licences, governance and the opening plan are unchanged |
 
 **Open**
 - **Protecting the name.** Two steps, since the name is not registered:

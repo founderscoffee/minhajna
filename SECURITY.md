@@ -2,7 +2,7 @@
 
 ## Reporting a problem
 
-- **Report it privately,** through GitHub's [private vulnerability reporting](https://github.com/founderscoffee/minhajna/security/advisories/new).
+- **Report it privately,** through GitHub's [private vulnerability reporting](https://github.com/djazairdev/minhajna/security/advisories/new).
 - **Never report it in public:** not in an issue, a pull request, a discussion or the teacher group.
 - **Include:**
   - what is affected: the app or the server, its version, and the device or browser;

@@ -40,8 +40,8 @@ The letter is drawn, not typed: it follows Ruqaa without copying any font, so it
 
 ## The name and who may use it
 
-- **Spelling.** «منهاجنا» in Arabic, written «منهاجنا» in Arabic sentences; "Minhajna" in Latin letters, never "Minhadjna" or "Manhajna". The line under the name is «من التدرّج إلى الحصّة», in English "From the yearly plan to every lesson" (PRD [§1.9](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#19-official-builds-releases-the-name-and-security)).
+- **Spelling.** «منهاجنا» in Arabic, written «منهاجنا» in Arabic sentences; "Minhajna" in Latin letters, never "Minhadjna" or "Manhajna". The line under the name is «من التدرّج إلى الحصّة», in English "From the yearly plan to every lesson" (PRD [§1.9](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#19-official-builds-releases-the-name-and-security)).
 - **Not the state's.** Nothing in the logo suggests the Ministry or the state. Never place it beside the state's emblem or the Ministry's logo as if they were one, and never call the app official (PRD §1.9, principle 6).
-- **The Ministry's deployment** carries the Ministry's own name and icon, set as settings. Only the project's own builds are called Minhajna and carry this logo (PRD [§5.2](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#52-architecture)). Screens of the national system show the deployment's name where the canvas now shows «منهاجنا».
+- **The Ministry's deployment** carries the Ministry's own name and icon, set as settings. Only the project's own builds are called Minhajna and carry this logo (PRD [§5.2](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#52-architecture)). Screens of the national system show the deployment's name where the canvas now shows «منهاجنا».
 - **Forks** may reuse the code, but under another name and another logo, with nothing that looks like this one (`TRADEMARKS.md`). The name and the logo are not registered trademarks.
 - **Documents** belong to the teacher and the school. Leave the logo off the texts book, the journal, the roll-call book and every other document a director or an inspector checks.

@@ -1,16 +1,16 @@
 Minhajna (منهاجنا) is a free, open-source app for teachers' records: the yearly plan, the session, the texts book, roll call and marks, on a budget Android phone, offline, with no account. It is built teacher first, for adoption by the Ministry, which will run it on government servers. Nothing in this system sells anything. Its look comes from what teachers already hold: the blackboard and its chalk, and the paper, ink and pencil of the books they keep.
 
-Every rule below comes from the [PRD](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md) and from the design canvas, and names the PRD section it serves. When a screen, a component or a token here disagrees with the PRD, the PRD wins: fix the design.
+Every rule below comes from the [PRD](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md) and from the design canvas, and names the PRD section it serves. When a screen, a component or a token here disagrees with the PRD, the PRD wins: fix the design.
 
 ## Where things are
 
 - **The screens** are on the design canvas (private): Minhajna design canvas. The [screen map](../screens.md) maps every board to its PRD sections, so that each implementation ticket names the exact screen it builds.
-- **The components** are the canvas's shared stylesheet, `components/bundle.css`, with one card per component family. Class names are the canvas's own. The apps rebuild them in React Native and React (PRD [§5.2](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#52-architecture)).
+- **The components** are the canvas's shared stylesheet, `components/bundle.css`, with one card per component family. Class names are the canvas's own. The apps rebuild them in React Native and React (PRD [§5.2](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#52-architecture)).
 - **The logo** is in the asset group Logos; the rules are in the **Logo** section.
 
 ## Principles
 
-These are the design rules of PRD [§3.1](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#31-design-rules) and the limits of [§2.6](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#26-what-minhajna-never-does), as they show on screen.
+These are the design rules of PRD [§3.1](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#31-design-rules) and the limits of [§2.6](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#26-what-minhajna-never-does), as they show on screen.
 
 | Rule | On screen | PRD |
 |---|---|---|
@@ -33,7 +33,7 @@ The voice is a careful colleague: short, factual, warm without fuss. It speaks t
 - **State the fact, then the way forward.** «كل الحصص السابقة مؤكّدة · 3 حصص اليوم». «الحضور هو الأصل، ويُعلَّم الغياب والتأخر فقط. يمكن التسجيل بعد الحصة، والتصحيح في أي وقت.»
 - **Reassure where a teacher might worry,** in the `small` style beside an icon: «ذكر السبب اختياري، ويبقى على أجهزتك وحدها».
 - **No gendered forms.** Address the user through the task, with a verbal noun or the first person: «تأكيد الحصة», «يُترك بعلمي», «أجهزتي». Never call the user «الأستاذ»: that word names the role in general, or another person.
-- **The name.** In Arabic sentences write «منهاجنا» in guillemets, so that it reads as the app's name and not as "our curriculum". In a logo, a title bar or a label, it stays plain. In Latin letters it is always "Minhajna" (PRD [§1.9](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#19-official-builds-releases-the-name-and-security)).
+- **The name.** In Arabic sentences write «منهاجنا» in guillemets, so that it reads as the app's name and not as "our curriculum". In a logo, a title bar or a label, it stays plain. In Latin letters it is always "Minhajna" (PRD [§1.9](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#19-official-builds-releases-the-name-and-security)).
 - **Fixed words.** An inspector's time-limited access is «إذن اطّلاع». A share of a total is «نصيب». A part of a recovery key is «جزء». Data that refreshes «تُحدَّث». The table below gives the rest; every screen uses these words.
 
 | Meaning | Say | Never | PRD |
@@ -53,9 +53,9 @@ The voice is a careful colleague: short, factual, warm without fuss. It speaks t
 | Corrections | Listed one by one | A count or a ratio, for anyone | §2.6, §3.8 |
 | Counts the app works out, such as homework | Proposed in `pencil` until the teacher confirms them | Filled in by themselves | §3.1 rule 3 |
 | TD, remediation and support | Their own queues. A class's position and its «آخر مورد» are main-plan items | Merging a lesson with a TD session | §4.7 |
-- **Digits and dates.** Western digits everywhere. Dates as in PRD [§3.8](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#38-the-documents): dd/mm/yyyy, the Algerian month names (جانفي … أوت), and the school year as "2026-2027". Slots, not clock times: «08سا – 09سا».
+- **Digits and dates.** Western digits everywhere. Dates as in PRD [§3.8](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#38-the-documents): dd/mm/yyyy, the Algerian month names (جانفي … أوت), and the school year as "2026-2027". Slots, not clock times: «08سا – 09سا».
 - **No exclamation marks, no emoji, no marketing.** The app is a public tool, not a product.
-- **Every text is translatable** (PRD [§1.14](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#114-algeria-first-flexible-for-other-countries)). Never put words into an image.
+- **Every text is translatable** (PRD [§1.14](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#114-algeria-first-flexible-for-other-countries)). Never put words into an image.
 - **Pupil data stays out of the way.** No pupil name in a notification, an error or a share preview. The private-note panel asks for no health or discipline details: «يُرجى عدم كتابة تفاصيل صحية أو تأديبية تخص التلاميذ، هنا أو في الدفتر.»
 
 ## Visual foundations

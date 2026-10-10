@@ -37,4 +37,4 @@ Only an official country edition, decided in a decision record, may use the name
 
 ## Questions and misuse
 
-Ask a question, or report a misuse of the name, in a [GitHub issue](https://github.com/founderscoffee/minhajna/issues).
+Ask a question, or report a misuse of the name, in a [GitHub issue](https://github.com/djazairdev/minhajna/issues).

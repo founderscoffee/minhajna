@@ -45,4 +45,4 @@ The project is in planning, and there is no app yet.
 
 You can see, correct and delete what the project holds about you. Corrections and deletions are made within 10 days ([PRD §6.2](docs/prd/PRD.md#62-compliance-before-each-launch)).
 
-For now, ask in a [GitHub issue](https://github.com/founderscoffee/minhajna/issues), without personal details, and a maintainer answers there. If you took part in the field check, you can also ask the person who contacted you. The project will add an address of its own for these questions when it has one.
+For now, ask in a [GitHub issue](https://github.com/djazairdev/minhajna/issues), without personal details, and a maintainer answers there. If you took part in the field check, you can also ask the person who contacted you. The project will add an address of its own for these questions when it has one.

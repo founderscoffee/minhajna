@@ -2,7 +2,7 @@
 
 This folder holds the reference data that Minhajna ships with: each country's profile and its school calendars ([PRD §4.8](../docs/prd/PRD.md#48-getting-packs-and-calendars-to-the-app)). The app reads these files as untrusted, through the core's readers. A file that breaks the format is refused, with every problem listed ([PRD §5.9](../docs/prd/PRD.md#59-files-minhajna-reads-and-writes)).
 
-The data lives here until curators join, then moves to its own data repository (choice F6 in [#49](https://github.com/founderscoffee/minhajna/issues/49)). It is under [CC BY-SA 4.0](../LICENSES/CC-BY-SA-4.0.txt).
+The data lives here until curators join, then moves to its own data repository (choice F6 in [#49](https://github.com/djazairdev/minhajna/issues/49)). It is under [CC BY-SA 4.0](../LICENSES/CC-BY-SA-4.0.txt).
 
 ## Files
 
@@ -40,7 +40,7 @@ Each entry carries one of three confidences ([PRD §4.5](../docs/prd/PRD.md#45-t
 ## Not here yet
 
 - **The pupils' last day.** Their summer holiday starts after the term-3 exams, the make-up exams and their correction, which have no dates yet. Until then, the year runs to 8 July 2027, when teachers' annual leave starts.
-- **Ramadan hours.** They come with the Ministry's Ramadan notice, as do the bell times ([#29](https://github.com/founderscoffee/minhajna/issues/29)).
+- **Ramadan hours.** They come with the Ministry's Ramadan notice, as do the bell times ([#29](https://github.com/djazairdev/minhajna/issues/29)).
 - **The BEM and the baccalaureate,** whose dates are not announced yet.
 - **Wilaya and school entries,** such as weather closures. They come as calendar fixes, or the teacher adds them ([PRD §4.5](../docs/prd/PRD.md#45-the-calendar)).
 - **Subjects by grade and by stream.** The profile lists the subjects each level teaches, and the teacher picks theirs at setup.

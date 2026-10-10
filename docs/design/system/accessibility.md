@@ -1,6 +1,6 @@
 # Accessibility
 
-PRD [§6.8](https://github.com/founderscoffee/minhajna/blob/main/docs/prd/PRD.md#68-non-functional-requirements) asks for:
+PRD [§6.8](https://github.com/djazairdev/minhajna/blob/main/docs/prd/PRD.md#68-non-functional-requirements) asks for:
 
 - right to left first;
 - the Android screen reader in Arabic, French and English;
