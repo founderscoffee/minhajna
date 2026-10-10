@@ -36,10 +36,16 @@ jobs:
       # A commit passes when one of its Signed-off-by trailers gives a name and
       # the author's email address, in any letter case. Merge commits are
       # skipped: they add no work of their own, and squashing drops them.
+      # Dependabot can't certify the DCO, so in a pull request that Dependabot
+      # opened, the commits it made itself are skipped too; the maintainer who
+      # merges the update answers for it (commits.md#sign-off). The pull
+      # request's author comes from GitHub, so no one else can claim this.
       - name: Check every commit for its author's sign-off
         env:
           BASE_REF: ${{ github.base_ref }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          DEPENDABOT_EMAIL: 49699333+dependabot[bot]@users.noreply.github.com
         run: |
           shopt -s nocasematch
           commits=$(git rev-list --no-merges --reverse "origin/$BASE_REF..$HEAD_SHA")
@@ -48,6 +54,10 @@ jobs:
           for commit in $commits; do
             total=$((total + 1))
             email=$(git show --no-patch --format='%ae' "$commit")
+            if [[ "$PR_AUTHOR" == "dependabot[bot]" && "$email" == "$DEPENDABOT_EMAIL" ]]; then
+              echo "Dependabot: $(git show --no-patch --format='%h %s' "$commit")"
+              continue
+            fi
             signed=false
             while IFS= read -r signoff; do
               if [[ "$signoff" == ?*" <$email>" ]]; then

@@ -29,6 +29,11 @@ jobs:
       - name: Check the title
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
+          # Dependabot writes "Bump …" with a capital, and its grouped titles
+          # can run past 72 characters. Its type and scope are still checked.
+          # The pull request's author comes from GitHub, so no one else can
+          # claim this.
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           # The types from docs/contributing/commits.md#types.
           TYPES: feat fix perf refactor style test docs build ci chore revert
           # The current list of scopes that docs/contributing/commits.md#scopes
@@ -77,7 +82,7 @@ jobs:
             fi
             if [[ -z "$summary" || "$summary" == [[:space:]]* ]]; then
               problems+=("Put one space after the colon, then the summary.")
-            elif [[ "$summary" == [[:upper:]]* ]]; then
+            elif [[ "$summary" == [[:upper:]]* && "$PR_AUTHOR" != "dependabot[bot]" ]]; then
               problems+=("Start the summary in lower case.")
             fi
             if [[ "$summary" == *. ]]; then
@@ -86,7 +91,7 @@ jobs:
           else
             problems+=('Write the title as "<type>(<scope>): <summary>", or "<type>: <summary>" without a scope.')
           fi
-          if (( ${#PR_TITLE} > 72 )); then
+          if (( ${#PR_TITLE} > 72 )) && [[ "$PR_AUTHOR" != "dependabot[bot]" ]]; then
             problems+=("Shorten the title to 72 characters at most. It has ${#PR_TITLE}.")
           fi
 
