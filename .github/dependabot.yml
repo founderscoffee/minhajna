@@ -2,9 +2,11 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Updates arrive as pull requests and are reviewed like any other change
-# (docs/contributing/engineering.md#dependencies). Minor and patch updates
-# come grouped, one pull request per ecosystem; major ones come one by one.
-# Security updates come on their own, from the repository's settings.
+# (docs/contributing/engineering.md#dependencies). GitHub Actions and npm's
+# minor and patch updates each come grouped in one pull request. Security
+# updates come on their own, from the repository's settings. The titles read
+# "ci(deps): …" and "build(deps): …"; the title and sign-off checks allow for
+# Dependabot (commits.md#sign-off).
 
 version: 2
 updates:
@@ -13,8 +15,7 @@ updates:
     schedule:
       interval: weekly
     commit-message:
-      prefix: ci
-      include: scope
+      prefix: ci(deps)
     groups:
       actions:
         patterns: ['*']
@@ -25,8 +26,12 @@ updates:
       interval: weekly
     open-pull-requests-limit: 5
     commit-message:
-      prefix: build
-      include: scope
+      prefix: build(deps)
+    # A major upgrade, such as a new TypeScript, is a change of its own, made
+    # in an issue when the project is ready for it.
+    ignore:
+      - dependency-name: '*'
+        update-types: [version-update:semver-major]
     groups:
       minor-and-patch:
         update-types: [minor, patch]

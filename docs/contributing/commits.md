@@ -120,6 +120,7 @@ How it works:
   Then update your pull request with `git push --force-with-lease`.
 - **The sign-off is not a cryptographic signature.** Signing your commits with GPG or SSH is welcome, but only the sign-off is required.
 - **Content from the teachers' form.** The data curator who commits it signs it off, relying on the licence the teacher accepted in the form ([decision 0003](../decisions/0003-contributor-terms-dco.md)).
+- **Dependabot's updates.** A bot cannot certify the DCO, so the check skips the commits Dependabot makes in the pull requests it opens. The maintainer who reviews and merges an update answers for it, and a commit that a person adds to it is signed off as usual.
 
 ## AI-assisted work
 
