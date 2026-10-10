@@ -46,7 +46,7 @@
 
 ### المساهمة الآن
 
-- تُستقبل الملاحظات والاقتراحات وتصحيحات التدرجات والنماذج عبر [Issues](https://github.com/founderscoffee/minhajna/issues).
+- تُستقبل الملاحظات والاقتراحات وتصحيحات التدرجات والنماذج عبر [Issues](https://github.com/djazairdev/minhajna/issues).
 - مساهمات الكود بدعوة فقط إلى غاية إطلاق التطبيق المقرر في سبتمبر 2027. التفاصيل في [CONTRIBUTING.md](CONTRIBUTING.md).
 - كل قرار مهمّ يُعرض للنقاش قبل اعتماده، ويُجاب عن كل تعليق علنًا.
 
@@ -91,7 +91,7 @@ Ten points protect the teachers whose records are kept in Minhajna: no personnel
 
 ### Contributing now
 
-- Share feedback, suggestions, corrections to annual plans, and templates through [Issues](https://github.com/founderscoffee/minhajna/issues).
+- Share feedback, suggestions, corrections to annual plans, and templates through [Issues](https://github.com/djazairdev/minhajna/issues).
 - **Never post pupils' names, marks or absences, or images of them**, anywhere in the project. Use made-up names.
 - Code contributions are by invitation until the launch, planned for September 2027. See [CONTRIBUTING.md](CONTRIBUTING.md).
 - Every important decision is open for comments before it is made, and every comment gets a public answer.

@@ -1,7 +1,7 @@
 # 0019. The product is called Minhajna (منهاجنا)
 
 - **Date:** 2026-10-04, accepted the same day
-- **Status:** Accepted
+- **Status:** Superseded in part by [0020](0020-code-host-djazairdev.md)
 - **Decided by:** the lead maintainer, before the 7 days of comments had passed. No comments had come in.
 
 ## Context

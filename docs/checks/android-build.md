@@ -1,6 +1,6 @@
 # Technical check 1: the Android build
 
-This is the first of the checks before the pilot ([PRD §5.13](../prd/PRD.md#513-checks-before-the-pilot)). The question is whether the Android app can be built from its source, reproducibly and with no proprietary library. If it can, F-Droid can build it, and anyone can check an official build against the code ([PRD §1.3](../prd/PRD.md#13-licences), [§1.9](../prd/PRD.md#19-official-builds-releases-the-name-and-security)). It is ticket FC-02 of the field-check plan ([#18](https://github.com/founderscoffee/minhajna/issues/18)).
+This is the first of the checks before the pilot ([PRD §5.13](../prd/PRD.md#513-checks-before-the-pilot)). The question is whether the Android app can be built from its source, reproducibly and with no proprietary library. If it can, F-Droid can build it, and anyone can check an official build against the code ([PRD §1.3](../prd/PRD.md#13-licences), [§1.9](../prd/PRD.md#19-official-builds-releases-the-name-and-security)). It is ticket FC-02 of the field-check plan ([#18](https://github.com/djazairdev/minhajna/issues/18)).
 
 - [The result](#the-result)
 - [The app](#the-app)
@@ -29,7 +29,7 @@ This is the first of the checks before the pilot ([PRD §5.13](../prd/PRD.md#513
 
 - React Native 0.87.1 with React 19.2.3, the new architecture and the Hermes engine 250829098.0.17, without Expo ([PRD §5.2](../prd/PRD.md#52-architecture)).
 - Android 8 (API 26) and later. It targets Android 16 (API 36), and compiles against API 37 ([PRD §6.8](../prd/PRD.md#68-non-functional-requirements)).
-- One screen shows the name and the tagline in Arabic, right to left, whatever the phone's language. The design's tokens, fonts and components come with [#20](https://github.com/founderscoffee/minhajna/issues/20), and the interface language with [#21](https://github.com/founderscoffee/minhajna/issues/21).
+- One screen shows the name and the tagline in Arabic, right to left, whatever the phone's language. The design's tokens, fonts and components come with [#20](https://github.com/djazairdev/minhajna/issues/20), and the interface language with [#21](https://github.com/djazairdev/minhajna/issues/21).
 - The application ID is `dz.minhajna.preview` for now. The final ID follows the project's domain.
 - The release APK carries code for the two processor types of Android phones, `armeabi-v7a` and `arm64-v8a`, and weighs 27.2 MB. Its code is not shrunk yet.
 
@@ -52,14 +52,14 @@ React Native's app template is the starting point. These changes make it follow 
 - **Licences.**
   - Files from the template keep Meta's MIT notice, and the Gradle wrapper keeps its Apache-2.0 notice. The edit-text drawable keeps the Android Open Source Project's notice.
   - The launcher icon is drawn from the logo, under CC-BY-SA-4.0.
-- **Removed from the template:** the debug signing key, the iOS project, the Ruby files, the PNG launcher icons and the linter settings. The linter comes with [#17](https://github.com/founderscoffee/minhajna/issues/17).
+- **Removed from the template:** the debug signing key, the iOS project, the Ruby files, the PNG launcher icons and the linter settings. The linter comes with [#17](https://github.com/djazairdev/minhajna/issues/17).
 
 ## Repeating the build
 
 You need JDK 17, Node.js 22.18 or later, and the Android SDK with platform 37, build tools 37.0.0, NDK 27.1.12297006 and CMake 3.22.1.
 
 ```sh
-git clone https://github.com/founderscoffee/minhajna.git
+git clone https://github.com/djazairdev/minhajna.git
 cd minhajna/apps/android
 npm ci --no-audit
 cd android
